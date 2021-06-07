@@ -5,13 +5,13 @@ This project contains the core 'Theme' used by the GLA drupal accelerator and al
 # installation
 This project is downloaded using composer
 ```
-composer require gla/accelerator_blockquote_core_component
+composer require gla/accelerator_theme
 ```
 
 ```
    {
        "require": {
-           "gla/accelerator_blockquote_core_component": "^1.0"
+           "gla/gla/accelerator_theme": "^1.0"
        }
    } 
 ```
