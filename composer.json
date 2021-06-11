@@ -1,7 +1,7 @@
 {
-    "name": "gla/accelerator_theme",
-    "type": " drupal-theme",
+    "name": "gla/accelerator-theme",
+    "type": "drupal-theme",
     "license": "OGL-3.0",
-    "description": "Core Theme used by the GLA drupal accelerator and all drupal sites within the GLA estate”
+    "description": "Core Theme used by the GLA drupal accelerator and all drupal sites within the GLA estate"
 }
 
