@@ -1,6 +1,6 @@
 {
     "name": "gla/accelerator-theme",
-    "type": "drupal-theme",
+    "type": "drupal-custom-theme",
     "license": "OGL-3.0",
     "description": "Core Theme used by the GLA drupal accelerator and all drupal sites within the GLA estate"
 }
