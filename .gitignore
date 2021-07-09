@@ -1,0 +1,12 @@
+# Ignore compiled files.
+dist
+!dist/img/favicons/**
+vendor
+build
+libraries
+
+# NPM
+node_modules
+npm-debug.log
+
+.DS_Store

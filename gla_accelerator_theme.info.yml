@@ -1,7 +1,15 @@
 name: GLA accelerator theme
 type: theme
-description: This is a sub theme of Bartik
+description: GLA core theme
 core: 8.x
 core_version_requirement: ^8 || ^9
-# Defines the base theme
-base theme: bartik
+base theme: stable
+
+components:
+  namespaces:
+    base: components/00-base
+    atoms: components/01-atoms
+    molecules: components/02-molecules
+    organisms: components/03-organisms
+    templates: components/04-templates
+    pages: components/05-pages
