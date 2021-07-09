@@ -1,5 +1,6 @@
-// Would be nice if we had a Webpack alias for this:
 import drupalAttribute from 'drupal-attribute';
+
+import '@dist/01-atoms/button/button.css';
 
 const template = require('./button.twig');
 

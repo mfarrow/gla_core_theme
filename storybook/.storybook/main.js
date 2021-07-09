@@ -23,7 +23,16 @@ const webpackFinal = config => {
     }
   });
 
-  return config;
+  return {
+    ...config,
+    resolve: {
+      ...config.resolve,
+      alias: {
+        '@dist': path.resolve(__dirname, '../../dist'),
+        '@src': path.resolve(__dirname, '../../src'),
+      },
+    },
+  };
 };
 
 module.exports = {
