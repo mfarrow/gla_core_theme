@@ -6,7 +6,8 @@
   "description": "Rutherford Storybook",
   "scripts": {
     "storybook": "start-storybook -c storybook/.storybook -s ../dist/",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.3.4",
@@ -21,5 +22,9 @@
     "twing": "^2.3.7",
     "twing-loader": "^2.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "node-sass-chokidar": "^1.5.0",
+    "node-sass-magic-importer": "^5.3.2"
+  }
 }
