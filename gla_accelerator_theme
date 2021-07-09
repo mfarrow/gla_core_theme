@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * @file
+ * Provides CLI commands for the theme.
+ */
+
+use Drupal\gla_accelerator_theme\Command\GenerateTheme;
+use Symfony\Component\Console\Application;
+
+if (PHP_SAPI !== 'cli') {
+  return;
+}
+
+$classloader = require_once __DIR__ . '/../../../autoload.php';
+
+$application = new Application('gla_accelerator_theme');
+
+$application->add(new GenerateTheme());
+
+$application->run();

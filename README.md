@@ -1,42 +1,8 @@
-# Accelerator Theme
+# GLA core theme
 
-This project contains the core 'Theme' used by the GLA drupal accelerator and all drupal sites within the GLA estate
+This theme is the core theme for GLA web properties and is included with the
+core Drupal install profile.
 
-# installation
-This project is downloaded using composer
-```
-composer require gla/accelerator-theme
-```
+## Creating a subtheme
 
-```
-   {
-       "require": {
-           "gla/accelerator-theme": "^1.0"
-       }
-   } 
-```
-
-
-
-
-Note: This project is currently accessible through a private pakagist, 
-```
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.packagist.com/greaterlondonauthori/"
-        }
-   ]
-```
-
-and will need an auth key/token
-```
-   {
-      "http-basic": {
-          "repo.packagist.com": {
-              "username": "<USERNAME>",
-              "password": "<TOKEN>"
-          }
-      }
-   }
-```
+@TODO
