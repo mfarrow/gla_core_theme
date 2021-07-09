@@ -1,13 +1,30 @@
 {
+  "name": "gla-accelerator-theme",
   "private": true,
-  "name": "@cti/rutherford_storybook",
-  "author": "CTI Digital",
-  "version": "0.0.0",
-  "description": "Rutherford Storybook",
   "scripts": {
-    "storybook": "start-storybook -c storybook/.storybook -s ../dist/",
+    "build": "run-p build:**",
+    "build-prod": "NODE_ENV=production run-s build",
     "build-storybook": "build-storybook",
-    "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components"
+    "build:css": "run-s scss postcss",
+    "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
+    "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
+    "storybook": "start-storybook -c storybook/.storybook -s ../dist/",
+    "tidy": "npx sort-package-json"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.5",
+    "breakpoint-sass": "^2.7.1",
+    "cssnano": "^4.1.10",
+    "node-sass-chokidar": "^1.5.0",
+    "node-sass-magic-importer": "^5.3.2",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.0.6",
+    "postcss-cachebuster": "^0.1.6",
+    "postcss-cli": "^6.1.2",
+    "postcss-custom-properties": "^9.1.1",
+    "postcss-font-display": "^0.1.2",
+    "postcss-load-plugins": "^2.3.0",
+    "postcss-momentum-scrolling": "^2.8.18"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.3.4",
@@ -21,10 +38,5 @@
     "storybook-addon-designs": "6.0.1",
     "twing": "^2.3.7",
     "twing-loader": "^2.0.2"
-  },
-  "dependencies": {
-    "breakpoint-sass": "^2.7.1",
-    "node-sass-chokidar": "^1.5.0",
-    "node-sass-magic-importer": "^5.3.2"
   }
 }
