@@ -10,6 +10,7 @@
     "build-prod": "NODE_ENV=production run-s build",
     "build:css": "run-s scss postcss",
     "build:js": "run-s babel",
+    "build:storybook-static": "if [ \"$NODE_ENV\" == \"production\" ] && [ -z \"$npm_config_skip_storybook\" ]; then npm run storybook:build-static; fi",
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
     "storybook:start": "start-storybook -c storybook/.storybook -s dist:/dist",
