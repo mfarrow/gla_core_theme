@@ -1,0 +1,251 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Pattern Lab theme.
+ */
+
+use Drupal\Core\Template\Attribute;
+use Drupal\Component\Utility\Crypt;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess().
+ */
+function gla_accelerator_theme_preprocess(&$variables) {
+  $variables['cacheBuster'] = \Drupal::getContainer()->get('state')->get('system.css_js_query_string') ?: '0';
+
+  $handler = \Drupal::service('theme_handler');
+  $variables['base_path'] = base_path();
+  $variables['theme_path'] = base_path() . $handler->getTheme('gla_accelerator_theme')->getPath();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function gla_accelerator_theme_preprocess_block(&$variables) {
+  if (isset($variables['elements']['#id'])) {
+    $variables['block'] = Block::load($variables['elements']['#id']);
+    $region = $variables['block']->getRegion();
+    // Add the region as a data attribute so it can be used in a template
+    // suggestion hook alter.
+    $variables['content']['#attributes']['data-region'] = $region;
+  }
+
+  switch ($variables['configuration']['id']) {
+    case 'system_menu_block:main':
+      // Here we are deliberately not printing the contextual links. There are
+      // two reasons for this:
+      // 1) The contextual links rely on setting position:relative, but this
+      // interferes with custom CSS and can be a cause of bugs as the
+      // position value changes for users with permission to use the contextual
+      // links and users without, but developers may assume it is always set (or
+      // not set).
+      // 2) The way we output the same block twice but with different markup
+      // (for the small screens menu and the large screens menu component)
+      // means that the contextual links JS doesn't work anyway.
+      unset($variables['title_suffix']['contextual_links']);
+      $attributes = new Attribute($variables['attributes']);
+      $attributes->removeClass('contextual-region');
+      $variables['attributes'] = $attributes->toArray();
+      break;
+  }
+}
+
+/**
+ * Prepares variables for media templates.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - media: An individual media for display.
+ */
+function gla_accelerator_theme_preprocess_media(array &$variables) {
+  $variables['media'] = $variables['elements']['#media'];
+  $variables['id'] = $variables['media']->id();
+
+  if (isset($variables['media']->field_media_document)) {
+    $file = $variables['media']->field_media_document->entity;
+    $variables['file'] = $file;
+    $variables['file_size'] = format_size($file->filesize->value);
+    $variables['file_extension'] = strtoupper(explode('.', $file->getFilename())[1]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function gla_accelerator_theme_preprocess_field(&$variables) {
+  if (
+    $variables['field_type'] == 'entity_reference_revisions'
+    &&
+    $variables['element']['#items']->getItemDefinition()->getSetting('target_type') == 'paragraph'
+  ) {
+    foreach ($variables['items'] as $index => $item) {
+      $variables['items'][$index]['content']['#paragraph']->index = $index;
+      $variables['items'][$index]['content']['#paragraph']->is_first = ($index == 0);
+      $variables['items'][$index]['content']['#paragraph']->is_last = ($index == count($variables['items']) - 1);
+
+      $parent = $item['content']['#paragraph']->getParentEntity();
+      if ($parent) {
+        $variables['items'][$index]['content']['#paragraph']->parent = $parent->bundle();
+
+        if (method_exists($parent, 'getParentEntity')) {
+          $grandparent = $item['content']['#paragraph']->getParentEntity()->getParentEntity();
+          if ($grandparent) {
+            $variables['items'][$index]['content']['#paragraph']->grandparent = $grandparent->bundle();
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements template_preprocess_region().
+ *
+ * @param array $variables
+ */
+function gla_accelerator_theme_preprocess_region(array &$variables) {
+  // Make render arrays for blocks available in region templates.
+  // Code below is from https://atendesigngroup.com/blog/making-region-content-available-node-templates-drupal-8.
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  $available_regions = system_region_list($theme, 'REGIONS_ALL');
+  $regions = array_intersect(array_keys($available_regions), [
+    'footer',
+    'header',
+  ]);
+
+  foreach ($regions as $key => $region) {
+    // Load region blocks.
+    $blocks = \Drupal::entityTypeManager()
+      ->getStorage('block')
+      ->loadByProperties(['theme' => $theme, 'region' => $region]);
+
+    uasort($blocks, 'Drupal\block\Entity\Block::sort');
+
+    $build = [];
+    foreach ($blocks as $key => $block) {
+      if ($block->access('view')) {
+        $block = Block::load($key);
+        $block_content = \Drupal::entityTypeManager()
+          ->getViewBuilder('block')
+          ->view($block);
+        $build[$key] = $block_content;
+      }
+    }
+
+    $variables['blocks'][$region] = $build;
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function gla_accelerator_theme_page_attachments_alter(array &$attachments) {
+  // Update viewport metatag to work with iPhone notch.
+  // https://julian.is/article/iphone-x-notch/
+  $viewport_metatag = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, viewport-fit=cover',
+    ],
+  ];
+
+  $format_detection_metatag = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'format-detection',
+      'content' => 'telephone=no',
+    ],
+  ];
+
+  $attachments['#attached']['html_head'][] = [$viewport_metatag, 'viewport'];
+  $attachments['#attached']['html_head'][] = [$format_detection_metatag, 'format-detection'];
+
+  // Remove the core favicon as we supply our own.
+  foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
+    if (isset($value[0]['rel']) && $value[0]['rel'] == 'shortcut icon') {
+      unset($attachments['#attached']['html_head_link'][$key]);
+    }
+  }
+}
+
+
+/**
+ * Custom function to prevent duplicate form element IDs.
+ */
+function _gla_accelerator_theme_prevent_duplicate_form_element_ids(&$variables) {
+  // See https://www.drupal.org/project/drupal/issues/1852090#comment-13624394.
+  // See https://www.drupal.org/project/drupal/issues/1852090#comment-13115760.
+  if (isset($variables['element']['#id'])) {
+    $target_duplicated_ids = [
+      'edit-actions',
+      'edit-query',
+    ];
+
+    $id = $variables['element']['#id'];
+    if (in_array($id, $target_duplicated_ids)) {
+      $id .= '--' . Crypt::randomBytesBase64(8) . '--randomised';
+      $variables['element']['#id'] = $id;
+      $variables['attributes']['id'] = $id;
+      $variables['#attached']['library'][] = 'gla_accelerator_theme/fix-randomised-form-ids';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_input().
+ */
+function gla_accelerator_theme_preprocess_input(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+/**
+ * Implements hook_preprocess_textarea().
+ */
+function gla_accelerator_theme_preprocess_textarea(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+/**
+ * Implements hook_preprocess_select().
+ */
+function gla_accelerator_theme_preprocess_select(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+/**
+ * Implements hook_preprocess_radios().
+ */
+function gla_accelerator_theme_preprocess_radios(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+/**
+ * Implements hook_preprocess_checkboxes().
+ */
+function gla_accelerator_theme_preprocess_checkboxes(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+/**
+ * Implements hook_preprocess_container().
+ */
+function gla_accelerator_theme_preprocess_container(&$variables) {
+  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function gla_accelerator_theme_preprocess_html(&$variables) {
+  if ($variables['html_attributes']['lang'] == 'en') {
+    // This helps with screenreader pronunciation.
+    $variables['html_attributes']['lang'] = 'en-gb';
+  }
+}
