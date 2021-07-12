@@ -13,15 +13,23 @@ module.exports = {
     './components/**/*.twig',
     './components/**/*.js',
     './templates/**/*.html.twig',
-    '../../../../config/sync/*.yml',
+    '../../../../config/sync/*.yml',s
     './gla_accelerator_theme.theme',
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
+    screens: {
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1920px',
+      print: { raw: 'print' },
+    },
     extend: {},
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
