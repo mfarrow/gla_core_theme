@@ -27,7 +27,7 @@ npm run build-prod --skip-storybook
 
 ## Local development
 
-@TODO
+Run `npm run storybook:start` to launch Storybook.
 
 ## Creating a subtheme
 

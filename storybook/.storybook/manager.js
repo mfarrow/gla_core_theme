@@ -9,23 +9,10 @@ addons.setConfig({
   sidebarAnimations: true,
   enableShortcuts: true,
   isToolshown: true,
-  theme: create({
-    base: 'light',
-    brandTitle: `Rutherford`,
-    brandUrl:
-      'https://stash.ctidigital.com/projects/D/repos/cti-drupal-project',
-    brandImage: undefined,
-  }),
   selectedPanel: 'controls',
   initialActive: 'sidebar',
   sidebar: {
-    showRoots: false,
+    showRoots: true,
   },
 });
 
-// registerAddonCode({
-//   tabs: [
-//     { label: 'Twig', lang: 'html.twig' },
-//     { label: 'Data', lang: 'js' },
-//   ],
-// });

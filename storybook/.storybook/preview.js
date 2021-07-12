@@ -26,6 +26,20 @@ addParameters({
       offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
     },
   },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: [
+        'Tokens',
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Templates',
+        'Pages',
+      ],
+      locales: 'en-GB',
+    },
+  }
 });
 
 export const globalTypes = {

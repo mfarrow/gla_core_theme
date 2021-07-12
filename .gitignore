@@ -4,6 +4,9 @@ dist
 vendor
 libraries
 storybook/static
+tokens/tokens.css
+tokens/tokens.js
+tokens/tokens.scss
 
 # NPM
 node_modules

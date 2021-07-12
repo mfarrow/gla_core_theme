@@ -5,7 +5,7 @@ import '@dist/01-atoms/button/button.css';
 const template = require('./button.twig');
 
 export default {
-  title: 'Components/Button',
+  title: 'Atoms/Button',
   args: {
     button_content: 'Example button',
   },

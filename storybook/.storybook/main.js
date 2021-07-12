@@ -1,6 +1,9 @@
 const path = require('path');
 
-const stories = ['../../components/**/*.story.@(js|jsx|ts|tsx|mdx)'];
+const stories = [
+  '../../components/**/*.story.@(js|jsx|ts|tsx|mdx)',
+  '../../tokens/*.story.@(js|jsx|ts|tsx|mdx)'
+];
 
 const addons = [
   'storybook-addon-designs',

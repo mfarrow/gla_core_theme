@@ -1,0 +1,97 @@
+import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs';
+import _upperFirst from 'lodash/upperFirst';
+const colors = require('./tokens.js').colors;
+const isPrimaryPalette = function (key) {
+  return [
+    'pink',
+    'dark-pink',
+    'grey',
+    'dark-grey',
+    'text-grey',
+    'off-white',
+    'black',
+    'white',
+  ].includes(key);
+};
+const isSecondaryPalette = function (key) {
+  return ['blue', 'dark-blue', 'green', 'red', 'purple', 'yellow'].includes(
+    key,
+  );
+};
+const isOtherPalette = function (key) {
+  return !(isPrimaryPalette(key) || isSecondaryPalette(key));
+};
+
+<Meta
+  title="Tokens/Colours"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
+
+# Colours
+
+Whether you are working in HTML, CSS, or SCSS it should be easy to find the colour values that you need.
+
+All colours are available as kebab-case design tokens in three formats:
+
+1. As CSS utility classes with a `u-` (for utility) prefix, e.g. `.u-text-dark-pink` or `.u-bg-dark-pink`
+2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-colors-dark-pink`
+3. As CSS custom properties ('CSS variables') with a `t-` (for token) prefix, e.g. `var(--t-colors-dark-pink)`
+
+For more information on the available design tokens across the site, refer to the files in the `./tokens` directory of the theme.
+
+## Primary palette
+
+<ColorPalette>
+  {Object.keys(colors)
+    .filter((key) => isPrimaryPalette(key))
+    .map((key) => {
+      const color = colors[key].value;
+      const title = _upperFirst(key).replace('-', ' ');
+      return (
+        <ColorItem
+          key={key}
+          title={title}
+          subtitle={key}
+          colors={{ [key]: color }}
+        />
+      );
+    })}
+</ColorPalette>
+
+## Secondary palette
+
+<ColorPalette>
+  {Object.keys(colors)
+    .filter((key) => isSecondaryPalette(key))
+    .map((key) => {
+      const color = colors[key].value;
+      const title = _upperFirst(key).replace('-', ' ');
+      return (
+        <ColorItem
+          key={key}
+          title={title}
+          subtitle={key}
+          colors={{ [key]: color }}
+        />
+      );
+    })}
+</ColorPalette>
+
+## Other colour values
+
+<ColorPalette>
+  {Object.keys(colors)
+    .filter((key) => isOtherPalette(key))
+    .map((key) => {
+      const color = colors[key].value;
+      const title = _upperFirst(key).replace('-', ' ');
+      return (
+        <ColorItem
+          key={key}
+          title={title}
+          subtitle={key}
+          colors={{ [key]: color }}
+        />
+      );
+    })}
+</ColorPalette>
