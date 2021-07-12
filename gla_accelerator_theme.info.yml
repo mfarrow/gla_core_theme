@@ -15,8 +15,8 @@ libraries:
 # https://www.drupal.org/project/ckeditor_config can then be used to add a class to the CKEditor instance to mimic
 # our rich text/prose component and to set the right max-width, line-height etc.
 ckeditor_stylesheets:
-  - dist/00-base/style.css
-  - dist/00-base/utilities.css
+  - dist/style.css
+  - dist/utilities.css
 
 libraries-override:
   # We don't support any browsers that need Picturefill.

@@ -1,8 +1,8 @@
 global:
   css:
     theme:
-      dist/00-base/style.css: {}
-      dist/00-base/utilities.css: {}
+      dist/style.css: {}
+      dist/utilities.css: {}
   dependencies:
     - gla_accelerator_theme/polyfill-io
     - gla_accelerator_theme/inert-polyfill
