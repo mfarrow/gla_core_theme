@@ -1,0 +1,5 @@
+global:
+  css:
+    theme:
+      dist/00-base/style.css: {}
+      dist/00-base/utilities.css: {}

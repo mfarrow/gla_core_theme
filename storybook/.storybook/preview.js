@@ -1,8 +1,8 @@
 import { addParameters, addDecorator } from '@storybook/html';
 const drupalAttribute = require('drupal-attribute');
 
-// import '../../dist/tailwind.css';
-// import '../../dist/style.css';
+import '../../dist/00-base/global.css';
+import '../../dist/00-base/utilities.css';
 // import '../../../../../core/misc/drupal';
 
 addParameters({

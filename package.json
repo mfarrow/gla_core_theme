@@ -12,19 +12,23 @@
     "tidy": "npx sort-package-json"
   },
   "dependencies": {
-    "autoprefixer": "^9.8.5",
+    "autoprefixer": "^10.2.6",
     "breakpoint-sass": "^2.7.1",
-    "cssnano": "^4.1.10",
+    "cssnano": "^5.0.6",
     "node-sass-chokidar": "^1.5.0",
     "node-sass-magic-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.0.6",
+    "postcss": "^8.3.5",
     "postcss-cachebuster": "^0.1.6",
-    "postcss-cli": "^6.1.2",
-    "postcss-custom-properties": "^9.1.1",
-    "postcss-font-display": "^0.1.2",
+    "postcss-cli": "^8.3.1",
+    "postcss-custom-properties": "^11.0.0",
+    "postcss-em-media-query": "^4.1.0",
+    "postcss-font-display": "^0.2.1",
     "postcss-load-plugins": "^2.3.0",
-    "postcss-momentum-scrolling": "^2.8.18"
+    "postcss-momentum-scrolling": "^3.13.22",
+    "postcss-pxtorem": "^6.0.0",
+    "postcss-round-subpixels": "^2.0.0",
+    "tailwindcss": "^2.2.4"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.3.4",
