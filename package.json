@@ -4,11 +4,11 @@
   "scripts": {
     "build": "run-p build:**",
     "build-prod": "NODE_ENV=production run-s build",
-    "build-storybook": "build-storybook",
     "build:css": "run-s scss postcss",
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
-    "storybook": "start-storybook -c storybook/.storybook -s ../dist/",
+    "storybook:start": "start-storybook -c storybook/.storybook -s dist:/dist",
+    "storybook:build-static": "build-storybook -c storybook/.storybook -s dist:/dist -o ./storybook/static",
     "tidy": "npx sort-package-json"
   },
   "dependencies": {
