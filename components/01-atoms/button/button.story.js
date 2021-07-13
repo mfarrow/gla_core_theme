@@ -38,6 +38,12 @@ export default {
       },
     },
   },
+  parameters: {
+    design: {
+      type: 'iframe',
+      url: 'https://projects.invisionapp.com/share/3C11ABUSUADV#/screens/454587029',
+    },
+  }
 };
 
 const Template = args => template({ ...args });
