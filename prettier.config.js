@@ -19,7 +19,7 @@ module.exports = {
       },
     },
     {
-      files: '*.md',
+      files: '{*.md,*.story.mdx}',
       options: {
         printWidth: 80,
         proseWrap: 'always',

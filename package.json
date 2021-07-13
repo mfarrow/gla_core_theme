@@ -15,8 +15,8 @@
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
     "prestorybook:start": "node scripts/generate-design-tokens.js",
-    "storybook:start": "start-storybook -c storybook/.storybook -s dist:/dist",
-    "storybook:build-static": "build-storybook -c storybook/.storybook -s dist:/dist -o ./storybook/static",
+    "storybook:start": "start-storybook -c storybook/.storybook -s dist:/dist,tokens:/tokens",
+    "storybook:build-static": "build-storybook -c storybook/.storybook -s dist:/dist,tokens:/tokens -o ./storybook/static",
     "tidy": "sort-package-json"
   },
   "dependencies": {

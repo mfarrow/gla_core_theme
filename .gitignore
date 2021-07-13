@@ -5,7 +5,8 @@ vendor
 libraries
 storybook/static
 tokens/tokens.css
-tokens/tokens.js
+tokens/tokens-module.js
+tokens/tokens-object.js
 tokens/tokens.scss
 
 # NPM

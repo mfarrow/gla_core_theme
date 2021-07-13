@@ -15,6 +15,7 @@ module.exports = {
     './templates/**/*.html.twig',
     '../../../../config/sync/*.yml',
     './gla_accelerator_theme.theme',
+    './tokens/*.story.mdx',
   ],
   darkMode: false,
   theme: {

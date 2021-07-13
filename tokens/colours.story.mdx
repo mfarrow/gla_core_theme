@@ -1,6 +1,6 @@
 import { ColorItem, ColorPalette, Meta } from '@storybook/addon-docs';
 import _upperFirst from 'lodash/upperFirst';
-const colors = require('./tokens.js').colors;
+const colors = require('./tokens-module.js').colors;
 const isPrimaryPalette = function (key) {
   return [
     'pink',
@@ -29,15 +29,23 @@ const isOtherPalette = function (key) {
 
 # Colours
 
-Whether you are working in HTML, CSS, or SCSS it should be easy to find the colour values that you need.
+Whether you are working in HTML, CSS, or SCSS it should be easy to find the
+colour values that you need.
 
-All colours are available as kebab-case design tokens in three formats:
+Colours are available as kebab-case design tokens in multiple formats:
 
-1. As CSS utility classes with a `u-` (for utility) prefix, e.g. `.u-text-dark-pink` or `.u-bg-dark-pink`
+1. As CSS utility classes with a `u-` (for utility) prefix, e.g.
+   `.u-text-dark-pink` or `.u-bg-dark-pink`
 2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-colors-dark-pink`
-3. As CSS custom properties ('CSS variables') with a `t-` (for token) prefix, e.g. `var(--t-colors-dark-pink)`
+3. As CSS custom properties ('CSS variables') with a `t-` (for token) prefix,
+   e.g. `var(--t-colors-dark-pink)`
+4. As values within a JavaScript object exported to `./tokens/tokens-object.js`,
+   useful for using in client-side code
+5. As values within a CommonJS module exported to `./tokens/tokens-module.js`,
+   useful for using in Node scripts
 
-For more information on the available design tokens across the site, refer to the files in the `./tokens` directory of the theme.
+For more information on the available design tokens across the site, refer to
+the files in the `./tokens` directory of the theme.
 
 ## Primary palette
 

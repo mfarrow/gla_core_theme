@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs';
+const colors = require('./tokens-module.js').screens;
+
+<Meta
+  title="Tokens/Screens"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
+
+# Screens/Breakpoints
+
+The site's layout is built largely using a set of min-width breakpoints based on
+[Bootstrap's](https://getbootstrap.com/docs/5.0/layout/breakpoints/) but with a
+greater value for the `xxl` breakpoint.
+
+These breakpoint values are available in multiple formats:
+
+1. As
+   [Tailwind responsive variants](https://tailwindcss.com/docs/responsive-design),
+   e.g. `md:flex`
+2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-screens-sm`
+3. As values within a JavaScript object exported to `./tokens/tokens-object.js`,
+   useful for using in client-side code
+4. As values within a CommonJS module exported to `./tokens/tokens-module.js`,
+   useful for using in Node scripts
+
+They are also exported as CSS custom properties, but custom properties can't be
+used in media queries, so their use is limited.
+
+<div className={['u-overflow-auto']} role="region" aria-labelledby="ScreensTableCaption" tabindex="0">
+  <table>
+    <caption id="ScreensTableCaption" className={'u-sr-only'}>Screens/breakpoints</caption>
+    <thead>
+    <tr>
+      <th>Key</th>
+      <th>
+        <code>min-width</code> value
+      </th>
+      <th>
+        Usage with{' '}
+        <a
+          href={
+            'https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries'
+          }
+        >
+          Breakpoint Sass
+        </a>
+      </th>
+      <th>
+        Usage with{' '}
+        <a href={'https://tailwindcss.com/docs/responsive-design'}>
+          Tailwind responsive variants
+        </a>
+      </th>
+      <th>Usage with JavaScript object</th>
+    </tr>
+    </thead>
+    <tbody>
+    {Object.keys(colors)
+      .filter((key) => key !== 'print')
+      .map((key) => {
+        return (
+          <tr>
+            <td>
+              <code>{key}</code>
+            </td>
+            <td>{colors[key].value}</td>
+            <td>
+              <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
+            </td>
+            <td>
+              <code>{`<div class="${key}:flex">…</div>`}</code>
+            </td>
+            <td>
+              <code>{"`window.matchMedia((max-width: ${_designTokens.screens." + key + ")).matches`"}</code>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>

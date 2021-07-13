@@ -5,8 +5,8 @@
 @import "~breakpoint-sass";
 
 // Import design tokens for use elsewhere.
-@import "tokens/tokens.scss";
-@import "tokens/tokens.css";
+@import "../tokens/tokens.scss";
+@import "../tokens/tokens.css";
 
 // Load our global SCSS via globbing.
 @import "00-base/*.scss";

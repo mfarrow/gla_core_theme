@@ -1,6 +1,7 @@
 const resolveConfig = require('tailwindcss/resolveConfig');
 const tailwindConfig = require('../tailwind.config.js');
 const _ = require('lodash');
+const { fileHeader } = require('style-dictionary/lib/common/formatHelpers');
 
 // Grab just the theme data from the Tailwind config.
 const { theme } = resolveConfig(tailwindConfig);
@@ -25,7 +26,7 @@ _.forEach(theme, function (value, key) {
       _.forEach(theme['fontFamily'], function (value, key) {
         addToTokensObject(
           ['fontFamily', key],
-          theme['fontFamily'][key].join(',')
+          theme['fontFamily'][key].join(','),
         );
       });
       break;
@@ -39,7 +40,7 @@ _.forEach(theme, function (value, key) {
         addToTokensObject(['fontSize', key], value[0]);
         addToTokensObject(
           ['fontSize', `${key}--lineHeight`],
-          value[1]['lineHeight']
+          value[1]['lineHeight'],
         );
       });
       break;
@@ -64,9 +65,15 @@ _.forEach(theme, function (value, key) {
 });
 
 const tokenPrefix = 't-';
+const buildPath = './tokens/';
 
 const limitedFilter = (token) =>
-  ['colors', 'spacing', 'fontFamily'].includes(token.attributes.category);
+  ['colors', 'screens', 'spacing', 'fontFamily'].includes(
+    token.attributes.category,
+  );
+
+const javascriptObjectFilter = (token) =>
+  ['colors', 'screens'].includes(token.attributes.category);
 
 const fullFilter = (token) =>
   [
@@ -92,49 +99,86 @@ const fullFilter = (token) =>
     'animation',
   ].includes(token.attributes.category);
 
-const StyleDictionary = require('style-dictionary').extend({
-  tokens,
-  platforms: {
-    scss: {
-      transformGroup: 'scss',
-      prefix: tokenPrefix,
-      buildPath: './tokens/',
-      files: [
-        {
-          format: 'scss/variables',
-          destination: 'tokens.scss',
-          filter: fullFilter,
-        },
-      ],
+const StyleDictionary = require('style-dictionary')
+  .registerFormat({
+    name: 'javascript/minimalObject',
+    formatter: function (dictionary, file) {
+      const { allProperties } = dictionary;
+      const props = {};
+
+      allProperties.map((prop) => {
+        _.setWith(props, [prop.path[0], prop.path[1]], prop.value, Object);
+      });
+
+      return (
+        fileHeader({ file }) +
+        'var ' +
+        (file.name || '_styleDictionary') +
+        ' = ' +
+        JSON.stringify(props, null, 2) +
+        ';'
+      );
     },
-    css: {
-      transformGroup: 'css',
-      prefix: tokenPrefix,
-      buildPath: './tokens/',
-      files: [
-        {
-          format: 'css/variables',
-          destination: 'tokens.css',
-          filter: limitedFilter,
-        },
-      ],
-    },
-    js: {
-      transformGroup: 'js',
-      prefix: tokenPrefix,
-      buildPath: './tokens/',
-      files: [
-        {
-          format: 'javascript/module',
-          destination: 'tokens.js',
-          filter: fullFilter,
-          options: {
-            outputReferences: true,
+  })
+  .extend({
+    tokens,
+    platforms: {
+      scss: {
+        transformGroup: 'scss',
+        prefix: tokenPrefix,
+        buildPath,
+        files: [
+          {
+            format: 'scss/variables',
+            destination: 'tokens.scss',
+            filter: fullFilter,
           },
-        },
-      ],
+        ],
+      },
+      css: {
+        transformGroup: 'css',
+        prefix: tokenPrefix,
+        buildPath,
+        files: [
+          {
+            format: 'css/variables',
+            destination: 'tokens.css',
+            filter: limitedFilter,
+          },
+        ],
+      },
+      jsModule: {
+        transformGroup: 'js',
+        prefix: tokenPrefix,
+        buildPath,
+        files: [
+          {
+            format: 'javascript/module',
+            destination: 'tokens-module.js',
+            filter: fullFilter,
+            options: {
+              outputReferences: true,
+            },
+          },
+        ],
+      },
+      jsObject: {
+        transformGroup: 'js',
+        prefix: tokenPrefix,
+        buildPath,
+        name: '_designTokens',
+        files: [
+          {
+            format: 'javascript/minimalObject',
+            destination: 'tokens-object.js',
+            filter: javascriptObjectFilter,
+            options: {
+              outputReferences: true,
+            },
+          },
+        ],
+      },
     },
-  },
-});
+  });
 
 StyleDictionary.buildAllPlatforms();
