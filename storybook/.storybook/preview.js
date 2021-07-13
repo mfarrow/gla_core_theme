@@ -1,9 +1,17 @@
 import { addParameters, addDecorator } from '@storybook/html';
 const drupalAttribute = require('drupal-attribute');
+import { create } from '@storybook/theming';
+const colors = require('../../tokens/tokens-module').colors;
 
 import '../../dist/global.css';
 import '../../dist/utilities.css';
 // import '../../../../../core/misc/drupal';
+
+const theme = create({
+  base: 'light',
+  colorPrimary: colors.pink.value,
+  colorSecondary: colors['dark-pink'].value,
+});
 
 addParameters({
   a11y: {
@@ -75,4 +83,7 @@ addDecorator((story, context) => {
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   layout: 'padded',
+  docs: {
+    theme
+  },
 };

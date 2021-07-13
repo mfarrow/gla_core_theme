@@ -71,7 +71,7 @@ used in media queries, so their use is limited.
               <code>{`<div class="${key}:flex">…</div>`}</code>
             </td>
             <td>
-              <code>{"`window.matchMedia((max-width: ${_designTokens.screens." + key + ")).matches`"}</code>
+              <code>{"window.matchMedia(`(min-width: ${_designTokens.screens." + key + "})`).matches"}</code>
             </td>
           </tr>
         );
