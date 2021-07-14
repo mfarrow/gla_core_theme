@@ -45,6 +45,7 @@ module.exports = {
       ...colors,
       // aliases
       primary: colors.pink,
+      assembly: colors['dark-blue'],
     },
     screens: {
       sm: '576px',
@@ -53,6 +54,11 @@ module.exports = {
       xl: '1200px',
       xxl: '1920px',
       print: { raw: 'print' },
+    },
+    borderRadius: {
+      'none': '0',
+      DEFAULT: '4px',
+      '6': '6px',
     },
     extend: {
       typography: (theme) => ({

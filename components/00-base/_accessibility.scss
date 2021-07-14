@@ -1,6 +1,9 @@
 *:focus {
-  outline: unquote("max(3px, 0.1875em) solid currentColor");
-  outline-offset: 0.4em;
+  outline: none;
+  // We use a box-shadow made up of a light and a darker colour so that it shows up on all backgrounds.
+  // Also, box-shadows follow border-radius, whereas outlines do not.
+  box-shadow: 0 0 0 2px $t-colors-white, 0 0 0 5px $t-colors-primary,
+    0 0 0 7px $t-colors-white !important;
 }
 
 // Remove all animations and transitions for people that prefer not to see them.

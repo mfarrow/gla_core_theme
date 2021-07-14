@@ -77,26 +77,27 @@ const javascriptObjectFilter = (token) =>
 
 const fullFilter = (token) =>
   [
-    'screens',
-    'colors',
-    'spacing',
-    'opacity',
+    'animation',
     'borderRadius',
     'borderWidth',
     'boxShadow',
+    'colors',
     'fontFamily',
     'fontSize',
     'fontWeight',
     'letterSpacing',
     'lineHeight',
     'maxWidth',
-    'zIndex',
+    'opacity',
+    'borderRadius',
     'scale',
+    'screens',
+    'spacing',
+    'transitionDelay',
+    'transitionDuration',
     'transitionProperty',
     'transitionTimingFunction',
-    'transitionDuration',
-    'transitionDelay',
-    'animation',
+    'zIndex',
   ].includes(token.attributes.category);
 
 const StyleDictionary = require('style-dictionary')

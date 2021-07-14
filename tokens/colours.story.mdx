@@ -22,7 +22,7 @@ const isOtherPalette = function (key) {
   return !(isPrimaryPalette(key) || isSecondaryPalette(key));
 };
 const isAlias = function (key) {
-  return ['primary', 'secondary', 'danger', 'success'].includes(
+  return ['primary', 'secondary', 'danger', 'success', 'assembly', 'mayoral'].includes(
     key,
   );
 };

@@ -25,7 +25,7 @@ export default {
           Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin which provides opinionated styling intended for WYSIWYG content.
           
           To override the styling, developers should edit \`theme.extend.typography\` inside \`tailwind.config.js\`. To get an idea of the styles available to override, see the [\`styles.js\` file from the plugin](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js).
-        `)
+        `),
       },
     },
   },

@@ -35,6 +35,17 @@ addParameters({
   controls: { expanded: true },
   layout: 'fullscreen',
   backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'White',
+        value: colors.white.value,
+      },
+      {
+        name: 'Dark',
+        value: colors['dark-grey'].value,
+      },
+    ],
     grid: {
       cellSize: 8,
       opacity: 0.5,

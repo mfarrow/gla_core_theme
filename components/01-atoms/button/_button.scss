@@ -1,3 +1,52 @@
 .btn {
-  color: hotpink;
+  display: inline-block;
+  letter-spacing: -0.24px;
+  padding-top: $t-spacing-3-5;
+  padding-bottom: $t-spacing-3-5;
+  padding-left: $t-spacing-7;
+  padding-right: $t-spacing-7;
+  font-weight: bold;
+  border: 2px solid $t-colors-primary;
+  user-select: none;
+  text-align: center;
+  border-radius: $t-border-radius-6;
+  // @TODO replace this with a variable once we have figured out the
+  // responsive type scale. Note that we have a Postcss plugin that
+  // turns pixel values to rem values for us, so we can use that when
+  // we look at differing font sizes per breakpoint.
+  font-size: 18px;
+
+  &:hover,
+  &:focus {
+    background-color: $t-colors-primary;
+    color: $t-colors-white;
+  }
+}
+
+.btn.btn--white {
+  border-color: $t-colors-white;
+  color: $t-colors-white;
+
+  &:hover,
+  &:focus {
+    background-color: $t-colors-white;
+    color: $t-colors-primary;
+  }
+}
+
+.btn.btn--solid {
+  border-color: $t-colors-pink;
+  background-color: $t-colors-pink;
+  color: $t-colors-white;
+
+  &:hover,
+  &:focus {
+    border-color: $t-colors-dark-pink;
+    background-color: $t-colors-dark-pink;
+    color: $t-colors-white;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-style: solid;
+    text-underline-offset: 3px;
+  }
 }

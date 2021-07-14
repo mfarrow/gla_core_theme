@@ -19,7 +19,7 @@
     "storybook:build-static": "build-storybook -c storybook/.storybook -s dist:/dist,tokens:/tokens -o ./storybook/static",
     "tidy": "sort-package-json",
     "watch": "npm run build && run-p storybook:start watch:**",
-    "watch:js": "onchange -k './components/**/*.js' -- onerror \"run-s build:js\" --title \"There was a JS formatting or syntax error\"",
+    "watch:js": "onchange -k './components/**/*.js' -e './components/**/*.story.js' -- onerror \"run-s build:js\" --title \"There was a JS formatting or syntax error\"",
     "watch:scss": "onchange -k './components/**/*.scss' -- onerror \"run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
     "watch:tailwind": "onchange -k './tailwind.config.js' -- onerror \"npm run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\""
   },

@@ -1,4 +1,5 @@
 import drupalAttribute from 'drupal-attribute';
+import dedent from 'ts-dedent';
 
 const template = require('./button.twig');
 
@@ -6,6 +7,7 @@ export default {
   title: 'Atoms/Button',
   args: {
     button_content: 'Example button',
+    button_url: 'https://example.com',
   },
   argTypes: {
     button_content: {
@@ -24,15 +26,10 @@ export default {
       },
     },
     button_type: {
-      type: { name: 'radio' },
-      options: ['primary', 'secondary'],
+      type: { name: 'string' },
       description: 'Type of the button',
-      control: {
-        type: 'radio',
-      },
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'primary' },
       },
     },
   },
@@ -47,56 +44,47 @@ export default {
 
 const Template = (args) => template({ ...args });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  button_type: 'primary',
-  button_url: 'https://example.com',
+export const Standard = Template.bind({});
+
+export const White = Template.bind({});
+White.args = {
+  button_type: 'white',
+};
+White.parameters = {
+  backgrounds: { default: 'Dark' },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  ...Primary.args,
-  button_type: 'secondary',
+export const Solid = Template.bind({});
+Solid.args = {
+  button_type: 'solid',
 };
-
-export const Success = Template.bind({});
-Success.args = {
-  ...Primary.args,
-  button_type: 'success',
-};
-
-export const Danger = Template.bind({});
-Danger.args = {
-  ...Primary.args,
-  button_type: 'danger',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  ...Primary.args,
-  button_size: 'small',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  ...Primary.args,
-  button_size: 'large',
-};
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...Primary.args,
-  button_icon: 'cti--arrow-button-right',
-  // Storybook needs a special URL. Ideally this would be handled by a global
-  // like in Pattern Lab so it doesn't show up in Controls.
-  icon_url: '/img/sprite/',
+Solid.parameters = {
+  docs: {
+    description: {
+      story:
+        'The solid button has an underline on hover/focus, which is different to the other buttons. This can be seen in the designs.',
+    },
+  },
 };
 
 export const WithNoUrl = Template.bind({});
 WithNoUrl.args = {
+  button_url: null,
+  button_content: `Click me, I'm not a link`,
   // eslint-disable-next-line new-cap
   attributes: new drupalAttribute().setAttribute(
     'onclick',
-    "alert('Thanks for clicking this button that isn\\'t a link'); blur(this)",
+    "alert('👋 Thanks for clicking!')",
   ),
+};
+WithNoUrl.parameters = {
+  docs: {
+    description: {
+      story: dedent(`
+        If no \`button_url\` value is passed to the component then a HTML \`button\` element will be used instead of an \`a\` element.
+        
+        This is useful for when a button needs to fire a JavaScript event rather than take the user to a new page.
+      `),
+    },
+  },
 };

@@ -6,9 +6,9 @@
   &:hover,
   &:focus {
     text-decoration: underline;
-    text-decoration-thickness: unquote("max(1px, .125rem)");
+    text-decoration-thickness: 2px;
     text-decoration-style: solid;
-    text-underline-offset: 0.2em;
+    text-underline-offset: 4px;
     text-decoration-color: $t-colors-pink;
   }
 

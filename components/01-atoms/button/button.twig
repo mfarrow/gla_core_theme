@@ -9,30 +9,19 @@
   {% set button_element = 'button' %}
 {% endif %}
 
-{% set attributes = attributes.addClass(['btn-' ~ button_type|default('primary')]) %}
+{% if button_type %}
+  {% set attributes = attributes.addClass('btn--' ~ button_type) %}
+{% endif %}
 
 {% if button_size == 'small' %}
-  {% set attributes = attributes.addClass(['btn-sm']) %}
+  {% set attributes = attributes.addClass(['btn--sm']) %}
 {% elseif button_size == 'large' %}
-  {% set attributes = attributes.addClass(['btn-lg']) %}
+  {% set attributes = attributes.addClass(['btn--lg']) %}
 {% endif %}
 
-{% if button_shape == 'block' %}
-  {% set attributes = attributes.addClass(['btn-block', 'u-rounded', 'lg:u-text-large']) %}
-{% elseif button_shape == 'outline' %}
-  {% set attributes = attributes.removeClass(['btn-' ~ button_type|default('primary')]) %}
-  {% set attributes = attributes.addClass(['btn-outline-' ~ button_type|default('primary')]) %}
-{% endif %}
-
-{% if button_url and v_bind is defined and v_bind %}
-  {% set attributes = attributes.setAttribute('v-bind:href', button_url) %}
-{% elseif button_url %}
+{% if button_url %}
   {% set attributes = attributes.setAttribute('href', button_url) %}
 {% endif %}
-
-{% for attribute, value in button_attributes %}
-  {% set attributes = attributes.setAttribute(attribute, value) %}
-{% endfor %}
 
 <{{ button_element }}{{ attributes }}>
   {% block button_content %}
