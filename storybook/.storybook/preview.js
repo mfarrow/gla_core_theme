@@ -3,8 +3,16 @@ const drupalAttribute = require('drupal-attribute');
 import { create } from '@storybook/theming';
 const colors = require('../../tokens/tokens-module').colors;
 
+// Include global CSS.
 import '../../dist/global.css';
 import '../../dist/utilities.css';
+
+// Include global JS.
+import '../../libraries/what-input/dist/what-input.min';
+import '../../libraries/wicg-inert/dist/inert.min.js';
+
+// If the theme is being used in the context of a Drupal site then we can load
+// the Drupal object to allow us to run behaviours etc.
 // import '../../../../../core/misc/drupal';
 
 const theme = create({
@@ -14,6 +22,7 @@ const theme = create({
 });
 
 addParameters({
+  viewMode: 'docs',
   a11y: {
     element: '#root',
     config: {},
@@ -30,8 +39,8 @@ addParameters({
       cellSize: 8,
       opacity: 0.5,
       cellAmount: 1,
-      offsetX: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
-      offsetY: 16, // default is 0 if story has 'fullscreen' layout, 16 if layout is 'padded'
+      offsetX: 16,
+      offsetY: 16,
     },
   },
   options: {
@@ -69,11 +78,10 @@ export const globalTypes = {
 const greyscaleDecorator = (story, context) => {
   const attribute = new drupalAttribute();
   if (context.globals.greyscale) {
-    attribute.setAttribute('style', 'filter: grayscale(1)');
-    attribute.addClass('greyscale');
+    attribute.addClass('u-filter u-grayscale');
   }
 
-  return `<div ${attribute}>${story}</div>`;
+  return context.globals.greyscale ? `<div data-greyscale-decorator-not-part-of-component ${attribute}>${story}</div>`: story ;
 };
 
 addDecorator((story, context) => {

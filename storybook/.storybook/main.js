@@ -6,10 +6,11 @@ const stories = [
 ];
 
 const addons = [
-  'storybook-addon-designs',
-  '@storybook/addon-a11y',
-  '@whitespace/storybook-addon-html',
   '@storybook/addon-essentials',
+  '@whitespace/storybook-addon-html',
+  '@storybook/addon-a11y',
+  'storybook-addon-pseudo-states',
+  'storybook-addon-designs',
 ];
 
 const webpackFinal = config => {

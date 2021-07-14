@@ -1,3 +1,8 @@
+*:focus {
+  outline: unquote("max(3px, 0.1875em) solid currentColor");
+  outline-offset: 0.4em;
+}
+
 // Remove all animations and transitions for people that prefer not to see them.
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -17,19 +22,11 @@
 }
 
 // Remove focus styling when the input mode is mouse or touch.
-html[data-whatintent="mouse"],
-html[data-whatintent="touch"] {
-  *,
-  input,
-  select,
-  textarea,
-  iframe,
-  a[href],
-  button {
-    &:focus {
-      outline: 0 !important;
-      box-shadow: none !important;
-    }
+html[data-whatintent="mouse"] *,
+html[data-whatintent="touch"] * {
+  &:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
   }
 
   [data-hide-from-mouse-input] {

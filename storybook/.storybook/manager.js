@@ -9,6 +9,7 @@ const theme = create({
 });
 
 addons.setConfig({
+  theme,
   isFullscreen: false,
   showNav: true,
   showPanel: true,
@@ -21,6 +22,5 @@ addons.setConfig({
   sidebar: {
     showRoots: true,
   },
-  theme
 });
 

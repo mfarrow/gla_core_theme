@@ -1,0 +1,7 @@
+{% set attributes = attributes|default(create_attribute()) %}
+
+<a {{ attributes.setAttribute('href', link_url) }}>
+  {% block link_content %}
+    {{ link_content }}
+  {% endblock %}
+</a>

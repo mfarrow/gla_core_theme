@@ -21,6 +21,11 @@ const isSecondaryPalette = function (key) {
 const isOtherPalette = function (key) {
   return !(isPrimaryPalette(key) || isSecondaryPalette(key));
 };
+const isAlias = function (key) {
+  return ['primary', 'secondary', 'danger', 'success'].includes(
+    key,
+  );
+};
 
 <Meta
   title="Tokens/Colours"
@@ -84,6 +89,28 @@ the files in the `./tokens` directory of the theme.
       );
     })}
 </ColorPalette>
+
+## Colour aliases or semantic colours
+
+E.g. a 'danger', 'warning', or 'success' colour.
+
+<ColorPalette>
+  {Object.keys(colors)
+    .filter((key) => isAlias(key))
+    .map((key) => {
+      const color = colors[key].value;
+      const title = _upperFirst(key).replace('-', ' ');
+      return (
+        <ColorItem
+          key={key}
+          title={title}
+          subtitle={key}
+          colors={{ [key]: color }}
+        />
+      );
+    })}
+</ColorPalette>
+
 
 ## Other colour values
 

@@ -1,0 +1,8 @@
+{% set el = el|default('div') %}
+{% set attributes = attributes|default(create_attribute()) %}
+
+<{{ el }} {{ attributes.addClass(['rich-text', 'u-prose']) }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</{{ el }}>

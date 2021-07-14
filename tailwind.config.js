@@ -1,3 +1,22 @@
+const colors = {
+  transparent: 'transparent',
+  current: 'currentColor',
+  pink: '#e7135d',
+  'dark-pink': '#9e0059',
+  'grey': '#353d42',
+  'dark-grey': '#1a1e21',
+  'text-grey': '#333333',
+  'off-white': '#efefef',
+  'white': '#ffffff',
+  'black': '#000000',
+  'blue': '#007acc',
+  'dark-blue': '#00577d',
+  'green': '#008743',
+  'red': '#eb001b',
+  'purple': '#ae4ac6',
+  'yellow': '#fff200',
+};
+
 module.exports = {
   // JIT mode is in preview, and affects the devtools experience, but it's so fast and you never need to configure
   // what variants are enabled.
@@ -12,30 +31,20 @@ module.exports = {
   purge: [
     './components/**/*.twig',
     './components/**/*.js',
+    './components/**/*.story.js',
     './templates/**/*.html.twig',
     '../../../../config/sync/*.yml',
     './gla_accelerator_theme.theme',
     './tokens/*.story.mdx',
+    // For classes added by Storybook decorators:
+    './storybook/.storybook/preview.js'
   ],
   darkMode: false,
   theme: {
     colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      pink: '#e7135d',
-      'dark-pink': '#9e0059',
-      'grey': '#353d42',
-      'dark-grey': '#1a1e21',
-      'text-grey': '#333333',
-      'off-white': '#efefef',
-      'white': '#ffffff',
-      'black': '#000000',
-      'blue': '#007acc',
-      'dark-blue': '#00577d',
-      'green': '#008743',
-      'red': '#eb001b',
-      'purple': '#ae4ac6',
-      'yellow': '#fff200',
+      ...colors,
+      // aliases
+      primary: colors.pink,
     },
     screens: {
       sm: '576px',
@@ -45,10 +54,41 @@ module.exports = {
       xxl: '1920px',
       print: { raw: 'print' },
     },
-    extend: {},
+    extend: {
+      typography: (theme) => ({
+        // This function is used to style the rich-text component.
+        // Take a look at https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
+        // to get an idea of how to customise the output.
+        DEFAULT: {
+          css: {
+            color: theme('colors.text-grey'),
+            // Remove the anchor styling as that comes from our own SCSS.
+            a: null,
+            'ol > li::before': {
+              color: theme('colors.primary'),
+            },
+            'ul > li::before': {
+              backgroundColor: theme('colors.primary'),
+            },
+            'code::before': {
+              content: '""'
+            },
+            'code::after': {
+              content: '""'
+            },
+
+          },
+        },
+      }),
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')({
+      // Disable modifiers as we will handle different sizes etc ourselves.
+      modifiers: [],
+    }),
+  ],
 };

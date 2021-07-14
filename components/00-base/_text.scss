@@ -1,0 +1,7 @@
+body {
+  @apply u-text-text-grey;
+}
+
+::selection {
+  @apply u-bg-dark-pink u-text-white;
+}
