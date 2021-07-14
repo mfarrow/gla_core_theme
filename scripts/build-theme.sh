@@ -1,7 +1,16 @@
+# Set the correct Node and npm version:
 . ~/.nvm/nvm.sh
 nvm use
-npm install
+
+# We use Composer to bring in third-party libraries
 composer install
+
+# Install Node dependencies so we can build the theme
+npm install
+
+# Build the theme and static version of Storybook
+# There is an optional argument to skip building the static version of
+# Storybook: `npm run build-prod --skip-storybook`
 npm run build-prod
 
 # Once the theme has built itself (compiled JS, CSS, built Storybook etc)

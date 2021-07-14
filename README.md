@@ -5,16 +5,7 @@ core Drupal install profile.
 
 ## Building the theme
 
-```bash
-# Set the correct Node and npm version:
-nvm use
-# We use Composer to bring in third-party libraries
-composer install
-# Install Node dependencies so we can build the theme
-npm install
-# Build the theme
-npm run build-prod
-```
+See `scripts/build-theme.sh` for build instructions.
 
 ### Skipping the static build of Storybook
 
@@ -27,7 +18,16 @@ npm run build-prod --skip-storybook
 
 ## Local development
 
-Run `npm run storybook:start` to launch Storybook.
+Run `npm run watch` to:
+
+- Build the theme
+- Launch Storybook (you can close it if you're not using it)
+- Watch for changes to files
+
+When changes are made to SCSS and JS files the `watch` command will rebuild the
+compiled versions. We import the compiled versions into Storybook, so once the
+compiled versions have been updated, Storybook's own Webpack setup will notice
+the changes and refresh Storybook.
 
 ## Creating a subtheme
 
