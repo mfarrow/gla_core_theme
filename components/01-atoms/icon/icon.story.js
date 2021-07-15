@@ -30,7 +30,12 @@ export const Icon = Template.bind({});
 export const WithStyling = Template.bind({});
 WithStyling.args = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass(['u-text-green', 'hover:u-text-black', 'u-transition-colors u-duration-300', 'u-text-xxl']),
+  attributes: new drupalAttribute().addClass([
+    'u-text-green',
+    'hover:u-text-black',
+    'u-transition-colors u-duration-300',
+    'u-text-xxl',
+  ]),
 };
 WithStyling.parameters = {
   docs: {

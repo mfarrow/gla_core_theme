@@ -3,7 +3,7 @@ import dedent from 'ts-dedent';
 
 const template = require('./button.twig');
 // Import example JavaScript file to demonstrate Drupal behaviours in Storybook:
-import './button'
+import './button';
 
 export default {
   title: 'Atoms/Button',
