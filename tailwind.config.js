@@ -15,6 +15,11 @@ const colors = {
   'red': '#eb001b',
   'purple': '#ae4ac6',
   'yellow': '#fff200',
+  facebook: '#3b5998',
+  linkedin: '#0077b5',
+  twitter: '#1da1f2',
+  whatsapp: '#25d366',
+  youtube: '#ff0000',
 };
 
 module.exports = {

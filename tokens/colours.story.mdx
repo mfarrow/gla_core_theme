@@ -18,13 +18,41 @@ const isSecondaryPalette = function (key) {
     key,
   );
 };
-const isOtherPalette = function (key) {
-  return !(isPrimaryPalette(key) || isSecondaryPalette(key));
-};
 const isAlias = function (key) {
-  return ['primary', 'secondary', 'danger', 'success', 'assembly', 'mayoral'].includes(
-    key,
+  return [
+    'primary',
+    'secondary',
+    'danger',
+    'success',
+    'assembly',
+    'mayoral',
+  ].includes(key);
+};
+const isSocial = function (key) {
+  return [
+    'facebook',
+    'linkedin',
+    'twitter',
+    'whatsapp',
+    'youtube',
+    'linkedin',
+  ].includes(key);
+};
+const isOtherPalette = function (key) {
+  return !(
+    isPrimaryPalette(key) ||
+    isSecondaryPalette(key) ||
+    isAlias(key) ||
+    isSocial(key)
   );
+};
+const colourPreview = (key, title, color) => (
+  <ColorItem key={key} title={key} subtitle={title} colors={{ [key]: color }} />
+);
+const generateColourPreview = (key, colors) => {
+  const color = colors[key].value;
+  const title = `(${_upperFirst(key).replace('-', ' ')})`;
+  return colourPreview(key, title, color);
 };
 
 <Meta
@@ -34,8 +62,8 @@ const isAlias = function (key) {
 
 # Colours
 
-Whether you are working in HTML, CSS, or SCSS it should be easy to find the
-colour values that you need.
+Whether you are working in HTML, CSS, SCSS, or JavaScript it should be easy to
+find the colour values that you need.
 
 Colours are available as kebab-case design tokens in multiple formats:
 
@@ -57,18 +85,7 @@ the files in the `./tokens` directory of the theme.
 <ColorPalette>
   {Object.keys(colors)
     .filter((key) => isPrimaryPalette(key))
-    .map((key) => {
-      const color = colors[key].value;
-      const title = _upperFirst(key).replace('-', ' ');
-      return (
-        <ColorItem
-          key={key}
-          title={title}
-          subtitle={key}
-          colors={{ [key]: color }}
-        />
-      );
-    })}
+    .map((key) => generateColourPreview(key, colors))}
 </ColorPalette>
 
 ## Secondary palette
@@ -76,18 +93,7 @@ the files in the `./tokens` directory of the theme.
 <ColorPalette>
   {Object.keys(colors)
     .filter((key) => isSecondaryPalette(key))
-    .map((key) => {
-      const color = colors[key].value;
-      const title = _upperFirst(key).replace('-', ' ');
-      return (
-        <ColorItem
-          key={key}
-          title={title}
-          subtitle={key}
-          colors={{ [key]: color }}
-        />
-      );
-    })}
+    .map((key) => generateColourPreview(key, colors))}
 </ColorPalette>
 
 ## Colour aliases or semantic colours
@@ -97,36 +103,21 @@ E.g. a 'danger', 'warning', or 'success' colour.
 <ColorPalette>
   {Object.keys(colors)
     .filter((key) => isAlias(key))
-    .map((key) => {
-      const color = colors[key].value;
-      const title = _upperFirst(key).replace('-', ' ');
-      return (
-        <ColorItem
-          key={key}
-          title={title}
-          subtitle={key}
-          colors={{ [key]: color }}
-        />
-      );
-    })}
+    .map((key) => generateColourPreview(key, colors))}
 </ColorPalette>
 
+## Social brand colours
+
+<ColorPalette>
+  {Object.keys(colors)
+    .filter((key) => isSocial(key))
+    .map((key) => generateColourPreview(key, colors))}
+</ColorPalette>
 
 ## Other colour values
 
 <ColorPalette>
   {Object.keys(colors)
     .filter((key) => isOtherPalette(key))
-    .map((key) => {
-      const color = colors[key].value;
-      const title = _upperFirst(key).replace('-', ' ');
-      return (
-        <ColorItem
-          key={key}
-          title={title}
-          subtitle={key}
-          colors={{ [key]: color }}
-        />
-      );
-    })}
+    .map((key) => generateColourPreview(key, colors))}
 </ColorPalette>
