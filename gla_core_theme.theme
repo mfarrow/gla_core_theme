@@ -14,8 +14,7 @@ use Drupal\Core\Url;
  * Implements hook_preprocess().
  */
 function gla_core_theme_preprocess(&$variables) {
-  $variables['cacheBuster'] = \Drupal::getContainer()->get('state')->get('system.css_js_query_string') ?: '0';
-
+  // Provide some path-related variables to Twig templates.
   $handler = \Drupal::service('theme_handler');
   $variables['base_path'] = base_path();
   $variables['theme_path'] = base_path() . $handler->getTheme('gla_core_theme')->getPath();
@@ -66,6 +65,9 @@ function gla_core_theme_preprocess_media(array &$variables) {
 
   if (isset($variables['media']->field_media_document)) {
     $file = $variables['media']->field_media_document->entity;
+    // For document media items provide the file entity via Twig for
+    // templates to use, and provide a formatted file size and extension as
+    // a convenience to template authors.
     $variables['file'] = $file;
     $variables['file_size'] = format_size($file->filesize->value);
     $variables['file_extension'] = strtoupper(explode('.', $file->getFilename())[1]);
@@ -82,6 +84,12 @@ function gla_core_theme_preprocess_field(&$variables) {
     $variables['element']['#items']->getItemDefinition()->getSetting('target_type') == 'paragraph'
   ) {
     foreach ($variables['items'] as $index => $item) {
+      // For field items that represent Paragraphs it can be useful to know
+      // what position the Paragraph is in the field (assuming a multi-value
+      // field) and also what the parent and grandparent Paragraph entities are.
+      // This allows us to add conditional markup to, say, a rich text Paragraph
+      // if it is inside an Accordion, compared to if it is inside a Page
+      // Section.
       $variables['items'][$index]['content']['#paragraph']->index = $index;
       $variables['items'][$index]['content']['#paragraph']->is_first = ($index == 0);
       $variables['items'][$index]['content']['#paragraph']->is_last = ($index == count($variables['items']) - 1);
@@ -154,6 +162,8 @@ function gla_core_theme_page_attachments_alter(array &$attachments) {
     ],
   ];
 
+  // Don't try and turn strings of digits into telephone links on iOS as this
+  // can interfere with display of non-telephone related numbers.
   $format_detection_metatag = [
     '#type' => 'html_tag',
     '#tag' => 'meta',
