@@ -33,4 +33,6 @@ the changes and refresh Storybook.
 
 ## Creating a subtheme
 
-@TODO
+A basic script (`scripts/create-subtheme.sh`) is included to copy the theme into
+a new directory to make site-specific versions of it. Some manual string
+replacement may still be necessary.
