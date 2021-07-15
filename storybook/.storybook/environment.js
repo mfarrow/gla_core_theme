@@ -20,7 +20,7 @@ const attachLibrary = new TwingFunction(
 );
 
 const rocketGetCachebuster = new TwingFunction(
-  'rocket_get_cachebuster',
+  'gla_core_profile_get_cachebuster',
   function () {
     return Date.now();
   },
