@@ -10,8 +10,10 @@
     "build-prod": "NODE_ENV=production run-s build",
     "prebuild:css": "node scripts/generate-design-tokens.js",
     "build:css": "run-s scss postcss",
+    "build:icons": "run-s icons",
     "build:js": "run-s babel",
     "build:storybook-static": "if [ \"$NODE_ENV\" == \"production\" ] && [ -z \"$npm_config_skip_storybook\" ]; then npm run storybook:build-static; fi",
+    "icons": "node scripts/generate-svg-sprite.js && node scripts/generate-icons-list.js",
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
     "prestorybook:start": "node scripts/generate-design-tokens.js",
@@ -19,8 +21,10 @@
     "storybook:build-static": "build-storybook -c storybook/.storybook -s dist:/dist,tokens:/tokens -o ./storybook/static",
     "tidy": "sort-package-json",
     "watch": "npm run build && run-p storybook:start watch:**",
+    "watch:icons": "onchange -k './src/icons/**/*.svg' -- onerror \"run-s icons\" --title \"There was an icons-related error\"",
     "watch:js": "onchange -k './components/**/*.js' -e './components/**/*.story.js' -- onerror \"run-s build:js\" --title \"There was a JS formatting or syntax error\"",
     "watch:scss": "onchange -k './components/**/*.scss' -- onerror \"run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
+    "watch:stories": "onchange -k './components/**/*.story.js' './tokens/*.story.mdx' -- onerror \"run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
     "watch:tailwind": "onchange -k './tailwind.config.js' -- onerror \"npm run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\""
   },
   "dependencies": {
@@ -53,6 +57,7 @@
     "sort-package-json": "^1.50.0",
     "storybook-addon-pseudo-states": "^1.0.0",
     "style-dictionary": "^3.0.1",
+    "svg-sprite": "^1.5.0",
     "tailwindcss": "^2.2.4"
   },
   "devDependencies": {
