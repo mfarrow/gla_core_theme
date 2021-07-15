@@ -1,7 +1,8 @@
 body {
-  @apply u-text-text-grey;
+  color: $t-colors-text-grey;
 }
 
 ::selection {
-  @apply u-bg-dark-pink u-text-white;
+  color: $t-colors-white;
+  background: $t-colors-dark-pink;
 }
