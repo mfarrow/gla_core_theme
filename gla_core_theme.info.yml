@@ -4,9 +4,6 @@ description: Core theme for Drupal sites in the GLA digital estate
 core: 8.x
 core_version_requirement: ^8 || ^9
 base theme: stable
-dependencies:
-  - components:components
-  - formdazzle:formdazzle
 
 libraries:
   - 'gla_core_theme/global'
