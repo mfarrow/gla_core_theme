@@ -1,6 +1,5 @@
 # Ignore files that are generated automatically.
 dist
-!dist/img/favicons/**
 vendor
 libraries
 storybook/static

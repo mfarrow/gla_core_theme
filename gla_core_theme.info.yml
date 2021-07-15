@@ -9,7 +9,7 @@ dependencies:
   - formdazzle:formdazzle
 
 libraries:
-  - 'gla_accelerator_theme/global'
+  - 'gla_core_theme/global'
 
 # Load our main theme CSS to give a truer WYSIWYG experience.
 # https://www.drupal.org/project/ckeditor_config can then be used to add a class to the CKEditor instance to mimic

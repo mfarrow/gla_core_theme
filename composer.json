@@ -1,8 +1,8 @@
 {
-    "name": "gla/accelerator-theme",
-    "type": "drupal-custom-theme",
+    "name": "gla/gla_core_theme",
+    "type": "gla-estate-theme",
     "license": "OGL-3.0",
-    "description": "Core Theme used by the GLA drupal accelerator and all drupal sites within the GLA estate",
+    "description": "Core GLA estate Drupal theme",
     "repositories": [
         {
             "type": "composer",

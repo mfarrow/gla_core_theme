@@ -1,6 +1,7 @@
 {
-  "name": "gla-accelerator-theme",
+  "name": "gla-core-theme",
   "private": true,
+  "license": "OGL-3.0",
   "scripts": {
     "babel": "run-p babel:**",
     "babel:components": "babel './components' --source-maps --out-dir dist",

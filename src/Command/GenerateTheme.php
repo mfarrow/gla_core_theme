@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\gla_accelerator_theme\Command;
+namespace Drupal\gla_core_theme\Command;
 
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Extension\Extension;
@@ -68,7 +68,7 @@ class GenerateTheme extends Command {
     }
 
     // Source directory for the theme.
-    $source_theme_name = 'gla_accelerator_theme';
+    $source_theme_name = 'gla_core_theme';
     if (!$source_theme = $this->getThemeInfo($source_theme_name)) {
       $io->getErrorStyle()->error("Theme source theme $source_theme_name cannot be found .");
       return 1;

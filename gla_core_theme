@@ -6,7 +6,7 @@
  * Provides CLI commands for the theme.
  */
 
-use Drupal\gla_accelerator_theme\Command\GenerateTheme;
+use Drupal\gla_core_theme\Command\GenerateTheme;
 use Symfony\Component\Console\Application;
 
 if (PHP_SAPI !== 'cli') {
@@ -15,7 +15,7 @@ if (PHP_SAPI !== 'cli') {
 
 $classloader = require_once __DIR__ . '/../../../autoload.php';
 
-$application = new Application('gla_accelerator_theme');
+$application = new Application('gla_core_theme');
 
 $application->add(new GenerateTheme());
 

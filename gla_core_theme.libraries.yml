@@ -4,9 +4,9 @@ global:
       dist/style.css: {}
       dist/utilities.css: {}
   dependencies:
-    - gla_accelerator_theme/polyfill-io
-    - gla_accelerator_theme/inert-polyfill
-    - gla_accelerator_theme/what-input
+    - gla_core_theme/polyfill-io
+    - gla_core_theme/inert-polyfill
+    - gla_core_theme/what-input
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external, render blocking JS and HTTP request, so is good for TTI and FCP scores.

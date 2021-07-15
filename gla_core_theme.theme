@@ -13,18 +13,18 @@ use Drupal\Core\Url;
 /**
  * Implements hook_preprocess().
  */
-function gla_accelerator_theme_preprocess(&$variables) {
+function gla_core_theme_preprocess(&$variables) {
   $variables['cacheBuster'] = \Drupal::getContainer()->get('state')->get('system.css_js_query_string') ?: '0';
 
   $handler = \Drupal::service('theme_handler');
   $variables['base_path'] = base_path();
-  $variables['theme_path'] = base_path() . $handler->getTheme('gla_accelerator_theme')->getPath();
+  $variables['theme_path'] = base_path() . $handler->getTheme('gla_core_theme')->getPath();
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function gla_accelerator_theme_preprocess_block(&$variables) {
+function gla_core_theme_preprocess_block(&$variables) {
   if (isset($variables['elements']['#id'])) {
     $variables['block'] = Block::load($variables['elements']['#id']);
     $region = $variables['block']->getRegion();
@@ -60,7 +60,7 @@ function gla_accelerator_theme_preprocess_block(&$variables) {
  *   An associative array containing:
  *   - media: An individual media for display.
  */
-function gla_accelerator_theme_preprocess_media(array &$variables) {
+function gla_core_theme_preprocess_media(array &$variables) {
   $variables['media'] = $variables['elements']['#media'];
   $variables['id'] = $variables['media']->id();
 
@@ -75,7 +75,7 @@ function gla_accelerator_theme_preprocess_media(array &$variables) {
 /**
  * Implements hook_preprocess_field().
  */
-function gla_accelerator_theme_preprocess_field(&$variables) {
+function gla_core_theme_preprocess_field(&$variables) {
   if (
     $variables['field_type'] == 'entity_reference_revisions'
     &&
@@ -106,7 +106,7 @@ function gla_accelerator_theme_preprocess_field(&$variables) {
  *
  * @param array $variables
  */
-function gla_accelerator_theme_preprocess_region(array &$variables) {
+function gla_core_theme_preprocess_region(array &$variables) {
   // Make render arrays for blocks available in region templates.
   // Code below is from https://atendesigngroup.com/blog/making-region-content-available-node-templates-drupal-8.
   $theme = \Drupal::theme()->getActiveTheme()->getName();
@@ -142,7 +142,7 @@ function gla_accelerator_theme_preprocess_region(array &$variables) {
 /**
  * Implements hook_page_attachments_alter().
  */
-function gla_accelerator_theme_page_attachments_alter(array &$attachments) {
+function gla_core_theme_page_attachments_alter(array &$attachments) {
   // Update viewport metatag to work with iPhone notch.
   // https://julian.is/article/iphone-x-notch/
   $viewport_metatag = [
@@ -178,7 +178,7 @@ function gla_accelerator_theme_page_attachments_alter(array &$attachments) {
 /**
  * Custom function to prevent duplicate form element IDs.
  */
-function _gla_accelerator_theme_prevent_duplicate_form_element_ids(&$variables) {
+function _gla_core_theme_prevent_duplicate_form_element_ids(&$variables) {
   // See https://www.drupal.org/project/drupal/issues/1852090#comment-13624394.
   // See https://www.drupal.org/project/drupal/issues/1852090#comment-13115760.
   if (isset($variables['element']['#id'])) {
@@ -192,7 +192,7 @@ function _gla_accelerator_theme_prevent_duplicate_form_element_ids(&$variables) 
       $id .= '--' . Crypt::randomBytesBase64(8) . '--randomised';
       $variables['element']['#id'] = $id;
       $variables['attributes']['id'] = $id;
-      $variables['#attached']['library'][] = 'gla_accelerator_theme/fix-randomised-form-ids';
+      $variables['#attached']['library'][] = 'gla_core_theme/fix-randomised-form-ids';
     }
   }
 }
@@ -200,50 +200,50 @@ function _gla_accelerator_theme_prevent_duplicate_form_element_ids(&$variables) 
 /**
  * Implements hook_preprocess_input().
  */
-function gla_accelerator_theme_preprocess_input(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_input(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 /**
  * Implements hook_preprocess_textarea().
  */
-function gla_accelerator_theme_preprocess_textarea(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_textarea(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 /**
  * Implements hook_preprocess_select().
  */
-function gla_accelerator_theme_preprocess_select(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_select(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 /**
  * Implements hook_preprocess_radios().
  */
-function gla_accelerator_theme_preprocess_radios(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_radios(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 /**
  * Implements hook_preprocess_checkboxes().
  */
-function gla_accelerator_theme_preprocess_checkboxes(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_checkboxes(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 /**
  * Implements hook_preprocess_container().
  */
-function gla_accelerator_theme_preprocess_container(&$variables) {
-  _gla_accelerator_theme_prevent_duplicate_form_element_ids($variables);
+function gla_core_theme_preprocess_container(&$variables) {
+  _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
 
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function gla_accelerator_theme_preprocess_html(&$variables) {
+function gla_core_theme_preprocess_html(&$variables) {
   if ($variables['html_attributes']['lang'] == 'en') {
     // This helps with screenreader pronunciation.
     $variables['html_attributes']['lang'] = 'en-gb';

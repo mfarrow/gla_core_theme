@@ -1,39 +1,39 @@
-gla_accelerator_theme.minimum:
+gla_core_theme.minimum:
   label: minimum
   mediaQuery: ''
   weight: 0
   multipliers:
     - 1x
     - 2x
-gla_accelerator_theme.sm:
+gla_core_theme.sm:
   label: sm
   mediaQuery: 'all and (min-width:576px)'
   weight: 0
   multipliers:
     - 1x
     - 2x
-gla_accelerator_theme.md:
+gla_core_theme.md:
   label: md
   mediaQuery: 'all and (min-width:768px)'
   weight: 0
   multipliers:
     - 1x
     - 2x
-gla_accelerator_theme.lg:
+gla_core_theme.lg:
   label: lg
   mediaQuery: 'all and (min-width:992px)'
   weight: 0
   multipliers:
     - 1x
     - 2x
-gla_accelerator_theme.xl:
+gla_core_theme.xl:
   label: xl
   mediaQuery: 'all and (min-width:1200px)'
   weight: 0
   multipliers:
     - 1x
     - 2x
-gla_accelerator_theme.xxl:
+gla_core_theme.xxl:
   label: xxl
   mediaQuery: 'all and (min-width:1920px)'
   weight: 0

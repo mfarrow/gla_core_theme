@@ -39,7 +39,7 @@ module.exports = {
     './components/**/*.story.js',
     './templates/**/*.html.twig',
     '../../../../config/sync/*.yml',
-    './gla_accelerator_theme.theme',
+    './gla_core_theme.theme',
     './tokens/*.story.mdx',
     // For classes added by Storybook decorators:
     './storybook/.storybook/preview.js'
