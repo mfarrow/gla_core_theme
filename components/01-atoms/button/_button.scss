@@ -1,5 +1,7 @@
 .btn {
   display: inline-block;
+  // @TODO replace this with a variable once we have figured out
+  // all the possible line-height values used in the site.
   letter-spacing: -0.24px;
   padding-top: $t-spacing-3-5;
   padding-bottom: $t-spacing-3-5;
