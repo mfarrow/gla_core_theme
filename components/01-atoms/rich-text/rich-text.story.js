@@ -39,8 +39,8 @@ Default.args = {
     <p>This component is unfinished and we need to update the following things to match the designs:</p>
     <ol>
       <li>Width might need adjusting - it's ~65 characters which is a good width for readability but might not match designs</li>
-      <li>Font family (waiting to hear about font licencing decision)</li>
-      <li>Font sizes (need to vary by breakpoint as per designs)</li>
+      <li>Font family (waiting to hear about font licencing)</li>
+      <li>Font sizes (will need to vary by breakpoint as per designs)</li>
       <li>Line heights (will be linked to the above)</li>
       <li>Blockquote styling (for blockquotes added via CKEditor rather than via the Blockquote component, if we still want to allow this)</li>
       <li>Table styling (if table styles provided in designs - need to check!)</li>
@@ -214,7 +214,6 @@ Default.args = {
     <h4 id="let-s-make-sure-we-don-t-screw-that-up-with-h4-elements-either-">Let&#39;s make sure we don&#39;t screw that up with <code>h4</code> elements, either.</h4>
     <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
     <p>Let&#39;s add a closing paragraph here so things end with a decently sized block of text. I can&#39;t explain why I want things to end that way but I have to assume it&#39;s because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
-    <p>What I&#39;ve written here is probably long enough, but adding this final sentence can&#39;t hurt.
-    {&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:false}</p>
+    <p>What I&#39;ve written here is probably long enough, but adding this final sentence can&#39;t hurt.</p>
   `,
 };

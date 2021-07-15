@@ -82,7 +82,10 @@ module.exports = {
             'code::after': {
               content: '""'
             },
-
+            table: {
+              fontSize: null,
+              lineHeight: null,
+            },
           },
         },
       }),
