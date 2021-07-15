@@ -11,14 +11,11 @@ import '../../dist/utilities.css';
 import '../../libraries/what-input/dist/what-input.min';
 import '../../libraries/wicg-inert/dist/inert.min.js';
 
-// If the theme is being used in the context of a Drupal site then we can load
-// the Drupal object to allow us to run behaviours etc.
-// import '../../../../../core/misc/drupal';
-import '../drupal';
 // Rough-and-ready approach to using Drupal behaviours in Storybook iframes.
-document.body.onload = function () {
+import '../drupal';
+document.addEventListener('DOMContentLoaded', (event) => {
   Drupal.attachBehaviors(document);
-};
+});
 
 const theme = create({
   base: 'light',

@@ -22,7 +22,7 @@ export default {
 const Template = (args) =>
   template({
     ...args,
-    icon_url: '/dist/icons/sprite.svg',
+    icon_url: 'dist/icons/sprite.svg',
   });
 
 export const Icon = Template.bind({});
