@@ -3,7 +3,7 @@
 This theme is the core theme for GLA web properties and is included with the GLA
 core Drupal install profile.
 
-## Building the theme
+## Building the theme for production
 
 See `scripts/build-theme.sh` for build instructions.
 
@@ -17,6 +17,8 @@ npm run build-prod --skip-storybook
 ```
 
 ## Local development
+
+Run `npm run build` to build a copy of the theme suitable for local development.
 
 Run `npm run watch` to:
 
