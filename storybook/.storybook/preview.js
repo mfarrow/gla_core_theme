@@ -14,6 +14,11 @@ import '../../libraries/wicg-inert/dist/inert.min.js';
 // If the theme is being used in the context of a Drupal site then we can load
 // the Drupal object to allow us to run behaviours etc.
 // import '../../../../../core/misc/drupal';
+import '../drupal';
+// Rough-and-ready approach to using Drupal behaviours in Storybook iframes.
+document.body.onload = function () {
+  Drupal.attachBehaviors(document);
+};
 
 const theme = create({
   base: 'light',
@@ -67,7 +72,7 @@ addParameters({
       ],
       locales: 'en-GB',
     },
-  }
+  },
 });
 
 export const globalTypes = {
@@ -92,7 +97,9 @@ const greyscaleDecorator = (story, context) => {
     attribute.addClass('u-filter u-grayscale');
   }
 
-  return context.globals.greyscale ? `<div data-storybook-greyscale-wrapper-not-part-of-component ${attribute}>${story}</div>`: story ;
+  return context.globals.greyscale
+    ? `<div data-storybook-greyscale-wrapper-not-part-of-component ${attribute}>${story}</div>`
+    : story;
 };
 
 addDecorator((story, context) => {
@@ -103,6 +110,6 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   layout: 'padded',
   docs: {
-    theme
+    theme,
   },
 };

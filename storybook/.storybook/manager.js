@@ -23,4 +23,3 @@ addons.setConfig({
     showRoots: true,
   },
 });
-

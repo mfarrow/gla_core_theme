@@ -1,40 +1,37 @@
 const path = require('path');
-const { TwingEnvironment, TwingFunction } = require('twing');
+const {
+  TwingEnvironment,
+  TwingFunction,
+  TwingLoaderFilesystem,
+} = require('twing');
 
 const drupalAttribute = require('drupal-attribute');
-const { TwingLoaderFilesystem } = require('twing');
 
-const createAttribute = new TwingFunction('create_attribute', function() {
+const createAttribute = new TwingFunction('create_attribute', function () {
   return new drupalAttribute();
 });
 
-const attachLibrary = new TwingFunction('attach_library', function(
-  libraryName,
-) {
-  const message = `Don't forget to import the ${libraryName} dependencies in your *.story.js file too, otherwise Storybook won't know to load them.`;
-  return `<script>console.info("${message}")</script>`;
-});
+const attachLibrary = new TwingFunction(
+  'attach_library',
+  function (libraryName) {
+    const message = `Don't forget to import the (non-global) ${libraryName} dependencies in your *.story.js file too, otherwise Storybook won't know to load them.`;
+    return `<script>console.info("${message}")</script>`;
+  },
+);
 
 const rocketGetCachebuster = new TwingFunction(
   'rocket_get_cachebuster',
-  function() {
+  function () {
     return Date.now();
   },
 );
 
-const oeAbsPath = path.resolve(__dirname, '../../components');
-const loader = new TwingLoaderFilesystem([oeAbsPath]);
+const twigPath = path.resolve(__dirname, '../../components');
+const loader = new TwingLoaderFilesystem([twigPath]);
 
 if (typeof loader.addPath === 'function') {
-  // Add namespace ecl-twig.
-  loader.addPath(
-    path.resolve(__dirname, '../../components/00-base'),
-    'base',
-  );
-  loader.addPath(
-    path.resolve(__dirname, '../../components/01-atoms'),
-    'atoms',
-  );
+  loader.addPath(path.resolve(__dirname, '../../components/00-base'), 'base');
+  loader.addPath(path.resolve(__dirname, '../../components/01-atoms'), 'atoms');
   loader.addPath(
     path.resolve(__dirname, '../../components/02-molecules'),
     'molecules',
@@ -47,10 +44,7 @@ if (typeof loader.addPath === 'function') {
     path.resolve(__dirname, '../../components/04-templates'),
     'templates',
   );
-  loader.addPath(
-    path.resolve(__dirname, '../../components/05-pages'),
-    'pages',
-  );
+  loader.addPath(path.resolve(__dirname, '../../components/05-pages'), 'pages');
 }
 
 const environment = new TwingEnvironment(loader, { autoescape: false });

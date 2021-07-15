@@ -2,7 +2,7 @@ const path = require('path');
 
 const stories = [
   '../../components/**/*.story.@(js|jsx|ts|tsx|mdx)',
-  '../../tokens/*.story.@(js|jsx|ts|tsx|mdx)'
+  '../../tokens/*.story.@(js|jsx|ts|tsx|mdx)',
 ];
 
 const addons = [
@@ -13,7 +13,7 @@ const addons = [
   'storybook-addon-designs',
 ];
 
-const webpackFinal = config => {
+const webpackFinal = (config) => {
   config.module.rules.push({
     test: /\.twig$/,
     loader: 'twing-loader',
