@@ -35,7 +35,7 @@ addParameters({
   controls: { expanded: true },
   layout: 'fullscreen',
   backgrounds: {
-    default: 'white',
+    default: 'White',
     values: [
       {
         name: 'White',
@@ -92,7 +92,7 @@ const greyscaleDecorator = (story, context) => {
     attribute.addClass('u-filter u-grayscale');
   }
 
-  return context.globals.greyscale ? `<div data-greyscale-decorator-not-part-of-component ${attribute}>${story}</div>`: story ;
+  return context.globals.greyscale ? `<div data-storybook-greyscale-wrapper-not-part-of-component ${attribute}>${story}</div>`: story ;
 };
 
 addDecorator((story, context) => {
