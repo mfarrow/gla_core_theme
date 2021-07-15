@@ -33,7 +33,7 @@ export default {
     docs: {
       description: {
         component:
-          "By default, HTML anchor elements (links) are unstyled, as they could be used for any purpose. To get a recongisable 'link style', the link needs to be inside a `rich-text` component, or inside an element with the `u-styled-links` utility class.",
+          "By default, HTML anchor elements (links) are unstyled, as they could be used for any purpose. To get a recongisable 'link style', the link needs to be inside a `rich-text` component, given a `u-styled-link` utility class, or have a parent with the `u-styled-links` utility class.",
       },
     },
   },
@@ -78,7 +78,7 @@ InsideParentWithStyledLinksUtilityClass.parameters = {
   docs: {
     description: {
       story:
-        'This anchor has link styling as it is inside a parent with the `.u-styled-links` utility class. This utility class can be used to apply just the link styling without the `max-width`, `line-height` rules that are set by the `rich-text` component.',
+        'This anchor has link styling as it is inside a parent with the `u-styled-links` utility class. This utility class can be used to apply just the link styling without the `max-width`, `line-height` rules that are set by the `rich-text` component.',
     },
   },
 };

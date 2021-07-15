@@ -26,56 +26,67 @@ These breakpoint values are available in multiple formats:
 They are also exported as CSS custom properties, but custom properties can't be
 used in media queries, so their use is limited.
 
-<div className={['u-overflow-auto']} role="region" aria-labelledby="ScreensTableCaption" tabindex="0">
+<div
+  className={['u-overflow-auto']}
+  role="region"
+  aria-labelledby="ScreensTableCaption"
+  tabindex="0"
+>
   <table>
-    <caption id="ScreensTableCaption" className={'u-sr-only'}>Screens/breakpoints</caption>
+    <caption id="ScreensTableCaption" className={'u-sr-only'}>
+      Screens/breakpoints
+    </caption>
     <thead>
-    <tr>
-      <th>Key</th>
-      <th>
-        <code>min-width</code> value
-      </th>
-      <th>
-        Usage with{' '}
-        <a
-          href={
-            'https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries'
-          }
-        >
-          Breakpoint Sass
-        </a>
-      </th>
-      <th>
-        Usage with{' '}
-        <a href={'https://tailwindcss.com/docs/responsive-design'}>
-          Tailwind responsive variants
-        </a>
-      </th>
-      <th>Usage with JavaScript object</th>
-    </tr>
+      <tr>
+        <th>Key</th>
+        <th>
+          <code>min-width</code> value
+        </th>
+        <th>
+          Usage with{' '}
+          <a
+            href={
+              'https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries'
+            }
+          >
+            Breakpoint Sass
+          </a>
+        </th>
+        <th>
+          Usage with{' '}
+          <a href={'https://tailwindcss.com/docs/responsive-design'}>
+            Tailwind responsive variants
+          </a>
+        </th>
+        <th>Usage with JavaScript object</th>
+      </tr>
     </thead>
     <tbody>
-    {Object.keys(colors)
-      .filter((key) => key !== 'print')
-      .map((key) => {
-        return (
-          <tr>
-            <td>
-              <code>{key}</code>
-            </td>
-            <td>{colors[key].value}</td>
-            <td>
-              <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
-            </td>
-            <td>
-              <code>{`<div class="${key}:flex">…</div>`}</code>
-            </td>
-            <td>
-              <code>{"window.matchMedia(`(min-width: ${_designTokens.screens." + key + "})`).matches"}</code>
-            </td>
-          </tr>
-        );
-      })}
+      {Object.keys(colors)
+        .filter((key) => key !== 'print')
+        .map((key) => {
+          return (
+            <tr>
+              <td>
+                <code>{key}</code>
+              </td>
+              <td>{colors[key].value}</td>
+              <td>
+                <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
+              </td>
+              <td>
+                <code>{`<div class="${key}:flex">…</div>`}</code>
+              </td>
+              <td>
+                <code>
+                  {'window.matchMedia(`(min-width: ${_designTokens.screens.' +
+                    key +
+                    '})`).matches'}
+                </code>
+              </td>
+            </tr>
+          );
+        })}
     </tbody>
   </table>
 </div>

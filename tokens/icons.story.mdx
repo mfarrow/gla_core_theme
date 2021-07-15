@@ -1,37 +1,48 @@
-import { Meta, IconGallery, IconItem, Subtitle } from '@storybook/addon-docs/blocks';
+import {
+  Meta,
+  IconGallery,
+  IconItem,
+  Subtitle,
+} from '@storybook/addon-docs/blocks';
 const svgFile = require('./icons.json');
 const icons = svgFile.icons;
 
-<Meta title="Tokens/Icons" parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true }}}} />
+<Meta
+  title="Tokens/Icons"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
 
 # Icons
 
 When adding any new icons please remember to:
-* Trim the SVG canvas size to match the dimensions of the shape inside (the _Document Properties_ dialog in [Inkscape](https://inkscape.org) is useful for this)
-  * If you use Inkscape make sure to save the SVG as an 'Optimized SVG' not an 'Inkscape SVG'
-* Remove any dimensions but leave the `viewBox` to help the SVG scale
-* Remove explicit colour references and replace with `currentColor`
-* Optimise/minify using SVGO or [SVGOMG](https://jakearchibald.github.io/svgomg/)
-* Re-run the `npm run icons` scripts
+
+- Trim the SVG canvas size to match the dimensions of the shape inside (the
+  _Document Properties_ dialog in [Inkscape](https://inkscape.org) is useful for
+  this)
+  - If you use Inkscape make sure to save the SVG as an 'Optimized SVG' not an
+    'Inkscape SVG'
+- Remove any dimensions but leave the `viewBox` to help the SVG scale
+- Remove explicit colour references and replace with `currentColor`
+- Optimise/minify using SVGO or
+  [SVGOMG](https://jakearchibald.github.io/svgomg/)
+- Re-run the `npm run icons` scripts
 
 ## Available icons
 
 <IconGallery>
-  {
-    icons.map((icon)=>{
-      const url = `dist/icons/sprite.svg#${icon.id}`;
-      return (
-        <IconItem name={icon.id} key={icon.id}>
-          <svg viewBox="0 0 500 500">
-            <use xlinkHref={url}></use>
-          </svg>
-        </IconItem>
-      )
-    })
-  }
+  {icons.map((icon) => {
+    const url = `dist/icons/sprite.svg#${icon.id}`;
+    return (
+      <IconItem name={icon.id} key={icon.id}>
+        <svg viewBox="0 0 500 500">
+          <use xlinkHref={url}></use>
+        </svg>
+      </IconItem>
+    );
+  })}
 </IconGallery>
 
 ## Other sources of icons
 
-* [Feather](https://feathericons.com) (for UI icons)
-* [Simple Icons](https://simpleicons.org) (a huge number of SVG brand icons)
+- [Feather](https://feathericons.com) (for UI icons)
+- [Simple Icons](https://simpleicons.org) (a huge number of SVG brand icons)
