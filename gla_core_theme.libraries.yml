@@ -9,7 +9,7 @@ global:
     - gla_core_theme/what-input
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
-# loading it. This saves us an external, render blocking JS and HTTP request, so is good for TTI and FCP scores.
+# loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
 polyfill-io:
   header: true
   js:
@@ -21,7 +21,7 @@ polyfill-io:
 
 inert-polyfill:
   js:
-    libraries/wicg-inert/dist/inert.min.js: {}
+    libraries/wicg-inert/dist/inert.min.js: { minified: true }
 
 what-input:
   js:
@@ -33,16 +33,22 @@ alpinejs:
   js:
     libraries/alpinejs/dist/cdn.js: {}
 
+# Until Safari supports native image lazyloading we'll need a library to help us with it.
 lazysizes:
   js:
-    libraries/lazysizes/plugins/print/ls.print.min.js: {}
-    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js: {}
+    libraries/lazysizes/plugins/print/ls.print.min.js: { minified: true }
+    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js: { minified: true }
     libraries/lazysizes/lazysizes.min.js:
       # Load Lazysizes as early as possible to help get images displayed
       # as quickly as possible. We are banking on the perceived performance
       # benefits of getting images on screen quicker being more important
       # than the performance costs of not aggregating this file.
       preprocess: false
+      minified: true
       weight: -10
       attributes:
         async: ''
+
+fix-randomised-form-ids:
+  js:
+    dist/00-base/fix-randomised-form-ids.js: {}

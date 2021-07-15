@@ -3,7 +3,7 @@
 {% set icon_url = icon_url|default('/themes/custom/gla_core/dist/icons/sprite.svg') %}
 
 {% if not prevent_attaching_library %}
-  {{ attach_library('rutherford/sprite') }}
+  {{ attach_library('gla_core_theme/sprite') }}
 {% endif %}
 
 {% set attributes = attributes|default(create_attribute())
