@@ -1,0 +1,17 @@
+# Ignore files that are generated automatically.
+dist
+vendor
+libraries
+storybook/static
+tokens/tokens.css
+tokens/tokens-module.js
+tokens/tokens-object.js
+tokens/tokens.scss
+tokens/icons.json
+
+# NPM
+node_modules
+npm-debug.log
+
+.DS_Store
+.idea

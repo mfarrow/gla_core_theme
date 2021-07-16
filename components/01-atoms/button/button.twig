@@ -1,0 +1,37 @@
+{{ attach_library('gla_core_theme/button') }}
+
+{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = attributes.addClass(['btn']) %}
+
+{% set button_element = button_element|default('a') %}
+
+{% if button_url is not defined or button_url is null %}
+  {% set button_element = 'button' %}
+{% endif %}
+
+{% if button_type %}
+  {% set attributes = attributes.addClass('btn--' ~ button_type) %}
+{% endif %}
+
+{% if button_size == 'small' %}
+  {% set attributes = attributes.addClass(['btn--sm']) %}
+{% elseif button_size == 'large' %}
+  {% set attributes = attributes.addClass(['btn--lg']) %}
+{% endif %}
+
+{% if button_url %}
+  {% set attributes = attributes.setAttribute('href', button_url) %}
+{% endif %}
+
+<{{ button_element }}{{ attributes }}>
+  {% block button_content %}
+    {% if button_icon is not empty %}
+      {% include "@atoms/icon/icon.twig" with {
+        icon_name: button_icon,
+        icon_classes: [ button_content ? 'u-mr-1' ],
+      } %}
+    {% endif %}
+
+    {{ button_content }}
+  {% endblock %}
+</{{ button_element }}>

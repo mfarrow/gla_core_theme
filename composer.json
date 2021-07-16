@@ -2,6 +2,37 @@
     "name": "gla/gla_core_theme",
     "type": "gla-estate-theme",
     "license": "OGL-3.0",
-    "description": "Core Theme used by the GLA drupal accelerator and all drupal sites within the GLA estate"
+    "description": "Core GLA estate Drupal theme",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.10",
+        "cweagans/composer-patches": "^1.7",
+        "npm-asset/alpinejs": "^3.2",
+        "npm-asset/lazysizes": "^5.3",
+        "npm-asset/svgxuse": "^1.2",
+        "npm-asset/what-input": "^5.2",
+        "npm-asset/wicg-inert": "^3.1",
+        "oomphinc/composer-installers-extender": "^2.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-types": [
+            "npm-asset"
+        ],
+        "installer-paths": {
+            "libraries/{$name}": [
+                "type:npm-asset"
+            ]
+        },
+        "patches": { }
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
-

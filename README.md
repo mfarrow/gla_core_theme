@@ -1,43 +1,38 @@
-# Accelerator Theme
+# GLA core theme
 
-This project contains the core 'Theme' used by the GLA Drupal accelerator and all Drupal sites within the GLA estate
+This theme is the core theme for GLA web properties and is included with the GLA
+core Drupal install profile.
 
-# installation
+## Building the theme for production
 
-This project is downloaded using Composer.
+See `scripts/build-theme.sh` for build instructions.
 
-```
-composer require gla/gla_core_theme
-```
+### Skipping the static build of Storybook
 
-```
-   {
-       "require": {
-           "gla/gla_core_theme": "^1.0"
-       }
-   }
+To skip building a static version of Storybook use the `skip-storybook`
+argument:
+
+```bash
+npm run build-prod --skip-storybook
 ```
 
-Note: This project is currently accessible through a private Packagist,
+## Local development
 
-```
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.packagist.com/greaterlondonauthori/"
-        }
-   ]
-```
+Run `npm run build` to build a copy of the theme suitable for local development.
 
-and will need an auth key/token
+Run `npm run watch` to:
 
-```
-   {
-      "http-basic": {
-          "repo.packagist.com": {
-              "username": "<USERNAME>",
-              "password": "<TOKEN>"
-          }
-      }
-   }
-```
+- Build the theme
+- Launch Storybook (you can close it if you're not using it)
+- Watch for changes to files
+
+When changes are made to SCSS and JS files the `watch` command will rebuild the
+compiled versions. We import the compiled versions into Storybook, so once the
+compiled versions have been updated, Storybook's own Webpack setup will notice
+the changes and refresh Storybook.
+
+## Creating a subtheme
+
+A basic script (`scripts/create-subtheme.sh`) is included to copy the theme into
+a new directory to make site-specific versions of it. Some manual string
+replacement may still be necessary.

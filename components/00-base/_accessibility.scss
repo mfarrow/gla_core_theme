@@ -1,0 +1,38 @@
+*:focus {
+  outline: none;
+  // We use a box-shadow made up of a light and a darker colour so that it shows up on all backgrounds.
+  // Also, box-shadows follow border-radius, whereas outlines do not.
+  box-shadow: 0 0 0 2px $t-colors-white, 0 0 0 5px $t-colors-primary,
+    0 0 0 7px $t-colors-white !important;
+}
+
+// Remove all animations and transitions for people that prefer not to see them.
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-delay: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Remove focus styling from elements that are only programmatically focusable.
+[tabindex="-1"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+// Remove focus styling when the input mode is mouse or touch.
+html[data-whatintent="mouse"] *,
+html[data-whatintent="touch"] * {
+  &:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-hide-from-mouse-input] {
+    display: none;
+  }
+}

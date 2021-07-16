@@ -1,0 +1,25 @@
+{# For Pattern Lab: The icon_url is defined in _data/paths.json. No action is required #}
+{# For Drupal: The icon_url is defined in the following line. No action is required #}
+{% set icon_url = icon_url|default('/themes/custom/gla_core/dist/icons/sprite.svg') %}
+
+{% if not prevent_attaching_library %}
+  {{ attach_library('gla_core_theme/sprite') }}
+{% endif %}
+
+{% set attributes = attributes|default(create_attribute())
+  .addClass(['icon'])
+  .setAttribute('focusable', 'false')
+  .setAttribute('role', 'presentation')
+%}
+
+{#
+  Make sure to provide a visually hidden text alternative if necessary. E.g.
+  for a search button:
+  <button>
+    <span class="u-sr-only">Open/close search bar</span>
+    <svg>…</svg>
+  </button>
+#}
+<svg {{ attributes }}>
+  <use xlink:href="{{ icon_url }}?v={{ gla_core_profile_get_cachebuster() }}#{{ icon_name }}"></use>
+</svg>

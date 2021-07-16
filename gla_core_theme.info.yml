@@ -1,7 +1,31 @@
 name: GLA core theme
 type: theme
-description: This is a sub theme of Bartik
+description: Core theme for Drupal sites in the GLA digital estate
 core: 8.x
 core_version_requirement: ^8 || ^9
-# Defines the base theme
-base theme: bartik
+base theme: stable
+
+libraries:
+  - 'gla_core_theme/global'
+
+# Load our main theme CSS to give a truer WYSIWYG experience.
+# https://www.drupal.org/project/ckeditor_config can then be used to add a class to the CKEditor instance to mimic
+# our rich text/prose component and to set the right max-width, line-height etc.
+ckeditor_stylesheets:
+  - dist/style.css
+  - dist/utilities.css
+
+libraries-override:
+  # We don't support any browsers that need Picturefill.
+  core/picturefill: false
+  # Without Picturefill we don't need the responsive_image/ajax library.
+  responsive_image/ajax: false
+
+components:
+  namespaces:
+    base: components/00-base
+    atoms: components/01-atoms
+    molecules: components/02-molecules
+    organisms: components/03-organisms
+    templates: components/04-templates
+    pages: components/05-pages

@@ -1,0 +1,11 @@
+body {
+  color: $t-colors-text-grey;
+  // For now, use Roboto with a system font stack fallback.
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+::selection {
+  color: $t-colors-white;
+  background: $t-colors-dark-pink;
+}

@@ -1,0 +1,18 @@
+.rich-text a,
+.u-styled-links a,
+.u-styled-link {
+  font-weight: bold;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-style: solid;
+    text-underline-offset: 4px;
+    text-decoration-color: $t-colors-pink;
+  }
+
+  &:active {
+    text-decoration-color: $t-colors-dark-pink;
+  }
+}
