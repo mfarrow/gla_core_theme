@@ -173,8 +173,29 @@ function gla_core_theme_page_attachments_alter(array &$attachments) {
     ],
   ];
 
+  // Preconnect to Google Fonts origins.
+  $preconnect_googleapis_link = [
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => [
+      'rel' => 'preconnect',
+      'href' => 'https://fonts.googleapis.com',
+    ],
+  ];
+  $preconnect_fontsgstatic_link = [
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => [
+      'rel' => 'preconnect',
+      'href' => 'https://fonts.googleapis.com',
+      'crossorigin' => '',
+    ],
+  ];
+
   $attachments['#attached']['html_head'][] = [$viewport_metatag, 'viewport'];
   $attachments['#attached']['html_head'][] = [$format_detection_metatag, 'format-detection'];
+  $attachments['#attached']['html_head'][] = [$preconnect_googleapis_link, 'preconnect-googleapis'];
+  $attachments['#attached']['html_head'][] = [$preconnect_fontsgstatic_link, 'preconnect-fontsgstatic'];
 
   // Remove the core favicon as we supply our own.
   foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
