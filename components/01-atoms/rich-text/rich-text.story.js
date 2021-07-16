@@ -22,11 +22,16 @@ export default {
     docs: {
       description: {
         component: dedent(`
-          Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin which provides opinionated styling intended for WYSIWYG content.
+          Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin that provides opinionated styling intended for WYSIWYG content.
           
           To override the styling, developers should edit \`theme.extend.typography\` inside \`tailwind.config.js\`. To get an idea of the styles available to override, see the [\`styles.js\` file from the plugin](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js).
         `),
       },
+    },
+    design: {
+      type: 'iframe',
+      url:
+        'https://projects.invisionapp.com/d/main/#/console/21508157/454587112/preview',
     },
   },
 };
@@ -38,13 +43,12 @@ Default.args = {
   content: `
     <p>This component is unfinished and we need to update the following things to match the designs:</p>
     <ol>
-      <li>Width might need adjusting - it's ~65 characters which is a good width for readability but might not match designs</li>
       <li>Font family (waiting to hear about font licencing)</li>
       <li>Font sizes (will need to vary by breakpoint as per designs)</li>
       <li>Line heights (will be linked to the above)</li>
       <li>Blockquote styling (for blockquotes added via CKEditor rather than via the Blockquote component, if we still want to allow this)</li>
-      <li>Table styling (if table styles provided in designs - need to check!)</li>
-      <li>Spacing between paragraphs and headings of various level (if examples provided in designs - need to check!)</li>
+      <li>Table styling</li>
+      <li>Spacing between paragraphs and headings of various level</li>
     </ol>
     <p>Note that the remaining example content (below the horizontal rule) for this story comes from a <a href="https://github.com/tailwindlabs/tailwindcss-typography/">third-party code repo</a> and wasn't written by CTI or GLA.</p>
     <hr>
@@ -168,40 +172,90 @@ Default.args = {
     <p>I almost forgot to mention links, like <a href="https://tailwindcss.com">this link to the Tailwind CSS website</a>.</p>
     <p>We even included table styles, check it out:</p>
     <table>
-    <thead>
-    <tr>
-    <th>Wrestler</th>
-    <th>Origin</th>
-    <th>Finisher</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>Bret &quot;The Hitman&quot; Hart</td>
-    <td>Calgary, AB</td>
-    <td>Sharpshooter</td>
-    </tr>
-    <tr>
-    <td>Stone Cold Steve Austin</td>
-    <td>Austin, TX</td>
-    <td>Stone Cold Stunner</td>
-    </tr>
-    <tr>
-    <td>Randy Savage</td>
-    <td>Sarasota, FL</td>
-    <td>Elbow Drop</td>
-    </tr>
-    <tr>
-    <td>Vader</td>
-    <td>Boulder, CO</td>
-    <td>Vader Bomb</td>
-    </tr>
-    <tr>
-    <td>Razor Ramon</td>
-    <td>Chuluota, FL</td>
-    <td>Razor&#39;s Edge</td>
-    </tr>
-    </tbody>
+      <thead>
+        <tr>
+          <th>Wrestler</th>
+          <th>Origin</th>
+          <th>Finisher</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bret &quot;The Hitman&quot; Hart</td>
+          <td>Calgary, AB</td>
+          <td>Sharpshooter</td>
+        </tr>
+        <tr>
+          <td>Stone Cold Steve Austin</td>
+          <td>Austin, TX</td>
+          <td>Stone Cold Stunner</td>
+        </tr>
+        <tr>
+          <td>Randy Savage</td>
+          <td>Sarasota, FL</td>
+          <td>Elbow Drop</td>
+        </tr>
+        <tr>
+          <td>Vader</td>
+          <td>Boulder, CO</td>
+          <td>Vader Bomb</td>
+        </tr>
+        <tr>
+          <td>Razor Ramon</td>
+          <td>Chuluota, FL</td>
+          <td>Razor&#39;s Edge</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <caption>Delivery slots:</caption>
+      <tr>
+        <td></td>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+      </tr>
+      <tr>
+        <th scope="row">09:00 - 11:00</th>
+        <td>Closed</td>
+        <td>Open</td>
+        <td>Open</td>
+        <td>Closed</td>
+        <td>Closed</td>
+      </tr>
+      <tr>
+        <th scope="row">11:00 - 13:00</th>
+        <td>Open</td>
+        <td>Open</td>
+        <td>Closed</td>
+        <td>Closed</td>
+        <td>Closed</td>
+      </tr>
+    </table>
+    <table>
+      <caption>Teddy bear collectors:</caption>
+      <tr>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">City</th>
+      </tr>
+      <tr>
+        <td>Phoenix</td>
+        <td>Imari</td>
+        <td>Henry</td>
+      </tr>
+      <tr>
+        <td>Zeki</td>
+        <td>Rome</td>
+        <td>Min</td>
+      </tr>
+      <tr>
+        <td>Apirka</td>
+        <td>Kelly</td>
+        <td>Brynn</td>
+      </tr>
     </table>
     <p>We also need to make sure inline code looks good, like if I wanted to talk about <code>&lt;span&gt;</code> elements or tell you the good news about <code>@tailwindcss/typography</code>.</p>
     <h3 id="sometimes-i-even-use-code-in-headings">Sometimes I even use <code>code</code> in headings</h3>

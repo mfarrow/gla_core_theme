@@ -1,48 +1,96 @@
-import {
-  Meta,
-  IconGallery,
-  IconItem,
-  Subtitle,
-} from '@storybook/addon-docs/blocks';
-const svgFile = require('./icons.json');
-const icons = svgFile.icons;
+import { Meta } from '@storybook/addon-docs';
+const sizes = require('./tokens-module.js').fontSize;
+const justFontSizes = Object.fromEntries(
+  Object.entries(sizes).filter((entry) => {
+    return !entry[0].includes('--');
+  }),
+);
 
 <Meta
-  title="Tokens/Icons"
+  title="Tokens/Font sizes"
   parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
 />
 
-# Icons
+# Font sizes
 
-When adding any new icons please remember to:
+The site's font sizes are available in multiple formats:
 
-- Trim the SVG canvas size to match the dimensions of the shape inside (the
-  _Document Properties_ dialog in [Inkscape](https://inkscape.org) is useful for
-  this)
-  - If you use Inkscape make sure to save the SVG as an 'Optimized SVG' not an
-    'Inkscape SVG'
-- Remove any dimensions but leave the `viewBox` to help the SVG scale
-- Remove explicit colour references and replace with `currentColor`
-- Optimise/minify using SVGO or
-  [SVGOMG](https://jakearchibald.github.io/svgomg/)
-- Re-run the `npm run icons` scripts
+1. As
+   [Tailwind font size utility classes](https://tailwindcss.com/docs/responsive-design),
+   e.g. `u-text-xl`
+2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-font-size-xl`
+3. As values within a CommonJS module exported to `./tokens/tokens-module.js`
 
-## Available icons
+To output a heading, use the
+[Heading component](/docs/atoms-heading--extra-large) to make sure the correct
+HTML element is used.
 
-<IconGallery>
-  {icons.map((icon) => {
-    const url = `dist/icons/sprite.svg#${icon.id}`;
+For body text, use the [Rich text component](/docs/atoms-rich-text--default) to
+make sure the correct line length, line height, and font size is used.
+
+We define and refer to our font sizes in pixels (`px`), but we use a
+[Postcss plugin](https://www.npmjs.com/package/postcss-pxtorem) to convert them
+to `rem`s to respect the font size preferences that a user may have set via
+their browser or OS. Because of this, the font sizes shown in devtools will use
+rems.
+
+## In a table
+
+<div
+  className={['u-overflow-auto']}
+  role="region"
+  aria-labelledby="FontSizesTableCaption"
+  tabindex="0"
+>
+  <table>
+    <caption id="FontSizesTableCaption" className={'u-sr-only'}>
+      Font sizes and corresponding line heights
+    </caption>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Pixel value</th>
+        <th>Line height</th>
+        <th>Letter spacing (if applicable)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.keys(justFontSizes).map((key) => {
+        return (
+          <tr key={key}>
+            <td>
+              <code>{key}</code>
+            </td>
+            <td>{sizes[key].value}</td>
+            <td>{sizes[`${key}--lineHeight`].value}</td>
+            <td>
+              {sizes[`${key}--letterSpacing`] &&
+                sizes[`${key}--letterSpacing`].value}
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+
+## As examples
+
+<ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+  {Object.keys(justFontSizes).map((key) => {
     return (
-      <IconItem name={icon.id} key={icon.id}>
-        <svg viewBox="0 0 500 500">
-          <use xlinkHref={url}></use>
-        </svg>
-      </IconItem>
+      <li
+        key={key}
+        style={{
+          fontSize: sizes[key].value,
+          lineHeight: sizes[`${key}--lineHeight`].value,
+          letterSpacing:
+            sizes[`${key}--letterSpacing`] &&
+            sizes[`${key}--letterSpacing`].value,
+        }}
+      >
+        {key}: Nullam dapibus venenatis sagittis morbi.
+      </li>
     );
   })}
-</IconGallery>
-
-## Other sources of icons
-
-- [Feather](https://feathericons.com) (for UI icons)
-- [Simple Icons](https://simpleicons.org) (a huge number of SVG brand icons)
+</ul>

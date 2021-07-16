@@ -7,6 +7,7 @@ const colors = {
   'dark-grey': '#1a1e21',
   'text-grey': '#333333',
   'off-white': '#efefef',
+  'wild-sand': '#f5f5f5',
   'white': '#ffffff',
   'black': '#000000',
   'blue': '#007acc',
@@ -65,6 +66,54 @@ module.exports = {
       DEFAULT: '4px',
       '6': '6px',
     },
+    fontSize: {
+      'base': ['18px', {
+        lineHeight: '30px',
+      }],
+      'lg': ['20px', {
+        lineHeight: '30px',
+      }],
+      'xl': ['22px', {
+        lineHeight: '25px',
+        letterSpacing: '0.25px',
+      }],
+      'xxl': ['22px', {
+        lineHeight: '32px',
+        letterSpacing: '0.25px',
+      }],
+      '2xl': ['25px', {
+        lineHeight: '35px',
+        letterSpacing: '0.25px',
+      }],
+      '3xl': ['30px', {
+        lineHeight: '35px',
+        letterSpacing: '0.25px',
+      }],
+      '4xl': ['40px', {
+        lineHeight: '40px',
+        letterSpacing: '0.25px',
+      }],
+      '5xl': ['50px', {
+        lineHeight: '50px',
+        letterSpacing: '0.25px',
+      }],
+      '6xl': ['70px', {
+        lineHeight: '70px',
+        letterSpacing: '0.25px',
+      }],
+      '7xl': ['100px', {
+        lineHeight: '100px',
+        letterSpacing: '0.25px',
+      }],
+      '8xl': ['120px', {
+        lineHeight: '120px',
+        letterSpacing: '0.25px',
+      }],
+      '9xl': ['140px', {
+        lineHeight: '140px',
+        letterSpacing: '0.25px',
+      }],
+    },
     extend: {
       typography: (theme) => ({
         // This function is used to style the rich-text component.
@@ -73,13 +122,16 @@ module.exports = {
         DEFAULT: {
           css: {
             color: theme('colors.text-grey'),
+            maxWidth: '74ch',
+            fontSize: null,
+            lineHeight: null,
             // Remove the anchor styling as that comes from our own SCSS.
             a: null,
             'ol > li::before': {
-              color: theme('colors.primary'),
+              color: theme('colors.dark-pink'),
             },
             'ul > li::before': {
-              backgroundColor: theme('colors.primary'),
+              backgroundColor: theme('colors.dark-pink'),
             },
             'code::before': {
               content: '""'
@@ -90,7 +142,24 @@ module.exports = {
             table: {
               fontSize: null,
               lineHeight: null,
+              backgroundColor: theme('colors.wild-sand'),
+              borderRadius: theme('borderRadius.6'),
+              overflow: 'hidden',
             },
+            'thead th': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            'th[scope="col"]': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            'th[scope="row"]': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            // We will provide our own intro/lead styles.
+            '[class~="lead"]': null,
           },
         },
       }),

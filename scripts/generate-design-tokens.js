@@ -42,6 +42,12 @@ _.forEach(theme, function (value, key) {
           ['fontSize', `${key}--lineHeight`],
           value[1]['lineHeight'],
         );
+        if (value[1]['letterSpacing']) {
+          addToTokensObject(
+            ['fontSize', `${key}--letterSpacing`],
+            value[1]['letterSpacing'],
+          );
+        }
       });
       break;
 
