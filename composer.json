@@ -1,14 +1,8 @@
 {
     "name": "gla/gla_core_theme",
     "type": "gla-estate-theme",
-    "license": "OGL-3.0",
     "description": "Core GLA estate Drupal theme",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
+    "license": "OGL-3.0",
     "require": {
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.7",
@@ -19,20 +13,33 @@
         "npm-asset/wicg-inert": "^3.1",
         "oomphinc/composer-installers-extender": "^2.0"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "require-dev": {
+        "vijaycs85/drupal-quality-checker": "dev-master"
+    },
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
-        "installer-types": [
-            "npm-asset"
-        ],
         "installer-paths": {
             "libraries/{$name}": [
                 "type:npm-asset"
             ]
         },
-        "patches": { }
+        "installer-types": [
+            "npm-asset"
+        ],
+        "patches": {}
     },
-    "config": {
-        "sort-packages": true
-    }
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lukewhitmore/drupal-quality-checker"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
