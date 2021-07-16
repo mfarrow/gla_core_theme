@@ -33,6 +33,18 @@ the changes and refresh Storybook.
 
 ## Creating a subtheme
 
-A basic script (`scripts/create-subtheme.sh`) is included to copy the theme into
-a new directory to make site-specific versions of it. Some manual string
-replacement may still be necessary.
+1. A basic script (`scripts/create-subtheme.sh`) is included to copy the theme
+   into a new directory to make site-specific versions of it.
+
+2. Manually replace any references to `gla_core_theme` with the name of your new
+   theme
+
+3. Update your project's `composer.json` file to instead `cd` into the directory
+   of your new theme instead of `web/themes/estate/gla_core_theme`:
+
+```json
+"build-drupal-theme": [
+    "Composer\\Config::disableProcessTimeout",
+    "(cd web/themes/estate/gla_core_theme && bash scripts/build-theme.sh)"
+]
+```
