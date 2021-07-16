@@ -24,7 +24,7 @@ if [ "$DRUPAL_ENVIRONMENT" != 'docker' ] && [ "$SKIP_COMPOSER_SCRIPT_THEME_BUILD
   # of Node, managed by the GLA.
 
   # Install Node dependencies so we can build the theme
-  npm install
+  npm install --production
 
   # Build the theme and static version of Storybook
   # There is an optional argument to skip building the static version of
