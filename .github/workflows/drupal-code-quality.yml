@@ -19,4 +19,3 @@ jobs:
           version: 2
       - name: Test Codebase with grumPHP
         run: ./vendor/bin/grumphp run
-      - run: echo "This job's status is ${{ job.status }}."
