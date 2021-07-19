@@ -12,6 +12,8 @@ jobs:
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "The workflow is now ready to test your code on the runner."
       - run: cd ${{ github.workspace }}
+      - name: Load composer dependencies
+        run: composer install
       - name: Test Codebase with grumPHP
         run: ./vendor/bin/grumphp run
       - run: echo "This job's status is ${{ job.status }}."
