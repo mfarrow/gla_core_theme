@@ -13,7 +13,10 @@ jobs:
       - run: echo "The workflow is now ready to test your code on the runner."
       - run: cd ${{ github.workspace }}
       - name: Load composer dependencies
-        run: composer install
+      - uses: php-actions/composer@v6
+        with:
+          php_version: 8.0
+          version: 2
       - name: Test Codebase with grumPHP
         run: ./vendor/bin/grumphp run
       - run: echo "This job's status is ${{ job.status }}."
