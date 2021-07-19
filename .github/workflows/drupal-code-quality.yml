@@ -15,4 +15,3 @@ jobs:
       - run: cd ${{ github.workspace }}
       - run: ./vendor/bin/grumphp run
       - run: echo "This job's status is ${{ job.status }}."
-
