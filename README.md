@@ -18,6 +18,14 @@ npm run build-prod --skip-storybook
 
 ## Local development
 
+Using [nvm](https://github.com/nvm-sh/nvm), set your local version of Node and then install the theme's dependencies.
+
+```bash
+nvm use
+npm install
+composer install
+```
+
 Run `npm run build` to build a copy of the theme suitable for local development.
 
 Run `npm run watch` to:
