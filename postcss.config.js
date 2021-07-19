@@ -1,3 +1,5 @@
+const screens = require('./tokens/tokens-module.js').screens;
+
 module.exports = ctx => ({
   plugins: {
     tailwindcss: {},

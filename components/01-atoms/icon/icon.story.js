@@ -22,10 +22,11 @@ export default {
       description: {
         // Note the link below doesn't work, Storybook gives it target="_top" but it still opens in the preview
         // iframe?
-        component: 'To see the available icons, check the [Icon tokens page](?path=/docs/atoms-icon--icon).'
-      }
-    }
-  }
+        component:
+          'To see the available icons, check the [Icon tokens page](?path=/docs/atoms-icon--icon).',
+      },
+    },
+  },
 };
 
 const Template = (args) =>

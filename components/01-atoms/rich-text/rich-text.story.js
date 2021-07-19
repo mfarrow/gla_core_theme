@@ -1,4 +1,3 @@
-import drupalAttribute from 'drupal-attribute';
 import dedent from 'ts-dedent';
 
 const template = require('./rich-text.twig');
@@ -124,7 +123,7 @@ Default.args = {
     <p>After this sort of list I usually have a closing statement or paragraph, because it kinda looks weird jumping right to a heading.</p>
     <p>Hopefully that looks good enough to you.</p>
     <h3 id="what-about-nested-lists-">What about nested lists?</h3>
-    <p>Nested lists basically always look bad which is why editors like Medium don&#39;t even let you do it, but I guess since some of you goofballs are going to do it we have to carry the burden of at least making it work.</p>
+    <p>Nested lists basically always look bad which is why editors like Medium don&#39;t even let you do it, but let's try making it work.</p>
     <ol>
     <li><strong>Nested lists are rarely a good idea.</strong><ul>
     <li>You might feel like you are being really &quot;organized&quot; or something but you are just creating a gross shape on the screen that is hard to read.</li>
@@ -269,5 +268,16 @@ Default.args = {
     <p>Phew, with any luck we have styled the headings above this text and they look pretty good.</p>
     <p>Let&#39;s add a closing paragraph here so things end with a decently sized block of text. I can&#39;t explain why I want things to end that way but I have to assume it&#39;s because I think things will look weird or unbalanced if there is a heading too close to the end of the document.</p>
     <p>What I&#39;ve written here is probably long enough, but adding this final sentence can&#39;t hurt.</p>
+  `,
+};
+
+export const LeadParagraph = Template.bind({});
+LeadParagraph.args = {
+  content: `
+    <p>The first paragraph in the designs uses a larger 'intro' text size and line height.</p>
+    <p>Subsequent paragraphs use the normal base text size and line height.</p>
+    <p>Subsequent paragraphs use the normal base text size and line height.</p>
+    <p class="lead">The intro styling can be forced on any paragraph by giving it the \`lead\` class.</p>
+    <p>Subsequent paragraphs use the normal base text size and line height.</p>
   `,
 };
