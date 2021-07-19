@@ -25,12 +25,16 @@ if [ "$DRUPAL_ENVIRONMENT" != 'docker' ] && [ "$SKIP_COMPOSER_SCRIPT_THEME_BUILD
   # web servers where the theme is built should already have a suitable version
   # of Node, managed by the GLA.
 
-  # Install Node dependencies so we can build the theme
+  # Run Composer inside the theme, mainly to pull in frontend dependencies via
+  # https://asset-packagist.org to the `libraries` directory within the theme.
+  composer install
+
+  # Install Node dependencies so we can build the theme.
   npm install --production
 
-  # Build the theme and static version of Storybook
+  # Build the theme and static version of Storybook.
   # There is an optional argument to skip building the static version of
-  # Storybook: `npm run build-prod --skip-storybook`
+  # Storybook: `npm run build-prod --skip-storybook`.
   npm run build-prod
 
   # Once the theme has built itself (compiled JS, CSS, built Storybook etc)
