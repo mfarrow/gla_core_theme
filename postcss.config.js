@@ -1,3 +1,5 @@
+const screens = require('./tokens/tokens-module.js').screens;
+
 module.exports = ctx => ({
   plugins: {
     tailwindcss: {},
@@ -16,12 +18,6 @@ module.exports = ctx => ({
           type: ['checksum'],
         }
         : false,
-    // Different browsers round up/down subpixel values differently, so it's
-    // nice to round them in PostCSS instead. We skip the utilities file to save
-    // time and because the utilities file is less likely to have non-whole
-    // numbers.
-    'postcss-round-subpixels':
-      ctx.file.basename !== 'utilities.css' ? {} : false,
     // Convert px to rem so that a user's OS font-size settings are respected
     // but we can still stick to working with pixels.
     'postcss-pxtorem': {

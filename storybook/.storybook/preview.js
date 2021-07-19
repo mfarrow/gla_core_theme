@@ -70,6 +70,9 @@ addParameters({
       locales: 'en-GB',
     },
   },
+  actions: {
+    argTypesRegex: "^on[A-Z].*"
+  },
 });
 
 export const globalTypes = {

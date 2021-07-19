@@ -39,7 +39,7 @@ export default {
     design: {
       type: 'iframe',
       url:
-        'https://projects.invisionapp.com/share/3C11ABUSUADV#/screens/454587029',
+        'https://projects.invisionapp.com/share/3C11ABUSUADV#/454587112_WYSIWYG_Desktop',
     },
   },
 };

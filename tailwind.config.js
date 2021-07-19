@@ -3,18 +3,19 @@ const colors = {
   current: 'currentColor',
   pink: '#e7135d',
   'dark-pink': '#9e0059',
-  'grey': '#353d42',
+  grey: '#353d42',
   'dark-grey': '#1a1e21',
   'text-grey': '#333333',
   'off-white': '#efefef',
-  'white': '#ffffff',
-  'black': '#000000',
-  'blue': '#007acc',
+  'wild-sand': '#f5f5f5',
+  white: '#ffffff',
+  black: '#000000',
+  blue: '#007acc',
   'dark-blue': '#00577d',
-  'green': '#008743',
-  'red': '#eb001b',
-  'purple': '#ae4ac6',
-  'yellow': '#fff200',
+  green: '#008743',
+  red: '#eb001b',
+  purple: '#ae4ac6',
+  yellow: '#fff200',
   facebook: '#3b5998',
   linkedin: '#0077b5',
   twitter: '#1da1f2',
@@ -42,7 +43,7 @@ module.exports = {
     './gla_core_theme.theme',
     './tokens/*.story.mdx',
     // For classes added by Storybook decorators:
-    './storybook/.storybook/preview.js'
+    './storybook/.storybook/preview.js',
   ],
   darkMode: false,
   theme: {
@@ -61,11 +62,101 @@ module.exports = {
       print: { raw: 'print' },
     },
     borderRadius: {
-      'none': '0',
+      none: '0',
       DEFAULT: '4px',
-      '6': '6px',
+      6: '6px',
+    },
+    fontSize: {
+      base: [
+        '18px',
+        {
+          lineHeight: '30px',
+        },
+      ],
+      lg: [
+        '20px',
+        {
+          lineHeight: '30px',
+        },
+      ],
+      xl: [
+        '22px',
+        {
+          lineHeight: '25px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      xxl: [
+        '22px',
+        {
+          lineHeight: '32px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '2xl': [
+        '25px',
+        {
+          lineHeight: '35px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '3xl': [
+        '30px',
+        {
+          lineHeight: '35px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '4xl': [
+        '40px',
+        {
+          lineHeight: '40px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '5xl': [
+        '50px',
+        {
+          lineHeight: '50px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '6xl': [
+        '70px',
+        {
+          lineHeight: '70px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '7xl': [
+        '100px',
+        {
+          lineHeight: '100px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '8xl': [
+        '120px',
+        {
+          lineHeight: '120px',
+          letterSpacing: '0.25px',
+        },
+      ],
+      '9xl': [
+        '140px',
+        {
+          lineHeight: '140px',
+          letterSpacing: '0.25px',
+        },
+      ],
     },
     extend: {
+      spacing: {
+        'bs-grid': '15px',
+      },
+      margin: {
+        '-bs-grid': '-15px'
+      },
       typography: (theme) => ({
         // This function is used to style the rich-text component.
         // Take a look at https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
@@ -73,24 +164,44 @@ module.exports = {
         DEFAULT: {
           css: {
             color: theme('colors.text-grey'),
+            maxWidth: '74ch',
+            fontSize: null,
+            lineHeight: null,
             // Remove the anchor styling as that comes from our own SCSS.
             a: null,
             'ol > li::before': {
-              color: theme('colors.primary'),
+              color: theme('colors.dark-pink'),
             },
             'ul > li::before': {
-              backgroundColor: theme('colors.primary'),
+              backgroundColor: theme('colors.dark-pink'),
             },
             'code::before': {
-              content: '""'
+              content: '""',
             },
             'code::after': {
-              content: '""'
+              content: '""',
             },
             table: {
               fontSize: null,
               lineHeight: null,
+              backgroundColor: theme('colors.wild-sand'),
+              borderRadius: theme('borderRadius.6'),
+              overflow: 'hidden',
             },
+            'thead th': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            'th[scope="col"]': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            'th[scope="row"]': {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.grey'),
+            },
+            // We will provide our own intro/lead styles.
+            '[class~="lead"]': null,
           },
         },
       }),
@@ -98,6 +209,9 @@ module.exports = {
   },
   variants: {
     extend: {},
+  },
+  corePlugins: {
+    container: false,
   },
   plugins: [
     require('@tailwindcss/typography')({

@@ -46,9 +46,6 @@ Default.args = {
   link_content:
     'This is an unstyled link (so we can wrap all sorts of things inside links without having to override any default styling).',
 };
-Default.parameters = {
-  docs: { description: { story: 'This is a story description' } },
-};
 
 const richTextComponent = require('../rich-text/rich-text.twig');
 export const InsideRichText = Template.bind({});

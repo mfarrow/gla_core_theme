@@ -1,0 +1,110 @@
+.heading {
+}
+
+.heading--xl {
+  font-size: $t-font-size-6xl;
+  line-height: $t-font-size-6xl-line-height;
+  letter-spacing: $t-font-size-6xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-8xl;
+    line-height: $t-font-size-8xl-line-height;
+    letter-spacing: $t-font-size-8xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-9xl;
+    line-height: $t-font-size-9xl-line-height;
+    letter-spacing: $t-font-size-9xl-letter-spacing;
+  }
+}
+
+.heading--1 {
+  font-size: $t-font-size-5xl;
+  line-height: $t-font-size-5xl-line-height;
+  letter-spacing: $t-font-size-5xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-6xl;
+    line-height: $t-font-size-6xl-line-height;
+    letter-spacing: $t-font-size-6xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-7xl;
+    line-height: $t-font-size-7xl-line-height;
+    letter-spacing: $t-font-size-7xl-letter-spacing;
+  }
+}
+
+.heading--2 {
+  font-size: $t-font-size-4xl;
+  line-height: $t-font-size-4xl-line-height;
+  letter-spacing: $t-font-size-4xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-5xl;
+    line-height: $t-font-size-5xl-line-height;
+    letter-spacing: $t-font-size-5xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-6xl;
+    line-height: $t-font-size-6xl-line-height;
+    letter-spacing: $t-font-size-6xl-letter-spacing;
+  }
+}
+
+.heading--3 {
+  font-size: $t-font-size-3xl;
+  line-height: $t-font-size-3xl-line-height;
+  letter-spacing: $t-font-size-3xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-4xl;
+    line-height: $t-font-size-4xl-line-height;
+    letter-spacing: $t-font-size-4xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-5xl;
+    line-height: $t-font-size-5xl-line-height;
+    letter-spacing: $t-font-size-5xl-letter-spacing;
+  }
+}
+
+.heading--4 {
+  font-size: $t-font-size-2xl;
+  line-height: $t-font-size-2xl-line-height;
+  letter-spacing: $t-font-size-2xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-3xl;
+    line-height: $t-font-size-3xl-line-height;
+    letter-spacing: $t-font-size-3xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-4xl;
+    line-height: $t-font-size-4xl-line-height;
+    letter-spacing: $t-font-size-4xl-letter-spacing;
+  }
+}
+
+.heading--5 {
+  font-size: $t-font-size-xl;
+  line-height: $t-font-size-xl-line-height;
+  letter-spacing: $t-font-size-xl-letter-spacing;
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-2xl;
+    line-height: $t-font-size-2xl-line-height;
+    letter-spacing: $t-font-size-2xl-letter-spacing;
+  }
+
+  @include breakpoint($t-screens-xxl) {
+    font-size: $t-font-size-3xl;
+    line-height: $t-font-size-3xl-line-height;
+    letter-spacing: $t-font-size-3xl-letter-spacing;
+  }
+}

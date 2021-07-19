@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
-const colors = require('./tokens-module.js').screens;
+const screens = require('./tokens-module.js').screens;
 
 <Meta
   title="Tokens/Screens"
@@ -16,7 +16,7 @@ These breakpoint values are available in multiple formats:
 
 1. As
    [Tailwind responsive variants](https://tailwindcss.com/docs/responsive-design),
-   e.g. `md:flex`
+   e.g. `md:u-flex`
 2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-screens-sm`
 3. As values within a JavaScript object exported to `./tokens/tokens-object.js`,
    useful for using in client-side code
@@ -62,15 +62,15 @@ used in media queries, so their use is limited.
       </tr>
     </thead>
     <tbody>
-      {Object.keys(colors)
+      {Object.keys(screens)
         .filter((key) => key !== 'print')
         .map((key) => {
           return (
-            <tr>
+            <tr key={key}>
               <td>
                 <code>{key}</code>
               </td>
-              <td>{colors[key].value}</td>
+              <td>{screens[key].value}</td>
               <td>
                 <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
               </td>

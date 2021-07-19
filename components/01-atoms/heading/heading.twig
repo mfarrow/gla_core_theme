@@ -1,0 +1,24 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = attributes.addClass([
+  'heading',
+  'u-font-bold',
+]) %}
+
+{% if omit_base_class is empty %}
+  {% set heading_base_class = 'heading--' ~ heading_size %}
+  {% set attributes = attributes.addClass(heading_base_class) %}
+{% endif %}
+
+<h{{ heading_level }} {{ attributes }}>
+  {% if heading_url %}
+    {% include "@atoms/link/link.twig" with {
+      link_content: heading_content,
+      link_url: heading_url,
+      attributes: heading_link_attributes|default(create_attribute()),
+    } only %}
+  {% else %}
+    {% block heading_content %}
+      {{ heading_content }}
+    {% endblock %}
+  {% endif %}
+</h{{ heading_level }}>

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo ""
 echo "Starting to build theme…";
 echo "To avoid building the theme when Composer runs (e.g. locally) you can execute:"

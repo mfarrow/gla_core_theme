@@ -3,6 +3,8 @@ body {
   // For now, use Roboto with a system font stack fallback.
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: $t-font-size-base;
+  line-height: $t-font-size-base-line-height;
 }
 
 ::selection {
