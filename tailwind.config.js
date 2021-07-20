@@ -1,3 +1,4 @@
+// Use https://chir.ag/projects/name-that-color to name colours.
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
@@ -8,6 +9,7 @@ const colors = {
   'text-grey': '#333333',
   'off-white': '#efefef',
   'wild-sand': '#f5f5f5',
+  'mercury': '#e6e6e6',
   white: '#ffffff',
   black: '#000000',
   blue: '#007acc',
@@ -67,6 +69,12 @@ module.exports = {
       6: '6px',
     },
     fontSize: {
+      sm: [
+        '16px',
+        {
+          lineHeight: '19px',
+        },
+      ],
       base: [
         '18px',
         {
@@ -157,54 +165,7 @@ module.exports = {
       margin: {
         '-bs-grid': '-15px'
       },
-      typography: (theme) => ({
-        // This function is used to style the rich-text component.
-        // Take a look at https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
-        // to get an idea of how to customise the output.
-        DEFAULT: {
-          css: {
-            color: theme('colors.text-grey'),
-            maxWidth: '74ch',
-            fontSize: null,
-            lineHeight: null,
-            // Remove the anchor styling as that comes from our own SCSS.
-            a: null,
-            'ol > li::before': {
-              color: theme('colors.dark-pink'),
-            },
-            'ul > li::before': {
-              backgroundColor: theme('colors.dark-pink'),
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-            table: {
-              fontSize: null,
-              lineHeight: null,
-              backgroundColor: theme('colors.wild-sand'),
-              borderRadius: theme('borderRadius.6'),
-              overflow: 'hidden',
-            },
-            'thead th': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            'th[scope="col"]': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            'th[scope="row"]': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            // We will provide our own intro/lead styles.
-            '[class~="lead"]': null,
-          },
-        },
-      }),
+      typography: require('./components/01-atoms/rich-text/tailwind-typography-config'),
     },
   },
   variants: {
@@ -215,7 +176,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography')({
-      // Disable modifiers as we will handle different sizes etc ourselves.
+      // Disable modifiers as we will handle different sizes etc ourselves in our own SCSS.
       modifiers: [],
     }),
   ],

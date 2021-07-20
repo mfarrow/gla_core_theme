@@ -26,7 +26,8 @@
     "watch:js": "onchange -k './components/**/*.js' -e './components/**/*.story.js' -- onerror \"run-s build:js\" --title \"There was a JS formatting or syntax error\"",
     "watch:scss": "onchange -k './components/**/*.scss' -- onerror \"run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
     "watch:stories": "onchange -k './components/**/*.story.js' './tokens/*.story.mdx' -- onerror \"run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
-    "watch:tailwind": "onchange -k './tailwind.config.js' -- onerror \"npm run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\""
+    "watch:tailwind": "onchange -k './tailwind.config.js' -- onerror \"npm run-s build:css\" --title \"There was a CSS/SCSS/Postcss error\"",
+    "watch:tailwind-typography": "onchange -k './components/01-atoms/rich-text/tailwind-typography-config.js' -- onerror \"npm run-s postcss\" --title \"There was a Postcss error\""
   },
   "dependencies": {
     "@babel/cli": "^7.14.5",

@@ -1,5 +1,12 @@
 import { Meta } from '@storybook/addon-docs';
 const screens = require('./tokens-module.js').screens;
+const namesInDesigns = {
+  sm: 'Large mobile',
+  md: 'Tablet',
+  lg: 'Large tablet',
+  xl: 'Desktop',
+  xxl: 'XL Desktop',
+};
 
 <Meta
   title="Tokens/Screens"
@@ -26,6 +33,20 @@ These breakpoint values are available in multiple formats:
 They are also exported as CSS custom properties, but custom properties can't be
 used in media queries, so their use is limited.
 
+## A note on naming
+
+The naming scheme between the codebase and the designs is slightly different.
+The codebase assumes a mobile-first approach so has no need for a concept of a
+'mobile' breakpoint. The designs however provide a set of 'small mobile'
+screens, designed for a 320px device. When testing, assume that the 'small
+mobile' designs will be used for any device with a viewport width less than
+576px. The minimum screen width we support is 320px.
+
+A mapping of the codebase names and design names can be found in the table
+below.
+
+## Table of available tokens
+
 <div
   className={['u-overflow-auto']}
   role="region"
@@ -39,8 +60,9 @@ used in media queries, so their use is limited.
     <thead>
       <tr>
         <th>Key</th>
+        <th>Name in designs</th>
         <th>
-          <code>min-width</code> value
+          Viewport <code>min-width</code> value
         </th>
         <th>
           Usage with{' '}
@@ -70,6 +92,7 @@ used in media queries, so their use is limited.
               <td>
                 <code>{key}</code>
               </td>
+              <td>{namesInDesigns[key]}</td>
               <td>{screens[key].value}</td>
               <td>
                 <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
