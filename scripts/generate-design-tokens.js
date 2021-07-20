@@ -58,6 +58,10 @@ _.forEach(theme, function (value, key) {
           // add them straight into our tokens object.
           addToTokensObject([key, secondLevelKey], value);
         } else {
+          // Skip 'raw' CSS media queries.
+          if (!_.isUndefined(value['raw'])) {
+            return;
+          }
           // For objects (like color shades) we need to do a
           // final forOwn loop to make sure we add everything
           // in the right format.

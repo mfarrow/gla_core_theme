@@ -2,6 +2,7 @@ import { addParameters, addDecorator } from '@storybook/html';
 const drupalAttribute = require('drupal-attribute');
 import { create } from '@storybook/theming';
 const colors = require('../../tokens/tokens-module').colors;
+const screens = require('../../tokens/tokens-module').screens;
 
 // Include global CSS.
 import '../../dist/global.css';
@@ -16,6 +17,25 @@ import '../drupal';
 document.addEventListener('DOMContentLoaded', (event) => {
   Drupal.attachBehaviors(document);
 });
+
+// Use viewports from the design tokens to keep things DRY.
+const viewports = Object.keys(screens).reduce(function (
+  accumulator,
+  currentValue,
+) {
+  // Filter out non-string values.
+  if (screens[currentValue].value.includes('px')) {
+    accumulator[currentValue] = {
+      name: currentValue,
+      styles: {
+        width: screens[currentValue].value,
+        height: '100%',
+      },
+    };
+  }
+  return accumulator;
+},
+{});
 
 const theme = create({
   base: 'light',
@@ -71,7 +91,10 @@ addParameters({
     },
   },
   actions: {
-    argTypesRegex: "^on[A-Z].*"
+    argTypesRegex: '^on[A-Z].*',
+  },
+  viewport: {
+    viewports: viewports,
   },
 });
 
