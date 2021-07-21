@@ -1,3 +1,5 @@
+[![Drupal Code Quality](https://github.com/GreaterLondonAuthority/accelerator-core-theme/actions/workflows/drupal-code-quality.yml/badge.svg)](https://github.com/GreaterLondonAuthority/accelerator-core-theme/actions/workflows/drupal-code-quality.yml)
+
 # GLA core theme
 
 This theme is the core theme for GLA web properties and is included with the GLA
