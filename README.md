@@ -54,6 +54,21 @@ commit them. To update your previous commit with the changed files, you can
 `git add` the changed files then run `git commit --amend` to amend your previous
 commit.
 
+### Linting on commit
+
+GrumPHP is used to run ESLint and Stylelint via Git hooks. To avoid irritation
+when trying to commit, it's best to configure your IDE to show you ESLint and
+Stylelint warnings as you work.
+
+In PHPStorm, another good idea is to create a Scope that represents files
+belonging to the theme, then set up a File Watcher to run
+`node_modules/.bin/stylelint` and `node_modules/.bin/eslint` with the argument
+`$FilePathRelativeToProjectRoot$ --fix` to automatically fix errors whenever you
+save a file.
+
+A more manual workflow would be to run `npm run format && npm run lint` then
+`git add` the changed files before you commit.
+
 ## Creating a subtheme
 
 1. A basic script (`scripts/create-subtheme.sh`) is included to copy the theme

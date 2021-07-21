@@ -34,7 +34,12 @@ grumphp:
         - txt
         - md
     stylelint:
-      triggered_by: [css, scss]
+      triggered_by:
+        - css
+        - scss
       cache: true
     eslint:
-      triggered_by: [js, story.js, story.mdx]
+      triggered_by:
+        - js
+        - story.js
+        - story.mdx
