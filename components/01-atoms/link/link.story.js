@@ -33,7 +33,7 @@ export default {
     docs: {
       description: {
         component:
-          "By default, HTML anchor elements (links) are unstyled, as they could be used for any purpose. To get a recongisable 'link style', the link needs to be inside a `rich-text` component, given a `u-styled-link` utility class, or have a parent with the `u-styled-links` utility class.",
+          "By default, HTML anchor elements (links) are unstyled, as they could be used for any purpose. To get a recognisable 'link style', the link needs to be inside a `rich-text` component, given a `styled-link` utility class, or have a parent with the `styled-links` utility class.",
       },
     },
   },
@@ -68,14 +68,14 @@ export const InsideParentWithStyledLinksUtilityClass = Template.bind({});
 InsideParentWithStyledLinksUtilityClass.decorators = [
   (story) => {
     const richTextContent = `Nullam consequat, dui non placerat commodo, dui risus bibendum mauris, at condimentum lacus purus at dolor. ${story()}. Maecenas nec consequat est. Nullam venenatis nisi eget justo sagittis, eu molestie libero varius. In odio turpis, faucibus vel gravida vel, mattis vel dolor. ${story()}. Aenean id consectetur nunc. Phasellus non urna eu massa euismod pharetra nec a mi. Nullam nec commodo tortor. Curabitur consequat, nisl vel scelerisque laoreet, lectus odio porttitor neque, non commodo magna erat eu felis. Nullam id justo eleifend diam bibendum dictum non ut urna. ${story()}.`;
-    return `<div class="u-styled-links">${richTextContent}</div>`;
+    return `<div class="styled-links">${richTextContent}</div>`;
   },
 ];
 InsideParentWithStyledLinksUtilityClass.parameters = {
   docs: {
     description: {
       story:
-        'This anchor has link styling as it is inside a parent with the `u-styled-links` utility class. This utility class can be used to apply just the link styling without the `max-width`, `line-height` rules that are set by the `rich-text` component.',
+        'This anchor has link styling as it is inside a parent with the `styled-links` utility class. This utility class can be used to apply just the link styling without the `max-width`, `line-height` rules that are set by the `rich-text` component.',
     },
   },
 };
@@ -83,13 +83,13 @@ InsideParentWithStyledLinksUtilityClass.parameters = {
 export const WithStyledLinkUtilityClass = Template.bind({});
 WithStyledLinkUtilityClass.args = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass('u-styled-link'),
+  attributes: new drupalAttribute().addClass('styled-link'),
 };
 WithStyledLinkUtilityClass.parameters = {
   docs: {
     description: {
       story:
-        'To add link styling to an individual link you can use the `.u-styled-link` utility class. Make sure that the parent of the link has enough of a `line-height` value to leave room for the space taken up by the `text-underline-offset` and `text-decoration-thickness` values of the styled link.',
+        'To add link styling to an individual link you can use the `.styled-link` utility class. Make sure that the parent of the link has enough of a `line-height` value to leave room for the space taken up by the `text-underline-offset` and `text-decoration-thickness` values of the styled link.',
     },
   },
 };
@@ -103,7 +103,7 @@ const stateDemoDocs = {
 };
 const stateDemoArgs = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass('u-styled-link'),
+  attributes: new drupalAttribute().addClass('styled-link'),
 };
 
 export const StateDemoHover = Template.bind({});

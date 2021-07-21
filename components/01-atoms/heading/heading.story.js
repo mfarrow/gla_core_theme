@@ -49,7 +49,7 @@ export default {
     docs: {
       description: {
         component:
-          "By default, headings are unstyled, as they could be used for any purpose. To get a recongisable 'heading style', the heading needs to be inside a `rich-text` component, or given a `heading` component class along with a modifier class like `heading--2` or `heading--xl`.",
+          "By default, headings are unstyled, as they could be used for any purpose. To get a recognisable 'heading style', the heading needs to be inside a `rich-text` component, or given a `heading` component class along with a modifier class like `heading--2` or `heading--xl`.",
       },
     },
   },

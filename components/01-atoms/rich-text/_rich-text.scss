@@ -3,7 +3,7 @@
   // We could stick with `first-of-type` for this, or remove that rule and instead
   // configure CKEditor to allow using the `lead` class within the WYSIWYG.
   .lead,
-  & > p:first-of-type {
+  &:not(.rich-text--no-first-of-type-lead) > p:first-of-type {
     font-size: $t-font-size-lg;
     line-height: $t-font-size-lg-line-height;
 

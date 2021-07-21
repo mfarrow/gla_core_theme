@@ -1,8 +1,8 @@
 body {
   color: $t-colors-text-grey;
   // For now, use Roboto with a system font stack fallback.
-  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: $t-font-size-base;
   line-height: $t-font-size-base-line-height;
 }
@@ -10,4 +10,9 @@ body {
 ::selection {
   color: $t-colors-white;
   background: $t-colors-dark-pink;
+}
+
+small {
+  font-size: $t-font-size-sm;
+  line-height: $t-font-size-sm-line-height;
 }

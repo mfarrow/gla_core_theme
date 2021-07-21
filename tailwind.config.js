@@ -29,7 +29,7 @@ module.exports = {
   // JIT mode is in preview, and affects the devtools experience, but it's so fast and you never need to configure
   // what variants are enabled.
   // https://tailwindcss.com/docs/just-in-time-mode
-  mode: 'jit',
+  // mode: 'jit',
   // We give all utility classes a u- prefix to differentiate between Drupal, custom, or third-party classes.
   prefix: 'u-',
   // Mark all utilities as important to help prevent them being overridden. If this causes issues with

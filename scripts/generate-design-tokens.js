@@ -1,3 +1,4 @@
+// Based on https://dev.to/philw_/using-style-dictionary-to-transform-tailwind-config-into-scss-variables-css-custom-properties-and-javascript-via-design-tokens-24h5
 const resolveConfig = require('tailwindcss/resolveConfig');
 const tailwindConfig = require('../tailwind.config.js');
 const _ = require('lodash');
@@ -78,7 +79,7 @@ const tokenPrefix = 't-';
 const buildPath = './tokens/';
 
 const limitedFilter = (token) =>
-  ['colors', 'screens', 'spacing', 'fontFamily'].includes(
+  ['colors', 'screens', 'spacing'].includes(
     token.attributes.category,
   );
 

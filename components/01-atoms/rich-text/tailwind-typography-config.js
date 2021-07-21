@@ -30,25 +30,18 @@ module.exports = (theme) => ({
       'code::after': {
         content: '""',
       },
-      table: {
-        fontSize: null,
-        lineHeight: null,
-        backgroundColor: theme('colors.wild-sand'),
-        borderRadius: theme('borderRadius.6'),
-        overflow: 'hidden',
-      },
-      'thead th': {
-        color: theme('colors.white'),
-        backgroundColor: theme('colors.grey'),
-      },
-      'th[scope="col"]': {
-        color: theme('colors.white'),
-        backgroundColor: theme('colors.grey'),
-      },
-      'th[scope="row"]': {
-        color: theme('colors.white'),
-        backgroundColor: theme('colors.grey'),
-      },
+      // We will provide our own table styles.
+      table: null,
+      thead: null,
+      'thead th': null,
+      'tbody tr': null,
+      th: null,
+      'tbody tr:last-child': null,
+      'thead th:first-child': null,
+      'thead th:last-child': null,
+      'tbody td:first-child': null,
+      'tbody td:last-child': null,
+      'tbody td': null,
       // We will provide our own intro/lead styles.
       '[class~="lead"]': null,
       hr: {

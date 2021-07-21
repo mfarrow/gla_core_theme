@@ -1,4 +1,5 @@
 import dedent from 'ts-dedent';
+import drupalAttribute from 'drupal-attribute';
 
 const template = require('./rich-text.twig');
 
@@ -21,9 +22,11 @@ export default {
     docs: {
       description: {
         component: dedent(`
-          Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography) plugin that provides opinionated styling intended for WYSIWYG content.
-          
-          To override the styling, developers should edit \`theme.extend.typography\` inside \`tailwind.config.js\`. To get an idea of the styles available to override, see the [\`styles.js\` file from the plugin](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js).
+          Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography)
+          plugin that provides opinionated styling intended for WYSIWYG content.
+
+          To override the styling, developers should edit \`theme.extend.typography\` inside \`tailwind.config.js\`. To
+          get an idea of the styles available to override, see the [\`styles.js\` file from the plugin](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js).
         `),
       },
     },
@@ -172,89 +175,89 @@ Default.args = {
     <table>
       <thead>
         <tr>
-          <th>Wrestler</th>
-          <th>Origin</th>
-          <th>Finisher</th>
+          <th>Column header one</th>
+          <th>Column header two</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Bret &quot;The Hitman&quot; Hart</td>
-          <td>Calgary, AB</td>
-          <td>Sharpshooter</td>
+          <td>Row one, column one</td>
+          <td>Row one, column two</td>
         </tr>
         <tr>
-          <td>Stone Cold Steve Austin</td>
-          <td>Austin, TX</td>
-          <td>Stone Cold Stunner</td>
-        </tr>
-        <tr>
-          <td>Randy Savage</td>
-          <td>Sarasota, FL</td>
-          <td>Elbow Drop</td>
-        </tr>
-        <tr>
-          <td>Vader</td>
-          <td>Boulder, CO</td>
-          <td>Vader Bomb</td>
-        </tr>
-        <tr>
-          <td>Razor Ramon</td>
-          <td>Chuluota, FL</td>
-          <td>Razor&#39;s Edge</td>
+          <td>Row two, column one</td>
+          <td>Row two, column one</td>
         </tr>
       </tbody>
     </table>
+
     <table>
-      <caption>Delivery slots:</caption>
-      <tr>
-        <td></td>
-        <th scope="col">Monday</th>
-        <th scope="col">Tuesday</th>
-        <th scope="col">Wednesday</th>
-        <th scope="col">Thursday</th>
-        <th scope="col">Friday</th>
-      </tr>
-      <tr>
-        <th scope="row">09:00 - 11:00</th>
-        <td>Closed</td>
-        <td>Open</td>
-        <td>Open</td>
-        <td>Closed</td>
-        <td>Closed</td>
-      </tr>
-      <tr>
-        <th scope="row">11:00 - 13:00</th>
-        <td>Open</td>
-        <td>Open</td>
-        <td>Closed</td>
-        <td>Closed</td>
-        <td>Closed</td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>Row header one</th>
+          <td>Row one, column two</td>
+          <td>Row one, column three</td>
+        </tr>
+        <tr>
+          <th>Row header two</th>
+          <td>Row one, column two</td>
+          <td>Row one, column three</td>
+        </tr>
+        <tr>
+          <th>Row header three</th>
+          <td>Row one, column two</td>
+          <td>Row one, column three</td>
+        </tr>
+      </tbody>
     </table>
+
     <table>
-      <caption>Teddy bear collectors:</caption>
-      <tr>
-        <th scope="col">Last Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">City</th>
-      </tr>
-      <tr>
-        <td>Phoenix</td>
-        <td>Imari</td>
-        <td>Henry</td>
-      </tr>
-      <tr>
-        <td>Zeki</td>
-        <td>Rome</td>
-        <td>Min</td>
-      </tr>
-      <tr>
-        <td>Apirka</td>
-        <td>Kelly</td>
-        <td>Brynn</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Column header two</th>
+          <th>Column header three</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Row header two</th>
+          <td>Row two, column two</td>
+          <td>Row two, column three</td>
+        </tr>
+        <tr>
+          <th>Row header three</th>
+          <td>Row three, column two</td>
+          <td>Row three, column three</td>
+        </tr>
+      </tbody>
     </table>
+
+    <table>
+      <caption>
+        This is a caption for the table. Aliquam erat volutpat. Integer mattis mi in orci vulputate, sit amet lacinia turpis posuere. Vestibulum eros nunc, condimentum ut ex id, porttitor tempus tellus.
+      </caption>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Column header two</th>
+          <th>Column header three</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Row header two</th>
+          <td>Row two, column two</td>
+          <td>Row two, column three</td>
+        </tr>
+        <tr>
+          <th>Row header three</th>
+          <td>Row three, column two</td>
+          <td>Row three, column three</td>
+        </tr>
+      </tbody>
+    </table>
+
     <p>We also need to make sure inline code looks good, like if I wanted to talk about <code>&lt;span&gt;</code> elements or tell you the good news about <code>@tailwindcss/typography</code>.</p>
     <h3 id="sometimes-i-even-use-code-in-headings">Sometimes I even use <code>code</code> in headings</h3>
     <p>Even though it&#39;s probably a bad idea, and historically I&#39;ve had a hard time making it look good. This <em>&quot;wrap the code blocks in backticks&quot;</em> trick works pretty well though really.</p>
@@ -274,18 +277,33 @@ export const LeadParagraph = Template.bind({});
 LeadParagraph.args = {
   content: `
     <p>The first paragraph in the designs uses a larger 'intro' text size and line height.</p>
-    <p>Subsequent paragraphs use the normal base text size and line height.</p>
+    <p>This is currently using <code>p:first-of-type</code> but might need refactoring as we wouldn't want multiple 'lead' paragraphs when we have more than one Rich text component on a page.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
     <p class="lead">The intro styling can be forced on any paragraph by giving it the \`lead\` class.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
+    <p>To avoid the first paragraph being styled this way</p>
+  `,
+};
+
+export const NoLeadParagraph = Template.bind({});
+NoLeadParagraph.args = {
+  attributes: new drupalAttribute().addClass(
+    'rich-text--no-first-of-type-lead',
+  ),
+  content: `
+    <p>The first paragraph this story does not use a larger 'intro' text size and line height.</p>
+    <p>To disable the intro/lead styling add the <code>rich-text--no-first-of-type-lead</code> class to the component.</p>
   `,
 };
 
 export const HorizontalRule = Template.bind({});
 HorizontalRule.args = {
+  attributes: new drupalAttribute().addClass(
+    'rich-text--no-first-of-type-lead',
+  ),
   content: `
-    <p>The first paragraph in the designs uses a larger 'intro' text size and line height.</p>
+    <p>Paragraph text.</p>
     <hr>
-    <p>Subsequent paragraphs use the normal base text size and line height.</p>
+    <p>Paragraph text.</p>
   `,
 };
