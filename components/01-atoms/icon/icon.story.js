@@ -1,5 +1,5 @@
 import dedent from 'ts-dedent';
-import drupalAttribute from 'drupal-attribute';
+import DrupalAttribute from 'drupal-attribute';
 
 const template = require('./icon.twig');
 
@@ -40,7 +40,7 @@ export const Icon = Template.bind({});
 export const WithStyling = Template.bind({});
 WithStyling.args = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass([
+  attributes: new DrupalAttribute().addClass([
     'u-text-green',
     'hover:u-text-black',
     'u-transition-colors u-duration-300',
@@ -51,8 +51,8 @@ WithStyling.parameters = {
   docs: {
     description: {
       story: dedent(`
-        As long as the SVG sources use \`currentColor\` as a \`fill\` or \`stroke\` value then icons can be recoloured 
-        by using a text colour utility class like \`u-text-primary\` on the component. The icon component has a width 
+        As long as the SVG sources use \`currentColor\` as a \`fill\` or \`stroke\` value then icons can be recoloured
+        by using a text colour utility class like \`u-text-primary\` on the component. The icon component has a width
         and height of \`1em\` so it can be increased or decreased in size using text size utility classes.
       `),
     },

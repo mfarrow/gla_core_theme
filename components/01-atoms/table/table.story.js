@@ -1,4 +1,5 @@
 import dedent from 'ts-dedent';
+
 const scrollableTableWrapper = require('./scrollable-table.twig');
 const richTextComponent = require('../rich-text/rich-text.twig');
 
@@ -52,7 +53,7 @@ export default {
         component: dedent(`
           Tables are unstyled by default. To get a recognisable 'table style', the table needs to be inside a
           \`rich-text\` component or have the \`styled-table\` class.
-        `)
+        `),
       },
     },
   },
@@ -161,7 +162,10 @@ InsideRichText.parameters = {
   },
 };
 
-export const StyledTable = () => tableMarkupWithVarietyOfHeadingConfigurations.replace(/<table>/g, '<table class="styled-table">').replace(/<caption>/g, '<caption class="styled-links">');
+export const StyledTable = () =>
+  tableMarkupWithVarietyOfHeadingConfigurations
+    .replace(/<table>/g, '<table class="styled-table">')
+    .replace(/<caption>/g, '<caption class="styled-links">');
 StyledTable.parameters = {
   docs: {
     description: {
@@ -175,7 +179,8 @@ StyledTable.parameters = {
   },
 };
 
-export const ScrollableInsideRichText = () => tableMarkupWithMultipleLinesInSomeCells;
+export const ScrollableInsideRichText = () =>
+  tableMarkupWithMultipleLinesInSomeCells;
 ScrollableInsideRichText.decorators = [
   (story) => {
     return richTextComponent({
@@ -195,7 +200,11 @@ ScrollableInsideRichText.parameters = {
   },
 };
 
-export const ScrollableStyledTable = () => tableMarkupWithMultipleLinesInSomeCells.replace(/<table>/g, '<table class="styled-table">');
+export const ScrollableStyledTable = () =>
+  tableMarkupWithMultipleLinesInSomeCells.replace(
+    /<table>/g,
+    '<table class="styled-table">',
+  );
 ScrollableStyledTable.decorators = [
   (story) => {
     return richTextComponent({
@@ -216,4 +225,3 @@ ScrollableStyledTable.parameters = {
     },
   },
 };
-

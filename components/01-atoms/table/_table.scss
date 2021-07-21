@@ -4,26 +4,21 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
 .rich-text table,
 .styled-table {
   width: 100%;
-  table-layout: auto;
-  text-align: left;
   margin-top: $table-spacing-y;
   margin-bottom: $table-spacing-y;
-  background-color: $t-colors-white;
+  table-layout: auto;
   caption-side: top;
-  font-size: $t-font-size-sm;
-  line-height: $t-font-size-sm-line-height;
+  border-spacing: 0;
+  text-align: left;
   // We can't use border-collapse: collapse, otherwise we can't round our td elements.
   border-collapse: separate;
-  border-spacing: 0;
-
-  @include breakpoint($t-screens-xl) {
-    font-size: $t-font-size-base;
-    line-height: $t-line-height-5;
-  }
+  background-color: $t-colors-white;
+  font-size: $t-font-size-sm;
+  line-height: $t-font-size-sm-line-height;
 
   tbody td {
-    vertical-align: top;
     padding: $table-inner-spacing;
+    vertical-align: top;
 
     &:nth-of-type(even) {
       background-color: $t-colors-wild-sand;
@@ -31,8 +26,8 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   }
 
   caption {
-    text-align: left;
     margin-bottom: $t-spacing-6;
+    text-align: left;
     // The caption is styled more like paragraph text.
     font-size: $t-font-size-base;
     line-height: $t-font-size-base-line-height;
@@ -44,13 +39,13 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   }
 
   th {
-    vertical-align: top;
     padding: $table-inner-spacing;
-    color: #ffffff;
-    background-color: #353d42;
+    vertical-align: top;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.1);
     border-right-width: 1px;
     border-bottom-width: 1px;
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #353d42;
   }
 
   tbody tr td,
@@ -114,6 +109,11 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
 
   & > thead ~ tbody tr td:first-child {
     border-left-width: 1px;
+  }
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-base;
+    line-height: $t-line-height-5;
   }
 }
 

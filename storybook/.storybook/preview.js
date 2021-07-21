@@ -1,5 +1,5 @@
 import { addParameters, addDecorator } from '@storybook/html';
-const drupalAttribute = require('drupal-attribute');
+const DrupalAttribute = require('drupal-attribute');
 import { create } from '@storybook/theming';
 const colors = require('../../tokens/tokens-module').colors;
 const screens = require('../../tokens/tokens-module').screens;
@@ -115,7 +115,7 @@ export const globalTypes = {
 };
 
 const greyscaleDecorator = (story, context) => {
-  const attribute = new drupalAttribute();
+  const attribute = new DrupalAttribute();
   if (context.globals.greyscale) {
     attribute.addClass('u-filter u-grayscale');
   }

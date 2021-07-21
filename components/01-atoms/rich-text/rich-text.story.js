@@ -1,5 +1,5 @@
 import dedent from 'ts-dedent';
-import drupalAttribute from 'drupal-attribute';
+import DrupalAttribute from 'drupal-attribute';
 
 const template = require('./rich-text.twig');
 
@@ -287,7 +287,7 @@ LeadParagraph.args = {
 
 export const NoLeadParagraph = Template.bind({});
 NoLeadParagraph.args = {
-  attributes: new drupalAttribute().addClass(
+  attributes: new DrupalAttribute().addClass(
     'rich-text--no-first-of-type-lead',
   ),
   content: `
@@ -298,7 +298,7 @@ NoLeadParagraph.args = {
 
 export const HorizontalRule = Template.bind({});
 HorizontalRule.args = {
-  attributes: new drupalAttribute().addClass(
+  attributes: new DrupalAttribute().addClass(
     'rich-text--no-first-of-type-lead',
   ),
   content: `

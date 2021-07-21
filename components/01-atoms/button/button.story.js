@@ -1,9 +1,7 @@
-import drupalAttribute from 'drupal-attribute';
+import DrupalAttribute from 'drupal-attribute';
 import dedent from 'ts-dedent';
 
 const template = require('./button.twig');
-// Import example JavaScript file to demonstrate Drupal behaviours in Storybook:
-import './button';
 
 export default {
   title: 'Atoms/Button',
@@ -74,7 +72,7 @@ WithNoUrl.args = {
   button_url: null,
   button_content: `Click me, I'm not a link`,
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().setAttribute(
+  attributes: new DrupalAttribute().setAttribute(
     'onclick',
     "alert('👋 Thanks for clicking!')",
   ),
@@ -84,7 +82,7 @@ WithNoUrl.parameters = {
     description: {
       story: dedent(`
         If no \`button_url\` value is passed to the component then a HTML \`button\` element will be used instead of an \`a\` element.
-        
+
         This is useful for when a button needs to fire a JavaScript event rather than take the user to a new page.
       `),
     },

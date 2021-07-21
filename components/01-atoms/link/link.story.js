@@ -1,4 +1,4 @@
-import drupalAttribute from 'drupal-attribute';
+import DrupalAttribute from 'drupal-attribute';
 
 const template = require('./link.twig');
 
@@ -48,6 +48,7 @@ Default.args = {
 };
 
 const richTextComponent = require('../rich-text/rich-text.twig');
+
 export const InsideRichText = Template.bind({});
 InsideRichText.decorators = [
   (story) => {
@@ -83,7 +84,7 @@ InsideParentWithStyledLinksUtilityClass.parameters = {
 export const WithStyledLinkUtilityClass = Template.bind({});
 WithStyledLinkUtilityClass.args = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass('styled-link'),
+  attributes: new DrupalAttribute().addClass('styled-link'),
 };
 WithStyledLinkUtilityClass.parameters = {
   docs: {
@@ -103,7 +104,7 @@ const stateDemoDocs = {
 };
 const stateDemoArgs = {
   // eslint-disable-next-line new-cap
-  attributes: new drupalAttribute().addClass('styled-link'),
+  attributes: new DrupalAttribute().addClass('styled-link'),
 };
 
 export const StateDemoHover = Template.bind({});

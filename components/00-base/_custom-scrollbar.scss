@@ -2,18 +2,18 @@
   scrollbar-color: $t-colors-primary $t-colors-grey;
 
   &::-webkit-scrollbar {
-    background: $t-colors-grey;
     border-radius: $t-border-radius-6;
+    background: $t-colors-grey;
   }
 
   &::-webkit-scrollbar-track {
-    background: $t-colors-grey;
     border-radius: $t-border-radius-6;
+    background: $t-colors-grey;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $t-colors-primary;
     border-radius: $t-border-radius-6;
+    background-color: $t-colors-primary;
   }
 
   @media (pointer: coarse) {

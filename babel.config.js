@@ -26,7 +26,5 @@ module.exports = {
       plugins: [['@comandeer/babel-plugin-banner', false]],
     },
   },
-  ignore: [
-    (filename) => filename.match(/\.story\.js?$/)
-  ]
+  ignore: [(filename) => filename.match(/\.story\.js?$/)],
 };

@@ -9,7 +9,7 @@ const colors = {
   'text-grey': '#333333',
   'off-white': '#efefef',
   'wild-sand': '#f5f5f5',
-  'mercury': '#e6e6e6',
+  mercury: '#e6e6e6',
   white: '#ffffff',
   black: '#000000',
   blue: '#007acc',
@@ -163,8 +163,9 @@ module.exports = {
         'bs-grid': '15px',
       },
       margin: {
-        '-bs-grid': '-15px'
+        '-bs-grid': '-15px',
       },
+      // eslint-disable-next-line global-require
       typography: require('./components/01-atoms/rich-text/tailwind-typography-config'),
     },
   },
@@ -175,6 +176,7 @@ module.exports = {
     container: false,
   },
   plugins: [
+    // eslint-disable-next-line global-require
     require('@tailwindcss/typography')({
       // Disable modifiers as we will handle different sizes etc ourselves in our own SCSS.
       modifiers: [],

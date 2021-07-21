@@ -1,5 +1,3 @@
-import drupalAttribute from 'drupal-attribute';
-
 const template = require('./heading.twig');
 
 export default {

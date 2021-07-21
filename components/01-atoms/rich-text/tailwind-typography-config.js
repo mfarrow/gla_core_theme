@@ -1,11 +1,3 @@
-const round = (num) =>
-  num
-    .toFixed(7)
-    .replace(/(\.[0-9]+?)0+$/, '$1')
-    .replace(/\.0$/, '');
-const rem = (px) => `${round(px / 16)}rem`;
-const em = (px, base) => `${round(px / base)}em`;
-
 module.exports = (theme) => ({
   // This function is used to style the rich-text component.
   // Take a look at https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js

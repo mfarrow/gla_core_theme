@@ -5,10 +5,10 @@ const {
   TwingLoaderFilesystem,
 } = require('twing');
 
-const drupalAttribute = require('drupal-attribute');
+const DrupalAttribute = require('drupal-attribute');
 
 const createAttribute = new TwingFunction('create_attribute', function () {
-  return new drupalAttribute();
+  return new DrupalAttribute();
 });
 
 const attachLibrary = new TwingFunction(
