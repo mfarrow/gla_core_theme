@@ -60,11 +60,10 @@ GrumPHP is used to run ESLint and Stylelint via Git hooks. To avoid irritation
 when trying to commit, it's best to configure your IDE to show you ESLint and
 Stylelint warnings as you work.
 
-In PHPStorm, another good idea is to create a Scope that represents files
-belonging to the theme, then set up a File Watcher to run
-`node_modules/.bin/stylelint` and `node_modules/.bin/eslint` with the argument
-`$FilePathRelativeToProjectRoot$ --fix` to automatically fix errors whenever you
-save a file.
+In PHPStorm, the ESLint plugin can be set to automatically fix files on save.
+There is also a [Prettier](https://plugins.jetbrains.com/plugin/10456-prettier)
+plugin that can automatically format files on save. For Stylelint, you could
+create a File Watcher and use a Scope to limit it to certain directories.
 
 A more manual workflow would be to run `npm run format && npm run lint` then
 `git add` the changed files before you commit.
