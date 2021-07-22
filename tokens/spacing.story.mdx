@@ -1,115 +1,90 @@
 import { Meta } from '@storybook/addon-docs';
-const screens = require('./tokens-module.js').screens;
-const namesInDesigns = {
-  sm: 'Large mobile',
-  md: 'Tablet',
-  lg: 'Large tablet',
-  xl: 'Desktop',
-  xxl: 'XL Desktop',
-};
+const spacing = require('./tokens-module.js').spacing;
 
 <Meta
-  title="Tokens/Screens"
+  title="Tokens/Spacing"
   parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
 />
 
-# Screens/Breakpoints
+# Spacing values
 
-The site's layout is built largely using a set of min-width breakpoints based on
-[Bootstrap's](https://getbootstrap.com/docs/5.0/layout/breakpoints/) but with a
-greater value for the `xxl` breakpoint.
+The site is built using a spacing scale to ensure consistency and harmony and to
+help prevent the use of 'magic numbers' and inconsistency in the codebase.
 
-These breakpoint values are available in multiple formats:
+## A note on spacing for testing
 
-1. As
-   [Tailwind responsive variants](https://tailwindcss.com/docs/responsive-design),
-   e.g. `md:u-flex`
-2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-screens-sm`
-3. As values within a JavaScript object exported to `./tokens/tokens-object.js`,
-   useful for using in client-side code
-4. As values within a CommonJS module exported to `./tokens/tokens-module.js`,
-   useful for using in Node scripts
+Because we can only use spacing values from this specific scale, sometimes we
+will not perfectly match the designs. This is intentional, and the goal is to
+keep the site consistent. Designs are hand-made and so often human error leads
+to inconsistency creeping in, for example an element may have 31px of spacing
+above it but 33px spacing below it. These little differences are generally not
+intentional, and so during development we remove the inconsistency by
+standardising the values to a value found in our scale, for example using 32px
+above and below.
 
-They are also exported as CSS custom properties, but custom properties can't be
-used in media queries, so their use is limited.
+## The scale
 
-## A note on naming
+The spacing scale is based on
+[Tailwind's](https://tailwindcss.com/docs/customizing-spacing) and is used to
+generate:
 
-The naming scheme between the codebase and the designs is slightly different.
-The codebase assumes a mobile-first approach so has no need for a concept of a
-'mobile' breakpoint. The designs however provide a set of 'small mobile'
-screens, designed for a 320px device. When testing, assume that the 'small
-mobile' designs will be used for any device with a viewport width less than
-576px. The minimum screen width we support is 320px.
-
-A mapping of the codebase names and design names can be found in the table
-below.
-
-## Table of available tokens
+- Margin utility classes, e.g. `u-m-4`, `u-my-4`, `u-mx-4`, `u-mt-4`, `u-mr-4`,
+  `u-mb-4`, `u-ml-4`
+- Padding utility classes, e.g. `u-p-4`, `u-py-4`, `u-px-4`, `u-pt-4`, `u-pr-4`,
+  `u-pb-4`, `u-pl-4`
+- Height, width, max-height, min-height, max-width, min-width utility classes,
+  e.g. `u-w-4`, `u-h-4`, `u-max-w-4`, `u-min-h-4`
+- Spacing utility classes using the
+  [lobotomised owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls),
+  e.g. `u-space-x-4`, `u-space-y-4`
+- CSS custom properties, e.g. `--t-spacing-4`
+- SCSS variables, e.g. `$t-spacing-4`
 
 <div
   className={['u-overflow-auto']}
   role="region"
-  aria-labelledby="ScreensTableCaption"
+  aria-labelledby="SpacingTableCaption"
   tabindex="0"
 >
   <table>
-    <caption id="ScreensTableCaption" className={'u-sr-only'}>
-      Screens/breakpoints
+    <caption id="SpacingTableCaption" className={'u-sr-only'}>
+      Spacing values
     </caption>
     <thead>
       <tr>
         <th>Key</th>
-        <th>Name in designs</th>
-        <th>
-          Viewport <code>min-width</code> value
-        </th>
-        <th>
-          Usage with{' '}
-          <a
-            href={
-              'https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries'
-            }
-          >
-            Breakpoint Sass
-          </a>
-        </th>
-        <th>
-          Usage with{' '}
-          <a href={'https://tailwindcss.com/docs/responsive-design'}>
-            Tailwind responsive variants
-          </a>
-        </th>
-        <th>Usage with JavaScript object</th>
+        <th>Size</th>
+        <th>Size in pixels</th>
+        <th>Demonstration</th>
       </tr>
     </thead>
     <tbody>
-      {Object.keys(screens)
-        .filter((key) => key !== 'print')
-        .map((key) => {
-          return (
-            <tr key={key}>
-              <td>
-                <code>{key}</code>
-              </td>
-              <td>{namesInDesigns[key]}</td>
-              <td>{screens[key].value}</td>
-              <td>
-                <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
-              </td>
-              <td>
-                <code>{`<div class="${key}:flex">…</div>`}</code>
-              </td>
-              <td>
-                <code>
-                  {'window.matchMedia(`(min-width: ${_designTokens.screens.' +
-                    key +
-                    '})`).matches'}
-                </code>
-              </td>
-            </tr>
-          );
-        })}
+      {Object.keys(spacing).map((key) => {
+        const size = spacing[key].value;
+        let sizeInPixels = null;
+        if (size.includes('rem')) {
+          sizeInPixels = parseFloat(spacing[key].value) * 16 + 'px';
+        }
+        if (size.includes('px')) {
+          sizeInPixels = size;
+        }
+        return (
+          <tr key={key}>
+            <td>
+              <code>{key}</code>
+            </td>
+            <td>{size}</td>
+            <td>{sizeInPixels}</td>
+            <td>
+              <div
+                className={`u-bg-primary u-h-4`}
+                style={{ width: spacing[key].value }}
+              />
+            </td>
+          </tr>
+        );
+      })}
     </tbody>
+
   </table>
 </div>
