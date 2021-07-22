@@ -5,8 +5,9 @@ const colors = require('../../tokens/tokens-module').colors;
 const screens = require('../../tokens/tokens-module').screens;
 
 // Include global CSS.
+// The Tailwind file is added in preview-head.html instead, for performance reasons
+// when working with the un-purged, local development copy of the CSS.
 import '../../dist/global.css';
-import '../../dist/utilities.css';
 
 // Include global JS.
 import '../../libraries/what-input/dist/what-input.min';
@@ -94,7 +95,16 @@ addParameters({
     argTypesRegex: '^on[A-Z].*',
   },
   viewport: {
-    viewports: viewports,
+    viewports: {
+      min: {
+        name: 'min',
+        styles: {
+          width: '320px',
+          height: '100%',
+        },
+      },
+      ...viewports,
+    },
   },
 });
 

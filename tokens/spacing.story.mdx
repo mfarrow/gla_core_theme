@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs';
+const screens = require('./tokens-module.js').screens;
+const namesInDesigns = {
+  sm: 'Large mobile',
+  md: 'Tablet',
+  lg: 'Large tablet',
+  xl: 'Desktop',
+  xxl: 'XL Desktop',
+};
+
+<Meta
+  title="Tokens/Screens"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
+
+# Screens/Breakpoints
+
+The site's layout is built largely using a set of min-width breakpoints based on
+[Bootstrap's](https://getbootstrap.com/docs/5.0/layout/breakpoints/) but with a
+greater value for the `xxl` breakpoint.
+
+These breakpoint values are available in multiple formats:
+
+1. As
+   [Tailwind responsive variants](https://tailwindcss.com/docs/responsive-design),
+   e.g. `md:u-flex`
+2. As SCSS variables with a `t-` (for token) prefix, e.g. `$t-screens-sm`
+3. As values within a JavaScript object exported to `./tokens/tokens-object.js`,
+   useful for using in client-side code
+4. As values within a CommonJS module exported to `./tokens/tokens-module.js`,
+   useful for using in Node scripts
+
+They are also exported as CSS custom properties, but custom properties can't be
+used in media queries, so their use is limited.
+
+## A note on naming
+
+The naming scheme between the codebase and the designs is slightly different.
+The codebase assumes a mobile-first approach so has no need for a concept of a
+'mobile' breakpoint. The designs however provide a set of 'small mobile'
+screens, designed for a 320px device. When testing, assume that the 'small
+mobile' designs will be used for any device with a viewport width less than
+576px. The minimum screen width we support is 320px.
+
+A mapping of the codebase names and design names can be found in the table
+below.
+
+## Table of available tokens
+
+<div
+  className={['u-overflow-auto']}
+  role="region"
+  aria-labelledby="ScreensTableCaption"
+  tabindex="0"
+>
+  <table>
+    <caption id="ScreensTableCaption" className={'u-sr-only'}>
+      Screens/breakpoints
+    </caption>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Name in designs</th>
+        <th>
+          Viewport <code>min-width</code> value
+        </th>
+        <th>
+          Usage with{' '}
+          <a
+            href={
+              'https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries'
+            }
+          >
+            Breakpoint Sass
+          </a>
+        </th>
+        <th>
+          Usage with{' '}
+          <a href={'https://tailwindcss.com/docs/responsive-design'}>
+            Tailwind responsive variants
+          </a>
+        </th>
+        <th>Usage with JavaScript object</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.keys(screens)
+        .filter((key) => key !== 'print')
+        .map((key) => {
+          return (
+            <tr key={key}>
+              <td>
+                <code>{key}</code>
+              </td>
+              <td>{namesInDesigns[key]}</td>
+              <td>{screens[key].value}</td>
+              <td>
+                <code>{`@include breakpoint($t-screens-${key}) {…}`}</code>
+              </td>
+              <td>
+                <code>{`<div class="${key}:flex">…</div>`}</code>
+              </td>
+              <td>
+                <code>
+                  {'window.matchMedia(`(min-width: ${_designTokens.screens.' +
+                    key +
+                    '})`).matches'}
+                </code>
+              </td>
+            </tr>
+          );
+        })}
+    </tbody>
+  </table>
+</div>

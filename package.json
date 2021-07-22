@@ -19,7 +19,7 @@
     "format:prettier": "prettier --write --loglevel warn '*.{js,json,scss,md,yml,yaml}' './components/**/*.{js,json,scss,md,yml,yaml,story.js,story.mdx}'",
     "icons": "node scripts/generate-svg-sprite.js && node scripts/generate-icons-list.js",
     "lint": "run-s lint:**",
-    "lint:eslint": "eslint --fix '*.js' './components/**/*.{js,story.js,story.mdx}' --cache",
+    "lint:eslint": "eslint --fix '*.js' './components/**/*.{js,story.js}' --cache",
     "lint:stylelint": "stylelint --fix './components/**/*.scss' --cache",
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",

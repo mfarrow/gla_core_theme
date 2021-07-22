@@ -1,6 +1,8 @@
 import dedent from 'ts-dedent';
 import DrupalAttribute from 'drupal-attribute';
 
+import * as ExampleTableMarkup from '../table/example-markup';
+
 const template = require('./rich-text.twig');
 
 export default {
@@ -305,5 +307,32 @@ HorizontalRule.args = {
     <p>Paragraph text.</p>
     <hr>
     <p>Paragraph text.</p>
+  `,
+};
+
+export const ExampleUsingContentFromDesigns = Template.bind({});
+ExampleUsingContentFromDesigns.args = {
+  content: `
+    <p>Concept of the number one the carbon in our apple pies intelligent beings light years corpus callosum tesseract? Network of wormholes the sky calls to us dispassionate extraterrestrial observer two ghostly white figures in coveralls and helmets are softly dancing dispassionate extraterrestrial observer Cambrian explosion. Descended from astronomers from which we spring.</p>
+    <p>Vangelis finite but unbounded realm of the galaxies from which we spring paroxysm of global death colonies? Stirred by starlight vastness is bearable only through love preserve and cherish that pale blue dot with pretty stories for which there's little good evidence of brilliant syntheses the ash of stellar alchemy. Made in the interiors of collapsing stars invent the universe hearts of the stars a very small stage in a vast cosmic arena extraordinary claims require extraordinary evidence citizens of distant epochs?</p>
+    <h3>Example of a H3, not shown in designs but we <a href="https://london.atlassian.net/wiki/spaces/DERP/pages/2967568421/Rich+text+component">need one</a></h3>
+    <p>Muse about descended from astronomers quasar Orion's sword made in the interiors of collapsing stars courage of our questions. Take root and flourish worldlets gathered by gravity preserve and cherish that pale blue dot prime number a mote of dust suspended in a sunbeam? Cosmic fugue network of wormholes vastness is bearable only through love realm of the galaxies vanquish the impossible hundreds of thousands. A mote of dust suspended in a sunbeam kindling the energy hidden in matter courage of our questions a still more glorious dawn awaits finite but unbounded a still more glorious dawn awaits.</p>
+    <h4>Subheader title goes here (H4)</h4>
+    <p>Great turbulent clouds the sky calls to us a mote of dust suspended in a sunbeam explorations take root and flourish Tunguska event? Are creatures of the cosmos finite but unbounded gathered by gravity with pretty stories for which there's little good evidence across the centuries extraordinary claims require extraordinary evidence. Vanquish the impossible invent the universe a very small stage in a vast cosmic arena network of wormholes star stuff harvesting star light encyclopaedia galactica.</p>
+    <h5>Smaller subheader title goes here (H5)</h5>
+    <ul>
+      <li>Brain is the seed of intelligence concept of the number one culture</li>
+      <li>Inconspicuous motes of rock and gas Sea of Tranquility </li>
+      <li>The ash of stellar alchemy stirred by starlight from which we spring</li>
+      <li>Kindling the energy hidden in matter venture the sky calls to us as a patch of light the only home we've ever known</li>
+    </ul>
+    <hr>
+    <h3>Table title goes here</h3>
+    <p>Intelligent beings encyclopaedia galactica prime number Euclid quasar rings of Uranus.<br>Descended from astronomers Apollonius of Perga Apollonius of Perga globular star cluster Hypatia the ash of stellar alchemy.</p>
+    <p>We're showing more types of tables than in the designs, as the Rich text component supports a variety of table header configurations.</p>
+    ${ExampleTableMarkup.tableMarkupWithVarietyOfHeadingConfigurations}
+    <hr>
+    <p>We're ignoring the quotes as they come from their own component. This means they will need to have more spacing above and below them than shown in the designs.</p>
+    <p>We're ignoring the forms as they come from their own component. This means they will need to have more spacing above and below them than shown in the designs.</p>
   `,
 };

@@ -42,4 +42,3 @@ grumphp:
       triggered_by:
         - js
         - story.js
-        - story.mdx
