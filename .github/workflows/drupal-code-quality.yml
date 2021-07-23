@@ -7,22 +7,27 @@ jobs:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
       - name: Check out repository code
         uses: actions/checkout@v2
+ 
       - name: Cache Composer dependencies
         uses: actions/cache@v2
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}  
+
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "The workflow is now ready to test your code on the runner."
       - run: cd ${{ github.workspace }}
-      - run: echo "Authenticate composer against the private packagist"
-      - run: composer config --global --auth http-basic.repo.packagist.com ci-test ${{ secrets.auth }}
-      - name: Load Composer dependencies
+
+      - run: echo "Export composer auth file"
+      - run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
+      - name: Install composer dependencies
         uses: php-actions/composer@v6
         with:
           php_version: 8.0
           version: 2
+
       - name: Test codebase with grumPHP
         run: ./vendor/bin/grumphp run
