@@ -1,7 +1,123 @@
+@import "~typi/scss/typi";
+
+$breakpoints: (
+  small: $t-screens-sm,
+  medium: $t-screens-md,
+  large: $t-screens-lg,
+  xl: $t-screens-xl,
+  xxl: $t-screens-xxl,
+);
+
+$typi: (
+  base: (
+    null: (
+      $t-font-size-sm,
+      $t-font-size-sm-line-height,
+    ),
+  ),
+  h1: (
+    null: (
+      $t-font-size-5xl,
+      $t-font-size-5xl-line-height,
+    ),
+    xl: (
+      $t-font-size-6xl,
+      $t-font-size-6xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-7xl,
+      $t-font-size-7xl-line-height,
+    ),
+  ),
+  h2: (
+    null: (
+      $t-font-size-4xl,
+      $t-font-size-4xl-line-height,
+    ),
+    xl: (
+      $t-font-size-5xl,
+      $t-font-size-5xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-6xl,
+      $t-font-size-6xl-line-height,
+    ),
+  ),
+  h3: (
+    null: (
+      $t-font-size-3xl,
+      $t-font-size-3xl-line-height,
+    ),
+    xl: (
+      $t-font-size-4xl,
+      $t-font-size-4xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-5xl,
+      $t-font-size-5xl-line-height,
+    ),
+  ),
+  h4: (
+    null: (
+      $t-font-size-2xl,
+      $t-font-size-2xl-line-height,
+    ),
+    xl: (
+      $t-font-size-3xl,
+      $t-font-size-3xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-4xl,
+      $t-font-size-4xl-line-height,
+    ),
+  ),
+  h5: (
+    null: (
+      $t-font-size-xl,
+      $t-font-size-xl-line-height,
+    ),
+    xl: (
+      $t-font-size-2xl,
+      $t-font-size-2xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-3xl,
+      $t-font-size-3xl-line-height,
+    ),
+  ),
+  h6: (
+    null: (
+      $t-font-size-lg,
+      $t-font-size-lg-line-height,
+    ),
+  ),
+  hxl: (
+    null: (
+      $t-font-size-6xl,
+      $t-font-size-6xl-line-height,
+    ),
+    xl: (
+      $t-font-size-8xl,
+      $t-font-size-8xl-line-height,
+    ),
+    xxl: (
+      $t-font-size-9xl,
+      $t-font-size-9xl-line-height,
+    ),
+  ),
+);
+
+@include typi-init;
+@include typi-create-classes;
+
 body {
   color: $t-colors-text-grey;
-  font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+  // Arial with a system font fallback.
+  font-family: Arial, system-ui, -apple-system, "Segoe UI", Helvetica, Roboto,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  // We use 16px as our font size on the html element so 1rem = 16px, but we
+  // bump up the font size and line height on the body element to match the
+  // designs.
   font-size: $t-font-size-base;
   line-height: $t-font-size-base-line-height;
 }

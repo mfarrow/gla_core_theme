@@ -90,3 +90,9 @@ five.args = {
   heading_level: '5',
   heading_size: '5',
 };
+
+export const six = Template.bind({});
+six.args = {
+  heading_level: '6',
+  heading_size: '6',
+};

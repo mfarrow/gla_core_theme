@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region <div>.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+  {#
+    Some temporary layout classes just to make QA easier until we have a proper page layout and the Page section
+    component to help manage layout. Feel free to remove these later as they will affect things like full bleed
+    backgrounds.
+  #}
+  <div{{ attributes.addClass([
+    'container u-mx-auto u-px-bs-grid',
+  ]) }}>
+    {{ content }}
+  </div>
+{% endif %}

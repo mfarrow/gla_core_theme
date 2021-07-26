@@ -1,0 +1,7 @@
+// These styles will be attached to admin admin routes. More often than not,
+// this removes the need to create a custom admin theme. A similar approach
+// (see gla_core_theme_preprocess_page) can be used for JavaScript too.
+
+.filter-wrapper {
+  display: none;
+}

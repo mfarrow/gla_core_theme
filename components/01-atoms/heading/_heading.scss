@@ -1,111 +1,96 @@
-.heading {
-  font-weight: bold;
+// .h1, .h2 font-size classes are created by Typi in
+// components/00-base/_text.scss.
+
+@for $i from 1 through 6 {
+  .h#{$i},
+  .rich-text h#{$i} {
+    font-weight: bold;
+  }
+
+  .rich-text {
+    h#{$i} {
+      $heading-level: "h#{$i}";
+      @include typi($heading-level);
+    }
+  }
 }
 
-.heading--xl {
+.hxl {
+  @include typi("hxl");
+
   letter-spacing: $t-font-size-6xl-letter-spacing;
-  font-size: $t-font-size-6xl;
-  line-height: $t-font-size-6xl-line-height;
+  font-weight: bold;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-8xl-letter-spacing;
-    font-size: $t-font-size-8xl;
-    line-height: $t-font-size-8xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-9xl-letter-spacing;
-    font-size: $t-font-size-9xl;
-    line-height: $t-font-size-9xl-line-height;
   }
 }
 
-.heading--1 {
+.h1,
+.rich-text h1 {
   letter-spacing: $t-font-size-5xl-letter-spacing;
-  font-size: $t-font-size-5xl;
-  line-height: $t-font-size-5xl-line-height;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-6xl-letter-spacing;
-    font-size: $t-font-size-6xl;
-    line-height: $t-font-size-6xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-7xl-letter-spacing;
-    font-size: $t-font-size-7xl;
-    line-height: $t-font-size-7xl-line-height;
   }
 }
 
-.heading--2 {
+.h2,
+.rich-text h2 {
   letter-spacing: $t-font-size-4xl-letter-spacing;
-  font-size: $t-font-size-4xl;
-  line-height: $t-font-size-4xl-line-height;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-5xl-letter-spacing;
-    font-size: $t-font-size-5xl;
-    line-height: $t-font-size-5xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-6xl-letter-spacing;
-    font-size: $t-font-size-6xl;
-    line-height: $t-font-size-6xl-line-height;
   }
 }
 
-.heading--3 {
+.h3,
+.rich-text h3 {
   letter-spacing: $t-font-size-3xl-letter-spacing;
-  font-size: $t-font-size-3xl;
-  line-height: $t-font-size-3xl-line-height;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-4xl-letter-spacing;
-    font-size: $t-font-size-4xl;
-    line-height: $t-font-size-4xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-5xl-letter-spacing;
-    font-size: $t-font-size-5xl;
-    line-height: $t-font-size-5xl-line-height;
   }
 }
 
-.heading--4 {
+.h4,
+.rich-text h4 {
   letter-spacing: $t-font-size-2xl-letter-spacing;
-  font-size: $t-font-size-2xl;
-  line-height: $t-font-size-2xl-line-height;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-3xl-letter-spacing;
-    font-size: $t-font-size-3xl;
-    line-height: $t-font-size-3xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-4xl-letter-spacing;
-    font-size: $t-font-size-4xl;
-    line-height: $t-font-size-4xl-line-height;
   }
 }
 
-.heading--5 {
+.h5,
+.rich-text h5 {
   letter-spacing: $t-font-size-xl-letter-spacing;
-  font-size: $t-font-size-xl;
-  line-height: $t-font-size-xl-line-height;
 
   @include breakpoint($t-screens-xl) {
     letter-spacing: $t-font-size-2xl-letter-spacing;
-    font-size: $t-font-size-2xl;
-    line-height: $t-font-size-2xl-line-height;
   }
 
   @include breakpoint($t-screens-xxl) {
     letter-spacing: $t-font-size-3xl-letter-spacing;
-    font-size: $t-font-size-3xl;
-    line-height: $t-font-size-3xl-line-height;
   }
 }

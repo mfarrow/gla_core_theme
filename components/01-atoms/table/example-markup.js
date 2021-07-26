@@ -1,4 +1,6 @@
-export const tableMarkupWithVarietyOfHeadingConfigurations = `<table>
+const scrollableTableWrapper = require('./scrollable-table.twig');
+
+const tableWithThead = `<table>
   <thead>
     <tr>
       <th>Column header one</th>
@@ -15,9 +17,9 @@ export const tableMarkupWithVarietyOfHeadingConfigurations = `<table>
       <td>Row two, column one</td>
     </tr>
   </tbody>
-</table>
+</table>`;
 
-<table>
+const tableWithNoTheadButRowHeaders = `<table>
   <tbody>
     <tr>
       <th>Row header one</th>
@@ -35,9 +37,9 @@ export const tableMarkupWithVarietyOfHeadingConfigurations = `<table>
       <td>Row one, column three</td>
     </tr>
   </tbody>
-</table>
+</table>`;
 
-<table>
+const tableWithTheadAndRowAndColumnHeaders = `<table>
   <thead>
     <tr>
       <th>&nbsp;</th>
@@ -57,9 +59,9 @@ export const tableMarkupWithVarietyOfHeadingConfigurations = `<table>
       <td>Column xxx</td>
     </tr>
   </tbody>
-</table>
+</table>`;
 
-<table>
+const tableWithCaption = `<table>
   <caption>
     The <a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H39">caption</a> should be a short description of the table's purpose, e.g. 'Schedule for the week of 6 March'. In a screenreader it can act like a heading. We don't style it as a heading as we don't know at what point in the heading levels a table with a caption might be used.
   </caption>
@@ -84,7 +86,7 @@ export const tableMarkupWithVarietyOfHeadingConfigurations = `<table>
   </tbody>
 </table>`;
 
-export const tableMarkupWithMultipleLinesInSomeCells = `<table>
+const constTableWithManyColumns = `<table>
   <thead>
     <tr>
       <th>&nbsp;</th>
@@ -120,3 +122,15 @@ export const tableMarkupWithMultipleLinesInSomeCells = `<table>
     </tr>
   </tbody>
 </table>`;
+
+export const tableMarkupWithVarietyOfHeadingConfigurations = `
+  ${scrollableTableWrapper({ content: tableWithThead })}
+  ${scrollableTableWrapper({ content: tableWithNoTheadButRowHeaders })}
+  ${scrollableTableWrapper({ content: tableWithTheadAndRowAndColumnHeaders })}
+  ${scrollableTableWrapper({ content: tableWithTheadAndRowAndColumnHeaders })}
+  ${scrollableTableWrapper({ content: tableWithCaption })}
+`;
+
+export const tableMarkupWithMultipleLinesInSomeCells = `
+  ${scrollableTableWrapper({ content: constTableWithManyColumns })}
+`;

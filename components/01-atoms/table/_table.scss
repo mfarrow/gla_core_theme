@@ -1,11 +1,8 @@
-$table-spacing-y: $t-spacing-8;
 $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
 
 .rich-text table,
 .styled-table {
   width: 100%;
-  margin-top: $table-spacing-y;
-  margin-bottom: $table-spacing-y;
   table-layout: auto;
   caption-side: top;
   border-spacing: 0;
@@ -114,15 +111,5 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   @include breakpoint($t-screens-xl) {
     font-size: $t-font-size-base;
     line-height: $t-line-height-5;
-  }
-}
-
-.scrollable-table {
-  margin-top: $table-spacing-y;
-  margin-bottom: $table-spacing-y;
-
-  table {
-    margin-top: 0;
-    margin-bottom: 0;
   }
 }

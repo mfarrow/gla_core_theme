@@ -26,7 +26,7 @@ const colors = {
 };
 
 module.exports = {
-  // JIT mode is in preview, and affects the devtools experience, but it's so fast and you never need to configure
+  // JIT mode is in preview, and affects the devtools experience, but it's fast and you never need to configure
   // what variants are enabled.
   // https://tailwindcss.com/docs/just-in-time-mode
   // mode: 'jit',
@@ -46,6 +46,7 @@ module.exports = {
     './tokens/*.story.mdx',
     // For classes added by Storybook decorators:
     './storybook/.storybook/preview.js',
+    '../../../../config/sync/editor.editor.full_html.yml',
   ],
   darkMode: false,
   theme: {
@@ -158,6 +159,10 @@ module.exports = {
         },
       ],
     },
+    fontWeight: {
+      normal: 400,
+      bold: 700,
+    },
     extend: {
       spacing: {
         'bs-grid': '15px',
@@ -165,8 +170,6 @@ module.exports = {
       margin: {
         '-bs-grid': '-15px',
       },
-      // eslint-disable-next-line global-require
-      typography: require('./components/01-atoms/rich-text/tailwind-typography-config'),
     },
   },
   variants: {
@@ -175,11 +178,5 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [
-    // eslint-disable-next-line global-require
-    require('@tailwindcss/typography')({
-      // Disable modifiers as we will handle different sizes etc ourselves in our own SCSS.
-      modifiers: [],
-    }),
-  ],
+  plugins: [],
 };
