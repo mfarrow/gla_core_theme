@@ -1,4 +1,4 @@
-# Ignore files that are typography automatically.
+# Ignore files that are generated automatically.
 dist
 vendor
 libraries
