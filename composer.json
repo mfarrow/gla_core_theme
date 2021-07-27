@@ -2,7 +2,7 @@
     "name": "gla/gla_core_theme",
     "type": "gla-estate-theme",
     "description": "Core GLA estate Drupal theme",
-    "license": "OGL-3.0",
+    "license": "OGL-UK-3.0",
     "require": {
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.7",
