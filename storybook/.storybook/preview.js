@@ -3,6 +3,7 @@ const DrupalAttribute = require('drupal-attribute');
 import { create } from '@storybook/theming';
 const colors = require('../../tokens/tokens-module').colors;
 const screens = require('../../tokens/tokens-module').screens;
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 // Include global CSS.
 // The Tailwind file is added in preview-head.html instead, for performance reasons
@@ -95,6 +96,7 @@ addParameters({
     argTypesRegex: '^on[A-Z].*',
   },
   viewport: {
+    defaultViewport: 'responsive',
     viewports: {
       min: {
         name: 'min',
@@ -104,6 +106,7 @@ addParameters({
         },
       },
       ...viewports,
+      ...INITIAL_VIEWPORTS,
     },
   },
 });

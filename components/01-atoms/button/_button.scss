@@ -1,9 +1,6 @@
 .btn {
   display: inline-block;
-  padding-top: $t-spacing-3-5;
-  padding-right: $t-spacing-7;
-  padding-bottom: $t-spacing-3-5;
-  padding-left: $t-spacing-7;
+  padding: $t-spacing-3-5 $t-spacing-7;
   user-select: none;
   text-align: center;
   // @TODO replace this with a variable once we have figured out
@@ -51,4 +48,9 @@
     text-decoration-style: solid;
     text-underline-offset: 3px;
   }
+}
+
+.btn.btn--compact {
+  padding: $t-spacing-3-5 $t-spacing-6;
+  line-height: $t-line-height-snug;
 }
