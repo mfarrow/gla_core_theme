@@ -45,6 +45,7 @@
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-viewport": "^6.3.6",
     "@storybook/html": "^6.3.6",
+    "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@whitespace/storybook-addon-html": "^5.0.0",
     "autoprefixer": "^10.2.6",

@@ -1,19 +1,14 @@
 .btn {
   display: inline-block;
-  padding: $t-spacing-3-5 $t-spacing-7;
+  padding: $t-spacing-3-5 $t-spacing-6;
   user-select: none;
   text-align: center;
-  // @TODO replace this with a variable once we have figured out
-  // all the possible line-height values used in the site.
   letter-spacing: -0.24px;
   border: 2px solid $t-colors-primary;
   border-radius: $t-border-radius-6;
-  // @TODO replace this with a variable once we have figured out the
-  // responsive type scale. Note that we have a Postcss plugin that
-  // turns pixel values to rem values for us, so we can use that when
-  // we look at differing font sizes per breakpoint.
-  font-size: 18px;
-  font-weight: bold;
+  font-size: $t-font-size-base;
+  font-weight: $t-font-weight-bold;
+  line-height: $t-line-height-snug;
 
   &:hover,
   &:focus {
@@ -48,9 +43,4 @@
     text-decoration-style: solid;
     text-underline-offset: 3px;
   }
-}
-
-.btn.btn--compact {
-  padding: $t-spacing-3-5 $t-spacing-6;
-  line-height: $t-line-height-snug;
 }

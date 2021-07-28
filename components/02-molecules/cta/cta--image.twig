@@ -1,3 +1,28 @@
-<div>
-  Image call to action
+<div class="u-bg-grey u-text-white lg:u-flex">
+  <div class="u-flex-shrink-0">
+    {{ image_content }}
+  </div>
+
+  <div class="u-px-4 u-py-7 sm:u-px-12 sm:u-py-14 md:u-px-7 md:u-py-20 lg:u-px-10 lg:u-py-5 xl:u-px-12 u-space-y-5 lg:u-flex lg:u-flex-col lg:u-justify-center lg:u-mx-auto">
+    {% include "@atoms/heading/heading.twig" with {
+      heading_level: 3,
+      heading_size: 2,
+      heading_content: heading
+    } %}
+    <p class="md:u-line-clamp-3 xl:u-line-clamp-none u-max-w-prose">
+      {{ content }}
+    </p>
+    <p>
+      {% include "@atoms/button/button.twig" with {
+        button_content: button_content,
+        button_url: button_url,
+        button_type: 'simple',
+        attributes: create_attribute()
+          .addClass([
+            'u-w-full',
+          ])
+          .setAttribute('aria-describedby', 'cta-' ~ id)
+      } only %}
+    </p>
+  </div>
 </div>

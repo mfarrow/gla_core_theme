@@ -68,6 +68,7 @@ module.exports = {
       none: '0',
       DEFAULT: '4px',
       6: '6px',
+      9: '9px',
     },
     fontSize: {
       sm: [
@@ -170,6 +171,9 @@ module.exports = {
       margin: {
         '-bs-grid': '-15px',
       },
+      fill: {
+        primary: colors.pink,
+      },
     },
   },
   variants: {
@@ -178,5 +182,8 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line global-require
+    require('@tailwindcss/line-clamp'),
+  ],
 };

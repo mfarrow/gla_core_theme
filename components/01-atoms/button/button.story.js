@@ -46,11 +46,6 @@ const Template = (args) => template({ ...args });
 
 export const Standard = Template.bind({});
 
-export const Compact = Template.bind({});
-Compact.args = {
-  button_type: 'compact',
-};
-
 export const White = Template.bind({});
 White.args = {
   button_type: 'white',
