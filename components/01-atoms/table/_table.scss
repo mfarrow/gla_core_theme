@@ -31,30 +31,32 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   }
 
   thead {
-    color: #111827;
+    color: $t-colors-vulcan;
     font-weight: $t-font-weight-bold;
   }
 
   th {
     padding: $table-inner-spacing;
     vertical-align: top;
-    color: #fff;
+    color: $t-colors-white;
+    // Magic number/colour taken from designs.
     border-color: rgba(255, 255, 255, 0.1);
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    background-color: #353d42;
+    border-right-width: $t-border-width-default;
+    border-bottom-width: $t-border-width-default;
+    background-color: $t-colors-grey;
   }
 
   tbody tr td,
   tbody tr th {
-    border-bottom-width: 1px;
+    border-bottom-width: $t-border-width-default;
   }
 
   tbody tr td {
+    // Magic number/colour taken from designs.
     border-color: rgba(53, 61, 66, 0.1);
 
     &:last-of-type {
-      border-right-width: 1px;
+      border-right-width: $t-border-width-default;
     }
   }
 
@@ -79,7 +81,7 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
     }
 
     td {
-      border-top-width: 1px;
+      border-top-width: $t-border-width-default;
     }
   }
 
@@ -105,7 +107,7 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   }
 
   & > thead ~ tbody tr td:first-child {
-    border-left-width: 1px;
+    border-left-width: $t-border-width-default;
   }
 
   @include breakpoint($t-screens-xl) {

@@ -5,6 +5,7 @@ const colors = {
   pink: '#e7135d',
   'dark-pink': '#9e0059',
   grey: '#353d42',
+  vulcan: '#111827',
   'dark-grey': '#1a1e21',
   'text-grey': '#333333',
   'off-white': '#efefef',

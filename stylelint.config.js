@@ -449,5 +449,6 @@ module.exports = {
     'assets/vendor/**/*.{css,scss}',
     'node_modules/**/*.{css,scss}',
     'libraries/**/*.{css,scss}',
+    'tokens/*.{css,scss}',
   ],
 };
