@@ -34,4 +34,4 @@ jobs:
           node-version: '14'
       - run: npm install
       - name: Test codebase with grumPHP
-        run: ./vendor/bin/grumphp run
+        run: ./vendor/bin/grumphp run --testsuite=ci
