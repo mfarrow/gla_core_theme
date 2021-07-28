@@ -8,7 +8,6 @@
 use Drupal\Core\Template\Attribute;
 use Drupal\Component\Utility\Crypt;
 use Drupal\block\Entity\Block;
-use Drupal\Core\Url;
 
 /**
  * Implements hook_preprocess().
@@ -113,6 +112,7 @@ function gla_core_theme_preprocess_field(&$variables) {
  * Implements template_preprocess_region().
  *
  * @param array $variables
+ *   An associative array for the template region.
  */
 function gla_core_theme_preprocess_region(array &$variables) {
   // Make render arrays for blocks available in region templates.
@@ -192,10 +192,15 @@ function gla_core_theme_page_attachments_alter(array &$attachments) {
     ],
   ];
 
-  $attachments['#attached']['html_head'][] = [$viewport_metatag, 'viewport'];
-  $attachments['#attached']['html_head'][] = [$format_detection_metatag, 'format-detection'];
-  $attachments['#attached']['html_head'][] = [$preconnect_googleapis_link, 'preconnect-googleapis'];
-  $attachments['#attached']['html_head'][] = [$preconnect_fontsgstatic_link, 'preconnect-fontsgstatic'];
+  // Attach elements into the HTML Head.
+  $attachments['#attached']['html_head'][] =
+      [$viewport_metatag, 'viewport'];
+  $attachments['#attached']['html_head'][] =
+      [$format_detection_metatag, 'format-detection'];
+  $attachments['#attached']['html_head'][] =
+      [$preconnect_googleapis_link, 'preconnect-googleapis'];
+  $attachments['#attached']['html_head'][] =
+      [$preconnect_fontsgstatic_link, 'preconnect-fontsgstatic'];
 
   // Remove the core favicon as we supply our own.
   foreach ($attachments['#attached']['html_head_link'] as $key => $value) {
@@ -204,7 +209,6 @@ function gla_core_theme_page_attachments_alter(array &$attachments) {
     }
   }
 }
-
 
 /**
  * Custom function to prevent duplicate form element IDs.
@@ -269,7 +273,6 @@ function gla_core_theme_preprocess_checkboxes(&$variables) {
 function gla_core_theme_preprocess_container(&$variables) {
   _gla_core_theme_prevent_duplicate_form_element_ids($variables);
 }
-
 
 /**
  * Implements hook_preprocess_HOOK().
