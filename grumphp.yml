@@ -1,4 +1,7 @@
 grumphp:
+  environment:
+    paths:
+      - node_modules/.bin
   ascii:
     failed: vendor/vijaycs85/drupal-quality-checker/resources/ascii/grumpy.txt
     succeeded: vendor/vijaycs85/drupal-quality-checker/resources/ascii/happy.txt
@@ -30,3 +33,26 @@ grumphp:
         - info
         - txt
         - md
+    stylelint:
+      triggered_by:
+        - css
+        - scss
+      cache: true
+    eslint:
+      triggered_by:
+        - js
+        - story.js
+  testsuites:
+    ci:
+      tasks:
+        # We can run everything on CI, except for Stylelint. Unfortunately the Grum stylelint
+        # task always fails when used with ./vendor/bin/grumphp run. It seems like no files or
+        # stdin are passed to the task, so Stylelint always returns an error code.
+        - phplint
+        - yamllint
+        - composer
+        - composer_normalize
+        - jsonlint
+        - phpcpd
+        - phpcs
+        - eslint

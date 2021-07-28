@@ -1,11 +1,7 @@
 {% set attributes = attributes|default(create_attribute()) %}
-{% set attributes = attributes.addClass([
-  'heading',
-  'u-font-bold',
-]) %}
 
 {% if omit_base_class is empty %}
-  {% set heading_base_class = 'heading--' ~ heading_size %}
+  {% set heading_base_class = 'h' ~ heading_size %}
   {% set attributes = attributes.addClass(heading_base_class) %}
 {% endif %}
 

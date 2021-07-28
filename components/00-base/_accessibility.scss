@@ -1,4 +1,4 @@
-*:focus {
+*:not(.cke_editable):focus {
   outline: none;
   // We use a box-shadow made up of a light and a darker colour so that it shows up on all backgrounds.
   // Also, box-shadows follow border-radius, whereas outlines do not.

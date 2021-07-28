@@ -1,9 +1,22 @@
+// A lot of the code for this component comes from the tailwind-typography plugin, except
+// I've copied the CSS it generates into this file to use as a base to make it easier to
+// be altered in the future.
+// You'll notice quite a few magic numbers are used, and em units are used. These are values used
+// by the plugin that are either not found in the GLA spacing scale, or are only found as rem units,
+// but we want the dimensions to be proportional to the text size as the rich text component font-size
+// increases from 18px to 20px at the XL breakpoint. For some spacing for things like heading we do
+// use values from the spacing scale, as in the designs these spaces did not seem to be affected by the
+// size of the text.
 .rich-text {
+  max-width: 73ch;
+  color: $t-colors-text-grey;
+
   // The designs show an 'intro' paragraph style that's larger than the rest of the text.
-  // We could stick with `first-of-type` for this, or remove that rule and instead
-  // configure CKEditor to allow using the `lead` class within the WYSIWYG.
+  // For now this can be added manually via CKEditor. Once we have a 'Page section' component
+  // we can write a preprocess to loop through all the page section paragraph field items,
+  // find the first rich text paragraph, and give it the 'rich-text--first-of-type' class.
   .lead,
-  & > p:first-of-type {
+  &.rich-text--first-of-type > p:first-of-type {
     font-size: $t-font-size-lg;
     line-height: $t-font-size-lg-line-height;
 
@@ -15,6 +28,196 @@
     @include breakpoint($t-screens-xxl) {
       font-size: $t-font-size-2xl;
       line-height: $t-font-size-2xl-line-height;
+    }
+  }
+
+  strong {
+    font-weight: $t-font-weight-bold;
+  }
+
+  ol {
+    --list-counter-style: decimal;
+  }
+
+  ol > li {
+    position: relative;
+    padding-left: 1.75em;
+  }
+
+  ul > li {
+    position: relative;
+    padding-left: 1.75em;
+  }
+
+  ol > li::before {
+    // Faux marker to allow for styling without being affected by Safari's lack of support for
+    // ::marker. This approach also plays more nicely with the CSS reset, which makes it hard
+    // to add back the native list functionality to ul/ol/li elements once it has been removed.
+    position: absolute;
+    left: 0;
+    content: counter(list-item, decimal) ".";
+    content: counter(list-item, var(--list-counter-style, decimal)) ".";
+    color: $t-colors-dark-pink;
+    font-weight: 400;
+  }
+
+  ul > li::before {
+    // Faux marker to allow for styling without being affected by Safari's lack of support for
+    // ::marker. This approach also plays more nicely with the CSS reset, which makes it hard
+    // to add back the native list functionality to ul/ol/li elements once it has been removed.
+    position: absolute;
+    top: calc(0.875em - 0.1875em);
+    left: 0.25em;
+    width: 0.375em;
+    height: 0.375em;
+    content: "";
+    border-radius: 50%;
+    background-color: $t-colors-dark-pink;
+  }
+
+  hr {
+    margin-top: $t-spacing-8;
+    margin-bottom: $t-spacing-8;
+    border-color: $t-colors-mercury;
+    border-top-width: 1px;
+  }
+
+  h3 {
+    margin-top: $t-spacing-20;
+    margin-bottom: $t-spacing-6;
+  }
+
+  h4 {
+    margin-top: $t-spacing-16;
+    margin-bottom: $t-spacing-6;
+  }
+
+  h5 {
+    margin-top: $t-spacing-16;
+    margin-bottom: $t-spacing-6;
+  }
+
+  h6 {
+    margin-top: $t-spacing-12;
+    margin-bottom: $t-spacing-6;
+  }
+
+  figure figcaption {
+    margin-top: $t-spacing-3;
+    color: $t-colors-text-grey;
+    font-size: $t-font-size-sm;
+    line-height: $t-font-size-sm-line-height;
+  }
+
+  code {
+    font-size: #{$t-font-size-sm / $t-font-size-base}em;
+  }
+
+  p {
+    // We use a magic number here rather than $t-spacing-5 to be able to use
+    // em rather than rem. This way, the spacing will increase slightly when
+    // the rich text component font size increases at the XL breakpoint.
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  img,
+  video,
+  figure {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  // A text filter will wrap tables in a .scrollable-table wrapper div but that
+  // won't happen in CKEditor, so we need to add vertical spacing for both the
+  // wrapper div class, and the table element itself.
+  .scrollable-table,
+  & > table {
+    margin-top: $t-spacing-8;
+    margin-bottom: $t-spacing-8;
+  }
+
+  figure > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  ol,
+  ul {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  & > ul > li p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+
+  & > ul > li > *:first-child {
+    margin-top: 1.25em;
+  }
+
+  & > ul > li > *:last-child {
+    margin-bottom: 1.25em;
+  }
+
+  & > ol > li > *:first-child {
+    margin-top: 1.25em;
+  }
+
+  & > ol > li > *:last-child {
+    margin-bottom: 1.25em;
+  }
+
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+
+  hr + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
+    margin-top: 0;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  :target {
+    animation: targetBackgroundFade 5s linear 1 normal forwards;
+  }
+
+  @keyframes targetBackgroundFade {
+    from {
+      background-color: $t-colors-yellow;
+    }
+    to {
+      background-color: transparent;
+    }
+  }
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-lg;
+    line-height: $t-font-size-lg-line-height;
+
+    hr {
+      margin-top: $t-spacing-9;
+      margin-bottom: $t-spacing-9;
     }
   }
 }

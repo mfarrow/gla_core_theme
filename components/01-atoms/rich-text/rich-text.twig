@@ -1,7 +1,9 @@
 {% set el = el|default('div') %}
 {% set attributes = attributes|default(create_attribute()) %}
 
-<{{ el }} {{ attributes.addClass(['rich-text', 'u-prose']) }}>
+<{{ el }} {{ attributes.addClass([
+  'rich-text',
+]) }}>
   {% block content %}
     {{ content }}
   {% endblock %}

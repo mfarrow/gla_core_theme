@@ -1,7 +1,8 @@
+// Based on https://dev.to/philw_/using-style-dictionary-to-transform-tailwind-config-into-scss-variables-css-custom-properties-and-javascript-via-design-tokens-24h5
 const resolveConfig = require('tailwindcss/resolveConfig');
-const tailwindConfig = require('../tailwind.config.js');
 const _ = require('lodash');
 const { fileHeader } = require('style-dictionary/lib/common/formatHelpers');
+const tailwindConfig = require('../tailwind.config');
 
 // Grab just the theme data from the Tailwind config.
 const { theme } = resolveConfig(tailwindConfig);
@@ -13,21 +14,18 @@ const tokens = {};
 // insert things into an object at the right point in the
 // structure, and to create the right structure for us
 // if it doesn't already exist.
-const addToTokensObject = function (position, value) {
-  _.setWith(tokens, position, { value: value }, Object);
+const addToTokensObject = (position, value) => {
+  _.setWith(tokens, position, { value }, Object);
 };
 
 // Loop over the theme data…
-_.forEach(theme, function (value, key) {
+_.forEach(theme, (value, key) => {
   switch (key) {
     case 'fontFamily':
       // Font family data is in an array, so we use join to
       // turn the font families into a single string.
-      _.forEach(theme['fontFamily'], function (value, key) {
-        addToTokensObject(
-          ['fontFamily', key],
-          theme['fontFamily'][key].join(','),
-        );
+      _.forEach(theme.fontFamily, (value, key) => {
+        addToTokensObject(['fontFamily', key], theme.fontFamily[key].join(','));
       });
       break;
 
@@ -36,32 +34,36 @@ _.forEach(theme, function (value, key) {
       // sense!) but also a recommended line-length, so we
       // create two tokens for every font size, one for the
       // font-size value and one for the line-height.
-      _.forEach(theme['fontSize'], function (value, key) {
+      _.forEach(theme.fontSize, (value, key) => {
         addToTokensObject(['fontSize', key], value[0]);
         addToTokensObject(
           ['fontSize', `${key}--lineHeight`],
-          value[1]['lineHeight'],
+          value[1].lineHeight,
         );
-        if (value[1]['letterSpacing']) {
+        if (value[1].letterSpacing) {
           addToTokensObject(
             ['fontSize', `${key}--letterSpacing`],
-            value[1]['letterSpacing'],
+            value[1].letterSpacing,
           );
         }
       });
       break;
 
     default:
-      _.forEach(value, function (value, secondLevelKey) {
+      _.forEach(value, (value, secondLevelKey) => {
         if (!_.isObject(value)) {
           // For non-objects (simple key/value pairs) we can
           // add them straight into our tokens object.
           addToTokensObject([key, secondLevelKey], value);
         } else {
+          // Skip 'raw' CSS media queries.
+          if (!_.isUndefined(value.raw)) {
+            return;
+          }
           // For objects (like color shades) we need to do a
           // final forOwn loop to make sure we add everything
           // in the right format.
-          _.forEach(value, function (value, thirdLevelKey) {
+          _.forEach(value, (value, thirdLevelKey) => {
             addToTokensObject([key, secondLevelKey, thirdLevelKey], value);
           });
         }
@@ -74,9 +76,7 @@ const tokenPrefix = 't-';
 const buildPath = './tokens/';
 
 const limitedFilter = (token) =>
-  ['colors', 'screens', 'spacing', 'fontFamily'].includes(
-    token.attributes.category,
-  );
+  ['colors', 'screens', 'spacing'].includes(token.attributes.category);
 
 const javascriptObjectFilter = (token) =>
   ['colors', 'screens'].includes(token.attributes.category);
@@ -106,25 +106,22 @@ const fullFilter = (token) =>
     'zIndex',
   ].includes(token.attributes.category);
 
+// eslint-disable-next-line import/order
 const StyleDictionary = require('style-dictionary')
   .registerFormat({
     name: 'javascript/minimalObject',
-    formatter: function (dictionary, file) {
+    formatter(dictionary, file) {
       const { allProperties } = dictionary;
       const props = {};
 
       allProperties.map((prop) => {
         _.setWith(props, [prop.path[0], prop.path[1]], prop.value, Object);
+        return prop;
       });
 
-      return (
-        fileHeader({ file }) +
-        'var ' +
-        (file.name || '_styleDictionary') +
-        ' = ' +
-        JSON.stringify(props, null, 2) +
-        ';'
-      );
+      return `${fileHeader({ file })}var ${
+        file.name || '_styleDictionary'
+      } = ${JSON.stringify(props, null, 2)};`;
     },
   })
   .extend({

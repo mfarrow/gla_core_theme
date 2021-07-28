@@ -1,0 +1,117 @@
+$table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
+
+.rich-text table,
+.styled-table {
+  width: 100%;
+  table-layout: auto;
+  caption-side: top;
+  border-spacing: 0;
+  text-align: left;
+  // We can't use border-collapse: collapse, otherwise we can't round our td elements.
+  border-collapse: separate;
+  background-color: $t-colors-white;
+  font-size: $t-font-size-sm;
+  line-height: $t-font-size-sm-line-height;
+
+  tbody td {
+    padding: $table-inner-spacing;
+    vertical-align: top;
+
+    &:nth-of-type(even) {
+      background-color: $t-colors-wild-sand;
+    }
+  }
+
+  caption {
+    margin-bottom: $t-spacing-6;
+    text-align: left;
+    // The caption is styled more like paragraph text.
+    font-size: $t-font-size-base;
+    line-height: $t-font-size-base-line-height;
+  }
+
+  thead {
+    color: $t-colors-vulcan;
+    font-weight: $t-font-weight-bold;
+  }
+
+  th {
+    padding: $table-inner-spacing;
+    vertical-align: top;
+    color: $t-colors-white;
+    // Magic number/colour taken from designs.
+    border-color: rgba(255, 255, 255, 0.1);
+    border-right-width: $t-border-width-default;
+    border-bottom-width: $t-border-width-default;
+    background-color: $t-colors-grey;
+  }
+
+  tbody tr td,
+  tbody tr th {
+    border-bottom-width: $t-border-width-default;
+  }
+
+  tbody tr td {
+    // Magic number/colour taken from designs.
+    border-color: rgba(53, 61, 66, 0.1);
+
+    &:last-of-type {
+      border-right-width: $t-border-width-default;
+    }
+  }
+
+  // Add rounded corners…
+  & > thead tr {
+    & *:first-child {
+      border-top-left-radius: $t-border-radius-6;
+    }
+
+    & *:last-child {
+      border-top-right-radius: $t-border-radius-6;
+    }
+  }
+
+  & > tbody tr:first-child {
+    & *:first-child {
+      border-top-left-radius: $t-border-radius-6;
+    }
+
+    & *:last-child {
+      border-top-right-radius: $t-border-radius-6;
+    }
+
+    td {
+      border-top-width: $t-border-width-default;
+    }
+  }
+
+  & > tbody tr:last-child {
+    & *:first-child {
+      border-bottom-left-radius: $t-border-radius-6;
+    }
+
+    & *:last-child {
+      border-bottom-right-radius: $t-border-radius-6;
+    }
+  }
+
+  // Undo the rounded corner in the tbody if we have a thead _then_ a tbody
+  & > thead ~ tbody tr:first-child {
+    & *:first-child {
+      border-radius: unset;
+    }
+
+    & *:last-child {
+      border-radius: unset;
+    }
+  }
+
+  & > thead ~ tbody tr td:first-child {
+    border-left-width: $t-border-width-default;
+  }
+
+  @include breakpoint($t-screens-xl) {
+    font-size: $t-font-size-base;
+    line-height: $t-line-height-5;
+  }
+}

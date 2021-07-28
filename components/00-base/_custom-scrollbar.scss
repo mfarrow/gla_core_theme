@@ -1,0 +1,41 @@
+.custom-scrollbar {
+  scrollbar-color: $t-colors-primary $t-colors-grey;
+
+  &::-webkit-scrollbar {
+    border-radius: $t-border-radius-6;
+    background: $t-colors-grey;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: $t-border-radius-6;
+    background: $t-colors-grey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $t-border-radius-6;
+    background-color: $t-colors-primary;
+  }
+
+  @media (pointer: coarse) {
+    // If the user is on a device that is likely a touchscreen then we presume that
+    // they are used to swiping content rather than clicking and dragging on a
+    // scrollbar. That means we can use a more narrow scrollbar to match the mobile
+    // designs that show a scrollbar that would be too narrow to use on a desktop with
+    // a mouse.
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar:vertical {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar:horizontal {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      border-radius: $t-border-radius-default;
+    }
+  }
+}

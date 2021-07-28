@@ -1,5 +1,3 @@
-import drupalAttribute from 'drupal-attribute';
-
 const template = require('./heading.twig');
 
 export default {
@@ -49,7 +47,7 @@ export default {
     docs: {
       description: {
         component:
-          "By default, headings are unstyled, as they could be used for any purpose. To get a recongisable 'heading style', the heading needs to be inside a `rich-text` component, or given a `heading` component class along with a modifier class like `heading--2` or `heading--xl`.",
+          "By default, headings are unstyled, as they could be used for any purpose. To get a recognisable 'heading style', the heading needs to be inside a `rich-text` component, or given a `heading` component class along with a modifier class like `heading--2` or `heading--xl`.",
       },
     },
   },
@@ -91,4 +89,10 @@ export const five = Template.bind({});
 five.args = {
   heading_level: '5',
   heading_size: '5',
+};
+
+export const six = Template.bind({});
+six.args = {
+  heading_level: '6',
+  heading_size: '6',
 };

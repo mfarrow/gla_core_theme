@@ -1,13 +1,16 @@
+// Use https://chir.ag/projects/name-that-color to name colours.
 const colors = {
   transparent: 'transparent',
   current: 'currentColor',
   pink: '#e7135d',
   'dark-pink': '#9e0059',
   grey: '#353d42',
+  vulcan: '#111827',
   'dark-grey': '#1a1e21',
   'text-grey': '#333333',
   'off-white': '#efefef',
   'wild-sand': '#f5f5f5',
+  mercury: '#e6e6e6',
   white: '#ffffff',
   black: '#000000',
   blue: '#007acc',
@@ -24,10 +27,10 @@ const colors = {
 };
 
 module.exports = {
-  // JIT mode is in preview, and affects the devtools experience, but it's so fast and you never need to configure
+  // JIT mode is in preview, and affects the devtools experience, but it's fast and you never need to configure
   // what variants are enabled.
   // https://tailwindcss.com/docs/just-in-time-mode
-  mode: 'jit',
+  // mode: 'jit',
   // We give all utility classes a u- prefix to differentiate between Drupal, custom, or third-party classes.
   prefix: 'u-',
   // Mark all utilities as important to help prevent them being overridden. If this causes issues with
@@ -44,6 +47,7 @@ module.exports = {
     './tokens/*.story.mdx',
     // For classes added by Storybook decorators:
     './storybook/.storybook/preview.js',
+    '../../../../config/sync/editor.editor.full_html.yml',
   ],
   darkMode: false,
   theme: {
@@ -67,6 +71,12 @@ module.exports = {
       6: '6px',
     },
     fontSize: {
+      sm: [
+        '16px',
+        {
+          lineHeight: '19px',
+        },
+      ],
       base: [
         '18px',
         {
@@ -150,61 +160,17 @@ module.exports = {
         },
       ],
     },
+    fontWeight: {
+      normal: 400,
+      bold: 700,
+    },
     extend: {
       spacing: {
         'bs-grid': '15px',
       },
       margin: {
-        '-bs-grid': '-15px'
+        '-bs-grid': '-15px',
       },
-      typography: (theme) => ({
-        // This function is used to style the rich-text component.
-        // Take a look at https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js
-        // to get an idea of how to customise the output.
-        DEFAULT: {
-          css: {
-            color: theme('colors.text-grey'),
-            maxWidth: '74ch',
-            fontSize: null,
-            lineHeight: null,
-            // Remove the anchor styling as that comes from our own SCSS.
-            a: null,
-            'ol > li::before': {
-              color: theme('colors.dark-pink'),
-            },
-            'ul > li::before': {
-              backgroundColor: theme('colors.dark-pink'),
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-            table: {
-              fontSize: null,
-              lineHeight: null,
-              backgroundColor: theme('colors.wild-sand'),
-              borderRadius: theme('borderRadius.6'),
-              overflow: 'hidden',
-            },
-            'thead th': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            'th[scope="col"]': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            'th[scope="row"]': {
-              color: theme('colors.white'),
-              backgroundColor: theme('colors.grey'),
-            },
-            // We will provide our own intro/lead styles.
-            '[class~="lead"]': null,
-          },
-        },
-      }),
     },
   },
   variants: {
@@ -213,10 +179,5 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [
-    require('@tailwindcss/typography')({
-      // Disable modifiers as we will handle different sizes etc ourselves.
-      modifiers: [],
-    }),
-  ],
+  plugins: [],
 };

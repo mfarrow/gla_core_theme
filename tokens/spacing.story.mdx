@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/addon-docs';
+const spacing = require('./tokens-module.js').spacing;
+
+<Meta
+  title="Tokens/Spacing"
+  parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
+
+# Spacing values
+
+The site is built using a spacing scale to ensure consistency and harmony and to
+help prevent the use of 'magic numbers' and inconsistency in the codebase.
+
+## A note on spacing for testing
+
+Because we can only use spacing values from this specific scale, sometimes we
+will not perfectly match the designs. This is intentional, and the goal is to
+keep the site consistent. Designs are hand-made and so often human error leads
+to inconsistency creeping in, for example an element may have 31px of spacing
+above it but 33px spacing below it. These little differences are generally not
+intentional, and so during development we remove the inconsistency by
+standardising the values to a value found in our scale, for example using 32px
+above and below.
+
+## The scale
+
+The spacing scale is based on
+[Tailwind's](https://tailwindcss.com/docs/customizing-spacing) and is used to
+generate:
+
+- Margin utility classes, e.g. `u-m-4`, `u-my-4`, `u-mx-4`, `u-mt-4`, `u-mr-4`,
+  `u-mb-4`, `u-ml-4`
+- Padding utility classes, e.g. `u-p-4`, `u-py-4`, `u-px-4`, `u-pt-4`, `u-pr-4`,
+  `u-pb-4`, `u-pl-4`
+- Height, width, max-height, min-height, max-width, min-width utility classes,
+  e.g. `u-w-4`, `u-h-4`, `u-max-w-4`, `u-min-h-4`
+- Spacing utility classes using the
+  [lobotomised owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls),
+  e.g. `u-space-x-4`, `u-space-y-4`
+- CSS custom properties, e.g. `--t-spacing-4`
+- SCSS variables, e.g. `$t-spacing-4`
+
+<div
+  className={['u-overflow-auto']}
+  role="region"
+  aria-labelledby="SpacingTableCaption"
+  tabindex="0"
+>
+  <table>
+    <caption id="SpacingTableCaption" className={'u-sr-only'}>
+      Spacing values
+    </caption>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Size</th>
+        <th>Size in pixels</th>
+        <th>Demonstration</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.keys(spacing).map((key) => {
+        const size = spacing[key].value;
+        let sizeInPixels = null;
+        if (size.includes('rem')) {
+          sizeInPixels = parseFloat(spacing[key].value) * 16 + 'px';
+        }
+        if (size.includes('px')) {
+          sizeInPixels = size;
+        }
+        return (
+          <tr key={key}>
+            <td>
+              <code>{key}</code>
+            </td>
+            <td>{size}</td>
+            <td>{sizeInPixels}</td>
+            <td>
+              <div
+                className={`u-bg-primary u-h-4`}
+                style={{ width: spacing[key].value }}
+              />
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+
+  </table>
+</div>

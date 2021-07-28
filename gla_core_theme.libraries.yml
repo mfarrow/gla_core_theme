@@ -1,7 +1,7 @@
 global:
   css:
     theme:
-      dist/style.css: {}
+      dist/global.css: {}
       dist/utilities.css: {}
   dependencies:
     - gla_core_theme/polyfill-io
@@ -61,3 +61,8 @@ lazysizes:
 fix-randomised-form-ids:
   js:
     dist/00-base/fix-randomised-form-ids.js: {}
+
+admin-styles:
+  css:
+    theme:
+      dist/admin-styles.css: {}

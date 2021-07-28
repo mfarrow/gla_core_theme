@@ -1,6 +1,4 @@
-const screens = require('./tokens/tokens-module.js').screens;
-
-module.exports = ctx => ({
+module.exports = (ctx) => ({
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
@@ -15,8 +13,8 @@ module.exports = ctx => ({
     'postcss-cachebuster':
       ctx.env === 'production'
         ? {
-          type: ['checksum'],
-        }
+            type: ['checksum'],
+          }
         : false,
     // Convert px to rem so that a user's OS font-size settings are respected
     // but we can still stick to working with pixels.
@@ -33,21 +31,21 @@ module.exports = ctx => ({
     cssnano:
       ctx.env === 'production'
         ? {
-          preset: [
-            'default',
-            {
-              zindex: false,
-              svgo: false,
-              // We can re-enable calc optimisations when https://github.com/postcss/postcss-calc/issues/115
-              // is resolved.
-              calc: false,
-              mergeRules: false,
-              normalizeUrl: {
-                stripWWW: false,
+            preset: [
+              'default',
+              {
+                zindex: false,
+                svgo: false,
+                // We can re-enable calc optimisations when https://github.com/postcss/postcss-calc/issues/115
+                // is resolved.
+                calc: false,
+                mergeRules: false,
+                normalizeUrl: {
+                  stripWWW: false,
+                },
               },
-            },
-          ],
-        }
+            ],
+          }
         : false,
   },
 });

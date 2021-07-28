@@ -14,7 +14,7 @@ window.drupalSettings = window.drupalSettings || {};
   Drupal.attachBehaviors = function (context, settings) {
     context = context || document;
     settings = settings || drupalSettings;
-    const behaviors = Drupal.behaviors;
+    const { behaviors } = Drupal;
 
     Object.keys(behaviors).forEach(function (i) {
       if (typeof behaviors[i].attach === 'function') {

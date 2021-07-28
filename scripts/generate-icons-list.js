@@ -3,8 +3,7 @@
 const path = require('path');
 const jsonfile = require('jsonfile');
 const _ = require('lodash');
-const globby = require('globby');
-const filteredPaths = require('./icon-paths.js');
+const filteredPaths = require('./icon-paths');
 
 const iconsPath = path.join(process.cwd(), 'src/icons');
 const jsonOutputPath = path.join(process.cwd(), 'tokens/icons.json');
