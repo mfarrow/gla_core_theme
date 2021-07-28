@@ -42,3 +42,17 @@ grumphp:
       triggered_by:
         - js
         - story.js
+  testsuites:
+    ci:
+      tasks:
+        # We can run everything on CI, except for Stylelint. Unfortunately the Grum stylelint
+        # task always fails when used with ./vendor/bin/grumphp run. It seems like no files or
+        # stdin are passed to the task, so Stylelint always returns an error code.
+        - phplint
+        - yamllint
+        - composer
+        - composer_normalize
+        - jsonlint
+        - phpcpd
+        - phpcs
+        - eslint

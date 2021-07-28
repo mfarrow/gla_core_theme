@@ -5,8 +5,7 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const path = require('path');
 const _ = require('lodash');
-const globby = require('globby');
-const filteredPaths = require('./icon-paths.js');
+const filteredPaths = require('./icon-paths');
 
 const iconsPath = path.join(process.cwd(), 'src/icons');
 
@@ -44,6 +43,7 @@ _.each(filteredPaths, (value) => {
 
 // Compile the sprite
 spriter.compile((error, result) => {
+  // eslint-disable-next-line no-console
   if (error) return console.error(error);
 
   _.each(result.symbol, (resource) => {
