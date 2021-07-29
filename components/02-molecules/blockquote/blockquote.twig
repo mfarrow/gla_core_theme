@@ -1,0 +1,40 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set split_citation = citation|split(',', 2) %}
+
+{% set attributes = attributes
+  .addClass([
+    'u-border-t u-border-b u-border-mercury',
+    'u-py-8 sm:u-py-9 xl:u-py-10 xxl:u-py-11',
+    'u-space-y-6',
+    'u-max-w-rich-text',
+    'sm:u-space-y-0 sm:u-flex',
+    'sm:u-space-x-7 xl:u-space-x-12 xxl:u-space-x-16'
+  ])
+%}
+
+<figure {{ attributes }}>
+  {% if image_content %}
+    {#
+      The image in this component is decorative so we hide it with aria-hidden. An alternative would be to preprocess
+      the image and add an empty alt attribute, e.g. alt="".
+    #}
+    <div class="u-flex-shrink-0 u-bg-off-white u-inline-block u-overflow-hidden u-rounded-full u-h-20 u-w-20 xl:u-w-24 xl:u-h-24 xxl:u-w-32 xxl:u-h-32" aria-hidden="true">
+      {{ image_content }}
+    </div>
+  {% endif %}
+
+  <div class="u-space-y-6">
+    <blockquote class="u-text-2xl u-leading-30 u-font-bold u-tracking-0.25 xl:u-text-3xl xl:u-leading-35 xxl:u-text-4xl">
+      {{ quote }}
+    </blockquote>
+
+    <figcaption class="u-text-sm xl:u-text-base">
+      <span class="u-font-bold">
+        <span class="u-text-primary-dark" aria-hidden="true">—</span>
+        {{ split_citation.0 -}}
+        {% if split_citation.1 %}, {% endif %}
+      </span>
+      {% if split_citation.1 %}{{ split_citation.1 }}{% endif %}
+    </figcaption>
+  </div>
+</figure>

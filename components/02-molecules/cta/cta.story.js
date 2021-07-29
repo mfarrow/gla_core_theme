@@ -1,7 +1,8 @@
 import dedent from 'ts-dedent';
 
+import assemblyDecorator from '../../../storybook/assembly-decorator';
+
 const template = require('./cta.twig');
-const imageTemplate = require('./cta--image.twig');
 
 export default {
   title: 'Molecules/CTAs (call to actions)',
@@ -150,3 +151,6 @@ TooMuchHeadingText.args = {
   content:
     "CMS users should be sensible with the amount of content they add to a component, and we should trust them to do good work, but it's also good to give components some resilience and make sure they are at least readable when too much content is put inside them, even if they may not always be as attractive as they could be",
 };
+
+export const Assembly = Template.bind({});
+Assembly.decorators = [assemblyDecorator];

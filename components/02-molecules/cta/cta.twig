@@ -15,7 +15,7 @@
     'cta',
     'cta--' ~ cta_type,
     cta_type == 'simple' ? 'u-bg-off-white u-text-text-grey',
-    cta_type == 'talk_london' ? 'u-bg-primary u-text-white',
+    cta_type == 'talk_london' ? 'u-bg-pink u-text-white',
     cta_type == 'talk_london' ? 'u-rounded-9',
     'u-p-6 sm:u-py-10 sm:u-px-12 md:u-px-16',
     'u-space-y-4 md:u-space-y-0',
@@ -30,7 +30,9 @@
       heading_level: heading_level,
       heading_size: 5,
       heading_content: heading,
-      attributes: create_attribute().addClass('cta__heading').setAttribute('id', 'cta-' ~ id)
+      attributes: create_attribute()
+        .addClass('cta__heading')
+        .setAttribute('id', 'cta-' ~ id)
     } %}
 
     {% include "@atoms/button/button.twig" with {
