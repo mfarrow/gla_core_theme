@@ -57,7 +57,7 @@
     left: 0;
     content: counter(list-item, decimal) ".";
     content: counter(list-item, var(--list-counter-style, decimal)) ".";
-    color: $t-colors-dark-pink;
+    color: $t-colors-primary-dark;
     font-weight: 400;
   }
 
@@ -72,7 +72,7 @@
     height: 0.375em;
     content: "";
     border-radius: 50%;
-    background-color: $t-colors-dark-pink;
+    background-color: $t-colors-primary-dark;
   }
 
   hr {

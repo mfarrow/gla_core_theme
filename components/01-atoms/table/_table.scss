@@ -112,6 +112,6 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
 
   @include breakpoint($t-screens-xl) {
     font-size: $t-font-size-base;
-    line-height: $t-line-height-5;
+    line-height: $t-line-height-20;
   }
 }
