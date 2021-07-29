@@ -8,7 +8,7 @@
   border-radius: $t-border-radius-6;
   font-size: $t-font-size-base;
   font-weight: $t-font-weight-bold;
-  line-height: $t-line-height-snug;
+  line-height: $t-line-height-21;
 
   &:hover,
   &:focus {
@@ -30,15 +30,15 @@
 
 .btn.btn--solid {
   color: $t-colors-white;
-  border-color: $t-colors-pink;
-  background-color: $t-colors-pink;
+  border-color: $t-colors-primary;
+  background-color: $t-colors-primary;
 
   &:hover,
   &:focus {
     text-decoration: underline;
     color: $t-colors-white;
-    border-color: $t-colors-dark-pink;
-    background-color: $t-colors-dark-pink;
+    border-color: $t-colors-primary-dark;
+    background-color: $t-colors-primary-dark;
     text-decoration-thickness: 2px;
     text-decoration-style: solid;
     text-underline-offset: 3px;

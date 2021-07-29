@@ -349,8 +349,7 @@ Default.args = {
 export const LeadParagraph = Template.bind({});
 LeadParagraph.args = {
   content: `
-    <p>The first paragraph in the designs uses a larger 'intro' text size and line height.</p>
-    <p>This is currently using <code>p:first-of-type</code> but might need refactoring as we wouldn't want multiple 'lead' paragraphs when we have more than one Rich text component on a page.</p>
+    <p class="lead">The xfirst paragraph in the designs uses a larger 'intro' text size and line height.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
     <p class="lead">The intro styling can be forced on any paragraph by giving it the \`lead\` class.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>

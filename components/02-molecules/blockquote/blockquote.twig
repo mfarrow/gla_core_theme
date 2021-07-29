@@ -1,12 +1,20 @@
 {% set attributes = attributes|default(create_attribute()) %}
-{% set split_citation = citation|split(',', 2) %}
 
+{% if citation %}
+  {% set split_citation = citation|split(',', 2) %}
+{% endif %}
+
+{#
+  The xl:u-text-lg is important as the text size of the blockquote wrapper needs
+  to match the text size of the text component as the u-max-w-rich-text utility
+  uses ch units that are relative to font size.
+#}
 {% set attributes = attributes
   .addClass([
     'u-border-t u-border-b u-border-mercury',
     'u-py-8 sm:u-py-9 xl:u-py-10 xxl:u-py-11',
     'u-space-y-6',
-    'u-max-w-rich-text',
+    'u-max-w-rich-text xl:u-text-lg',
     'sm:u-space-y-0 sm:u-flex',
     'sm:u-space-x-7 xl:u-space-x-12 xxl:u-space-x-16'
   ])
@@ -28,13 +36,15 @@
       {{ quote }}
     </blockquote>
 
-    <figcaption class="u-text-sm xl:u-text-base">
-      <span class="u-font-bold">
-        <span class="u-text-primary-dark" aria-hidden="true">—</span>
-        {{ split_citation.0 -}}
-        {% if split_citation.1 %}, {% endif %}
-      </span>
-      {% if split_citation.1 %}{{ split_citation.1 }}{% endif %}
-    </figcaption>
+    {% if citation %}
+      <figcaption class="u-text-sm xl:u-text-base">
+        <span class="u-font-bold">
+          <span class="u-text-primary-dark" aria-hidden="true">—</span>
+          {{ split_citation.0 -}}
+          {% if split_citation.1 %}, {% endif %}
+        </span>
+        {% if split_citation.1 %}{{ split_citation.1 }}{% endif %}
+      </figcaption>
+    {% endif %}
   </div>
 </figure>
