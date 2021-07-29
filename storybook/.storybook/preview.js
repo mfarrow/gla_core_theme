@@ -41,7 +41,7 @@ const viewports = Object.keys(screens).reduce(function (
 const theme = create({
   base: 'light',
   colorPrimary: colors.pink.value,
-  colorSecondary: colors['dark-pink'].value,
+  colorSecondary: colors['pink-dark'].value,
 });
 
 addParameters({

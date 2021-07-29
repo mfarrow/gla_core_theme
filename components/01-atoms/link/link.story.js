@@ -1,4 +1,5 @@
 import DrupalAttribute from 'drupal-attribute';
+import assemblyDecorator from '../../../storybook/assembly-decorator';
 
 const template = require('./link.twig');
 
@@ -64,6 +65,16 @@ InsideRichText.parameters = {
     },
   },
 };
+
+export const InsideRichTextAssembly = Template.bind({});
+InsideRichTextAssembly.decorators = [
+  (story) => {
+    const richTextContent = `Donec non est ut velit congue blandit. ${story()}. Sed a tellus consectetur, vehicula magna ac, interdum nibh. Aliquam congue pharetra turpis id viverra. Morbi tincidunt, quam eget vestibulum tristique, enim arcu placerat purus, sit amet suscipit mauris velit non orci. ${story()}. Nunc mollis efficitur elementum. Suspendisse accumsan, metus sed egestas dignissim, tortor tortor aliquet magna, a laoreet orci eros nec ante. Vestibulum pulvinar tortor in dui maximus tristique. Fusce placerat tristique tincidunt. ${story()}. Integer venenatis venenatis nibh, vel euismod orci eleifend consectetur.`;
+    return richTextComponent({ content: richTextContent });
+  },
+  assemblyDecorator,
+];
+InsideRichTextAssembly.parameters = InsideRichText.parameters;
 
 export const InsideParentWithStyledLinksUtilityClass = Template.bind({});
 InsideParentWithStyledLinksUtilityClass.decorators = [

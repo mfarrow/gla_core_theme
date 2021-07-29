@@ -9,10 +9,10 @@
     text-decoration-thickness: 2px;
     text-decoration-style: solid;
     text-underline-offset: 4px;
-    text-decoration-color: $t-colors-pink;
+    text-decoration-color: $t-colors-primary;
   }
 
   &:active {
-    text-decoration-color: $t-colors-dark-pink;
+    text-decoration-color: $t-colors-primary-dark;
   }
 }

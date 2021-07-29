@@ -5,7 +5,7 @@ const colors = require('../../tokens/tokens-module').colors;
 const theme = create({
   base: 'light',
   colorPrimary: colors.pink.value,
-  colorSecondary: colors['dark-pink'].value,
+  colorSecondary: colors['pink-dark'].value,
 });
 
 addons.setConfig({
