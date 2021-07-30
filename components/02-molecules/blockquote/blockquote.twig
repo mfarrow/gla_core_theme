@@ -21,7 +21,7 @@
 %}
 
 <figure {{ attributes }}>
-  {% if image_content %}
+  {% if has_image_content %}
     {#
       The image in this component is decorative so we hide it with aria-hidden. An alternative would be to preprocess
       the image and add an empty alt attribute, e.g. alt="".
@@ -37,13 +37,13 @@
     </blockquote>
 
     {% if citation %}
-      <figcaption class="u-text-sm xl:u-text-base">
-        <span class="u-font-bold">
-          <span class="u-text-primary-dark" aria-hidden="true">—</span>
-          {{ split_citation.0 -}}
-          {% if split_citation.1 %}, {% endif %}
-        </span>
-        {% if split_citation.1 %}{{ split_citation.1 }}{% endif %}
+      <figcaption class="u-flex u-space-x-1 u-text-sm xl:u-text-base">
+        <div class="u-font-bold u-text-primary-dark" aria-hidden="true">—&nbsp;</div>
+        <div>
+          <span class="u-font-bold">{{ split_citation.0 -}}</span>
+          {%- if split_citation.1 -%}, {%- endif -%}
+          {% if split_citation.1 %}{{ split_citation.1 }}{% endif %}
+        </div>
       </figcaption>
     {% endif %}
   </div>

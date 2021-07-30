@@ -1,7 +1,5 @@
 import assemblyDecorator from '../../../storybook/assembly-decorator';
 
-import { ExampleUsingContentFromDesigns } from '../../01-atoms/rich-text/rich-text.story';
-
 const template = require('./blockquote.twig');
 
 export default {
@@ -11,6 +9,7 @@ export default {
       'This is a quote. Hundreds of thousands paroxysm of global death quasar vanquish the impossible decipherment colonies.',
     citation: 'Sadiq Khan, Mayor of London',
     image_content: `<img src="https://pbs.twimg.com/profile_images/1417081099608596481/nVO3JCd-_400x400.jpg" alt="Alt from Drupal" loading="lazy">`,
+    has_image_content: true,
   },
   argTypes: {
     quote: {
@@ -33,6 +32,14 @@ export default {
       description: 'HTML markup to display an image',
       table: {
         type: { summary: 'string' },
+      },
+    },
+    has_image_content: {
+      type: { name: 'boolean' },
+      description:
+        'Boolean to toggle image display. Calculate using `not paragraph.field_p_bq_supporting_image.isEmpty()` or similar.',
+      table: {
+        type: { summary: 'boolean' },
       },
     },
   },
@@ -59,9 +66,16 @@ AttributionMultipleCommas.args = {
   citation: 'Joe Blogs, commonly cited person, true identity unknown',
 };
 
+export const AttributionVeryLong = Template.bind({});
+AttributionVeryLong.args = {
+  citation:
+    'Joe Blogs, commonly cited person, true identity unknown, some more text here to try and make the citation nicely break onto a new line to check line-height and positioning relative to the em dash',
+};
+
 export const NoImage = Template.bind({});
 NoImage.args = {
   image_content: null,
+  has_image_content: false,
 };
 
 export const NoCitation = Template.bind({});
@@ -83,6 +97,7 @@ export const InContextWithRichText = () => `
         'This is a quote. Hundreds of thousands paroxysm of global death quasar vanquish the impossible decipherment colonies.',
       citation: 'Sadiq Khan, Mayor of London',
       image_content: `<img src="https://www.london.gov.uk/sites/default/files/styles/gla_large_unconstrained/public/sadiq_khan_1x1_20june21.png?itok=sThvh2OW" alt="Alt from Drupal" loading="lazy">`,
+      has_image_content: true,
     })}
     ${richTextTemplate({
       content: `<p>Concept of the number one the carbon in our apple pies intelligent beings light years corpus callosum tesseract? Network of wormholes the sky calls to us dispassionate extraterrestrial observer two ghostly white figures in coveralls and helmets are softly dancing dispassionate extraterrestrial observer Cambrian explosion. Descended from astronomers from which we spring.</p>`,
