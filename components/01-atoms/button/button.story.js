@@ -1,6 +1,5 @@
 import DrupalAttribute from 'drupal-attribute';
 import dedent from 'ts-dedent';
-import assemblyDecorator from '../../../storybook/assembly-decorator';
 
 const template = require('./button.twig');
 
@@ -47,9 +46,6 @@ const Template = (args) => template({ ...args });
 
 export const Default = Template.bind({});
 
-export const Assembly = Template.bind({});
-Assembly.decorators = [assemblyDecorator];
-
 export const White = Template.bind({});
 White.args = {
   button_type: 'white',
@@ -70,12 +66,6 @@ Solid.parameters = {
     },
   },
 };
-
-export const AssemblySolid = Template.bind({});
-AssemblySolid.args = {
-  button_type: 'solid',
-};
-AssemblySolid.decorators = [assemblyDecorator];
 
 export const WithNoUrl = Template.bind({});
 WithNoUrl.args = {
