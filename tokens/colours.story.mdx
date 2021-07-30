@@ -88,18 +88,23 @@ the files in the `./tokens` directory of the theme.
 
 ## Theme colours
 
-Wherever possible, do not use colours like `pink` or `pink-dark` or `blue-dark`
-directly as these are Mayoral and Assembly colours and we do not want them to be
-used in the wrong context.
+For components that might need to change colour based on their context in the
+site (e.g. Mayoral content vs Assembly content) do not use colours like `pink`
+or `pink-dark` or `blue-dark` directly. These are Mayoral and Assembly colours,
+and we do not want them to be used in the wrong context.
 
 Instead, use the theme colour aliases like `primary` or `primary-dark`. These
-colours can automatically swap between the mayoral and assembly colours
+colours can automatically swap between the Mayoral and Assembly colours
 depending on the context.
+
+**Watch out though as some key components like buttons will _always_ use the
+pink colour, even on Assembly pages. In these contexts, use the pink colour
+directly rather than the 'primary' colour alias.**
 
 ### Mayoral (default)
 
-By default, mayoral colours are used for the `primary` and `primary-dark`
-colours:
+By default, Mayoral colours are used for the `primary` and `primary-dark`
+colours…
 
 <ColorPalette>
   {Object.keys(colors)
@@ -109,7 +114,7 @@ colours:
 
 ### Assembly
 
-But assembly colours will be used within an element with a `theme--assembly`
+…but Assembly colours will be used within an element with a `theme--assembly`
 class:
 
 <div className={'theme--assembly'}>
@@ -121,8 +126,8 @@ class:
 </div>
 
 Be careful, as not all components have been designed with theme switching in
-mind. For example, mayoral pink might look good against a grey colour, but
-mayoral blue won't.
+mind. For example, Mayoral pink might look good against a grey colour, but
+Assembly blue won't.
 
 ## Primary palette
 
