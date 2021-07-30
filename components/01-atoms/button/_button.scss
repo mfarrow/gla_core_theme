@@ -4,7 +4,7 @@
   user-select: none;
   text-align: center;
   letter-spacing: -0.24px;
-  border: 2px solid $t-colors-primary;
+  border: 2px solid $t-colors-pink;
   border-radius: $t-border-radius-6;
   font-size: $t-font-size-base;
   font-weight: $t-font-weight-bold;
@@ -13,7 +13,7 @@
   &:hover,
   &:focus {
     color: $t-colors-white;
-    background-color: $t-colors-primary;
+    background-color: $t-colors-pink;
   }
 }
 
@@ -23,22 +23,22 @@
 
   &:hover,
   &:focus {
-    color: $t-colors-primary;
+    color: $t-colors-pink;
     background-color: $t-colors-white;
   }
 }
 
 .btn.btn--solid {
   color: $t-colors-white;
-  border-color: $t-colors-primary;
-  background-color: $t-colors-primary;
+  border-color: $t-colors-pink;
+  background-color: $t-colors-pink;
 
   &:hover,
   &:focus {
     text-decoration: underline;
     color: $t-colors-white;
-    border-color: $t-colors-primary-dark;
-    background-color: $t-colors-primary-dark;
+    border-color: $t-colors-pink-dark;
+    background-color: $t-colors-pink-dark;
     text-decoration-thickness: 2px;
     text-decoration-style: solid;
     text-underline-offset: 3px;
