@@ -1,6 +1,3 @@
-import dedent from 'ts-dedent';
-import DrupalAttribute from 'drupal-attribute';
-
 import * as ExampleTableMarkup from '../table/example-markup';
 
 const template = require('./rich-text.twig');
@@ -21,17 +18,6 @@ export default {
     },
   },
   parameters: {
-    docs: {
-      description: {
-        component: dedent(`
-          Rich text styling is provided by the [tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography)
-          plugin that provides opinionated styling intended for WYSIWYG content.
-
-          To override the styling, developers should edit \`theme.extend.typography\` inside \`tailwind.config.js\`. To
-          get an idea of the styles available to override, see the [\`styles.js\` file from the plugin](https://github.com/tailwindlabs/tailwindcss-typography/blob/master/src/styles.js).
-        `),
-      },
-    },
     design: {
       type: 'iframe',
       url:
@@ -349,7 +335,8 @@ Default.args = {
 export const LeadParagraph = Template.bind({});
 LeadParagraph.args = {
   content: `
-    <p class="lead">The xfirst paragraph in the designs uses a larger 'intro' text size and line height.</p>
+    <p class="lead">This is an example of the 'lead' styling to make the first paragraph use larger text. At the moment this needs to be manually added to the first paragraph of the first <em>Rich text</em> component on each page using the 'Styles' dropdown in CKEditor (the WYSIWYG editor).</p>
+    <p>Once we have completed DERP-250 (the <em>Page section</em> component) then the ability to add page components will be moved into a <em>Page section</em> component that manages the H2 tags. When we have this setup, we can write some code that loops through all the Page section components, finds the first <em>Rich text</em> component in use on the page, then automatically makes the first paragraph use the 'lead' styling.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
     <p class="lead">The intro styling can be forced on any paragraph by giving it the \`lead\` class.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
@@ -357,22 +344,8 @@ LeadParagraph.args = {
   `,
 };
 
-export const NoLeadParagraph = Template.bind({});
-NoLeadParagraph.args = {
-  attributes: new DrupalAttribute().addClass(
-    'rich-text--no-first-of-type-lead',
-  ),
-  content: `
-    <p>The first paragraph this story does not use a larger 'intro' text size and line height.</p>
-    <p>To disable the intro/lead styling add the <code>rich-text--no-first-of-type-lead</code> class to the component.</p>
-  `,
-};
-
 export const HorizontalRule = Template.bind({});
 HorizontalRule.args = {
-  attributes: new DrupalAttribute().addClass(
-    'rich-text--no-first-of-type-lead',
-  ),
   content: `
     <p>Paragraph text.</p>
     <hr>
