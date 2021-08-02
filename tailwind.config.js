@@ -3,7 +3,7 @@ const colors = {
   transparent: 'transparent',
   current: 'currentColor',
   pink: '#e7135d',
-  'dark-pink': '#9e0059',
+  'pink-dark': '#9e0059',
   grey: '#353d42',
   vulcan: '#111827',
   'dark-grey': '#1a1e21',
@@ -14,7 +14,8 @@ const colors = {
   white: '#ffffff',
   black: '#000000',
   blue: '#007acc',
-  'dark-blue': '#00577d',
+  'blue-dark': '#00577d',
+  'blue-darker': '#1d3f4d',
   green: '#008743',
   red: '#eb001b',
   purple: '#ae4ac6',
@@ -53,9 +54,9 @@ module.exports = {
   theme: {
     colors: {
       ...colors,
-      // aliases
-      primary: colors.pink,
-      assembly: colors['dark-blue'],
+      // These colours can be used to swap between Mayoral and Assembly branding:
+      primary: 'var(--theme-primary)',
+      'primary-dark': 'var(--theme-primary-dark)',
     },
     screens: {
       sm: '576px',
@@ -69,6 +70,8 @@ module.exports = {
       none: '0',
       DEFAULT: '4px',
       6: '6px',
+      9: '9px',
+      full: '9999px',
     },
     fontSize: {
       sm: [
@@ -164,12 +167,33 @@ module.exports = {
       normal: 400,
       bold: 700,
     },
+    lineHeight: {
+      // Replace the Tailwind scale with a more simple one from the designs. We don't have a comprehensive list of
+      // all the line heights used in the designs so we name the scale literally rather than trying to do sm, md, lg
+      // etc and then end up with sm, verysmall, extrasmall, notassmallastheothers, etc…
+      19: '19px',
+      20: '20px',
+      21: '21px',
+      26: '26px',
+      28: '28px',
+      30: '30px',
+      35: '35px',
+    },
     extend: {
       spacing: {
         'bs-grid': '15px',
       },
       margin: {
         '-bs-grid': '-15px',
+      },
+      fill: {
+        primary: colors.pink,
+      },
+      letterSpacing: {
+        0.25: '0.25px',
+      },
+      maxWidth: {
+        'rich-text': '73ch',
       },
     },
   },

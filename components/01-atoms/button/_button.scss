@@ -1,3 +1,5 @@
+// Note that buttons intentionally always use the pink colour (for consistency)
+// even if they are being used in Assembly content.
 .btn {
   display: inline-block;
   padding-top: $t-spacing-3-5;
@@ -9,19 +11,16 @@
   // @TODO replace this with a variable once we have figured out
   // all the possible line-height values used in the site.
   letter-spacing: -0.24px;
-  border: 2px solid $t-colors-primary;
+  border: 2px solid $t-colors-pink;
   border-radius: $t-border-radius-6;
-  // @TODO replace this with a variable once we have figured out the
-  // responsive type scale. Note that we have a Postcss plugin that
-  // turns pixel values to rem values for us, so we can use that when
-  // we look at differing font sizes per breakpoint.
-  font-size: 18px;
-  font-weight: bold;
+  font-size: $t-font-size-base;
+  font-weight: $t-font-weight-bold;
+  line-height: $t-line-height-21;
 
   &:hover,
   &:focus {
     color: $t-colors-white;
-    background-color: $t-colors-primary;
+    background-color: $t-colors-pink;
   }
 }
 
@@ -31,7 +30,7 @@
 
   &:hover,
   &:focus {
-    color: $t-colors-primary;
+    color: $t-colors-pink;
     background-color: $t-colors-white;
   }
 }
@@ -45,8 +44,8 @@
   &:focus {
     text-decoration: underline;
     color: $t-colors-white;
-    border-color: $t-colors-dark-pink;
-    background-color: $t-colors-dark-pink;
+    border-color: $t-colors-pink-dark;
+    background-color: $t-colors-pink-dark;
     text-decoration-thickness: 2px;
     text-decoration-style: solid;
     text-underline-offset: 3px;

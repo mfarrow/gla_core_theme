@@ -335,8 +335,7 @@ Default.args = {
 export const LeadParagraph = Template.bind({});
 LeadParagraph.args = {
   content: `
-    <p class="lead">This is an example of the 'lead' styling to make the first paragraph use larger text. At the moment this needs to be manually added to the first paragraph of the first <em>Rich text</em> component on each page using the 'Styles' dropdown in CKEditor (the WYSIWYG editor).</p>
-    <p>Once we have completed DERP-250 (the <em>Page section</em> component) then the ability to add page components will be moved into a <em>Page section</em> component that manages the H2 tags. When we have this setup, we can write some code that loops through all the Page section components, finds the first <em>Rich text</em> component in use on the page, then automatically makes the first paragraph use the 'lead' styling.</p>
+    <p class="lead">The first paragraph in the designs uses a larger 'intro' text size and line height.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>
     <p class="lead">The intro styling can be forced on any paragraph by giving it the \`lead\` class.</p>
     <p>Subsequent paragraphs use the normal base text size and line height.</p>

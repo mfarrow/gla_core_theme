@@ -44,7 +44,7 @@ export default {
 
 const Template = (args) => template({ ...args });
 
-export const Standard = Template.bind({});
+export const Default = Template.bind({});
 
 export const White = Template.bind({});
 White.args = {
