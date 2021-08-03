@@ -1,0 +1,15 @@
+// Define all custom properties in :root so that postcss-custom-properties will pick up on them.
+:root {
+  --theme-primary: var(--t-colors-pink);
+  --theme-primary-dark: var(--t-colors-pink-dark);
+}
+
+.theme--assembly {
+  --theme-primary: var(--t-colors-blue-dark);
+  --theme-primary-dark: var(--t-colors-blue-darker);
+}
+
+.theme--mayoral {
+  --theme-primary: var(--t-colors-pink);
+  --theme-primary-dark: var(--t-colors-pink-dark);
+}
