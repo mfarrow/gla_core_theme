@@ -1,6 +1,7 @@
 global:
   css:
     theme:
+      tokens/tokens.css: {}
       dist/global.css: {}
       dist/utilities.css: {}
   dependencies:
