@@ -4,7 +4,7 @@
 
 {#
   Fall back to a timestamp if no ID is provided, but this would cause issues if we ever do DOM snapshot testing so
-  developers should pass an ID into the component. `paragraph.id` would be an easy approach to using the Drupal ID
+  developers should pass an ID into the component. `paragraph.id()` would be an easy approach to using the Drupal ID
   for a paragraph entity.
 #}
 {% set id = id|default(date().timestamp) %}
@@ -24,7 +24,7 @@
   ])
 %}
 
-<div>
+{% if cta_type == 'talk_london' %}<div>{% endif %}
   <div {{ attributes }}>
     {% include "@atoms/heading/heading.twig" with {
       heading_level: heading_level,
@@ -55,4 +55,4 @@
     #}
     <svg aria-hidden="true" focusable="false" viewBox="0 0 30.668 14.632" xmlns="http://www.w3.org/2000/svg" class="u-ml-6 sm:u-ml-12 md:u-ml-16 u-w-7 u-fill-pink"><path d="M0 0a2.01 2.01 0 012.004 2.004v9.621c0 1.704 1.304 3.008 3.008 3.008.601 0 1.202-.201 1.703-.502L23.854 2.106C25.858.703 28.263 0 30.668 0H0z"/></svg>
   {% endif %}
-</div>
+{% if cta_type == 'talk_london' %}</div>{% endif %}
