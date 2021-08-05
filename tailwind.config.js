@@ -189,7 +189,9 @@ module.exports = {
         '-bs-grid': '-15px',
       },
       fill: {
-        primary: colors.pink,
+        pink: colors.pink,
+        primary: colors.primary,
+        'primary-dark': colors['primary-dark'],
       },
       letterSpacing: {
         0.25: '0.25px',
