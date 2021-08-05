@@ -1,15 +1,16 @@
 // Define all custom properties in :root so that postcss-custom-properties will pick up on them.
+// We define fallbacks as a safety/defensive precaution.
 :root {
-  --theme-primary: var(--t-colors-pink);
-  --theme-primary-dark: var(--t-colors-pink-dark);
+  --theme-primary: var(--t-colors-pink, #{$t-colors-pink});
+  --theme-primary-dark: var(--t-colors-pink-dark, #{$t-colors-pink-dark});
 }
 
 .theme--assembly {
-  --theme-primary: var(--t-colors-blue-dark);
-  --theme-primary-dark: var(--t-colors-blue-darker);
+  --theme-primary: var(--t-colors-blue-dark, #{$t-colors-blue-dark});
+  --theme-primary-dark: var(--t-colors-blue-darker, #{$t-colors-blue-darker});
 }
 
 .theme--mayoral {
-  --theme-primary: var(--t-colors-pink);
-  --theme-primary-dark: var(--t-colors-pink-dark);
+  --theme-primary: var(--t-colors-pink, #{$t-colors-pink});
+  --theme-primary-dark: var(--t-colors-pink-dark, #{$t-colors-pink-dark});
 }
