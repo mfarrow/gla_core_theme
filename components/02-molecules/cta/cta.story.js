@@ -148,9 +148,17 @@ TooMuchButtonText.parameters = {
 
 export const TooMuchHeadingText = Template.bind({});
 TooMuchHeadingText.args = {
-  content:
+  heading:
     "CMS users should be sensible with the amount of content they add to a component, and we should trust them to do good work, but it's also good to give components some resilience and make sure they are at least readable when too much content is put inside them, even if they may not always be as attractive as they could be",
 };
 
 export const Assembly = Template.bind({});
 Assembly.decorators = [assemblyDecorator];
+Assembly.parameters = {
+  docs: {
+    description: {
+      story:
+        'The button should still use pink, but its focus outline uses an Assembly colour as does the text selection colour.',
+    },
+  },
+};

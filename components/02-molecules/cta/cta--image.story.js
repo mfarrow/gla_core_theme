@@ -20,7 +20,7 @@ export default {
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=350&q=60" media="(min-width: 992px)" width="480" height="350">
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=959&h=466&q=60" media="(min-width: 769px)" width="959" height="466">
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=721&h=468&q=60" media="(min-width: 576px)" width="721" height="468">
-        <img class="u-object-cover u-w-full" src="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=575&h=450&q=60" alt="A man skateboards at the London South Bank" width="575" height="450" loading="lazy" />
+        <img class="u-object-cover u-h-full" src="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=575&h=450&q=60" alt="A man skateboards at the London South Bank" width="575" height="450" loading="lazy" />
       </picture>
     `,
   },
