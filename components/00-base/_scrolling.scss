@@ -1,5 +1,9 @@
 html {
   scroll-behavior: smooth;
+  // Always force a scrollbar. This limits CLS ever so slightly, and also stops the page layout jumping (on OSs that
+  // have a persistent scrollbar) when a user moves from a page that has a lot of content to a page with not enough
+  // content to need a scrollbar.
+  overflow-y: scroll;
 
   @media (prefers-reduced-motion: reduce) {
     scroll-behavior: auto !important;

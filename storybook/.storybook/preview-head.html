@@ -1,9 +1,18 @@
+<!-- You'll need to restart Storybook for changes to this file to take affect -->
+
 <meta name="robots" content="noindex, nofollow" />
-<link href="./dist/utilities.css" rel="stylesheet">
+
+<!--
+  We add the global CSS via Storybook's Webpack but add Tailwind via a link for performance reasons when dealing with
+  the unpurged CSS.
+-->
+<link href="./dist/utilities.css" rel="stylesheet" />
+
+<script src="./dist/00-base/set-scrollbar-width.js"></script>
 
 <style>
   div#root {
-    color: #333333;
+    color: var(--t-colors-text-grey);
   }
   div#root.pseudo-focus {
     width: fit-content;

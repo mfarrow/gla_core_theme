@@ -7,6 +7,7 @@ global:
     - gla_core_theme/polyfill-io
     - gla_core_theme/inert-polyfill
     - gla_core_theme/what-input
+    - gla_core_theme/set-scrollbar-width
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
@@ -57,3 +58,7 @@ admin-styles:
   css:
     theme:
       dist/admin-styles.css: {}
+
+set-scrollbar-width:
+  js:
+    dist/00-base/set-scrollbar-width.js: {}
