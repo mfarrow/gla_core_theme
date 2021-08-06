@@ -23,11 +23,26 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
   }
 
   caption {
+    // Set a max-width for the caption when to help keep it readable. We want the max width
+    // to either be the container width, or the max width of the rich text component
+    // (measured in characters), whatever is smallest. We use unquote to avoid Sass thinking
+    // we want to use its own min function.
+    max-width: unquote(
+      "min(var(--container-width), #{$t-max-width-rich-text})"
+    );
     margin-bottom: $t-spacing-6;
     text-align: left;
     // The caption is styled more like paragraph text.
     font-size: $t-font-size-base;
     line-height: $t-font-size-base-line-height;
+
+    @include breakpoint($t-screens-xl) {
+      // Bump up the text size to match the increased text size of the rich text component
+      // at this breakpoint. This keeps the text size and any max-width defined in ch units
+      // constant between captions and paragraphs.
+      font-size: $t-font-size-lg;
+      line-height: $t-font-size-lg-line-height;
+    }
   }
 
   thead {

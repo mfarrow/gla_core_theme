@@ -1,21 +1,84 @@
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1440px,
+);
 
-  @include breakpoint($t-screens-sm) {
-    max-width: 540px;
+$screens: (
+  sm: $t-screens-sm,
+  md: $t-screens-md,
+  lg: $t-screens-lg,
+  xl: $t-screens-xl,
+  xxl: $t-screens-xxl,
+);
+
+// The container approach is based on https://www.joshwcomeau.com/css/full-bleed but using fixed widths
+// for each breakpoint, rather than being based on character width. This matches the designs.
+// See https://codepen.io/hexagoncircle/pen/gOWjwme for an example of aligning content within the container
+// by inheriting the grid columns, but still allowing it to be scrolled horizontally out of the grid.
+// I'm not sure the current designs include any examples of this, but I'm including it for future reference.
+.container {
+  $mobile-gutter: 15px;
+  // We use 100vw rather than 100% intentionally. This is so that the custom property can be used
+  // inside a .rich-text .scrollable-table table caption selector to restrict the caption element
+  // to the width of the container, without the very-wide potential width of a scrollable table
+  // blowing out 100% and making it larger than the viewport.
+  // stylelint-disable-next-line -- variable must come before custom property declaration, for Sass.
+  --container-width: calc(var(--reliable-100vw) - #{$mobile-gutter * 2});
+
+  display: grid;
+  // Use unquote to avoid Sass thinking we want to use its min function.
+  grid-template-columns: unquote("1fr calc(100% - #{$mobile-gutter * 2}) 1fr");
+
+  // Have content inside the container take up the middle (main) grid column.
+  // The other two grid columns act as gutters and center the page content
+  // without needing to use margin auto.
+  > * {
+    grid-column: 2;
   }
-  @include breakpoint($t-screens-md) {
-    max-width: 720px;
+
+  // Set a fixed width for the middle column at each breakpoint, and set a custom property for elements like table
+  // captions that we might need to restrict to the container width.
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @include breakpoint(map-get($screens, $breakpoint)) {
+      --container-width: #{$container-max-width};
+
+      grid-template-columns: unquote("1fr #{$container-max-width} 1fr");
+    }
   }
-  @include breakpoint($t-screens-lg) {
-    max-width: 960px;
-  }
-  @include breakpoint($t-screens-xl) {
-    max-width: 1140px;
-  }
-  @include breakpoint($t-screens-xxl) {
-    max-width: 1440px;
-  }
+}
+
+// Immediate children of .container can 'breakout' of the container by spanning the full range of columns not just the
+// middle. This requires a specific DOM structure but is the nicest breakout option as it relies only on CSS grid.
+.u-breakout {
+  --container-width: 100%;
+
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+// For not-immediate children of .container, the u-breakout-child class can be used to break out of the container.
+// This is not as good an option as using the original u-breakout class as it requires JavaScript to calculate the
+// scrollbar width in order to get perfect alignment with other elements on the page and it has a few issues:
+//
+// ⚠️ This can cause a small amount of CLS when the value of --reliable-100vw updates and the alignment of content
+//    changes.
+// ⚠️ Note that these classes will only work on content that is centered in the middle of the page. If a max-width
+//    (e.g. one added for readability on a Rich text component) means the element is off-center then it will not
+//    properly be able to break out of the grid. If this is the case, try refactoring the DOM structure of your
+//    component to use the u-breakout class.
+html:not(.has-scrollbar-width-set) .u-breakout-child {
+  position: relative;
+  right: 50%;
+  left: 50%;
+  width: 100vw;
+  margin-right: -50vw;
+  margin-left: -50vw;
+}
+
+html.has-scrollbar-width-set .u-breakout-child {
+  width: var(--reliable-100vw);
+  margin-left: calc(50% - (var(--reliable-100vw) / 2));
 }
