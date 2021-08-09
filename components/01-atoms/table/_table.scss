@@ -18,7 +18,9 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
     vertical-align: top;
 
     &:nth-of-type(even) {
-      background-color: $t-colors-wild-sand;
+      // We have to use a RGBA value here so the shadows from _scrollable-table.scss can
+      // show through the cell.
+      background-color: rgba($t-colors-black, 0.04);
     }
   }
 

@@ -1,58 +1,47 @@
 .scrollable-table {
-  .scrollable-table__affordance {
-    height: var(--scrollable-table--table-height);
-    margin-bottom: var(--scrollable-table--scrollbar-height);
-  }
+  &.has-scroll-affordance {
+    $shadow-color: rgba(0, 0, 0, 0.3);
+    $shadow-width: $t-spacing-4;
+    // The --table-height and --scrollbar-height custom properties are set via scrollable-table.js.
+    // We can't use 100% to set the shadow height or else it could cover the table caption.
+    $shadow-height: var(--table-height);
 
-  .scrollable-table__affordance--left {
-    background: linear-gradient(to right, black, 30%, transparent);
-  }
+    // Try to prevent elastic overscroll to avoid the shadows becoming separated from the table.
+    // Unfortunately this doesn't work in iOS: https://caniuse.com/css-overscroll-behavior .
+    overscroll-behavior: none;
 
-  .scrollable-table__affordance--right {
-    background: linear-gradient(to left, black, 30%, transparent);
+    // Approach taken from https://www.bram.us/2019/10/24/pure-css-scroll-shadows-vertical-horizontal .
+    background: linear-gradient(
+        to right,
+        $t-colors-white,
+        $t-colors-white,
+        $t-colors-transparent calc(#{$shadow-width} * 2)
+      ),
+      linear-gradient(to right, $shadow-color, $t-colors-transparent),
+      linear-gradient(
+        to left,
+        $t-colors-white,
+        $t-colors-white,
+        $t-colors-transparent calc(#{$shadow-width} * 2)
+      ),
+      linear-gradient(to left, $shadow-color, $t-colors-transparent) 100%;
+    background-color: $t-colors-white;
+    background-repeat: no-repeat;
+    background-attachment: local, scroll, local, scroll;
+    // Offset the shadow gradients so they don't appear below the scrollbar.
+    background-position-y: bottom, calc(100% - var(--scrollbar-height, 0px));
+    background-size: 100% $shadow-height, $shadow-width $shadow-height,
+      100% $shadow-height, $shadow-width $shadow-height;
+
+    table {
+      // We need to remove the white solid background of the table so that the
+      // shadow (provided by the scrollable element _below_ the table can show
+      // through.
+      background: unset;
+    }
+
+    @include breakpoint("print") {
+      background-image: unset;
+    }
   }
-  //$scroll-affordance-width: 30px;
-  //
-  //tbody,
-  //thead {
-  //  position: relative;
-  //}
-  //
-  //tbody::after,
-  //thead::after {
-  //  position: absolute;
-  //  top: 0;
-  //  bottom: 0;
-  //  left: unquote(
-  //    "calc(min(var(--container-width), #{$t-max-width-rich-text}) - #{$scroll-affordance-width})"
-  //  );
-  //  width: $scroll-affordance-width;
-  //  content: "";
-  //  transition: all $t-transition-duration-300
-  //    $t-transition-timing-function-default;
-  //  transform: translateX(#{$scroll-affordance-width}) scaleX(0);
-  //  pointer-events: none;
-  //  opacity: 0;
-  //  background: linear-gradient(to left, black, 20%, transparent);
-  //
-  //  // We need to make sure the font size of this pseudo element matches the
-  //  // rich text font size so that the ch units in $t-max-width-rich-text will
-  //  // equate to the same pixel width as the ch units on the rich text elements.
-  //  font-size: $t-font-size-base;
-  //  @include breakpoint($t-screens-xl) {
-  //    font-size: $t-font-size-lg;
-  //  }
-  //}
-  //
-  //&.is-scrollable-right {
-  //  tbody::after,
-  //  thead::after {
-  //    transition: opacity $t-transition-duration-700
-  //        $t-transition-timing-function-default,
-  //      transform $t-transition-duration-700
-  //        $t-transition-timing-function-default;
-  //    transform: none;
-  //    opacity: $t-opacity-30;
-  //  }
-  //}
 }

@@ -1,6 +1,6 @@
 // Use https://chir.ag/projects/name-that-color to name colours.
 const colors = {
-  transparent: 'transparent',
+  transparent: 'rgba(255, 255, 255, 0)',
   current: 'currentColor',
   pink: '#e7135d',
   'pink-dark': '#9e0059',
