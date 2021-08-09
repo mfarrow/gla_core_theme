@@ -1,3 +1,20 @@
-<div class="scrollable-table custom-scrollbar u-overflow-auto" tabindex="0">
-  {{ content }}
+{{ attach_library('gla_core_theme/scrollable-table') }}
+
+{#
+  Normally with an Alpine component like this we would break it onto multiple lines and use the shorthands like
+  @scroll instead of x-on:scroll, but these two things causes issues when the FilterHtmlCorrector runs over the
+  markup (when a table is used inside a Rich text component).
+#}
+<div class="scrollable-table u-relative u-overflow-hidden" x-data="scrollableTable" :class="classes" x-on:resize.window.debounce="init">
+  {#
+    The scroll listener isn't debounced or throttled as it makes it more difficult to work out when the scroll
+    container has been fully scrolled. If this causes performance issues there are two options:
+    1. Include Lodash's Throttle function which can be set to fire on the leading and trailing edge
+    2. Refactor the JavaScript to use an IntersectionObserver instead of querying scrollWidth and scrollLeft.
+  #}
+  <div class="u-overflow-auto custom-scrollbar" tabindex="0" x-ref="scroller" x-on:scroll="onScroll">
+    {{ content }}
+  </div>
+  <div x-cloak class="scrollable-table__affordance scrollable-table__affordance--left u-absolute u-bottom-0 u-opacity-40 u-left-0 u-w-6 u-rounded-tl u-rounded-bl u-transform u-transition-transform u-duration-300" :class="{ 'u--translate-x-full': !scrollableLeft }"></div>
+  <div x-cloak class="scrollable-table__affordance scrollable-table__affordance--right u-absolute u-bottom-0 u-opacity-40 u-right-0 u-w-6 u-rounded-tr u-rounded-br u-transform u-transition-transform u-duration-300" :class="{ 'u-translate-x-full': !scrollableRight }"></div>
 </div>

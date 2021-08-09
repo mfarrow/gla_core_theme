@@ -1,6 +1,8 @@
 // Define all custom properties in :root so that postcss-custom-properties will pick up on them.
 // We define fallbacks as a safety/defensive precaution.
-:root {
+:root,
+::before,
+::after {
   --theme-primary: var(--t-colors-pink, #{$t-colors-pink});
   --theme-primary-dark: var(--t-colors-pink-dark, #{$t-colors-pink-dark});
   // Knowing the scrollbar width is useful when using '100vw' in CSS calculations

@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // https://codepen.io/Mamboleoo/post/scrollbars-and-css-custom-properties which both
   // do a similar thing but via a more complex method.
   const width = window.innerWidth - document.documentElement.clientWidth;
-  const root = document.documentElement;
-  root.style.setProperty('--scrollbar-width', `${width}px`);
+  document.head.insertAdjacentHTML(
+    'beforeend',
+    `<style>:root,::before,::after {--scrollbar-width: ${width}px}</style>`,
+  );
   document.documentElement.classList.add('has-scrollbar-width-set');
 });

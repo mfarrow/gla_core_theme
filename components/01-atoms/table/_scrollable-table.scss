@@ -1,0 +1,58 @@
+.scrollable-table {
+  .scrollable-table__affordance {
+    height: var(--scrollable-table--table-height);
+    margin-bottom: var(--scrollable-table--scrollbar-height);
+  }
+
+  .scrollable-table__affordance--left {
+    background: linear-gradient(to right, black, 30%, transparent);
+  }
+
+  .scrollable-table__affordance--right {
+    background: linear-gradient(to left, black, 30%, transparent);
+  }
+  //$scroll-affordance-width: 30px;
+  //
+  //tbody,
+  //thead {
+  //  position: relative;
+  //}
+  //
+  //tbody::after,
+  //thead::after {
+  //  position: absolute;
+  //  top: 0;
+  //  bottom: 0;
+  //  left: unquote(
+  //    "calc(min(var(--container-width), #{$t-max-width-rich-text}) - #{$scroll-affordance-width})"
+  //  );
+  //  width: $scroll-affordance-width;
+  //  content: "";
+  //  transition: all $t-transition-duration-300
+  //    $t-transition-timing-function-default;
+  //  transform: translateX(#{$scroll-affordance-width}) scaleX(0);
+  //  pointer-events: none;
+  //  opacity: 0;
+  //  background: linear-gradient(to left, black, 20%, transparent);
+  //
+  //  // We need to make sure the font size of this pseudo element matches the
+  //  // rich text font size so that the ch units in $t-max-width-rich-text will
+  //  // equate to the same pixel width as the ch units on the rich text elements.
+  //  font-size: $t-font-size-base;
+  //  @include breakpoint($t-screens-xl) {
+  //    font-size: $t-font-size-lg;
+  //  }
+  //}
+  //
+  //&.is-scrollable-right {
+  //  tbody::after,
+  //  thead::after {
+  //    transition: opacity $t-transition-duration-700
+  //        $t-transition-timing-function-default,
+  //      transform $t-transition-duration-700
+  //        $t-transition-timing-function-default;
+  //    transform: none;
+  //    opacity: $t-opacity-30;
+  //  }
+  //}
+}
