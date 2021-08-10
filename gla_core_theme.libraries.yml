@@ -31,8 +31,9 @@ what-input:
 # If the site uses a CSP that prevents unsafe-eval then we may need to load the CSP version of Alpine instead and
 # refactor components to use it. See https://alpinejs.dev/advanced/csp for more information.
 alpinejs:
+  header: true
   js:
-    libraries/alpinejs/dist/cdn.js: {}
+    libraries/alpinejs/dist/cdn.js: { attributes: { defer: true } }
 
 # Until Safari supports native image lazyloading we'll need a library to help us with it.
 lazysizes:
@@ -62,3 +63,9 @@ admin-styles:
 set-scrollbar-width:
   js:
     dist/00-base/set-scrollbar-width.js: {}
+
+scrollable-table:
+  js:
+    dist/01-atoms/table/scrollable-table.js: { }
+  dependencies:
+    - gla_core_theme/alpinejs

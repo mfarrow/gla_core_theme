@@ -4,6 +4,8 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
 .styled-table {
   width: 100%;
   table-layout: auto;
+  // If the caption changes to be _below_ the table then please update scrollable-table.js to take into account
+  // the caption's margin-top rather than margin-bottom.
   caption-side: top;
   border-spacing: 0;
   text-align: left;
@@ -18,7 +20,9 @@ $table-inner-spacing: $t-spacing-3-5 $t-spacing-4;
     vertical-align: top;
 
     &:nth-of-type(even) {
-      background-color: $t-colors-wild-sand;
+      // We have to use a RGBA value here so the shadows from _scrollable-table.scss can
+      // show through the cell.
+      background-color: rgba($t-colors-black, 0.04);
     }
   }
 

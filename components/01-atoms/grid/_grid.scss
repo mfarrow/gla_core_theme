@@ -21,12 +21,6 @@ $screens: (
 // I'm not sure the current designs include any examples of this, but I'm including it for future reference.
 .container {
   $mobile-gutter: 15px;
-  // We use 100vw rather than 100% intentionally. This is so that the custom property can be used
-  // inside a .rich-text .scrollable-table table caption selector to restrict the caption element
-  // to the width of the container, without the very-wide potential width of a scrollable table
-  // blowing out 100% and making it larger than the viewport.
-  // stylelint-disable-next-line -- variable must come before custom property declaration, for Sass.
-  --container-width: calc(var(--reliable-100vw) - #{$mobile-gutter * 2});
 
   display: grid;
   // Use unquote to avoid Sass thinking we want to use its min function.
@@ -39,13 +33,28 @@ $screens: (
     grid-column: 2;
   }
 
+  // We use 100vw rather than 100% intentionally. This is so that the custom property can be used
+  // inside a .rich-text .scrollable-table table caption selector to restrict the caption element
+  // to the width of the container, without the very-wide potential width of a scrollable table
+  // blowing out 100% and making it larger than the viewport.
+  // stylelint-disable-next-line -- variable must come before custom property declaration, for Sass.
+  &,
+  ::before,
+  ::after {
+    --container-width: calc(var(--reliable-100vw) - #{$mobile-gutter * 2});
+  }
+
   // Set a fixed width for the middle column at each breakpoint, and set a custom property for elements like table
   // captions that we might need to restrict to the container width.
   @each $breakpoint, $container-max-width in $container-max-widths {
     @include breakpoint(map-get($screens, $breakpoint)) {
-      --container-width: #{$container-max-width};
-
       grid-template-columns: unquote("1fr #{$container-max-width} 1fr");
+
+      &,
+      ::before,
+      ::after {
+        --container-width: #{$container-max-width};
+      }
     }
   }
 }
