@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 // Use https://chir.ag/projects/name-that-color to name colours.
 const colors = {
   transparent: 'rgba(255, 255, 255, 0)',
@@ -203,5 +205,30 @@ module.exports = {
   corePlugins: {
     container: false,
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities, addComponents, e, theme, variants }) => {
+      addComponents({
+        '.flex-gap-wrapper': {
+          overflow: 'auto',
+        },
+        '[class*="flex-gap-"]:not([class*="flex-gap-wrapper"])': {
+          margin: 'calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap))',
+          '& > *': {
+            margin: 'calc(var(--gap)) 0 0 calc(var(--gap))',
+          },
+        },
+      });
+
+      Object.entries(theme('gap')).forEach(([key, value]) => {
+        addUtilities(
+          {
+            [`.flex-gap-${e(key)}`]: {
+              '--gap': value,
+            },
+          },
+          variants('gap'),
+        );
+      });
+    }),
+  ],
 };
