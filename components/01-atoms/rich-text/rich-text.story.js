@@ -1,5 +1,7 @@
 import * as ExampleTableMarkup from '../table/example-markup';
 
+import '../../../dist/01-atoms/table/scrollable-table';
+
 const template = require('./rich-text.twig');
 
 export default {
