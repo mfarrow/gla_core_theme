@@ -91,6 +91,7 @@
     "stylelint-scss": "^3.20.1",
     "svg-sprite": "^1.5.0",
     "tailwindcss": "^2.2.4",
+    "tailwindcss-interaction-variants": "^5.0.0",
     "ts-dedent": "^2.1.1",
     "twing": "^2.3.7",
     "twing-loader": "^2.0.2",

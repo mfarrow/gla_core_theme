@@ -1,0 +1,20 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set heading_attributes = heading_attributes|default(create_attribute()) %}
+
+<div {{ attributes.addClass('lg:gla-grid') }}>
+  <div class="lg:u-col-span-4 u-mb-7 lg:u-mb-0">
+    <div class="accordion-with-subheading__heading-wrapper u-max-w-lg lg:u-max-w-none lg:u-sticky">
+      {% include "@atoms/heading/heading.twig" with {
+        heading_level: 3,
+        heading_size: 3,
+        heading: heading,
+        attributes: heading_attributes,
+      } only %}
+    </div>
+  </div>
+  <div class="lg:u-col-span-8">
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+</div>

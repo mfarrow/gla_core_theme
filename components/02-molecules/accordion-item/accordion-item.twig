@@ -1,0 +1,70 @@
+{% set attributes = attributes|default(create_attribute()) %}
+
+{% embed "@atoms/heading/heading.twig" with {
+  attributes: attributes,
+  heading_level: heading_level|default(3),
+  omit_base_class: true,
+  accordion_id: accordion_id,
+  accordion_item_id: id,
+  heading: heading,
+} only %}
+  {% block heading_content %}
+    <button
+      id="{{ accordion_id }}--button--{{ accordion_item_id }}"
+      aria-controls="{{ accordion_id }}--content--{{ accordion_item_id }}"
+      {{ create_attribute().addClass([
+        'u-flex u-items-center',
+        'hocus:u-text-primary-dark',
+        'u-select-none',
+        'u-block',
+        'u-w-full',
+        'u-text-left',
+        'u-py-3 xl:u-py-6',
+        'u-border-t u-border-pink',
+        'u-font-bold',
+      ]) }}
+      @click="setVisible({{ accordion_item_id }})"
+      :aria-expanded="isVisible({{ accordion_item_id }}) ? 'true' : 'false'"
+    >
+      <span class="u-relative print:u-hidden u-flex-shrink-0 u-text-pink u-inline-block u-w-5 u-h-5 xl:u-w-7 xl:u-h-7 u-mr-4">
+        {% set icon_classes = 'u-absolute u-w-full u-h-full' %}
+        {% include "@atoms/icon/icon.twig" with {
+          icon_name: 'gla--expand-thin',
+          attributes: create_attribute()
+            .addClass(icon_classes)
+            .setAttribute('x-transition:enter', 'u-transition-transform u-ease-out u-duration-150')
+            .setAttribute('x-transition:enter-start', 'u-transform u-scale-y-0')
+            .setAttribute('x-transition:enter-end', 'u-transform u-scale-y-100')
+            .setAttribute('x-transition:leave', 'u-transition-transform u-ease-in u-duration-150')
+            .setAttribute('x-transition:leave-start', 'u-transform u-scale-y-100')
+            .setAttribute('x-transition:leave-end', 'u-transform u-scale-y-0')
+            .setAttribute('x-show', '!isVisible(' ~ accordion_item_id ~ ')'),
+        } only %}
+        {% include "@atoms/icon/icon.twig" with {
+          icon_name: 'gla--contract-thin',
+          attributes: create_attribute()
+            .addClass(icon_classes)
+        } only %}
+      </span>
+
+      <span
+        class="u-max-w-prose u-transition-colors u-text-xl u-tracking-0.75 xl:u-text-2xl xl:u-tracking-0.75 xl:u-leading-30 xxl:u-text-3xl xxl:u--tracking-0.5"
+        :class="{ 'u-text-primary-dark' : isVisible({{ accordion_item_id }}) }"
+      >
+        {{- heading -}}
+      </span>
+    </button>
+  {% endblock %}
+{% endembed %}
+
+<section
+  {{ attributes }}
+  id="{{ accordion_id }}--content--{{ id }}"
+  aria-labelledby="{{ accordion_id }}--button--{{ id }}"
+  :hidden="!isVisible({{ id }})"
+  class="print:u-block u-space-y-5 xl:u-space-y-10 u-mt-3 u-mb-8 xl:u-mb-11"
+>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</section>

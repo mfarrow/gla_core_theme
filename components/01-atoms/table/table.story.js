@@ -2,6 +2,9 @@ import dedent from 'ts-dedent';
 import * as ExampleMarkup from './example-markup';
 import containerDecorator from '../../../storybook/container-decorator';
 
+// Load the dist version so hot-reloading in Storybook works.
+import '../../../dist/01-atoms/table/scrollable-table';
+
 const richTextComponent = require('../rich-text/rich-text.twig');
 
 export default {

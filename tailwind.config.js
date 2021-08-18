@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 // Use https://chir.ag/projects/name-that-color to name colours.
 const colors = {
   transparent: 'rgba(255, 255, 255, 0)',
@@ -190,18 +192,52 @@ module.exports = {
         primary: colors.pink,
       },
       letterSpacing: {
+        '-0.5': '-0.5px',
         0.25: '0.25px',
+        0.75: '0.75px',
       },
       maxWidth: {
         'rich-text': '73ch',
       },
+      transitionDuration: {
+        DEFAULT: '100ms',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ['hocus'],
+    },
   },
   corePlugins: {
     container: false,
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line import/no-unresolved,global-require
+    require('tailwindcss-interaction-variants'),
+    plugin(({ addUtilities, e, theme, variants }) => {
+      addUtilities({
+        '.flex-gap-wrapper': {
+          overflow: 'auto',
+        },
+        '[class*="flex-gap-"]:not([class*="flex-gap-wrapper"])': {
+          margin: 'calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap))',
+          '& > *': {
+            margin: 'calc(var(--gap)) 0 0 calc(var(--gap))',
+          },
+        },
+      });
+
+      Object.entries(theme('gap')).forEach(([key, value]) => {
+        addUtilities(
+          {
+            [`.flex-gap-${e(key)}`]: {
+              '--gap': value,
+            },
+          },
+          variants('gap'),
+        );
+      });
+    }),
+  ],
 };
