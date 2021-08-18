@@ -206,8 +206,8 @@ module.exports = {
     container: false,
   },
   plugins: [
-    plugin(({ addUtilities, addComponents, e, theme, variants }) => {
-      addComponents({
+    plugin(({ addUtilities, e, theme, variants }) => {
+      addUtilities({
         '.flex-gap-wrapper': {
           overflow: 'auto',
         },
