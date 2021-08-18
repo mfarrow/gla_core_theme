@@ -12,12 +12,26 @@ export default {
            and for complex layouts that would be too hard or verbose to express using utility classes we can write our
            own (S)CSS.
 
-           ## Meeting the designs
+           ## Matching the designs
 
-           The designs have been put together using Boostrap-style fixed width containers for each breakpoint.
+           The designs have been put together using a grid where the gutters are equivalent to the column widths.
 
-           The designs use use a grid system where the gutters are equivalent width to the columns. To match this, you
-           could treat the gutters as columns of their own, e.g. a 12 col grid would become a 24 col grid.
+           The designs use a six column grid until the \`lg\` breakpoint, then switch to a twelve column grid.
+
+           Use the \`gla-grid\` class to create a CSS grid container that switches from 6 to 12 columns at the right
+           breakpoint and that provides a correct \`gap\` value to match the designs.
+
+           Example usage:
+
+           \`\`\`html
+           <div class="container">
+            <div class="gla-grid">
+              <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
+              <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
+              <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
+            </div>
+          </div>
+           \`\`\`
 
            ## Containers
 

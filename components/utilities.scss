@@ -1,2 +1,33 @@
+@import "~breakpoint-sass";
+@import "../tokens/tokens.scss";
+
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .u-max-w-rich-text-px {
+    // A version of u-max-w-rich-text that uses px units not ch units so the element does not need to have the same
+    // font-size as the rich text component. This prevents an issue where an element with u-max-w-rich-text and a
+    // smaller font-size will not match the max-width of an element with u-max-w-rich-text and a larger font size.
+    max-width: 731px;
+
+    @include breakpoint($t-screens-lg) {
+      max-width: 812px;
+    }
+  }
+
+  @variants responsive {
+    .gla-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: calc(100% / 11);
+      grid-auto-flow: column;
+
+      // At lg the designs switch to a 12 col layout.
+      @include breakpoint($t-screens-lg) {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: calc(100% / 23);
+      }
+    }
+  }
+}
