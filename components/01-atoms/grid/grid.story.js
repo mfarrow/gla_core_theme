@@ -33,9 +33,18 @@ export default {
            \`\`\`html
            <div class="container">
             <div class="gla-grid">
+              <div class="u-col-span-4 lg:u-col-span-8">2/3rd width column</div>
               <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
-              <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
-              <div class="u-col-span-2 lg:u-col-span-4">1/3rd width column</div>
+            </div>
+          </div>
+           \`\`\`
+
+           \`\`\`html
+           <div class="container">
+            <div class="gla-grid gla-grid--auto">
+              <div>1/3rd width column</div>
+              <div>1/3rd width column</div>
+              <div>1/3rd width column</div>
             </div>
           </div>
            \`\`\`
