@@ -3,6 +3,8 @@ on: [pull_request]
 jobs:
   Drupal-Code-Quality:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -33,5 +35,6 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
+      - run: npm run build
       - name: Test codebase with grumPHP
         run: ./vendor/bin/grumphp run --testsuite=ci
