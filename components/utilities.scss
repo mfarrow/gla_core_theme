@@ -29,5 +29,10 @@
         gap: calc(100% / 23);
       }
     }
+
+    .gla-grid--auto {
+      // Undo the specific 6/12 col grid and let items fill the available space instead.
+      grid-template-columns: unset !important;
+    }
   }
 }

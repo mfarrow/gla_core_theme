@@ -21,6 +21,13 @@ export default {
            Use the \`gla-grid\` class to create a CSS grid container that switches from 6 to 12 columns at the right
            breakpoint and that provides a correct \`gap\` value to match the designs.
 
+           Use the \`gla-grid--auto\` class to remove the explict 6/12 number of columns and have the content
+           automatically fill the grid, e.g. two cards would be displayed half and half, three cards would be displayed
+           in thirds.
+
+           The \`gla-grid\` and \`gla-grid--auto\` classes are generated via Tailwind so you can use responsive
+           modifiers with them, like \`lg:gla-grid\` \`or xxl:gla-grid--auto\`.
+
            Example usage:
 
            \`\`\`html
