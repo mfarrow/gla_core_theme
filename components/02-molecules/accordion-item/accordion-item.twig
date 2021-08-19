@@ -8,7 +8,7 @@
   accordion_item_id: id,
   heading: heading,
 } only %}
-  {% block heading_content %}
+  {% block heading %}
     <button
       id="{{ accordion_id }}--button--{{ accordion_item_id }}"
       aria-controls="{{ accordion_id }}--content--{{ accordion_item_id }}"

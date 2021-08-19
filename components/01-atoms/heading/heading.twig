@@ -8,12 +8,12 @@
 <h{{ heading_level }} {{ attributes }}>
   {% if heading_url %}
     {% include "@atoms/link/link.twig" with {
-      link_content: heading_content,
+      link_content: heading,
       link_url: heading_url,
       attributes: heading_link_attributes|default(create_attribute()),
     } only %}
   {% else %}
-    {% block heading_content %}
+    {% block heading %}
       {{ heading }}
     {% endblock %}
   {% endif %}
