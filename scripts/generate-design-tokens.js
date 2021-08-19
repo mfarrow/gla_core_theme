@@ -149,6 +149,11 @@ const StyleDictionary = require('style-dictionary')
             destination: 'tokens.css',
             filter: limitedFilter,
           },
+          {
+            format: 'css/variables',
+            destination: 'custom-properties.scss',
+            filter: limitedFilter,
+          },
         ],
       },
       jsModule: {

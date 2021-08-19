@@ -7,6 +7,7 @@ tokens/tokens.css
 tokens/tokens-module.js
 tokens/tokens-object.js
 tokens/tokens.scss
+tokens/custom-properties.scss
 tokens/icons.json
 
 # NPM

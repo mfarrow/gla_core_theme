@@ -1,7 +1,10 @@
 import dedent from 'ts-dedent';
 import * as ExampleMarkup from './example-markup';
+import containerDecorator from '../../../storybook/container-decorator';
 
-const scrollableTableWrapper = require('./scrollable-table.twig');
+// Load the dist version so hot-reloading in Storybook works.
+import '../../../dist/01-atoms/table/scrollable-table';
+
 const richTextComponent = require('../rich-text/rich-text.twig');
 
 export default {
@@ -57,16 +60,12 @@ StyledTable.parameters = {
     },
   },
 };
+StyledTable.decorators = [
+  (story) => `<div class="u-space-y-10">${story()}</div>`,
+];
 
 export const ScrollableInsideRichText = () =>
   ExampleMarkup.tableMarkupWithMultipleLinesInSomeCells;
-ScrollableInsideRichText.decorators = [
-  (story) => {
-    return richTextComponent({
-      content: scrollableTableWrapper({ content: story() }),
-    });
-  },
-];
 ScrollableInsideRichText.parameters = {
   docs: {
     description: {
@@ -78,24 +77,25 @@ ScrollableInsideRichText.parameters = {
     },
   },
 };
+ScrollableInsideRichText.decorators = [
+  (story) => {
+    return richTextComponent({
+      content: story(),
+    });
+  },
+  containerDecorator,
+];
 
 export const ScrollableStyledTable = () =>
   ExampleMarkup.tableMarkupWithMultipleLinesInSomeCells.replace(
     /<table>/g,
     '<table class="styled-table">',
   );
-ScrollableStyledTable.decorators = [
-  (story) => {
-    return richTextComponent({
-      content: scrollableTableWrapper({ content: story() }),
-    });
-  },
-];
 ScrollableStyledTable.parameters = {
   docs: {
     description: {
       story: dedent(`
-        This is a dupplicate of the _Scrollable inside Rich text_ story - except the table styling is being provided by
+        This is a duplicate of the _Scrollable inside Rich text_ story - except the table styling is being provided by
         a \`styled-table\` class on the \`table\` element instead of being applied because the table is inside a Rich
         text component. This allows us to have styled tables outside of Rich text components. You'll notice the table
         has no max-width now that it is not within the Rich text component, but you can always use a utility class
@@ -104,3 +104,4 @@ ScrollableStyledTable.parameters = {
     },
   },
 };
+ScrollableStyledTable.decorators = [containerDecorator];

@@ -6,7 +6,7 @@ module.exports = {
       '@comandeer/babel-plugin-banner',
       {
         banner: `/*
- * Do not edit files in the 'dist' directory, edit the source version in the 
+ * Do not edit files in the 'dist' directory, edit the source version in the
  * 'components' directory instead.
  */`,
       },

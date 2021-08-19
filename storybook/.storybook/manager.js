@@ -1,6 +1,7 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming';
-const colors = require('../../tokens/tokens-module').colors;
+
+const { colors } = require('../../tokens/tokens-module');
 
 const theme = create({
   base: 'light',

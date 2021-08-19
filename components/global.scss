@@ -4,8 +4,10 @@
 
 @import "~breakpoint-sass";
 
-// Import design tokens for use elsewhere.
+// Import tokens as SCSS variables.
 @import "../tokens/tokens.scss";
+// Include a SCSS file containing the tokens as CSS custom properties.
+@import "../tokens/custom-properties.scss";
 
 // Load our global SCSS via globbing.
 @import "00-base/*.scss";

@@ -86,5 +86,6 @@ module.exports = {
     Mark: true,
     ReadingPositionIndicator: true,
     bodyScrollLock: true,
+    Alpine: true,
   },
 };

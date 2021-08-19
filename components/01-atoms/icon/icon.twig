@@ -1,6 +1,6 @@
 {# For Pattern Lab: The icon_url is defined in _data/paths.json. No action is required #}
 {# For Drupal: The icon_url is defined in the following line. No action is required #}
-{% set icon_url = icon_url|default('/themes/custom/gla_core/dist/icons/sprite.svg') %}
+{% set icon_url = icon_url|default('/themes/estate/gla_core_theme/dist/icons/sprite.svg') %}
 
 {% if not prevent_attaching_library %}
   {{ attach_library('gla_core_theme/sprite') }}
@@ -11,6 +11,7 @@
   .setAttribute('focusable', 'false')
   .setAttribute('role', 'presentation')
 %}
+
 
 {#
   Make sure to provide a visually hidden text alternative if necessary. E.g.

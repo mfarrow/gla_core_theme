@@ -1,13 +1,14 @@
 global:
   css:
     theme:
-      tokens/tokens.css: {}
       dist/global.css: {}
       dist/utilities.css: {}
   dependencies:
     - gla_core_theme/polyfill-io
     - gla_core_theme/inert-polyfill
     - gla_core_theme/what-input
+    - gla_core_theme/set-scrollbar-width
+    - gla_core_theme/set-scroll-padding-top
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
@@ -31,8 +32,9 @@ what-input:
 # If the site uses a CSP that prevents unsafe-eval then we may need to load the CSP version of Alpine instead and
 # refactor components to use it. See https://alpinejs.dev/advanced/csp for more information.
 alpinejs:
+  header: true
   js:
-    libraries/alpinejs/dist/cdn.js: {}
+    libraries/alpinejs/dist/cdn.js: { attributes: { defer: true } }
 
 # Until Safari supports native image lazyloading we'll need a library to help us with it.
 lazysizes:
@@ -58,3 +60,25 @@ admin-styles:
   css:
     theme:
       dist/admin-styles.css: {}
+
+set-scrollbar-width:
+  js:
+    dist/00-base/set-scrollbar-width.js: {}
+
+scrollable-table:
+  js:
+    dist/01-atoms/table/scrollable-table.js: { }
+  dependencies:
+    - gla_core_theme/alpinejs
+
+accordion:
+  js:
+    dist/03-organisms/accordion/accordion.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+
+set-scroll-padding-top:
+  js:
+    dist/00-base/set-scroll-padding-top.js: {}
+  dependencies:
+    - core/drupal.debounce
