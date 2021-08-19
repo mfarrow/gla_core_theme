@@ -67,8 +67,6 @@ export default {
   parameters: {
     docs: {
       description: {
-        // Note the link below doesn't work, Storybook gives it target="_top" but it still opens in the preview
-        // iframe?
         component:
           'This component is based on [this pattern from Aditus](https://www.aditus.io/patterns/accordion/) and the [GDS accordion pattern](https://design-system.service.gov.uk/components/accordion).',
       },
