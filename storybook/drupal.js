@@ -4,19 +4,19 @@
 window.Drupal = { behaviors: {} };
 window.drupalSettings = window.drupalSettings || {};
 
-(function (Drupal, drupalSettings) {
-  Drupal.throwError = function (error) {
-    setTimeout(function () {
+((Drupal, drupalSettings) => {
+  Drupal.throwError = (error) => {
+    setTimeout(() => {
       throw error;
     }, 0);
   };
 
-  Drupal.attachBehaviors = function (context, settings) {
+  Drupal.attachBehaviors = (context, settings) => {
     context = context || document;
     settings = settings || drupalSettings;
     const { behaviors } = Drupal;
 
-    Object.keys(behaviors).forEach(function (i) {
+    Object.keys(behaviors).forEach((i) => {
       if (typeof behaviors[i].attach === 'function') {
         try {
           behaviors[i].attach(context, settings);

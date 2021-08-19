@@ -7,21 +7,18 @@ const {
 
 const DrupalAttribute = require('drupal-attribute');
 
-const createAttribute = new TwingFunction('create_attribute', function () {
+const createAttribute = new TwingFunction('create_attribute', () => {
   return new DrupalAttribute();
 });
 
-const attachLibrary = new TwingFunction(
-  'attach_library',
-  function (libraryName) {
-    const message = `Don't forget to import any non-global ${libraryName} dependencies in your *.story.js file too, otherwise Storybook won't know to load them.`;
-    return `<!-- ${message} -->`;
-  },
-);
+const attachLibrary = new TwingFunction('attach_library', (libraryName) => {
+  const message = `Don't forget to import any non-global ${libraryName} dependencies in your *.story.js file too, otherwise Storybook won't know to load them.`;
+  return `<!-- ${message} -->`;
+});
 
 const rocketGetCachebuster = new TwingFunction(
   'gla_core_profile_get_cachebuster',
-  function () {
+  () => {
     return Date.now();
   },
 );
