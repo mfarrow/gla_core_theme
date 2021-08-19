@@ -8,6 +8,7 @@ global:
     - gla_core_theme/inert-polyfill
     - gla_core_theme/what-input
     - gla_core_theme/set-scrollbar-width
+    - gla_core_theme/set-scroll-padding-top
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
@@ -69,3 +70,15 @@ scrollable-table:
     dist/01-atoms/table/scrollable-table.js: { }
   dependencies:
     - gla_core_theme/alpinejs
+
+accordion:
+  js:
+    dist/03-organisms/accordion/accordion.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+
+set-scroll-padding-top:
+  js:
+    dist/00-base/set-scroll-padding-top.js: {}
+  dependencies:
+    - core/drupal.debounce

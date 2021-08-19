@@ -192,20 +192,29 @@ module.exports = {
         primary: colors.pink,
       },
       letterSpacing: {
+        '-0.5': '-0.5px',
         0.25: '0.25px',
+        0.75: '0.75px',
       },
       maxWidth: {
         'rich-text': '73ch',
       },
+      transitionDuration: {
+        DEFAULT: '100ms',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      textColor: ['hocus'],
+    },
   },
   corePlugins: {
     container: false,
   },
   plugins: [
+    // eslint-disable-next-line import/no-unresolved,global-require
+    require('tailwindcss-interaction-variants'),
     plugin(({ addUtilities, e, theme, variants }) => {
       addUtilities({
         '.flex-gap-wrapper': {

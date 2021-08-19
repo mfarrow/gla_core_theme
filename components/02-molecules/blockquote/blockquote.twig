@@ -4,17 +4,12 @@
   {% set split_citation = citation|split(',', 2) %}
 {% endif %}
 
-{#
-  The xl:u-text-lg is important as the text size of the blockquote wrapper needs
-  to match the text size of the text component as the u-max-w-rich-text utility
-  uses ch units that are relative to font size.
-#}
 {% set attributes = attributes
   .addClass([
     'u-border-t u-border-b u-border-mercury',
     'u-py-8 sm:u-py-9 xl:u-py-10 xxl:u-py-11',
     'u-space-y-6',
-    'u-max-w-rich-text xl:u-text-lg',
+    'u-max-w-rich-text-px',
     'sm:u-space-y-0 sm:u-flex',
     'sm:u-space-x-7 xl:u-space-x-12 xxl:u-space-x-16'
   ])
