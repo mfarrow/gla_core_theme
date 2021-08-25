@@ -1,0 +1,48 @@
+{% set image_base_class = image_base_class|default("img") %}
+{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = attributes.addClass(image_extra_classes) %}
+{% set attributes = attributes.addClass(image_base_class) %}
+{% set attributes = attributes.addClass([
+  "u-w-full",
+]) %}
+
+{% set attributes = attributes.setAttribute("src", image_src) %}
+{#
+  A 'loaded' class applied when an image has loaded is useful for applying
+  animations, like fading in an image once it has loaded.
+  Using inline JavaScript here feels hacky, but it has the advantage of
+  catching any load events that might happen before the Drupal JS is loaded
+  and executed. We could get around this on sites that *can't* use inline JS
+  (for example due to a CSP rule) by checking the value of
+  https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/complete
+  in a foreach loop at the same time as setting a `load` event listener,
+  but I think this inline JS approach will be okay for most sites for now.
+#}
+{% set attributes = attributes.setAttribute("onload", "this.classList.add('loaded')") %}
+
+{% if image_srcset is not empty and lazyload %}
+  {% set attributes = attributes.setAttribute("data-srcset", image_srcset) %}
+{% elseif image_srcset is not empty %}
+  {% set attributes = attributes.setAttribute("srcset", image_srcset) %}
+{% endif %}
+
+{% if image_sizes is not empty and lazyload %}
+  {% set attributes = attributes.setAttribute("data-sizes", image_sizes) %}
+{% elseif image_sizes is not empty %}
+  {% set attributes = attributes.setAttribute("sizes", image_sizes) %}
+{% endif %}
+
+{% if image_alt is defined %}
+  {% set attributes = attributes.setAttribute("alt", image_alt) %}
+{% endif %}
+
+{% if image_title is not empty %}
+  {% set attributes = attributes.setAttribute("title", image_title) %}
+{% endif %}
+
+{% if not attributes.decoding %}
+  {# https://www.industrialempathy.com/posts/image-optimizations/#asynchronous-decoding #}
+  {% set attributes = attributes.setAttribute("decoding", "async") %}
+{% endif %}
+
+<img{{ attributes }}/>
