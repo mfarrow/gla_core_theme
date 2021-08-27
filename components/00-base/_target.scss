@@ -1,0 +1,12 @@
+@keyframes targetBackgroundFade {
+  from {
+    background-color: rgba($t-colors-yellow, 0.8);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+:is(h1, h2, h3, h4, h5, h6):target {
+  animation: targetBackgroundFade 5s linear 1 normal forwards;
+}

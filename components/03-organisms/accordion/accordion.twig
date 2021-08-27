@@ -1,0 +1,32 @@
+{{ attach_library('gla_core_theme/accordion') }}
+
+{#
+  Fall back to a timestamp if no ID is provided, but this would cause issues if we ever do DOM snapshot testing so
+  developers should pass an ID into the component. `paragraph.id()` would be an easy approach to using the Drupal ID
+  for a paragraph entity.
+#}
+{% set id = id|default('ac--' ~ date().timestamp) %}
+
+{% set attributes = attributes|default(create_attribute())
+  .addClass([
+    'accordion',
+    'u-border-b u-border-pink',
+    'u-max-w-rich-text-px',
+  ])
+  .setAttribute('id', id)
+  .setAttribute('x-data', 'accordion')
+%}
+
+<div {{ attributes }}>
+  {% block content %}
+    {% for item in items %}
+      {% include "@molecules/accordion-item/accordion-item.twig" with {
+        id: loop.index,
+        accordion_id: id,
+        heading: item.heading,
+        content: item.content,
+        heading_level: heading_level,
+      } only %}
+    {% endfor %}
+  {% endblock %}
+</div>

@@ -1,3 +1,10 @@
-<div class="scrollable-table custom-scrollbar u-overflow-auto" tabindex="0">
+{{ attach_library('gla_core_theme/scrollable-table') }}
+
+{#
+  Normally with an Alpine component like this we would break it onto multiple lines and use the shorthands like
+  @scroll instead of x-on:scroll, but these two things causes issues when the FilterHtmlCorrector runs over the
+  markup (when a table is used inside a Rich text component).
+#}
+<div class="scrollable-table u-overflow-auto custom-scrollbar" x-on:scroll.throttle="onScroll" x-data="scrollableTable" :class="classes" x-on:resize.window.debounce="init">
   {{ content }}
 </div>

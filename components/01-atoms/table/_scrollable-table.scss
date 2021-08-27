@@ -1,0 +1,47 @@
+.scrollable-table {
+  &.has-scroll-affordance {
+    $shadow-color: rgba(0, 0, 0, 0.3);
+    $shadow-width: $t-spacing-4;
+    // The --table-height and --scrollbar-height custom properties are set via scrollable-table.js.
+    // We can't use 100% to set the shadow height or else it could cover the table caption.
+    $shadow-height: var(--table-height);
+
+    // Try to prevent elastic overscroll to avoid the shadows becoming separated from the table.
+    // Unfortunately this doesn't work in iOS: https://caniuse.com/css-overscroll-behavior .
+    overscroll-behavior: none;
+
+    // Approach taken from https://www.bram.us/2019/10/24/pure-css-scroll-shadows-vertical-horizontal .
+    background: linear-gradient(
+        to right,
+        $t-colors-white,
+        $t-colors-white,
+        $t-colors-transparent calc(#{$shadow-width} * 2)
+      ),
+      linear-gradient(to right, $shadow-color, $t-colors-transparent),
+      linear-gradient(
+        to left,
+        $t-colors-white,
+        $t-colors-white,
+        $t-colors-transparent calc(#{$shadow-width} * 2)
+      ),
+      linear-gradient(to left, $shadow-color, $t-colors-transparent) 100%;
+    background-color: $t-colors-white;
+    background-repeat: no-repeat;
+    background-attachment: local, scroll, local, scroll;
+    // Offset the shadow gradients so they don't appear below the scrollbar.
+    background-position-y: bottom, calc(100% - var(--scrollbar-height, 0px));
+    background-size: 100% $shadow-height, $shadow-width $shadow-height,
+      100% $shadow-height, $shadow-width $shadow-height;
+
+    table {
+      // We need to remove the white solid background of the table so that the
+      // shadow (provided by the scrollable element _below_ the table can show
+      // through.
+      background: unset;
+    }
+
+    @include breakpoint("print") {
+      background-image: unset;
+    }
+  }
+}

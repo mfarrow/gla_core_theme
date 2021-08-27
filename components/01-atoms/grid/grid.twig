@@ -1,34 +1,63 @@
-<div class="u-space-y-5">
-  <div class="container u-px-bs-grid">
-    <div class="u-grid u-grid-flow-col u-grid-cols-auto u--mx-bs-grid">
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
+<div class="u-space-y-20 u-my-10">
+  <div class="container u-space-y-10">
+    <div class="gla-grid">
+      <div class="u-bg-black u-text-white u-col-span-2 lg:u-col-span-4">Column</div>
+      <div class="u-bg-off-white u-text-black u-col-span-2 lg:u-col-span-4">Column</div>
+      <div class="u-bg-black u-text-white u-col-span-2 lg:u-col-span-4">Column</div>
+    </div>
+    <div class="u-breakout u-bg-primary u-text-white u-py-5 u-px-3">
+      <p>Breakout using <code>.u-breakout</code></p>
+    </div>
+    <div class="gla-grid">
+      <div class="u-bg-black u-text-white u-col-span-2 lg:u-col-span-4">Column</div>
+      <div class="u-bg-off-white u-text-black u-col-span-2 lg:u-col-span-4">Column</div>
+      <div class="u-bg-black u-text-white u-col-span-2 lg:u-col-span-4">Column</div>
     </div>
   </div>
 
-  <div class="container u-px-bs-grid">
-    <div class="u-grid u-grid-flow-col u-grid-cols-auto u--mx-bs-grid">
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
+  <hr>
+
+  <div class="container u-space-y-10">
+    <div class="gla-grid">
+      <div class="u-bg-black u-text-white u-col-span-3 lg:u-col-span-6">Column</div>
+      <div class="u-bg-off-white u-text-black u-col-span-3 lg:u-col-span-6">Column</div>
+    </div>
+    <div class="u-bg-black u-text-white u-p-5 u-space-y-2">
+      <p>Example of where breakout is needed but it's not an immediate child of the grid</p>
+      <div class="u-bg-primary u-text-white u-breakout-child u-p-3">
+        <p>Breakout using <code>.u-breakout-child</code></p>
+      </div>
+    </div>
+    <div class="u-space-y-2">
+      <p>Here we use <code>gla-grid--auto</code> to have the column width/span set automatically.</p>
+      <div class="gla-grid gla-grid--auto">
+        <div class="u-bg-black u-text-white">Column</div>
+        <div class="u-bg-off-white u-text-black">Column</div>
+      </div>
     </div>
   </div>
 
-  <div class="container u-px-bs-grid">
-    <div class="u-grid u-grid-flow-col u-grid-cols-3 u--mx-bs-grid">
-      <div class="u-px-bs-grid u-bg-black u-text-white u-col-span-2">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
+  <hr>
+
+  <div class="container u-space-y-2">
+    <p>Here we use <code>gla-grid--auto</code> to have the column width/span set automatically but set a specific span on one column. The other column will adjust.</p>
+    <div class="gla-grid gla-grid--auto">
+      <div class="u-bg-black u-text-white u-col-span-2">Column</div>
+      <div class="u-bg-off-white u-text-black">Column</div>
     </div>
   </div>
 
-  <div class="container u-px-bs-grid">
-    <div class="u-grid u-grid-cols-1 lg:u-grid-cols-2 xl:u-grid-cols-3 u--mx-bs-grid">
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
-      <div class="u-px-bs-grid u-bg-black u-text-white">Column</div>
-      <div class="u-px-bs-grid u-bg-off-white u-text-black">Column</div>
+  <hr>
+
+  <div class="container u-space-y-2">
+    <p>Here we use <code>gla-grid--auto</code> to have the column width/span set automatically.</p>
+    <div class="gla-grid gla-grid--auto">
+      <div class="u-bg-black u-text-white">Column</div>
+      <div class="u-bg-off-white u-text-black">Column</div>
+      <div class="u-bg-black u-text-white">Column</div>
+      <div class="u-bg-off-white u-text-black">Column</div>
+      <div class="u-bg-black u-text-white">Column</div>
+      <div class="u-bg-off-white u-text-black">Column</div>
     </div>
   </div>
 

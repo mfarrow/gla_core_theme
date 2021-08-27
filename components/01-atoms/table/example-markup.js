@@ -87,6 +87,9 @@ const tableWithCaption = `<table>
 </table>`;
 
 const constTableWithManyColumns = `<table>
+  <caption>
+    The <a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H39">caption</a> should be a short description of the table's purpose, e.g. 'Schedule for the week of 6 March'. In a screenreader it can act like a heading. We don't style it as a heading as we don't know at what point in the heading levels a table with a caption might be used.
+  </caption>
   <thead>
     <tr>
       <th>&nbsp;</th>

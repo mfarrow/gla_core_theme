@@ -3,7 +3,7 @@ const template = require('./heading.twig');
 export default {
   title: 'Atoms/Heading',
   args: {
-    heading_content: 'Example heading content',
+    heading: 'Example heading content',
     heading_level: '1',
     heading_size: 'xl',
   },
@@ -23,7 +23,7 @@ export default {
         type: { summary: 'string' },
       },
     },
-    heading_content: {
+    heading: {
       type: { name: 'string', required: true },
       description: 'Content for inside heading',
       table: {

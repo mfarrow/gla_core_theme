@@ -1,15 +1,27 @@
 // Define all custom properties in :root so that postcss-custom-properties will pick up on them.
-:root {
-  --theme-primary: var(--t-colors-pink);
-  --theme-primary-dark: var(--t-colors-pink-dark);
+// We define fallbacks as a safety/defensive precaution.
+:root,
+::before,
+::after {
+  --theme-primary: var(--t-colors-pink, #{$t-colors-pink});
+  --theme-primary-dark: var(--t-colors-pink-dark, #{$t-colors-pink-dark});
+  // Knowing the scrollbar width is useful when using '100vw' in CSS calculations
+  // as 100vw actually includes the scrollbars, but most of the time we don't want
+  // it to. We can work around that by doing something like
+  // `calc(100vw - var(--scrollbar-width))`. This value is set to 0px to be mobile-first
+  // and then is updated via set-scrollbar-width.js.
+  // stylelint-disable-next-line length-zero-no-unit -- we need the px for it to work with calc()
+  --scrollbar-width: 0px;
+  --reliable-100vw: calc(100vw - var(--scrollbar-width));
 }
 
+// Colour themes.
 .theme--assembly {
-  --theme-primary: var(--t-colors-blue-dark);
-  --theme-primary-dark: var(--t-colors-blue-darker);
+  --theme-primary: var(--t-colors-blue-dark, #{$t-colors-blue-dark});
+  --theme-primary-dark: var(--t-colors-blue-darker, #{$t-colors-blue-darker});
 }
 
 .theme--mayoral {
-  --theme-primary: var(--t-colors-pink);
-  --theme-primary-dark: var(--t-colors-pink-dark);
+  --theme-primary: var(--t-colors-pink, #{$t-colors-pink});
+  --theme-primary-dark: var(--t-colors-pink-dark, #{$t-colors-pink-dark});
 }

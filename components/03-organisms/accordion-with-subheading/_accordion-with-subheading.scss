@@ -1,0 +1,4 @@
+.accordion-with-subheading__heading-wrapper {
+  // We need to use 0px here rather than 0 so that it works with calc.
+  top: calc(var(--html-scroll-padding-top, 0px) + #{$t-spacing-5});
+}

@@ -198,19 +198,6 @@
     margin-bottom: 0;
   }
 
-  :target {
-    animation: targetBackgroundFade 5s linear 1 normal forwards;
-  }
-
-  @keyframes targetBackgroundFade {
-    from {
-      background-color: $t-colors-yellow;
-    }
-    to {
-      background-color: transparent;
-    }
-  }
-
   @include breakpoint($t-screens-xl) {
     font-size: $t-font-size-lg;
     line-height: $t-font-size-lg-line-height;
