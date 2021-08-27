@@ -218,6 +218,8 @@ module.exports = {
   },
   plugins: [
     // eslint-disable-next-line import/no-unresolved,global-require
+    require('@tailwindcss/line-clamp'),
+    // eslint-disable-next-line import/no-unresolved,global-require
     require('tailwindcss-interaction-variants'),
     plugin(({ addUtilities, e, theme, variants }) => {
       addUtilities({
@@ -243,7 +245,5 @@ module.exports = {
         );
       });
     }),
-    // eslint-disable-next-line global-require
-    require('@tailwindcss/line-clamp'),
   ],
 };

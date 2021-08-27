@@ -1,0 +1,32 @@
+{% set picture_base_class = picture_base_class|default('picture') %}
+{% if 'u-w-full' in picture_extra_classes %}
+  {% set inherited_image_classes = ['u-w-full'] %}
+{% elseif 'u-h-full' in picture_extra_classes %}
+  {% set inherited_image_classes = ['u-h-full'] %}
+{% else %}
+  {% set inherited_image_classes = [] %}
+{% endif %}
+
+<picture {{ attributes|default(create_attribute()).addClass(picture_base_class, picture_extra_classes) }} >
+  {% if sources %}
+    {#
+    Internet Explorer 9 doesn't recognise source elements that are wrapped in
+    picture tags. See http://scottjehl.github.io/picturefill/#ie9
+    #}
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    {% for source_attributes in sources %}
+      {% set source_attributes = source_attributes.removeAttribute('data-srcset') %}
+      <source{{ source_attributes }}/>
+    {% endfor %}
+    <!--[if IE 9]></video><![endif]-->
+  {% endif %}
+  {# The controlling image, with the fallback image in srcset. #}
+  {% include "@atoms/04-images/00-image/_image.twig" with {
+    attributes: image_attributes|default(create_attribute()),
+    image_blockname: picture_image_blockname|default(picture_blockname),
+    image_extra_classes: image_extra_classes|default([])|merge(inherited_image_classes),
+    image_src: image_src,
+    image_alt: image_alt,
+    attributes: img_element_attributes,
+  } only %}
+</picture>

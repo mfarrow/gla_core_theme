@@ -1,7 +1,9 @@
 /* eslint-disable import/extensions */
-
 import { addParameters, addDecorator } from '@storybook/html';
+const DrupalAttribute = require('drupal-attribute');
 import { create } from '@storybook/theming';
+const colors = require('../../tokens/tokens-module').colors;
+const screens = require('../../tokens/tokens-module').screens;
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 // Include global CSS.
@@ -15,11 +17,6 @@ import '../../libraries/wicg-inert/dist/inert.min.js';
 
 // Rough-and-ready approach to using Drupal behaviours in Storybook iframes.
 import '../drupal';
-
-const DrupalAttribute = require('drupal-attribute');
-const { colors } = require('../../tokens/tokens-module');
-const { screens } = require('../../tokens/tokens-module');
-
 document.addEventListener('DOMContentLoaded', (event) => {
   Drupal.attachBehaviors(document);
 });
