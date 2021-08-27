@@ -44,7 +44,7 @@
   {% include "@molecules/cta/cta--image.twig" with {
     attributes: attributes,
     id: paragraph.id(),
-    heading: content.field_p_cta_title|field_value,
+    heading: content.field_p_cta_heading|field_value,
     cta_type: cta_type,
     button_content: content.field_p_cta_link|field_value|first['#title'],
     button_url: content.field_p_cta_link|field_value|first['#url']|render,
@@ -57,7 +57,7 @@
   {% include "@molecules/cta/cta.twig" with {
     attributes: attributes,
     id: paragraph.id(),
-    heading: content.field_p_cta_title|field_value,
+    heading: content.field_p_cta_heading|field_value,
     cta_type: cta_type,
     button_content: content.field_p_cta_link|field_value|first['#title'],
     button_url: content.field_p_cta_link|field_value|first['#url']|render,
