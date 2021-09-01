@@ -3,16 +3,20 @@
 
 {% set attributes = attributes
   .addClass([
-    'u-bg-grey u-text-white lg:u-flex',
+    'cta',
+    'cta--image',
+    'u-breakout sm:u-unbreakout',
+    'u-bg-grey u-text-white',
+    'lg:u-flex',
   ])
 %}
 
 <div {{ attributes }}>
-  <div class="cta-img-container lg:u-w-1/2">
+  <div class="cta__image-container lg:u-w-1/2">
     {{ image_content }}
   </div>
 
-  <div class="lg:u-w-1/2 u-px-6 u-py-7 u-space-y-5 sm:u-px-12 sm:u-py-14 md:u-px-7 md:u-py-20 lg:u-px-10 lg:u-py-5 lg:u-flex lg:u-flex-col lg:u-justify-center lg:u-mx-auto xl:u-px-12 xl:u-space-y-6">
+  <div class="lg:u-w-1/2 u-px-grid-gutter u-py-7 u-space-y-5 sm:u-px-12 sm:u-py-14 md:u-px-7 md:u-py-20 lg:u-px-10 lg:u-py-5 lg:u-flex lg:u-flex-col lg:u-justify-center lg:u-mx-auto xl:u-px-12 xl:u-space-y-6">
       {% include "@atoms/heading/heading.twig" with {
         heading_level: 3,
         heading_size: 2,

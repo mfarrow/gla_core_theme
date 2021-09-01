@@ -1,4 +1,6 @@
 import dedent from 'ts-dedent';
+import containerDecorator from '../../../storybook/container-decorator';
+import { ScrollableStyledTable } from '../../01-atoms/table/table.story';
 
 const template = require('./cta--image.twig');
 
@@ -14,10 +16,11 @@ export default {
     button_content: 'Button title goes here',
     button_url: 'https://example.com',
     image_content: `
+      <!-- keep the widths and heights in sync with the Drupal responsive image style for the CTA component -->
       <picture>
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&h=600&q=60" media="(min-width: 1920px)" width="720" height="600">
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=570&h=500&q=60" media="(min-width: 1200px)" width="570" height="500">
-        <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=350&q=60" media="(min-width: 992px)" width="480" height="350">
+        <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=480&h=450&q=60" media="(min-width: 992px)" width="480" height="450">
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=959&h=466&q=60" media="(min-width: 769px)" width="959" height="466">
         <source srcset="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=721&h=468&q=60" media="(min-width: 576px)" width="721" height="468">
         <img class="u-object-cover u-h-full" src="https://images.unsplash.com/photo-1603621165604-477d10bdd174?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=575&h=450&q=60" alt="A man skateboards at the London South Bank" width="575" height="450" loading="lazy" />
@@ -89,3 +92,4 @@ export default {
 const Template = (args) => template({ ...args });
 
 export const Default = Template.bind({});
+Default.decorators = [containerDecorator];
