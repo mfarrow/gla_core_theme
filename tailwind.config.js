@@ -203,6 +203,17 @@ module.exports = {
         DEFAULT: '100ms',
       },
     },
+    zIndex: {
+      1: 1,
+      10: 10,
+      25: 25,
+      50: 50,
+      75: 75,
+      100: 100,
+      501: 501, // Drupal Contextual Links are 500
+      1251: 1251, // Drupal admin toolbar is 1250
+      auto: 'auto',
+    },
   },
   variants: {
     extend: {
