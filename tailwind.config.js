@@ -185,7 +185,7 @@ module.exports = {
     },
     extend: {
       spacing: {
-        'bs-grid': '15px',
+        'grid-gutter': '15px',
       },
       margin: {
         '-bs-grid': '-15px',

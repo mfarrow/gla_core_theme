@@ -40,9 +40,8 @@
 
 {% set classes = [
   paragraph.bundle|clean_class,
-  'container',
 ] %}
 
 <div{{ attributes.addClass(classes) }}>
-  {{ paragraph.field_p_htmlw_code.value|raw }}
+  {{ content }}
 </div>
