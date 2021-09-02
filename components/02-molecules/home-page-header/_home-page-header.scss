@@ -1,0 +1,5 @@
+@include breakpoint($t-screens-md $t-screens-lg) {
+  .home-page-header__button-container > .btn {
+    width: 100%;
+  }
+}

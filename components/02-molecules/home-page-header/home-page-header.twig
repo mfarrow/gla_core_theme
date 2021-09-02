@@ -1,0 +1,29 @@
+{% set attributes = attributes|default(create_attribute()).addClass([
+  'u-space-y-4',
+  'home-page-header'
+]) %}
+
+{% set heading %}
+  {{ heading }}{% if styled_fullstop %}<span class="u-text-primary">.</span>{% endif %}
+{% endset %}
+
+<div {{ attributes }}>
+  {% include "@atoms/heading/heading.twig" with {
+    heading_level: 1,
+    heading_size: 1,
+    heading: heading,
+    attributes: heading_attributes,
+  } only %}
+
+  <div class="md:u-flex u-justify-between u-space-y-4 md:u-space-y-0 md:u-flex-gap-x-10 lg:u-flex-gap-x-0">
+    {% if text %}
+      <div class="md:u-w-1/2">{{ text }}</div>
+    {% endif %}
+
+    <div class="home-page-header__button-container md:u-w-1/2 lg:u-w-auto u-grid md:u-block">
+      {% block cta %}
+        {{ cta }}
+      {% endblock %}
+    </div>
+  </div>
+</div>
