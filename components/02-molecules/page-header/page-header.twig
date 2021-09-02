@@ -1,11 +1,11 @@
-{% set page_header_attributes = page_header_attributes|default(create_attribute()).addClass([
+{% set attributes = attributes|default(create_attribute()).addClass([
   "page-header",
   "u-breakout",
   "u-overflow-hidden",
   "u-relative",
 ]) %}
 
-<div {{ page_header_attributes }}>
+<div {{ attributes }}>
   <div class="page-header__image u-h-full">
     {{ image }}
   </div>
