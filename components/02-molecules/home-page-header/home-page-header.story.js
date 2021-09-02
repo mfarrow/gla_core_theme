@@ -1,7 +1,6 @@
 import assemblyDecorator from '../../../storybook/assembly-decorator';
 
 const template = require('./home-page-header.twig');
-const buttonTemplate = require('../../01-atoms/button/button.twig');
 
 export default {
   title: 'Molecules/Home page header',
