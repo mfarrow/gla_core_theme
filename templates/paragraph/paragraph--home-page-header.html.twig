@@ -38,9 +38,13 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
+{%  set button_paragraph = content.field_p_hph_cta|field_value|first['#paragraph'] %}
+
 {% include "@molecules/home-page-header/home-page-header.twig" with {
   heading: heading,
   styled_fullstop: styled_fullstop,
   text: content.field_p_hph_text|field_value,
-  cta: content.field_p_hph_cta|field_value,
+  cta_url: button_paragraph.field_p_b_link.0.url.toString(),
+  cta_text: button_paragraph.field_p_b_link.value.0.title,
+  cta_type: button_paragraph.field_p_b_style.value
 } %}
