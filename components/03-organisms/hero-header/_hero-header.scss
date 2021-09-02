@@ -1,0 +1,30 @@
+.hero-header {
+  min-height: 490px;
+  max-height: 800px;
+
+  &--half {
+    max-height: 400px;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    content: "";
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), transparent);
+  }
+
+  &--dark::after {
+    width: 100%;
+  }
+
+  &--light::after {
+    width: 50%;
+  }
+
+  &__content {
+    .rich-text {
+      color: $t-colors-white;
+    }
+  }
+}

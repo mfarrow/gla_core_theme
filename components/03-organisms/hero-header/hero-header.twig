@@ -1,0 +1,41 @@
+{{ attach_library('gla_core_theme/hero-header') }}
+
+{% set attributes = attributes|default(create_attribute()).addClass([
+  'hero-header u-breakout u-overflow-hidden u-relative',
+  height == 'half' ? 'hero-header--half' : 'hero-header--full',
+  theme == 'dark' ? 'hero-header--dark' : 'hero-header--light'
+]).setAttribute('x-data', 'heroHeader()')
+  .setAttribute('x-init', 'init($watch)')
+%}
+
+<div {{ attributes }}>
+  <div class="hero-header__media u-h-full">
+    {{ media }}
+  </div>
+
+  <div class="container hero-header__content u-absolute u-bottom-0 u-text-white u-w-full u-h-full u-z-1">
+    <div class="u-flex u-flex-col u-justify-center">
+      {% if has_video %}
+        <div class="u-absolute u-right-2 u-top-2 md:u-right-10 md:u-top-10">
+          {% include "@atoms/media-control/media-control.twig" with {
+            attributes: create_attribute()
+              .setAttribute('x-cloak', '')
+              .setAttribute(':aria-label', "videoIsPlaying ? 'Pause' : 'Play'")
+              .setAttribute('@click', 'toggleVideoPlayback()'),
+            pause_attributes: create_attribute().setAttribute('x-show', "videoIsPlaying"),
+            play_attributes: create_attribute().setAttribute('x-show', "!videoIsPlaying")
+          } only %}
+        </div>
+      {% endif %}
+      <div class="u-space-y-5 u-max-w-rich-text-px">
+        {% include "@atoms/heading/heading.twig" with {
+          heading_level: 1,
+          heading_size: 2,
+          heading: heading,
+          attributes: heading_attributes,
+        } only %}
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

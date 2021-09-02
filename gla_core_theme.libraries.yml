@@ -82,3 +82,16 @@ set-scroll-padding-top:
     dist/00-base/set-scroll-padding-top.js: {}
   dependencies:
     - core/drupal.debounce
+
+hero-header:
+  js:
+    dist/03-organisms/hero-header/hero-header.js: {}
+  dependencies:
+    - gla_core_theme/lodash
+    - gla_core_theme/alpinejs
+
+lodash:
+  # This custom lodash build is generated in a npm postinstall script based on
+  # http://simey.me/custom-lodash-builder-with-npm.
+  js:
+    dist/lodash.min.js: {}

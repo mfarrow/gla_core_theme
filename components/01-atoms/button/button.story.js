@@ -67,6 +67,11 @@ Solid.parameters = {
   },
 };
 
+export const withIcon = Template.bind({});
+withIcon.args = {
+  button_icon: 'gla--right-arrow',
+};
+
 export const WithNoUrl = Template.bind({});
 WithNoUrl.args = {
   button_url: null,
