@@ -42,7 +42,7 @@ export default {
     },
     cta_type: {
       type: { name: 'string', required: true },
-      description: 'CTA type that determines the type of button.',
+      description: 'CTA type that determines the type of button. Solid or Outline.',
       table: {
         type: { summary: 'string' },
       },
