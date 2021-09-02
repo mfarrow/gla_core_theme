@@ -1,0 +1,20 @@
+{% set attributes = attributes|default(create_attribute()).addClass([
+  "page-header",
+  "u-breakout",
+  "u-overflow-hidden",
+  "u-relative",
+]) %}
+
+<div {{ attributes }}>
+  <div class="page-header__image u-h-full">
+    {{ image }}
+  </div>
+
+  <div class="container page-header__title u-absolute u-bottom-0 u-text-white u-w-full u-z-1 u-pb-5 md:u-pb-10">
+    {% include "@atoms/heading/heading.twig" with {
+      heading_level: 1,
+      heading_size: 2,
+      heading: heading,
+    } only %}
+  </div>
+</div>
