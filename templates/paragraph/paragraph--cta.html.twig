@@ -49,7 +49,8 @@
     button_content: content.field_p_cta_link|field_value|first['#title'],
     button_url: content.field_p_cta_link|field_value|first['#url']|render,
     image_content: content.field_p_cta_image,
-    content: content.field_p_cta_summary|field_value
+    content: content.field_p_cta_summary|field_value,
+    reverse_layout: paragraph.field_p_cta_reverse_layout.value
   } only %}
 {% endif %}
 

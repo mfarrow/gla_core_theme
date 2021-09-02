@@ -93,3 +93,9 @@ const Template = (args) => template({ ...args });
 
 export const Default = Template.bind({});
 Default.decorators = [containerDecorator];
+
+export const ReverseLayout = Template.bind({});
+ReverseLayout.args = {
+  reverse_layout: true,
+};
+ReverseLayout.decorators = [containerDecorator];
