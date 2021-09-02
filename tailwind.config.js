@@ -207,6 +207,17 @@ module.exports = {
         DEFAULT: '100ms',
       },
     },
+    zIndex: {
+      1: 1,
+      10: 10,
+      25: 25,
+      50: 50,
+      75: 75,
+      100: 100,
+      501: 501, // Drupal Contextual Links are 500
+      1251: 1251, // Drupal admin toolbar is 1250
+      auto: 'auto',
+    },
   },
   variants: {
     extend: {
@@ -226,10 +237,24 @@ module.exports = {
         '.flex-gap-wrapper': {
           overflow: 'auto',
         },
-        '[class*="flex-gap-"]:not([class*="flex-gap-wrapper"])': {
+        '[class*="flex-gap-"]:not([class*="flex-gap-wrapper"]):not([class*="flex-gap-x-"]):not([class*="flex-gap-y-"])': {
           margin: 'calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap))',
           '& > *': {
             margin: 'calc(var(--gap)) 0 0 calc(var(--gap))',
+          },
+        },
+        '[class*="flex-gap-x-"]': {
+          margin:
+            '0 calc(-1 * calc(var(--gap) / 2)) 0 calc(-1 * calc(var(--gap) / 2))',
+          '& > *': {
+            margin: '0 calc(calc(var(--gap) / 2)) 0 calc(calc(var(--gap) / 2))',
+          },
+        },
+        '[class*="flex-gap-y-"]': {
+          margin:
+            'calc(-1 * calc(var(--gap) / 2)) 0 calc(-1 * calc(var(--gap) / 2)) 0',
+          '& > *': {
+            margin: 'calc(calc(var(--gap) / 2)) 0 calc(calc(var(--gap) / 2)) 0',
           },
         },
       });
@@ -238,6 +263,12 @@ module.exports = {
         addUtilities(
           {
             [`.flex-gap-${e(key)}`]: {
+              '--gap': value,
+            },
+            [`.flex-gap-x-${e(key)}`]: {
+              '--gap': value,
+            },
+            [`.flex-gap-y-${e(key)}`]: {
               '--gap': value,
             },
           },

@@ -38,4 +38,9 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{% include "@organisms/_paragraph.twig" %}
+{% include "@molecules/home-page-header/home-page-header.twig" with {
+  heading: heading,
+  styled_fullstop: styled_fullstop,
+  text: content.field_p_hph_text|field_value,
+  cta: content.field_p_hph_cta|field_value,
+} %}
