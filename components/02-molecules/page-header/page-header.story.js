@@ -37,6 +37,3 @@ export default {
 const Template = (args) => template({ ...args });
 
 export const Default = Template.bind({});
-
-export const Assembly = Template.bind({});
-Assembly.decorators = [assemblyDecorator];
