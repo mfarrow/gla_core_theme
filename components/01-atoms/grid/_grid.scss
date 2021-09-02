@@ -58,36 +58,3 @@ $screens: (
     }
   }
 }
-
-// Immediate children of .container can 'breakout' of the container by spanning the full range of columns not just the
-// middle. This requires a specific DOM structure but is the nicest breakout option as it relies only on CSS grid.
-.u-breakout {
-  --container-width: 100%;
-
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-// For not-immediate children of .container, the u-breakout-child class can be used to break out of the container.
-// This is not as good an option as using the original u-breakout class as it requires JavaScript to calculate the
-// scrollbar width in order to get perfect alignment with other elements on the page and it has a few issues:
-//
-// ⚠️ This can cause a small amount of CLS when the value of --reliable-100vw updates and the alignment of content
-//    changes.
-// ⚠️ Note that these classes will only work on content that is centered in the middle of the page. If a max-width
-//    (e.g. one added for readability on a Rich text component) means the element is off-center then it will not
-//    properly be able to break out of the grid. If this is the case, try refactoring the DOM structure of your
-//    component to use the u-breakout class.
-html:not(.has-scrollbar-width-set) .u-breakout-child {
-  position: relative;
-  right: 50%;
-  left: 50%;
-  width: 100vw;
-  margin-right: -50vw;
-  margin-left: -50vw;
-}
-
-html.has-scrollbar-width-set .u-breakout-child {
-  width: var(--reliable-100vw);
-  margin-left: calc(50% - (var(--reliable-100vw) / 2));
-}
