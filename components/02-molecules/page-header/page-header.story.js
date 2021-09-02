@@ -6,9 +6,8 @@ export default {
   title: 'Molecules/Page header',
   args: {
     heading: 'The Mayor of London',
-    image_src:
-      'https://pbs.twimg.com/profile_images/1417081099608596481/nVO3JCd-_400x400.jpg',
-    image_alt: 'Alt from drupal',
+    image:
+      '<img src="https://pbs.twimg.com/profile_images/1417081099608596481/nVO3JCd-_400x400.jpg" alt="Image from drupal">',
   },
   argTypes: {
     heading: {
@@ -18,16 +17,9 @@ export default {
         type: { summary: 'string' },
       },
     },
-    image_src: {
+    image: {
       type: { name: 'string' },
-      description: 'The url to the image',
-      table: {
-        type: { summary: 'string' },
-      },
-    },
-    image_alt: {
-      type: { name: 'string' },
-      description: 'The alt description of the image',
+      description: 'HTML markup to display an image',
       table: {
         type: { summary: 'string' },
       },
