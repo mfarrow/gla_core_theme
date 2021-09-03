@@ -1,5 +1,3 @@
-import assemblyDecorator from '../../../storybook/assembly-decorator';
-
 const template = require('./page-header.twig');
 
 export default {

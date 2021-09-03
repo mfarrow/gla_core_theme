@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="derp">
+    <description>PHP CodeSniffer configuration for development.</description>
+
+    <file>.</file>
+    <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt,md,yml"/>
+    <exclude-pattern>./vendor/*</exclude-pattern>
+    <exclude-pattern>./.github/*</exclude-pattern>
+    <exclude-pattern>./.idea/*</exclude-pattern>
+    <exclude-pattern>./node_modules/*</exclude-pattern>
+    <exclude-pattern>./storybook/*</exclude-pattern>
+    <exclude-pattern>./libraries/*</exclude-pattern>
+    <exclude-pattern>./dist/*</exclude-pattern>
+    <exclude-pattern>./tokens/*</exclude-pattern>
+    <exclude-pattern>./.parcel-cache/*</exclude-pattern>
+
+    <config name="drupal_core_version" value="9"/>
+
+    <!-- The rules defined below assume they are available globally (https://www.drupal.org/docs/contributed-modules/code-review-module/installing-coder-sniffer#s-global-coder-install) -->
+    <!-- To use the rules provided locally, specify a ref like `vendor/drupal/coder/coder_sniffer/Drupal` -->
+    <!-- Specifying a local path will not work if you also have the rules available globally -->
+    <rule ref="Drupal" />
+    <!-- Grum doesn't run the DrupalPractice rule, so developers may choose to ignore issues flagged by it if they wish -->
+    <rule ref="DrupalPractice"/>
+</ruleset>

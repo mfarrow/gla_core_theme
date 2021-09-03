@@ -45,12 +45,14 @@ module.exports = {
     './components/**/*.js',
     './components/**/*.story.js',
     './templates/**/*.html.twig',
-    '../../../../config/sync/*.yml',
+    './includes/*.inc',
+    './includes/**/*.inc',
     './gla_core_theme.theme',
     './tokens/*.story.mdx',
-    // For classes added by Storybook decorators:
     './storybook/.storybook/preview.js',
-    '../../../../config/sync/editor.editor.full_html.yml',
+    '../../../../config/sync/*.yml',
+    '../../../modules/**/*.module',
+    '../../../modules/**/*.php',
   ],
   darkMode: false,
   theme: {
@@ -183,13 +185,15 @@ module.exports = {
     },
     extend: {
       spacing: {
-        'bs-grid': '15px',
+        'grid-gutter': '15px',
       },
       margin: {
         '-bs-grid': '-15px',
       },
       fill: {
-        primary: colors.pink,
+        pink: colors.pink,
+        primary: colors.primary,
+        'primary-dark': colors['primary-dark'],
       },
       letterSpacing: {
         '-0.5': '-0.5px',
@@ -224,6 +228,8 @@ module.exports = {
     container: false,
   },
   plugins: [
+    // eslint-disable-next-line import/no-unresolved,global-require
+    require('@tailwindcss/line-clamp'),
     // eslint-disable-next-line import/no-unresolved,global-require
     require('tailwindcss-interaction-variants'),
     plugin(({ addUtilities, e, theme, variants }) => {

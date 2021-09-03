@@ -38,13 +38,31 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{%  set button_paragraph = content.field_p_hph_cta|field_value|first['#paragraph'] %}
+{% set cta_type = paragraph.field_p_cta_type.value %}
 
-{% include "@molecules/home-page-header/home-page-header.twig" with {
-  heading: heading,
-  styled_fullstop: styled_fullstop,
-  text: content.field_p_hph_text|field_value,
-  cta_url: button_paragraph.field_p_b_link.0.url.toString(),
-  cta_text: button_paragraph.field_p_b_link.value.0.title,
-  cta_type: button_paragraph.field_p_b_style.value
-} %}
+{% if cta_type == 'image' %}
+  {% include "@molecules/cta/cta--image.twig" with {
+    attributes: attributes,
+    id: paragraph.id(),
+    heading: content.field_p_cta_heading|field_value,
+    cta_type: cta_type,
+    button_content: content.field_p_cta_link|field_value|first['#title'],
+    button_url: content.field_p_cta_link|field_value|first['#url']|render,
+    image_content: content.field_p_cta_image,
+    content: content.field_p_cta_summary|field_value,
+    reverse_layout: paragraph.field_p_cta_reverse_layout.value
+  } only %}
+{% endif %}
+
+{% if cta_type == 'simple' or cta_type == 'talk_london' %}
+  {% include "@molecules/cta/cta.twig" with {
+    attributes: attributes,
+    id: paragraph.id(),
+    heading: content.field_p_cta_heading|field_value,
+    cta_type: cta_type,
+    button_content: content.field_p_cta_link|field_value|first['#title'],
+    button_url: content.field_p_cta_link|field_value|first['#url']|render,
+  } only %}
+{% endif %}
+
+

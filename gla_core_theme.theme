@@ -98,3 +98,12 @@ function gla_core_theme_preprocess_html(&$variables) {
     $variables['html_attributes']['lang'] = 'en-gb';
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function gla_core_theme_theme($existing, $type, $theme, $path) {
+  return [
+    'field__no_wrappers' => [],
+  ];
+}
