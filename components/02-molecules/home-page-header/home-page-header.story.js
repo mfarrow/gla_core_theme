@@ -1,7 +1,6 @@
 import assemblyDecorator from '../../../storybook/assembly-decorator';
 
 const template = require('./home-page-header.twig');
-const buttonTemplate = require('../../01-atoms/button/button.twig');
 
 export default {
   title: 'Molecules/Home page header',
@@ -9,9 +8,7 @@ export default {
     heading: 'We are london<span class="u-text-primary">.</span>',
     text:
       '<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>',
-    cta: buttonTemplate({
-      button_content: `View our about page`,
-    }),
+    cta_text: 'View our about page',
   },
   argTypes: {
     heading: {
@@ -28,9 +25,27 @@ export default {
         type: { summary: 'string' },
       },
     },
-    cta: {
-      name: `cta`,
-      description: 'Button markup from Drupal',
+    cta_text: {
+      type: { name: 'string', required: true },
+      description: 'CTA text that comes from drupal.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    cta_url: {
+      type: { name: 'string', required: true },
+      description: 'CTA url that comes from drupal.',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    cta_type: {
+      type: { name: 'string', required: true },
+      description:
+        'CTA type that determines the type of button. Solid or Outline.',
+      table: {
+        type: { summary: 'string' },
+      },
     },
   },
   parameters: {
