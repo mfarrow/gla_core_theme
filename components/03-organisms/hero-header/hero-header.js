@@ -13,9 +13,9 @@ document.addEventListener('alpine:init', () => {
     initVideo(video) {
       this.$watch('videoIsPlaying', (value) => {
         if (this.videoIsPlaying) {
-          this.$refs['hero-header--video'].play();
+          video.play();
         } else {
-          this.$refs['hero-header--video'].pause();
+          video.pause();
         }
       });
 
