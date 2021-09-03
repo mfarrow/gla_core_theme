@@ -15,7 +15,7 @@ document.addEventListener('alpine:init', () => {
         if (this.videoIsPlaying) {
           video.play();
         } else {
-          this.$refs['hero-header--video'].pause();
+          video.pause();
         }
       });
 
