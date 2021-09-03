@@ -31,7 +31,7 @@ export default {
       description: 'Rich text and button markup from Drupal',
     },
     height: {
-      type: { name: 'select' },
+      type: { name: 'select', required: true },
       description:
         'Select list to choose the height of the image. Full or Half.',
       table: {
@@ -39,8 +39,9 @@ export default {
       },
     },
     theme: {
-      type: { name: 'select' },
-      description: 'Select list to choose the gradient overlay. Dark or Light.',
+      type: { name: 'select', required: true },
+      description:
+        'Select list to choose the gradient overlay and text colour. Dark or Light.',
       table: {
         type: { summary: 'select' },
       },
@@ -69,6 +70,11 @@ darkTheme.args = {
   theme: 'dark',
 };
 
+export const lightTheme = Template.bind({});
+lightTheme.args = {
+  theme: 'light',
+};
+
 export const WithNoRichText = Template.bind({});
 WithNoRichText.args = {
   content: buttonTemplate({
@@ -86,6 +92,11 @@ WithNoButton.args = {
 export const WithNoContent = Template.bind({});
 WithNoContent.args = {
   content: null,
+};
+
+export const WithNoMedia = Template.bind({});
+WithNoMedia.args = {
+  media: null,
 };
 
 export const Assembly = Template.bind({});

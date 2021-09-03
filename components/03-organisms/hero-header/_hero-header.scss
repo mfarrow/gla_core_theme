@@ -9,22 +9,30 @@
   &::after {
     position: absolute;
     top: 0;
+    width: 100%;
     height: 100%;
     content: "";
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), transparent);
   }
 
   &--dark::after {
-    width: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.85) 20%,
+      rgba(255, 255, 255, 0)
+    );
   }
 
   &--light::after {
-    width: 50%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.85) 20%,
+      rgba(0, 0, 0, 0)
+    );
   }
 
-  &__content {
-    .rich-text {
-      color: $t-colors-white;
-    }
+  &__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

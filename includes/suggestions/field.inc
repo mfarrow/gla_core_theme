@@ -23,7 +23,6 @@ function gla_core_theme_theme_suggestions_field_alter(array &$suggestions, array
   switch ($field_name) {
     case 'thumbnail':
     case 'field_p_bq_supporting_image':
-    case 'field_p_bs_items':
     case 'field_p_a_items':
     case 'field_p_ai_components':
     case 'field_p_awh_accordion':
