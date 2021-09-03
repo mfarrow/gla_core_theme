@@ -1,0 +1,19 @@
+{% set attributes = attributes|default(create_attribute()).addClass([
+  "media-control u-bg-black u-bg-opacity-30 u-flex u-p-4 md:u-p-8 u-rounded-full"
+])%}
+
+{% set icon_classes = ["u-w-full u-h-full u-p-1.5 md:u-p-5 u-bg-pink u-rounded-full"] %}
+
+{% set pause_attributes = pause_attributes|default(create_attribute()).addClass(icon_classes)%}
+{% set play_attributes = play_attributes|default(create_attribute()).addClass(icon_classes)%}
+
+<button {{ attributes }}>
+  {% include "@atoms/icon/icon.twig" with {
+    icon_name: 'gla--pause',
+    attributes: pause_attributes
+  } only %}
+  {% include "@atoms/icon/icon.twig" with {
+    icon_name: 'gla--play',
+    attributes: play_attributes
+  } only %}
+</button>

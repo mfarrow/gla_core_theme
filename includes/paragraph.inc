@@ -45,4 +45,14 @@ function gla_core_theme_preprocess_paragraph(&$variables) {
       'tabindex' => '-1',
     ]);
   }
+
+  if ($paragraph->bundle() == 'page_header') {
+    if ($paragraph->hasField('field_p_ph_image') && isset($variables['content']['field_p_ph_image']['0'])) {
+      $variables['content']['field_p_ph_image'][0]['#item_attributes']['class'] = [
+        'u-object-cover',
+        'u-w-full',
+        'u-h-full',
+      ];
+    }
+  }
 }
