@@ -104,6 +104,12 @@ function gla_core_theme_preprocess_html(&$variables) {
  */
 function gla_core_theme_theme($existing, $type, $theme, $path) {
   return [
-    'field__no_wrappers' => [],
+    // The single underscore is intentional.
+    'field_no_wrappers' => [
+      'variables' => [],
+      // Reuse the existing template used by the template suggestions approach
+      // to removing field wrappers.
+      'template' => 'field/field--no-wrappers',
+    ],
   ];
 }
