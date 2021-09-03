@@ -1,6 +1,5 @@
 import dedent from 'ts-dedent';
 import containerDecorator from '../../../storybook/container-decorator';
-import { ScrollableStyledTable } from '../../01-atoms/table/table.story';
 
 const template = require('./cta--image.twig');
 
