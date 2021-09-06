@@ -1,0 +1,17 @@
+.media-control {
+  width: 62px;
+  height: 62px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, $t-opacity-40) !important;
+
+    .icon {
+      background-color: $t-colors-pink-dark !important;
+    }
+  }
+
+  @include breakpoint($t-screens-md) {
+    width: 125px;
+    height: 125px;
+  }
+}

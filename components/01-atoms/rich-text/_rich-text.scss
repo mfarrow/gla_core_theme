@@ -9,7 +9,6 @@
 // size of the text.
 .rich-text {
   max-width: $t-max-width-rich-text;
-  color: $t-colors-text-grey;
 
   // The designs show an 'intro' paragraph style that's larger than the rest of the text.
   // For now this can be added manually via CKEditor. Once we have a 'Page section' component

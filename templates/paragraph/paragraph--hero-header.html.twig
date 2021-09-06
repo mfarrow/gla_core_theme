@@ -38,11 +38,13 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{% include "@organisms/_paragraph.twig" with {
-  attributes: attributes.addClass([
-    'u-flex',
-    'u-flex-wrap',
-    'u-items-center',
-    'u-flex-gap-2',
-  ]),
+{% include "@organisms/hero-header/hero-header.twig" with {
+  heading: paragraph.field_p_hh_heading.value,
+  media: not paragraph.field_p_hh_image.isEmpty() ? content.field_p_hh_image|field_value : video,
+  has_picture: not paragraph.field_p_hh_image.isEmpty(),
+  has_video: not paragraph.field_p_hh_video.isEmpty(),
+  content: content.field_p_hh_components,
+  height: paragraph.field_p_hh_height.value,
+  theme: paragraph.field_p_hh_theme.value
 } %}
+

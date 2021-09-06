@@ -25,13 +25,6 @@
 
 <{{ button_element }}{{ attributes }}>
   {% block button_content %}
-    {% if button_icon is not empty %}
-      {% include "@atoms/icon/icon.twig" with {
-        icon_name: button_icon,
-        icon_classes: [ button_content ? 'u-mr-1' ],
-      } %}
-    {% endif %}
-
     {{ button_content }}
   {% endblock %}
 </{{ button_element }}>

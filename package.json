@@ -20,6 +20,8 @@
     "lint": "run-s lint:**",
     "lint:eslint": "eslint --fix '*.js' './components/**/*.{js,story.js}' --cache",
     "lint:stylelint": "stylelint --fix './components/**/*.scss' --cache",
+    "lodash": "npx lodash-cli strict -o ./dist/lodash.js include=$( grep -roh \"_\\.[[:alpha:]]*\" ./components/ ../../../core/assets/vendor/backbone/backbone.js --include=*.js | sort | uniq | cut -b 3- | tr \"\n\" \",\" )",
+    "postinstall:lodash": "npm run lodash",
     "postcss": "postcss ./dist/*.css ./dist/**/*.css --replace --map",
     "scss": "node-sass --output-style compressed --include-path libraries --importer node_modules/node-sass-magic-importer/dist/cli.js --source-map true --output dist components",
     "prestorybook:start": "node scripts/generate-design-tokens.js",
