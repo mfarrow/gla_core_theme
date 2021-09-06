@@ -1,0 +1,33 @@
+{{ attach_library('gla_core_theme/video--vimeo') }}
+
+{% embed "@molecules/remote-video/_remote-video.twig" with {
+  provider: 'vimeo',
+  button_attributes: create_attribute().setAttribute('x-on:click.stop', 'reveal()').setAttribute('x-show', '!revealed'),
+  scrim_attributes: create_attribute().setAttribute('x-show', '!revealed'),
+  attributes: attributes.setAttribute('x-data', 'vimeoFacade'),
+} %}
+  {% block video_wrapper_start %}
+    <div
+      class="u-group u-aspect-w-16 u-aspect-h-9 u-cursor-pointer u-flex u-items-center u-justify-center u-bg-center u-bg-contain"
+      style="background-image: url({{ thumbnail_url }});"
+      x-on:click="reveal()"
+      x-on:mouseenter.once="warmConnections()"
+      x-on:focusin.once="warmConnections()"
+    >
+  {% endblock %}
+
+  {% block video_wrapper_end %}
+      <iframe
+        x-cloak
+        x-ref="iframe"
+        x-show="revealed"
+        title="{{ 'Vimeo player'|t }}: {{ name }}"
+        data-src="https://player.vimeo.com/video/{{ gla_video_vimeo_id }}?autoplay=1&autopause=1&dnt=1&transparent=0"
+        width="806"
+        height="454"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </div>
+  {% endblock %}
+{% endembed %}

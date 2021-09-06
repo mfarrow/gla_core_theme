@@ -8,6 +8,7 @@
         "cweagans/composer-patches": "^1.7",
         "npm-asset/alpinejs": "^3.2",
         "npm-asset/lazysizes": "^5.3",
+        "npm-asset/lite-youtube-embed": "^0.2.0",
         "npm-asset/svgxuse": "^1.2",
         "npm-asset/what-input": "^5.2",
         "npm-asset/wicg-inert": "^3.1",

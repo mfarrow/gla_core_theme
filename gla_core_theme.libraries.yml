@@ -67,7 +67,7 @@ set-scrollbar-width:
 
 scrollable-table:
   js:
-    dist/01-atoms/table/scrollable-table.js: { }
+    dist/01-atoms/table/scrollable-table.js: {}
   dependencies:
     - gla_core_theme/alpinejs
 
@@ -82,3 +82,23 @@ set-scroll-padding-top:
     dist/00-base/set-scroll-padding-top.js: {}
   dependencies:
     - core/drupal.debounce
+
+video--youtube:
+  js:
+    dist/02-molecules/remote-video/video--youtube.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - gla_core_theme/lite-youtube-embed
+    - core/loadjs
+
+lite-youtube-embed:
+  js:
+    libraries/lite-youtube-embed/src/lite-yt-embed.js: {}
+
+video--vimeo:
+  js:
+    dist/02-molecules/remote-video/video--vimeo.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+    - core/loadjs
