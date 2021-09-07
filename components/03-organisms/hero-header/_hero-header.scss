@@ -1,9 +1,14 @@
 .hero-header {
-  min-height: 490px;
-  max-height: 800px;
+  min-height: 500px;
+  max-height: 600px;
 
-  &--half {
-    max-height: 400px;
+  @include breakpoint($t-screens-md) {
+    height: 600px;
+
+    &--half {
+      min-height: 300px;
+      height: 300px;
+    }
   }
 
   &::after {
