@@ -7,6 +7,7 @@
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.7",
         "npm-asset/alpinejs": "^3.2",
+        "npm-asset/basicscroll": "^3.0",
         "npm-asset/lazysizes": "^5.3",
         "npm-asset/svgxuse": "^1.2",
         "npm-asset/what-input": "^5.2",
