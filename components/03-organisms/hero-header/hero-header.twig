@@ -18,20 +18,20 @@
     </div>
   {% endif %}
 
-  <div class="container hero-header__content u-absolute u-bottom-0 u-w-full u-h-full u-z-1">
-    <div class="u-flex u-flex-col u-justify-center">
-      {% if has_video %}
-        <div class="u-absolute u-right-2 u-top-2 md:u-right-10 md:u-top-10 u-text-white">
-          {% include "@atoms/media-control/media-control.twig" with {
-            attributes: create_attribute()
-              .setAttribute('x-cloak', '')
-              .setAttribute(':aria-label', "videoIsPlaying ? 'Pause' : 'Play'")
-              .setAttribute('@click', 'toggleVideoPlayback()'),
-            pause_attributes: create_attribute().setAttribute('x-show', "videoIsPlaying"),
-            play_attributes: create_attribute().setAttribute('x-show', "!videoIsPlaying")
-          } only %}
-        </div>
-      {% endif %}
+  <div class="container hero-header__content u-absolute u-inset-y-0 u-w-full u-h-full u-z-1">
+    {% if has_video %}
+      <div class="u-absolute u-z-1 u-right-2 u-top-2 md:u-right-10 md:u-top-10 u-text-white">
+        {% include "@atoms/media-control/media-control.twig" with {
+          attributes: create_attribute()
+            .setAttribute('x-cloak', '')
+            .setAttribute(':aria-label', "videoIsPlaying ? 'Pause' : 'Play'")
+            .setAttribute('@click', 'toggleVideoPlayback()'),
+          pause_attributes: create_attribute().setAttribute('x-show', "videoIsPlaying"),
+          play_attributes: create_attribute().setAttribute('x-show', "!videoIsPlaying")
+        } only %}
+      </div>
+    {% endif %}
+    <div class="u-flex u-flex-col u-justify-center u-absolute u-h-full">
       <div class="u-space-y-5 u-max-w-rich-text-px">
         {% include "@atoms/heading/heading.twig" with {
           heading_level: 1,
