@@ -98,7 +98,7 @@ hero-image:
   js:
     dist/02-molecules/hero-image/hero-image.js: {}
   dependencies:
-    - gla_core_theme/lodash
+    - gla_core_theme/alpinejs
     - gla_core_theme/basicscroll
 
 lodash:

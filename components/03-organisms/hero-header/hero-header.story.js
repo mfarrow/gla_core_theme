@@ -1,3 +1,5 @@
+import '../../../dist/03-organisms/hero-header/hero-header';
+
 import assemblyDecorator from '../../../storybook/assembly-decorator';
 
 const template = require('./hero-header.twig');
@@ -97,6 +99,15 @@ WithNoContent.args = {
 export const WithNoMedia = Template.bind({});
 WithNoMedia.args = {
   media: null,
+};
+
+export const withVideo = Template.bind({});
+withVideo.args = {
+  has_video: true,
+  media:
+    '<video loop="loop" muted="true" width="1920" height="700" x-ref="hero-header--video" preload="metadata" playsinline="true" class="u-object-cover u-h-full u-w-full">\n' +
+    '      <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4" type="video/mp4">\n' +
+    '  </video>',
 };
 
 export const Assembly = Template.bind({});
