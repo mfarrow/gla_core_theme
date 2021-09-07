@@ -1,24 +1,24 @@
 (function heroImage() {
-  function screenSize() {
-    const mql = window.matchMedia('(min-width: 768px)');
-    return mql.matches;
-  }
-
-  screenSize();
-
-  window.addEventListener('resize', _.debounce(screenSize, 100));
-
-  const instance = basicScroll.create({
-    elem: document.querySelector('.hero-image'),
-    from: 'top-middle',
-    to: 'bottom-middle',
-    direct: true,
-    props: {
-      '--translateY': {
-        from: '0',
-        to: `50px`,
+  document.querySelectorAll('.hero-image').forEach((heroImageElement) => {
+    const instance = basicScroll.create({
+      elem: heroImageElement,
+      from: 'top-middle',
+      to: 'bottom-middle',
+      direct: true,
+      props: {
+        '--translateY': {
+          from: '0',
+          to: `50px`,
+        },
       },
-    },
+    });
+    instance.start();
+
+    function recalculateAndUpdate() {
+      instance.calculate();
+      instance.update();
+    }
+
+    window.addEventListener('resize', _.debounce(recalculateAndUpdate, 100));
   });
-  instance.start();
 })();
