@@ -1,10 +1,14 @@
 {{ attach_library('gla_core_theme/hero-header') }}
 
-{% set attributes = attributes|default(create_attribute()).addClass([
-  'hero-header u-breakout u-overflow-hidden u-relative u-bg-grey',
-  height == 'half' ? 'hero-header--half' : 'hero-header--full',
-  theme == 'dark' ? 'hero-header--dark u-text-white' : 'hero-header--light u-text-black'
-]).setAttribute('x-data', 'heroHeader()')
+{% set attributes = attributes|default(create_attribute())
+  .addClass([
+    'hero-header u-breakout u-overflow-hidden u-relative u-bg-grey',
+    height == 'half' ? 'hero-header--half' : 'hero-header--full',
+    theme == 'dark' ? 'hero-header--dark u-text-white' : 'hero-header--light u-text-black'
+  ])
+  .setAttribute('x-data', 'heroHeader()')
+  .setAttribute('@media-control--play', 'toggleVideoPlayback()')
+  .setAttribute('@media-control--pause', 'toggleVideoPlayback()')
 %}
 
 <div {{ attributes }}>
@@ -22,12 +26,7 @@
     {% if has_video %}
       <div class="u-absolute u-z-1 u-right-2 u-top-2 md:u-right-10 md:u-top-10 u-text-white">
         {% include "@atoms/media-control/media-control.twig" with {
-          attributes: create_attribute()
-            .setAttribute('x-cloak', '')
-            .setAttribute(':aria-label', "videoIsPlaying ? 'Pause' : 'Play'")
-            .setAttribute('@click', 'toggleVideoPlayback()'),
-          pause_attributes: create_attribute().setAttribute('x-show', "videoIsPlaying"),
-          play_attributes: create_attribute().setAttribute('x-show', "!videoIsPlaying")
+          is_playing: true,
         } only %}
       </div>
     {% endif %}
