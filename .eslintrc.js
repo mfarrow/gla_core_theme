@@ -87,5 +87,6 @@ module.exports = {
     ReadingPositionIndicator: true,
     bodyScrollLock: true,
     Alpine: true,
+    Cash: true,
   },
 };

@@ -115,3 +115,7 @@ video--vimeo:
   dependencies:
     - gla_core_theme/alpinejs
     - core/loadjs
+
+cash:
+  js:
+    libraries/cash/cash.min.js: { minified: true }
