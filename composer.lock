@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a475784e9191966a92cc7d55cc130d0",
+    "content-hash": "5caa7ab2fde23b37ec777ddd21b8a31a",
     "packages": [
         {
             "name": "composer/installers",
@@ -269,18 +269,6 @@
             "type": "npm-asset",
             "license": [
                 "Apache-2.0"
-            ]
-        },
-        {
-            "name": "npm-asset/lozad",
-            "version": "1.16.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/lozad/-/lozad-1.16.0.tgz"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
             ]
         },
         {

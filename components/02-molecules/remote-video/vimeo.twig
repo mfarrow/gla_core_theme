@@ -10,8 +10,8 @@
 } only %}
   {% block video_wrapper_start %}
     <div
-      class="lozad u-group u-aspect-w-16 u-aspect-h-9 u-cursor-pointer u-flex u-items-center u-justify-center u-bg-center u-bg-contain"
-      data-background-image="{{ thumbnail_url }}"
+      class="lazyload u-group u-aspect-w-16 u-aspect-h-9 u-cursor-pointer u-flex u-items-center u-justify-center u-bg-center u-bg-contain"
+      data-bg="{{ thumbnail_url }}"
       style="background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);"
       @media-control--play="reveal()"
       @click="reveal()"

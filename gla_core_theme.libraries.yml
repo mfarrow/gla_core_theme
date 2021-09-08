@@ -37,18 +37,32 @@ alpinejs:
   js:
     libraries/alpinejs/dist/cdn.js: { attributes: { defer: true } }
 
-# Until Safari supports native image lazyloading we'll need a library to help us with it.
+# D9 and modern browsers (except Safari) support native lazyloading of images, but we
+# can still use Lazysizes for things like lazyloading background images.
 lazysizes:
   js:
-    libraries/lazysizes/plugins/print/ls.print.min.js: { minified: true }
-    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js: { minified: true }
-    libraries/lazysizes/lazysizes.min.js:
-      # Load Lazysizes as early as possible to help get images displayed
-      # as quickly as possible. We are banking on the perceived performance
-      # benefits of getting images on screen quicker being more important
-      # than the performance costs of not aggregating this file.
+    # Load Lazysizes as early as possible to help get images displayed
+    # as quickly as possible. We are banking on the perceived performance
+    # benefits of getting images on screen quicker being more important
+    # than the performance costs of not aggregating this file.
+    libraries/lazysizes/plugins/print/ls.print.min.js:
       preprocess: false
       minified: true
+      header: true
+      weight: -10
+      attributes:
+        async: ''
+    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js:
+      preprocess: false
+      minified: true
+      header: true
+      weight: -10
+      attributes:
+        async: ''
+    libraries/lazysizes/lazysizes.min.js:
+      preprocess: false
+      minified: true
+      header: true
       weight: -10
       attributes:
         async: ''
@@ -113,7 +127,7 @@ video--youtube:
     dist/02-molecules/remote-video/video--youtube.js: {}
   dependencies:
     - gla_core_theme/cash
-    - gla_core_theme/lozad
+    - gla_core_theme/lazysizes
     - gla_core_theme/lite-youtube-embed
     - core/once
     - core/loadjs
@@ -127,7 +141,7 @@ video--vimeo:
     dist/02-molecules/remote-video/video--vimeo.js: {}
   dependencies:
     - gla_core_theme/alpinejs
-    - gla_core_theme/lozad
+    - gla_core_theme/lazysizes
     - core/loadjs
 
 modernizr:
@@ -150,8 +164,3 @@ media-control:
     dist/01-atoms/media-control/media-control.js: {}
   dependencies:
     - gla_core_theme/alpinejs
-
-lozad:
-  js:
-    libraries/lozad/dist/lozad.min.js: {}
-    dist/00-base/lozad.js: { }

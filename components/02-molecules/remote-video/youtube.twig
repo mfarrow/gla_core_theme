@@ -14,10 +14,10 @@
   {% block video_wrapper_start %}
     <lite-youtube
       x-data
-      class="lozad u-aspect-w-16 u-aspect-h-9 u-group u-cursor-pointer u-bg-center u-bg-contain"
+      class="lazyload u-aspect-w-16 u-aspect-h-9 u-group u-cursor-pointer u-bg-center u-bg-contain"
       videoid="{{ gla_video_youtube_id }}"
       params="start=0&rel=0&enablejsapi=1&origin={{ base_root }}&modestbranding=1"
-      data-background-image="{{ thumbnail_url }}"
+      data-bg="{{ thumbnail_url }}"
       style="background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);"
       playlabel="{{ 'YouTube player'|t }}: {{ name }}"
     >
