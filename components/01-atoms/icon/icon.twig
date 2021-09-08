@@ -23,7 +23,7 @@
 
 {% if attributes['aria-label'] or attributes[':aria-label'] or attributes['x-bind:aria-label'] %}
   {#
-    If we are providing accessible text via an attribute on the button then we need to remove the presentation role.
+    If we are providing accessible text via an attribute on the icon then we need to remove the presentation role.
     Ideally we wouldn't do this and would provide accessible text using the example above.
   #}
   {% set attributes = attributes.removeAttribute('role') %}
