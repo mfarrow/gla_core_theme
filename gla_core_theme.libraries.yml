@@ -90,6 +90,17 @@ hero-header:
     - gla_core_theme/lodash
     - gla_core_theme/alpinejs
 
+basicscroll:
+  js:
+    libraries/basicscroll/dist/basicScroll.min.js: {}
+
+hero-image:
+  js:
+    dist/02-molecules/hero-image/hero-image.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+    - gla_core_theme/basicscroll
+
 lodash:
   # This custom lodash build is generated in a npm postinstall script based on
   # http://simey.me/custom-lodash-builder-with-npm.

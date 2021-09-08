@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0772bdb0710b6323eb0570e10e91c64d",
+    "content-hash": "e84ecc7cfc1a5ce270679bfb0cfdcd71",
     "packages": [
         {
             "name": "composer/installers",
@@ -220,11 +220,51 @@
             ]
         },
         {
+            "name": "npm-asset/basicscroll",
+            "version": "3.0.4",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/basicscroll/-/basicscroll-3.0.4.tgz"
+            },
+            "require": {
+                "npm-asset/eases": ">=1.0.8,<2.0.0",
+                "npm-asset/parse-unit": ">=1.0.1,<2.0.0"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/eases",
+            "version": "1.0.8",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/eases/-/eases-1.0.8.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "npm-asset/lazysizes",
             "version": "5.3.2",
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/lazysizes/-/lazysizes-5.3.2.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/parse-unit",
+            "version": "1.0.1",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/parse-unit/-/parse-unit-1.0.1.tgz"
             },
             "type": "npm-asset",
             "license": [

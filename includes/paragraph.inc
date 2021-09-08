@@ -55,4 +55,13 @@ function gla_core_theme_preprocess_paragraph(&$variables) {
       ];
     }
   }
+
+  if ($paragraph->bundle() == 'hero_image') {
+    if ($paragraph->hasField('field_p_hi_image') && isset($variables['content']['field_p_hi_image']['0'])) {
+      $variables['content']['field_p_hi_image'][0]['#item_attributes']['class'] = [
+        'u-object-cover',
+        'u-w-full',
+      ];
+    }
+  }
 }
