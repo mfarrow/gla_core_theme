@@ -23,13 +23,6 @@ export default {
       },
     },
   },
-  parameters: {
-    design: {
-      type: 'iframe',
-      url:
-        'https://projects.invisionapp.com/d/main/#/console/21508157/454587112/preview',
-    },
-  },
 };
 
 const Template = (args) => template({ ...args });
