@@ -5,7 +5,7 @@ export default {
   args: {
     heading: 'The Mayor of London',
     image:
-      '<img src="https://pbs.twimg.com/profile_images/1417081099608596481/nVO3JCd-_400x400.jpg" alt="Image from drupal">',
+      '<img class="u-w-full u-h-full u-object-cover" src="https://pbs.twimg.com/profile_images/1417081099608596481/nVO3JCd-_400x400.jpg" alt="Image from drupal">',
   },
   argTypes: {
     heading: {
