@@ -72,9 +72,7 @@
           $$(this)
             .find('button')
             .on('click', () => {
-              const el = $$(this)[0];
-              const id = el.getAttribute('videoid');
-
+              const id = $$(this).attr('videoid');
               window.location = `https://www.youtube.com/watch?v=${id}`;
               return false;
             });
