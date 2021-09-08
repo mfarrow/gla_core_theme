@@ -43,8 +43,9 @@
   so to match the designs we set a max width to force their widths match. Without this class, the Media item component
   will expand to fill all of the available space.
 #}
-{% include "@organisms/_paragraph.twig" with {
-  attributes: attributes.addClass([
-    parent_bundle == 'page_section' ? 'u-max-w-rich-text-px',
-  ]),
+{% include "@molecules/media-item/media-item.twig" with {
+  caption: content.field_p_mi_caption|field_value,
+  media: content.group_link,
+  full_width: paragraph.field_p_mi_full_width.value,
+  caption_as_plain_text_string: content.field_p_mi_caption|field_value|render|striptags,
 } %}

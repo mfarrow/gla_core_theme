@@ -19,22 +19,22 @@
   <div class="u-overflow-hidden u-aspect-w-16 u-aspect-h-9 u-relative u-bg-vulcan u-bg-gradient-t-black-scrim">
     {% block video_wrapper_start %}
     {% endblock %}
-      <div class="u-flex u-items-center u-justify-center">
-        {% block scrim %}
-          <div {{ scrim_attributes.addClass('u-absolute u-inset-0 u-bg-gradient-b-black-scrim u-transition-opacity group-hocus:u-opacity-90') }}></div>
-        {% endblock %}
 
-        <button {{ button_attributes.addClass('u-text-7xl u-bg-transparent u-text-white u-transition group-hocus:u-scale-110 focus:u-scale-110 u-p-0 u-rounded-full') }} type="button">
-          <svg class="icon" viewBox="0 0 1000 1000"><circle cx="514.065" cy="504.152" r="477.545"/><path d="M383 510.151V318.502l165.696 95.825 165.833 95.824-165.764 95.825L383 701.801z" style="fill:#000;"/></svg>
-          <p class="u-sr-only">{{ 'Play video'|t }}: {{ name }}</p>
-        </button>
+    <div class="u-flex u-items-center u-justify-center" @media-control--play="$el.remove()">
+      {% include "@atoms/media-control/media-control.twig" with {
+        attributes: button_attributes.addClass([
+          'group-hocus:u-bg-opacity-40'
+        ]),
+        play_label: play_label,
+        pause_label: pause_label,
+      } only %}
 
-        {% if small_print %}
-          <p id="video-small-print--{{ id }}" class="u-absolute u-text-sm u-bottom-2 u-left-2 u-bg-black u-p-2 u-bg-opacity-70 u-text-white u-transform u-translate-y-full u-transition-transform u-ease-out group-hover:u-translate-y-0 group-focus-within:u-translate-y-0">
-            {{ small_print }}
-          </p>
-        {% endif %}
-      </div>
+      {% if small_print %}
+        <p id="video-small-print--{{ id }}" class="u-absolute u-text-sm u-bottom-2 u-left-2 u-bg-black u-p-2 u-bg-opacity-70 u-text-white u-transform u-translate-y-full u-transition-transform u-ease-out group-hover:u-translate-y-0 group-focus-within:u-translate-y-0">
+          {{ small_print }}
+        </p>
+      {% endif %}
+    </div>
 
     {% block video_wrapper_end %}
     {% endblock %}

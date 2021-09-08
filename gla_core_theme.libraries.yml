@@ -101,9 +101,10 @@ video--youtube:
   js:
     dist/02-molecules/remote-video/video--youtube.js: {}
   dependencies:
-    - core/jquery
-    - core/jquery.once
+    - gla_core_theme/cash
+    - gla_core_theme/lozad
     - gla_core_theme/lite-youtube-embed
+    - core/once
     - core/loadjs
 
 lite-youtube-embed:
@@ -115,6 +116,7 @@ video--vimeo:
     dist/02-molecules/remote-video/video--vimeo.js: {}
   dependencies:
     - gla_core_theme/alpinejs
+    - gla_core_theme/lozad
     - core/loadjs
 
 modernizr:

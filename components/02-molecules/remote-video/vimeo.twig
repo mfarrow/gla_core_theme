@@ -2,17 +2,21 @@
 
 {% embed "@molecules/remote-video/_remote-video.twig" with {
   provider: 'vimeo',
-  button_attributes: create_attribute().setAttribute('x-on:click.stop', 'reveal()').setAttribute('x-show', '!revealed'),
-  scrim_attributes: create_attribute().setAttribute('x-show', '!revealed'),
   attributes: attributes.setAttribute('x-data', 'vimeoFacade'),
-} %}
+  play_label: 'Play Vimeo video '|t ~ name,
+  pause_label: 'Pause Vimeo video '|t ~ name,
+  thumbnail_url: thumbnail_url,
+  gla_video_vimeo_id: gla_video_vimeo_id,
+} only %}
   {% block video_wrapper_start %}
     <div
-      class="u-group u-aspect-w-16 u-aspect-h-9 u-cursor-pointer u-flex u-items-center u-justify-center u-bg-center u-bg-contain"
-      style="background-image: url({{ thumbnail_url }});"
-      x-on:click="reveal()"
-      x-on:mouseenter.once="warmConnections()"
-      x-on:focusin.once="warmConnections()"
+      class="lozad u-group u-aspect-w-16 u-aspect-h-9 u-cursor-pointer u-flex u-items-center u-justify-center u-bg-center u-bg-contain"
+      data-background-image="{{ thumbnail_url }}"
+      style="background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);"
+      @media-control--play="reveal()"
+      @click="reveal()"
+      @mouseenter.once="warmConnections()"
+      @focusin.once="warmConnections()"
     >
   {% endblock %}
 
