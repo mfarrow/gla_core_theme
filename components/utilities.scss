@@ -75,5 +75,28 @@
     .u-unbreakout {
       grid-column: 2;
     }
+
+    .u-visually-hidden {
+      position: absolute !important;
+      overflow: hidden;
+      clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+      clip: rect(1px, 1px, 1px, 1px);
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .u-visually-hidden.is-focusable:active,
+    .u-visually-hidden.is-focusable:focus {
+      position: static !important;
+      overflow: visible !important;
+      clip: auto !important;
+      width: auto !important;
+      height: auto !important;
+      padding: unset !important;
+      white-space: inherit !important;
+      border: unset !important;
+    }
   }
 }

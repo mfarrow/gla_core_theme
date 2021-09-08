@@ -70,6 +70,16 @@ module.exports = {
       xxl: '1920px',
       print: { raw: 'print' },
     },
+    borderWidth: {
+      DEFAULT: '1px',
+      0: '0',
+      1: '1px',
+      2: '2px',
+      3: '3px',
+      4: '4px',
+      6: '6px',
+      8: '8px',
+    },
     borderRadius: {
       none: '0',
       DEFAULT: '4px',
