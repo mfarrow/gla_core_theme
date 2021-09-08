@@ -24,9 +24,11 @@
 
   <div class="container hero-header__content u-absolute u-inset-y-0 u-w-full u-h-full u-z-1">
     {% if has_video %}
-      <div class="u-absolute u-z-1 u-right-2 u-top-2 md:u-right-10 md:u-top-10 u-text-white">
+      <div class="u-absolute u-z-1 u-right-3 u-top-3 md:u-right-8 md:u-top-8 u-text-white">
         {% include "@atoms/media-control/media-control.twig" with {
           is_playing: true,
+          pause_label: 'Pause video'|t,
+          play_label: 'Play video'|t,
         } only %}
       </div>
     {% endif %}
