@@ -222,9 +222,11 @@ module.exports = {
   variants: {
     extend: {
       textColor: ['hocus'],
-      backgroundOpacity: ['hocus', 'group-hocus'],
-      backgroundColor: ['group-hocus'],
+      backgroundOpacity: ['hocus', 'group-hover'],
+      backgroundColor: ['group-hover'],
       translate: ['group-hover', 'group-focus-within', 'group-hocus'],
+      scale: ['active'],
+      transform: ['active'],
     },
   },
   corePlugins: {

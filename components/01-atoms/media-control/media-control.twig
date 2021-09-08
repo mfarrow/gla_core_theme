@@ -5,13 +5,13 @@
   .setAttribute('data-initially-playing', (is_playing) ? 'true' : 'false')
   .setAttribute('@click', 'playing = !playing')
   .addClass([
-    "media-control u-group u-flex u-items-center u-justify-center u-transition-colors u-bg-black u-bg-opacity-30 hocus:u-bg-opacity-40 u-rounded-full"
+    "media-control u-group u-relative u-overflow-hidden u-flex u-items-center u-justify-center u-transition-all u-bg-black u-bg-opacity-30 u-rounded-full active:u-transform active:u-scale-95"
   ])
 %}
 
 
 <button {{ attributes }}>
-  <div class="u-flex u-items-center u-justify-center u-w-1/2 u-h-1/2 u-bg-pink group-hocus:u-bg-pink-dark u-text-white u-rounded-full">
+  <div class="u-flex u-z-1 u-items-center u-justify-center u-w-1/2 u-h-1/2 u-bg-pink u-text-white u-rounded-full">
     {# We use translate-x to offset the play icon slightly otherwise an optical illusion makes it look off-center visually #}
     {% include "@atoms/icon/icon.twig" with {
       icon_name: 'gla--play',

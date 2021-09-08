@@ -4,4 +4,21 @@
   // The component uses percentage-based dimensions so it should scale up or down in height relatively nicely.
   width: 100px;
   height: 100px;
+
+  &::after {
+    content: '';
+    background: $t-colors-pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100%;
+    transform: scale(0.5);
+    transition: $t-transition-property-transform $t-transition-timing-function-out $t-transition-delay-100;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
 }
