@@ -119,3 +119,8 @@ video--vimeo:
 cash:
   js:
     libraries/cash/cash.min.js: { minified: true }
+
+lozad:
+  js:
+    libraries/lozad/dist/lozad.min.js: {}
+    dist/00-base/lozad.js: { }
