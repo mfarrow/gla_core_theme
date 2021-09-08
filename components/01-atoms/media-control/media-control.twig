@@ -1,19 +1,29 @@
-{% set attributes = attributes|default(create_attribute()).addClass([
-  "media-control u-bg-black u-bg-opacity-30 u-flex u-p-4 md:u-p-8 u-rounded-full"
-])%}
+{{ attach_library('gla_core_theme/media-control') }}
 
-{% set icon_classes = ["u-w-full u-h-full u-p-1.5 md:u-p-5 u-bg-pink u-rounded-full"] %}
+{% set attributes = attributes|default(create_attribute())
+  .setAttribute('x-data', 'mediaControl')
+  .setAttribute('data-initially-playing', (is_playing) ? 'true' : 'false')
+  .setAttribute('@click', 'playing = !playing')
+  .addClass([
+    "media-control u-group u-transition-colors u-bg-black u-bg-opacity-30 hocus:u-bg-opacity-40 u-p-4 md:u-p-8 u-rounded-full"
+  ])
+%}
 
-{% set pause_attributes = pause_attributes|default(create_attribute()).addClass(icon_classes)%}
-{% set play_attributes = play_attributes|default(create_attribute()).addClass(icon_classes)%}
+{% set icon_wrapper_classes = "u-h-full u-flex u-items-center u-justify-center u-transition-colors u-w-full u-h-full u-p-1.5 md:u-p-5 u-bg-pink group-hocus:u-bg-pink-dark u-text-white u-rounded-full" %}
 
 <button {{ attributes }}>
-  {% include "@atoms/icon/icon.twig" with {
-    icon_name: 'gla--pause',
-    attributes: pause_attributes
-  } only %}
-  {% include "@atoms/icon/icon.twig" with {
-    icon_name: 'gla--play',
-    attributes: play_attributes
-  } only %}
+  <div :class="{ 'u-hidden': playing }" class="{{ icon_wrapper_classes }}">
+    <span class="u-sr-only">{{ play_label|default('Play') }}</span>
+    {% include "@atoms/icon/icon.twig" with {
+      icon_name: 'gla--play',
+      attributes: play_attributes|default(create_attribute()).addClass(['u-transform u-translate-x-0.5'])
+    } only %}
+  </div>
+  <div :class="{ 'u-hidden': !playing }" class="u-hidden {{ icon_wrapper_classes }}">
+    <span class="u-sr-only">{{ pause_label|default('Pause') }}</span>
+    {% include "@atoms/icon/icon.twig" with {
+      icon_name: 'gla--pause',
+      attributes: pause_attributes|default(create_attribute())
+    } only %}
+  </div>
 </button>
