@@ -38,19 +38,13 @@ function gla_core_theme_preprocess_paragraph(&$variables) {
       }
       break;
 
-    case 'accordion_item':
+    case 'accordion_w_sub':
       $heading = $paragraph->field_p_awh_heading->first()->value;
       $heading_id = _gla_core_theme_transform_text_to_id($heading);
       $variables['content']['field_p_awh_heading']['#attributes'] = new Attribute([
         'id' => $heading_id,
         'tabindex' => '-1',
       ]);
-      break;
-
-    case 'media_item':
-      if ($paragraphHelper->getParentParagraph($paragraph)->bundle() == 'page_section') {
-
-      }
       break;
   }
 
