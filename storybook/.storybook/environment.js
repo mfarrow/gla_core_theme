@@ -25,7 +25,7 @@ const rocketGetCachebuster = new TwingFunction(
 );
 
 const t = new TwingFilter('t', (string) => {
-  return Promise.resolve(string);
+  return string;
 });
 
 const twigPath = path.resolve(__dirname, '../../components');
