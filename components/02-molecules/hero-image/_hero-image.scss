@@ -1,0 +1,22 @@
+.hero-image {
+  height: 200px;
+
+  picture {
+    display: block;
+    flex-grow: 1;
+  }
+
+  img {
+    height: 300px;
+    will-change: transform;
+    transform: translateY(var(--translateY));
+
+    @include breakpoint($t-screens-xl) {
+      height: 600px;
+    }
+  }
+
+  @include breakpoint($t-screens-xl) {
+    height: 400px;
+  }
+}

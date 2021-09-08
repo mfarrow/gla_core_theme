@@ -29,6 +29,7 @@ function gla_core_theme_theme_suggestions_field_alter(array &$suggestions, array
     case 'field_p_hh_components':
     case 'field_p_hh_image':
     case 'field_p_hh_video':
+    case 'field_p_hi_image':
     case 'field_media_image':
     case 'field_p_mi_media':
       $suggestions[] = 'field__no_wrappers';

@@ -38,13 +38,6 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{% include "@organisms/hero-header/hero-header.twig" with {
-  heading: paragraph.field_p_hh_heading.value,
-  media: not paragraph.field_p_hh_image.isEmpty() ? content.field_p_hh_image|field_value : video,
-  has_picture: not paragraph.field_p_hh_image.isEmpty(),
-  has_video: not paragraph.field_p_hh_video.isEmpty() and paragraph.field_p_hh_image.isEmpty(),
-  content: content.field_p_hh_components,
-  height: paragraph.field_p_hh_height.value,
-  theme: paragraph.field_p_hh_theme.value
+{% include "@molecules/hero-image/hero-image.twig" with {
+  image: content.field_p_hi_image|field_value,
 } %}
-

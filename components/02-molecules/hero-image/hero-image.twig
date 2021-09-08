@@ -1,0 +1,13 @@
+{{ attach_library('gla_core_theme/hero-image') }}
+
+{% set attributes = attributes|default(create_attribute()).addClass([
+  "hero-image",
+  "u-breakout",
+  "u-flex",
+  "u-items-center",
+  "u-overflow-hidden"
+]).setAttribute('x-data', 'heroImage') %}
+
+<div {{ attributes }}>
+  {{ image }}
+</div>
