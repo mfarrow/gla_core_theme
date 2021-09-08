@@ -26,6 +26,7 @@ window.drupalSettings = window.drupalSettings || {};
       }
     });
   };
+
   /**
    * Limits the invocations of a function in a given time frame.
    *
