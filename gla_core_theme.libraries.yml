@@ -132,6 +132,12 @@ cash:
   js:
     libraries/cash/cash.min.js: { minified: true }
 
+media-control:
+  js:
+    dist/01-atoms/media-control/media-control.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+
 lozad:
   js:
     libraries/lozad/dist/lozad.min.js: {}
