@@ -36,6 +36,14 @@ function gla_core_theme_theme_suggestions_field_alter(array &$suggestions, array
       break;
   }
 
+  if ($field_name == 'field_media_image') {
+    switch ($element['#view_mode']) {
+      case 'hero_header':
+        $suggestions[] = 'field__no_wrappers';
+        break;
+    }
+  }
+
   if ($field_name == 'field_media_video_file') {
     switch ($element['#view_mode']) {
       case 'hero_header':

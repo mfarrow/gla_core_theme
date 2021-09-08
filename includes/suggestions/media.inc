@@ -15,7 +15,7 @@ function gla_core_theme_theme_suggestions_media_alter(array &$suggestions, array
   // our own components.
   switch ($elements['#view_mode']) {
     case 'hero_header':
-      $suggestions[] = "media__no_wrappers";
+      $suggestions[] = 'media__no_wrappers';
       break;
   }
 
