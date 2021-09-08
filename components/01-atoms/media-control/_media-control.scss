@@ -6,7 +6,7 @@
   height: 100px;
 
   &::after {
-    content: '';
+    content: "";
     background: $t-colors-pink;
     position: absolute;
     top: 0;
@@ -15,10 +15,12 @@
     bottom: 0;
     border-radius: 100%;
     transform: scale(0.5);
-    transition: $t-transition-property-transform $t-transition-timing-function-out $t-transition-delay-100;
+    transition: $t-transition-property-transform
+      $t-transition-timing-function-out $t-transition-delay-100;
   }
 
-  &:hover::after {
+  &:hover::after,
+  .u-group:hover &::after {
     transform: scale(1);
   }
 }
