@@ -105,36 +105,3 @@ WithStyledLinkUtilityClass.parameters = {
     },
   },
 };
-
-// Demonstrate different states.
-const stateDemoDocs = {
-  description: {
-    story:
-      'View this story in the Canvas (not Docs) mode to see a preview of the state.',
-  },
-};
-const stateDemoArgs = {
-  // eslint-disable-next-line new-cap
-  attributes: new DrupalAttribute().addClass('styled-link'),
-};
-
-export const StateDemoHover = Template.bind({});
-StateDemoHover.args = stateDemoArgs;
-StateDemoHover.parameters = {
-  pseudo: { hover: true },
-  docs: stateDemoDocs,
-};
-
-export const StateDemoFocus = Template.bind({});
-StateDemoFocus.args = stateDemoArgs;
-StateDemoFocus.parameters = {
-  pseudo: { focus: true },
-  docs: stateDemoDocs,
-};
-
-export const StateDemoActiveAndHoverEGOnClick = Template.bind({});
-StateDemoActiveAndHoverEGOnClick.args = stateDemoArgs;
-StateDemoActiveAndHoverEGOnClick.parameters = {
-  pseudo: { active: true, hover: true },
-  docs: stateDemoDocs,
-};
