@@ -3,6 +3,7 @@ const {
   TwingEnvironment,
   TwingFunction,
   TwingLoaderFilesystem,
+  TwingFilter
 } = require('twing');
 
 const DrupalAttribute = require('drupal-attribute');
@@ -22,6 +23,10 @@ const rocketGetCachebuster = new TwingFunction(
     return Date.now();
   },
 );
+
+const t = new TwingFilter('t', (string) => {
+  return Promise.resolve(string);
+});
 
 const twigPath = path.resolve(__dirname, '../../components');
 const loader = new TwingLoaderFilesystem([twigPath]);
@@ -48,6 +53,7 @@ const environment = new TwingEnvironment(loader, { autoescape: false });
 environment.addFunction(createAttribute);
 environment.addFunction(attachLibrary);
 environment.addFunction(rocketGetCachebuster);
+environment.addFilter(t);
 
 // Use a different path for icons in Storybook compared to Drupal.
 environment.addGlobal('icon_url', 'dist/icons/sprite.svg');
