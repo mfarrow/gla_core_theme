@@ -9,6 +9,7 @@ global:
     - gla_core_theme/what-input
     - gla_core_theme/set-scrollbar-width
     - gla_core_theme/set-scroll-padding-top
+    - gla_core_theme/modernizr
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
@@ -115,6 +116,17 @@ video--vimeo:
   dependencies:
     - gla_core_theme/alpinejs
     - core/loadjs
+
+modernizr:
+  # Warning: This will overwrite the window.Modernizr provided by Core.
+  # To mitigate this issue, we make sure we provide the same tests that
+  # Core does.
+  # We also load Modernizr with the same weight as Core does.
+  # This custom modernizr build is built with `npm run modernizr`.
+  header: true
+  js:
+    dist/modernizr.js: { preprocess: 0, weight: -41, minified: true }
+    /core/misc/modernizr-additional-tests.js: { preprocess: 0, weight: -40 }
 
 cash:
   js:
