@@ -35,7 +35,7 @@ function gla_core_theme_preprocess_media(array &$variables) {
 
         // For media item components we need to use a different responsive image
         // style if the full width mode is being used.
-        $media = $variables["media"];
+        $media = $variables['media'];
         $parent_entity = $media->_referringItem->getEntity();
         $is_full_width = boolval($parent_entity->field_p_mi_full_width->value);
 
