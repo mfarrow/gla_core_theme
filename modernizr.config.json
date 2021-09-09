@@ -1,0 +1,16 @@
+{
+  "minify": true,
+  "options": [
+    "prefixes",
+    "addTest",
+    "mq",
+    "prefixed",
+    "testStyles",
+    "setClasses"
+  ],
+  "feature-detects": [
+    "inputtypes",
+    "elem/details",
+    "custom-elements"
+  ]
+}

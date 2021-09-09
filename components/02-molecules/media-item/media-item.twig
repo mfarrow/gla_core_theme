@@ -1,0 +1,24 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{#
+  The aria-label feels redundant but helps with macOS VoiceOver + Chrome: https://www.scottohara.me/blog/2019/01/21/how-do-you-figure.html
+#}
+{% set attributes = attributes
+  .addClass([
+    not full_width ? 'u-max-w-rich-text-px',
+  ])
+  .setAttribute('aria-label', caption_as_plain_text_string)
+%}
+
+<figure {{ attributes }}>
+  {{ title_suffix.contextual_links }}
+
+  {% block media %}
+    {{ media }}
+  {% endblock %}
+
+  {% if caption %}
+    <figcaption class="u-border-b u-border-mercury u-pb-3 u-mt-3 rich-text rich-text--condensed-line-height u-max-w-full u-text-sm u-leading-20 xl:u-text-base xl:u-leading-28 xxl:u-text-lg xxl:u-leading-25">
+      {{ caption }}
+    </figcaption>
+  {% endif %}
+</figure>
