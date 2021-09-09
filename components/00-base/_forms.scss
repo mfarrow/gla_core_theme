@@ -1,0 +1,14 @@
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  background-image: url("../src/icons/gla/contract-small.svg");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: $t-spacing-5;
+}
+
+.form-checkbox:checked,
+.form-radio:checked {
+  border-color: $t-colors-transparent !important;
+}

@@ -46,3 +46,10 @@
     text-underline-offset: 3px;
   }
 }
+
+.btn.btn--outline {
+  &:hover,
+  &:focus {
+    border-color: $t-colors-pink;
+  }
+}

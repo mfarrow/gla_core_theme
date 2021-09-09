@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Default theme implementation for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set input_type = input_type|default(attributes.toArray()['type']) %}
+{% set element_type = element['#type'] %}
+{% set element_name = element['#name'] %}
+
+{% set classes = [
+  'form-input',
+  input_type in ['text', 'email'] ? 'u-w-full',
+  'u-rounded',
+  'u-border-2',
+  element_type != 'submit' ? 'u-border-black focus:u-border-blue',
+] %}
+{% set attributes = attributes.addClass(classes) %}
+
+{% if attributes.hasClass('error') %}
+  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red']) %}
+{% endif %}
+
+{% if attributes.hasClass('button--primary') and element_type == 'submit' %}
+  {% set attributes = attributes.addClass(['btn', 'btn--solid']) %}
+{% endif %}
+
+{% if attributes.hasClass('button') and not attributes.hasClass('button--primary') and element_type == 'submit' %}
+  {% set attributes = attributes.addClass(['btn', 'btn--outline']) %}
+{% endif %}
+
+<input{{ attributes.addClass(classes) }} />{{ children }}

@@ -242,6 +242,10 @@ module.exports = {
     require('tailwindcss-interaction-variants'),
     // eslint-disable-next-line import/no-unresolved,global-require
     require('@tailwindcss/aspect-ratio'),
+    // eslint-disable-next-line import/no-unresolved,global-require
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
     plugin(({ addUtilities, e, theme, variants }) => {
       addUtilities({
         '.flex-gap-wrapper': {
