@@ -9,6 +9,7 @@ global:
     - gla_core_theme/what-input
     - gla_core_theme/set-scrollbar-width
     - gla_core_theme/set-scroll-padding-top
+    - gla_core_theme/modernizr
 
 # This library is mainly for IE11 and older browsers. We use the `nomodule` attribute to prevent newer browsers from
 # loading it. This saves us an external (render blocking) JS and HTTP request, so is good for TTI and FCP scores.
@@ -36,18 +37,32 @@ alpinejs:
   js:
     libraries/alpinejs/dist/cdn.js: { attributes: { defer: true } }
 
-# Until Safari supports native image lazyloading we'll need a library to help us with it.
+# D9 and modern browsers (except Safari) support native lazyloading of images, but we
+# can still use Lazysizes for things like lazyloading background images.
 lazysizes:
   js:
-    libraries/lazysizes/plugins/print/ls.print.min.js: { minified: true }
-    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js: { minified: true }
-    libraries/lazysizes/lazysizes.min.js:
-      # Load Lazysizes as early as possible to help get images displayed
-      # as quickly as possible. We are banking on the perceived performance
-      # benefits of getting images on screen quicker being more important
-      # than the performance costs of not aggregating this file.
+    # Load Lazysizes as early as possible to help get images displayed
+    # as quickly as possible. We are banking on the perceived performance
+    # benefits of getting images on screen quicker being more important
+    # than the performance costs of not aggregating this file.
+    libraries/lazysizes/plugins/print/ls.print.min.js:
       preprocess: false
       minified: true
+      header: true
+      weight: -10
+      attributes:
+        async: ''
+    libraries/lazysizes/plugins/unveilhooks/ls.unveilhooks.min.js:
+      preprocess: false
+      minified: true
+      header: true
+      weight: -10
+      attributes:
+        async: ''
+    libraries/lazysizes/lazysizes.min.js:
+      preprocess: false
+      minified: true
+      header: true
       weight: -10
       attributes:
         async: ''
@@ -67,7 +82,7 @@ set-scrollbar-width:
 
 scrollable-table:
   js:
-    dist/01-atoms/table/scrollable-table.js: { }
+    dist/01-atoms/table/scrollable-table.js: {}
   dependencies:
     - gla_core_theme/alpinejs
 
@@ -106,3 +121,46 @@ lodash:
   # http://simey.me/custom-lodash-builder-with-npm.
   js:
     dist/lodash.min.js: {}
+
+video--youtube:
+  js:
+    dist/02-molecules/remote-video/video--youtube.js: {}
+  dependencies:
+    - gla_core_theme/cash
+    - gla_core_theme/lazysizes
+    - gla_core_theme/lite-youtube-embed
+    - core/once
+    - core/loadjs
+
+lite-youtube-embed:
+  js:
+    libraries/lite-youtube-embed/src/lite-yt-embed.js: {}
+
+video--vimeo:
+  js:
+    dist/02-molecules/remote-video/video--vimeo.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs
+    - gla_core_theme/lazysizes
+    - core/loadjs
+
+modernizr:
+  # Warning: This will overwrite the window.Modernizr provided by Core.
+  # To mitigate this issue, we make sure we provide the same tests that
+  # Core does.
+  # We also load Modernizr with the same weight as Core does.
+  # This custom modernizr build is built with `npm run modernizr`.
+  header: true
+  js:
+    dist/modernizr.js: { preprocess: 0, weight: -41, minified: true }
+    /core/misc/modernizr-additional-tests.js: { preprocess: 0, weight: -40 }
+
+cash:
+  js:
+    libraries/cash/cash.min.js: { minified: true }
+
+media-control:
+  js:
+    dist/01-atoms/media-control/media-control.js: {}
+  dependencies:
+    - gla_core_theme/alpinejs

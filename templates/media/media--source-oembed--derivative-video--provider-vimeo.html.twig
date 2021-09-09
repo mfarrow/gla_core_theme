@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ gla_core_profile_cache(media) }}
+
+{# If gla_core_media has failed to pass through a Vimeo ID then we don't show anything #}
+{% if gla_video_vimeo_id is defined and gla_video_vimeo_id is not empty %}
+  {% set uri = media.thumbnail.entity.fileuri %}
+  {% set image_style = content.thumbnail.0['#image_style'] %}
+
+  {% include "@molecules/remote-video/vimeo.twig" with {
+    thumbnail_url: bamboo_render_image_style(uri, image_style),
+  } %}
+{% endif %}

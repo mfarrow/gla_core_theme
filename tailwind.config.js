@@ -232,6 +232,11 @@ module.exports = {
   variants: {
     extend: {
       textColor: ['hocus'],
+      backgroundOpacity: ['hocus', 'group-hover'],
+      backgroundColor: ['group-hover'],
+      translate: ['group-hover', 'group-focus-within', 'group-hocus'],
+      scale: ['active'],
+      transform: ['active'],
     },
   },
   corePlugins: {
@@ -242,6 +247,8 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     // eslint-disable-next-line import/no-unresolved,global-require
     require('tailwindcss-interaction-variants'),
+    // eslint-disable-next-line import/no-unresolved,global-require
+    require('@tailwindcss/aspect-ratio'),
     plugin(({ addUtilities, e, theme, variants }) => {
       addUtilities({
         '.flex-gap-wrapper': {
