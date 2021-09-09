@@ -1,0 +1,96 @@
+{{ attach_library("gla_core_theme/card") }}
+
+{% set attributes = attributes.addClass([
+  "card",
+  "group",
+  "u-relative",
+  "u-flex",
+  "u-flex-col-reverse",
+  "u-w-full",
+  "u-h-full",
+  "u-bg-white",
+  "u-text-black",
+  "u-overflow-hidden",
+  "u-rounded",
+  "u-justify-end",
+  "u-select-none",
+]) %}
+
+{% set card_body_attributes = create_attribute() %}
+{% set card_body_attributes = card_body_attributes.addClass([
+  "card__body",
+  "u-flex",
+  "u-flex-grow",
+  "u-content-box",
+  "u-z-1"
+]).setAttribute("data-remove-classes-ie11", "u-flex u-flex-grow u-flex-col") %}
+
+{% set card_image_attributes = card_image_attributes|default(create_attribute()) %}
+{% set card_image_attributes = card_image_attributes.addClass([
+  "card__image",
+  "u-bg-grey-50",
+]) %}
+
+{% set content_attributes = create_attribute() %}
+{% set card_text_attributes = create_attribute().addClass(["u-flex-grow"]) %}
+{% set attributes = attributes.addClass(["u-flex-col"]) %}
+
+{% if has_image %}
+  {% set card_image_attributes = card_image_attributes.addClass(["u--order-1"]) %}
+{% endif %}
+
+{% set heading_classes = [
+  "card-heading",
+  "u-text-3xl",
+  "u-py-3",
+] %}
+
+{% set heading_link_classes = [
+  "u-text-current-color",
+] %}
+
+<div {{ attributes }} data-card>
+  {{ title_suffix.contextual_links }}
+
+  <div {{ card_body_attributes }}>
+    <div class="u-flex u-flex-col u-flex-grow u-o-2 u-w-0">
+      <div class="u-my-3">
+        {% if card_title and not hide_default_title %}
+          {{ title_prefix }}
+          {% include "@atoms/heading/heading.twig" with {
+            heading_level: 2,
+            heading_size: 5,
+            heading: card_title,
+          } only %}
+          {{ title_suffix }}
+        {% endif %}
+      </div>
+
+      {% block card_body %}
+        {% if card_body %}
+          <div {{ card_text_attributes }}>
+            {{ card_body }}
+          </div>
+        {% endif %}
+      {% endblock %}
+    </div>
+
+  </div>
+
+  {#
+    We show the text content first so the heading introduces the card, as per
+    https://inclusive-components.design/cards. A Flexbox order reversing
+    utility class is used to bring the image to the top of the card for sighted
+    users.
+  #}
+
+  {% if has_image %}
+    <div {{ card_image_attributes }}>
+      {# https://twitter.com/hakimel/status/1270366140330631168 #}
+      <div class="u-shadow-inner u-z-1"></div>
+
+      {{ content.field_teaser_image }}
+
+    </div>
+  {% endif %}
+</div>

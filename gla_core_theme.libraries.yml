@@ -67,7 +67,7 @@ set-scrollbar-width:
 
 scrollable-table:
   js:
-    dist/01-atoms/table/scrollable-table.js: { }
+    dist/01-atoms/table/scrollable-table.js: {}
   dependencies:
     - gla_core_theme/alpinejs
 
@@ -89,6 +89,13 @@ hero-header:
   dependencies:
     - gla_core_theme/lodash
     - gla_core_theme/alpinejs
+
+content-listing:
+  js:
+    dist/03-organisms/content-listing/content-listing.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
 
 lodash:
   # This custom lodash build is generated in a npm postinstall script based on
