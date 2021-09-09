@@ -38,10 +38,7 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes.addClass([
-  'container',
-  'u-space-y-10',
-]) }}>
+<div{{ attributes.addClass(['generic-page-components']) }}>
   {% for item in items %}
     {{ item.content }}
   {% endfor %}

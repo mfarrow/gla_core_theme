@@ -58,3 +58,11 @@ $screens: (
     }
   }
 }
+
+.u-w-container {
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @include breakpoint(map-get($screens, $breakpoint)) {
+      width: $container-max-width;
+    }
+  }
+}

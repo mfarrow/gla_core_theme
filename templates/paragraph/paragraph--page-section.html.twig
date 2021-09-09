@@ -38,4 +38,14 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{% include "@organisms/_paragraph.twig" %}
+{% embed "@molecules/containers/page-section.twig" with {
+  heading: paragraph.field_p_ps_heading.value,
+  attributes: attributes.setAttribute('id', paragraph.field_p_ps_heading.value|clean_id),
+  visually_hide_title: paragraph.field_p_ps_hide_title.value|default(0) + 0,
+  remove_bottom_border: paragraph.field_p_ps_remove_bottom_border.value|default(0) + 0,
+  id: paragraph.id(),
+} %}
+  {% block content %}
+    {{ content.field_p_ps_components }}
+  {% endblock %}
+{% endembed %}

@@ -184,6 +184,9 @@ module.exports = {
       35: '35px',
     },
     extend: {
+      borderWidth: {
+        1: '1px',
+      },
       spacing: {
         'grid-gutter': '15px',
       },
