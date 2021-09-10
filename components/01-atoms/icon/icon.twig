@@ -12,7 +12,6 @@
   .setAttribute('role', 'presentation')
 %}
 
-
 {#
   Make sure to provide a visually hidden text alternative if necessary. E.g.
   for a search button:
@@ -21,6 +20,15 @@
     <svg>…</svg>
   </button>
 #}
+
+{% if attributes['aria-label'] or attributes[':aria-label'] or attributes['x-bind:aria-label'] %}
+  {#
+    If we are providing accessible text via an attribute on the icon then we need to remove the presentation role.
+    Ideally we wouldn't do this and would provide accessible text using the example above.
+  #}
+  {% set attributes = attributes.removeAttribute('role') %}
+{% endif %}
+
 <svg {{ attributes }}>
   <use xlink:href="{{ icon_url }}?v={{ gla_core_profile_get_cachebuster() }}#{{ icon_name }}"></use>
 </svg>

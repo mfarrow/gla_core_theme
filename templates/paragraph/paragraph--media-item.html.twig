@@ -38,13 +38,14 @@
 #}
 {{ gla_core_profile_cache(paragraph) }}
 
-{% include "@organisms/hero-header/hero-header.twig" with {
-  heading: paragraph.field_p_hh_heading.value,
-  media: not paragraph.field_p_hh_image.isEmpty() ? content.field_p_hh_image|field_value : video,
-  has_picture: not paragraph.field_p_hh_image.isEmpty(),
-  has_video: not paragraph.field_p_hh_video.isEmpty() and paragraph.field_p_hh_image.isEmpty(),
-  content: content.field_p_hh_components,
-  height: paragraph.field_p_hh_height.value,
-  theme: paragraph.field_p_hh_theme.value
+{#
+  If the Media item's immediate parent is a Page section then it's probably being used alongside Rich text components
+  so to match the designs we set a max width to force their widths match. Without this class, the Media item component
+  will expand to fill all of the available space.
+#}
+{% include "@molecules/media-item/media-item.twig" with {
+  caption: content.field_p_mi_caption|field_value,
+  media: content.group_link,
+  full_width: paragraph.field_p_mi_full_width.value,
+  caption_as_plain_text_string: content.field_p_mi_caption|field_value|render|striptags,
 } %}
-

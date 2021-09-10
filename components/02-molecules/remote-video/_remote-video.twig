@@ -1,0 +1,42 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set attributes = attributes.addClass(video_classes|default([])) %}
+{% set attributes = attributes.setAttribute("data-video", "") %}
+{% set id = id|default(date().timestamp) %}
+
+{% if provider %}
+  {% set attributes = attributes.setAttribute("data-video-provider", provider) %}
+{% endif %}
+
+{% set scrim_attributes = scrim_attributes|default(create_attribute()) %}
+{% set button_attributes = button_attributes|default(create_attribute()) %}
+
+{% if small_print %}
+  {% set button_attributes = button_attributes.setAttribute('aria-describedby', 'video-small-print--' ~ id) %}
+{% endif %}
+
+<div {{ attributes }}>
+  {{ title_suffix.contextual_links }}
+  <div class="u-overflow-hidden u-aspect-w-16 u-aspect-h-9 u-relative u-bg-vulcan u-bg-gradient-t-black-scrim">
+    {% block video_wrapper_start %}
+    {% endblock %}
+
+    <div class="u-flex u-items-center u-justify-center" @media-control--play="$el.remove()">
+      {% include "@atoms/media-control/media-control.twig" with {
+        attributes: button_attributes.addClass([
+          'group-hocus:u-bg-opacity-40'
+        ]),
+        play_label: play_label,
+        pause_label: pause_label,
+      } only %}
+
+      {% if small_print %}
+        <p id="video-small-print--{{ id }}" class="u-absolute u-text-sm u-bottom-2 u-left-2 u-bg-black u-p-2 u-bg-opacity-70 u-text-white u-transform u-translate-y-full u-transition-transform u-ease-out group-hover:u-translate-y-0 group-focus-within:u-translate-y-0">
+          {{ small_print }}
+        </p>
+      {% endif %}
+    </div>
+
+    {% block video_wrapper_end %}
+    {% endblock %}
+  </div>
+</div>

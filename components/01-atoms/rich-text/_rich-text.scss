@@ -118,6 +118,11 @@
     // the rich text component font size increases at the XL breakpoint.
     margin-top: 1.25em;
     margin-bottom: 1.25em;
+
+    @at-root .rich-text--condensed-line-height p {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em;
+    }
   }
 
   img,

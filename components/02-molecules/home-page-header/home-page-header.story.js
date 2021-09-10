@@ -52,7 +52,7 @@ export default {
     design: {
       type: 'iframe',
       url:
-        'https://projects.invisionapp.com/d/main/#/console/21508157/454587112/preview',
+        'https://projects.invisionapp.com/share/X611422B95Q8#/screens/453047026',
     },
   },
 };

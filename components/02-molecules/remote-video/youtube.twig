@@ -1,0 +1,29 @@
+{{ attach_library('gla_core_theme/video--youtube') }}
+
+{% embed "@molecules/remote-video/_remote-video.twig" with {
+  provider: 'youtube',
+  small_print: 'Playing this video will set cookies from YouTube/Google'|t,
+  button_attributes: create_attribute().addClass('lty-playbtn'),
+  play_label: "Play YouTube video '"|t ~ name ~ "'",
+  pause_label: "Pause YouTube video '"|t ~ name ~ "'",
+  thumbnail_url: thumbnail_url,
+  base_root: base_root,
+  name: name,
+  gla_video_youtube_id: gla_video_youtube_id,
+} only %}
+  {% block video_wrapper_start %}
+    <lite-youtube
+      x-data
+      class="lazyload u-aspect-w-16 u-aspect-h-9 u-group u-cursor-pointer u-bg-center u-bg-contain"
+      videoid="{{ gla_video_youtube_id }}"
+      params="start=0&rel=0&enablejsapi=1&origin={{ base_root }}&modestbranding=1"
+      data-bg="{{ thumbnail_url }}"
+      style="background-image: url(data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==);"
+      playlabel="{{ 'YouTube player'|t }}: {{ name }}"
+    >
+  {% endblock %}
+
+  {% block video_wrapper_end %}
+    </lite-youtube>
+  {% endblock %}
+{% endembed %}

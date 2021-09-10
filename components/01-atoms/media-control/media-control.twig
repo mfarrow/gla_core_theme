@@ -1,19 +1,40 @@
-{% set attributes = attributes|default(create_attribute()).addClass([
-  "media-control u-bg-black u-bg-opacity-30 u-flex u-p-4 md:u-p-8 u-rounded-full"
-])%}
+{{ attach_library('gla_core_theme/media-control') }}
 
-{% set icon_classes = ["u-w-full u-h-full u-p-1.5 md:u-p-5 u-bg-pink u-rounded-full"] %}
+{% set attributes = attributes|default(create_attribute())
+  .setAttribute('x-data', 'mediaControl')
+  .setAttribute('data-initially-playing', (is_playing) ? 'true' : 'false')
+  .setAttribute('@click', 'playing = !playing')
+  .addClass([
+    'media-control',
+    'u-group',
+    'u-relative u-overflow-hidden',
+    'u-flex u-items-center u-justify-center',
+    'u-transition-all',
+    'u-bg-black u-bg-opacity-30',
+    'u-rounded-full',
+    'active:u-transform active:u-scale-95',
+  ])
+%}
 
-{% set pause_attributes = pause_attributes|default(create_attribute()).addClass(icon_classes)%}
-{% set play_attributes = play_attributes|default(create_attribute()).addClass(icon_classes)%}
 
 <button {{ attributes }}>
-  {% include "@atoms/icon/icon.twig" with {
-    icon_name: 'gla--pause',
-    attributes: pause_attributes
-  } only %}
-  {% include "@atoms/icon/icon.twig" with {
-    icon_name: 'gla--play',
-    attributes: play_attributes
-  } only %}
+  <div class="u-flex u-z-1 u-items-center u-justify-center u-w-1/2 u-h-1/2 u-bg-pink u-text-white u-rounded-full">
+    {# We use translate-x to offset the play icon slightly otherwise an optical illusion makes it look off-center visually #}
+    {% include "@atoms/icon/icon.twig" with {
+      icon_name: 'gla--play',
+      attributes: play_attributes|default(create_attribute())
+        .addClass('u-h-1/3 u-w-auto u-transform u-translate-x-0.5')
+        .setAttribute(':class', "{ 'u-hidden': playing }")
+    } only %}
+
+    {% include "@atoms/icon/icon.twig" with {
+      icon_name: 'gla--pause',
+      attributes: pause_attributes|default(create_attribute())
+        .addClass('u-hidden u-h-1/3 u-w-auto')
+        .setAttribute(':class', "{ 'u-hidden': !playing }")
+    } only %}
+
+    <span class="u-sr-only" x-show="!playing">{{ play_label|default('Play') }}</span>
+    <span class="u-sr-only" x-show="playing">{{ pause_label|default('Pause') }}</span>
+  </div>
 </button>

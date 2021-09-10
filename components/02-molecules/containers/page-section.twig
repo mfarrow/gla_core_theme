@@ -1,0 +1,27 @@
+{% set attributes = attributes|default(create_attribute()).addClass([
+  'page-section',
+]) %}
+
+<div {{ attributes }}>
+  <div class="u-space-y-7 u-py-8 lg:u-py-9 xl:u-py-12 xxl:u-py-14">
+    {% if heading %}
+      <div {{ create_attribute().addClass([
+        'container',
+        visually_hide_title ? 'focus:u-not-sr-only u-sr-only'
+      ]) }}>
+        {% include "@atoms/heading/heading.twig" with {
+          heading_level: heading_level|default(2),
+          heading_size: 2,
+          heading: heading,
+        } only %}
+      </div>
+    {% endif %}
+
+    {% block content %}
+      {{ content }}
+  {% endblock %}
+  </div>
+  {% if not remove_bottom_border %}
+    <hr class="page-section__divider u-border-grey u-border-opacity-20 u-w-container u-m-auto">
+  {% endif %}
+</div>

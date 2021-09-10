@@ -1,17 +1,26 @@
 .media-control {
-  width: 62px;
-  height: 62px;
+  // This is the default width based on the designs for 'autoplay hero'.
+  // To customise the width for use elsewhere (e.g. Media item component) you can use utilities like `u-w-60 u-h-60`.
+  // The component uses percentage-based dimensions so it should scale up or down in height relatively nicely.
+  width: 100px;
+  height: 100px;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, $t-opacity-40) !important;
-
-    .icon {
-      background-color: $t-colors-pink-dark !important;
-    }
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    transition: $t-transition-property-transform
+      $t-transition-timing-function-out $t-transition-delay-100;
+    transform: scale(0.5);
+    border-radius: 100%;
+    background: $t-colors-pink;
   }
 
-  @include breakpoint($t-screens-md) {
-    width: 125px;
-    height: 125px;
+  &:hover::after,
+  .u-group:hover &::after {
+    transform: scale(1);
   }
 }

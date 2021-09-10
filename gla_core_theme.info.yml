@@ -18,6 +18,8 @@ libraries-override:
   core/picturefill: false
   # Without Picturefill we don't need the responsive_image/ajax library.
   responsive_image/ajax: false
+  # Remove the Core modernizr library as we provide our own based on Core's.
+  core/modernizr: false
 
 components:
   namespaces:
