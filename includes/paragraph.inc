@@ -17,7 +17,10 @@ function gla_core_theme_preprocess_paragraph(&$variables) {
   $paragraphHelper = \Drupal::service('gla_core_profile.paragraph_helper');
 
   if ($paragraphHelper->getParentParagraph($paragraph)) {
+    // Add a cache tag for the parent entity to prevent issues where the
+    // parent_bundle variable is incorrectly set due to caching.
     $variables['parent_bundle'] = $paragraphHelper->getParentParagraph($paragraph)->bundle();
+    $variables['#cache']['tags'][] = 'parent_entity_bundle:' . $variables['parent_bundle'];
   }
 
   switch ($paragraph->bundle()) {
