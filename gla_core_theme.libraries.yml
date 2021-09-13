@@ -120,8 +120,8 @@ content-listing:
   js:
     dist/03-organisms/content-listing/content-listing.js: {}
   dependencies:
-    - core/jquery
-    - core/drupalSettings
+    - gla_core_theme/cash
+    - core/once
 
 lodash:
   # This custom lodash build is generated in a npm postinstall script based on
