@@ -26,7 +26,7 @@
 {% set attributes = attributes.addClass(classes) %}
 
 {% if attributes.hasClass('error') %}
-  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red']) %}
+  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red', 'u-pr-5']) %}
 {% endif %}
 
 {% if attributes.hasClass('button--primary') and element_type == 'submit' %}

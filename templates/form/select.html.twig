@@ -15,7 +15,7 @@
 {% set attributes = attributes.addClass(['u-rounded', 'u-w-full', 'u-border-black', 'u-border-2', 'focus:u-border-blue']) %}
 
 {% if attributes.hasClass('error') %}
-  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red']) %}
+  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red', 'u-pr-5']) %}
 {% endif %}
 
 {% apply spaceless %}

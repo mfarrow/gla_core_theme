@@ -1,11 +1,10 @@
 .form-input.error,
 .form-textarea.error,
 .form-select.error {
-  background-image: url("../src/icons/gla/contract-small.svg");
-  background-position: right 1rem center;
+  background-image: url("../src/icons/gla/close-circle.svg");
   background-repeat: no-repeat;
+  background-position: right 1rem center;
   background-size: 1.5em 1.5em;
-  padding-right: $t-spacing-5;
 }
 
 .form-checkbox:checked,

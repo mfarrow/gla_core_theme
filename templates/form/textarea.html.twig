@@ -18,7 +18,7 @@
 {% set attributes = attributes.addClass(['u-border-black', 'focus:u-border-blue']) %}
 
 {% if attributes.hasClass('error') %}
-  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red']) %}
+  {% set attributes = attributes.removeClass('u-border-black').addClass(['u-border-red', 'u-pr-5']) %}
 {% endif %}
 
 <div{{ wrapper_attributes }}>
