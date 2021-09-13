@@ -15,6 +15,11 @@ if [ "$DRUPAL_ENVIRONMENT" != 'docker' ] && [ "$SKIP_COMPOSER_SCRIPT_THEME_BUILD
   echo "To make the change permanent add the variable to your .bashrc file or equivalent."
   echo ""
 
+  # Set the Node version based on .nvmrc - if NVM is installed
+  if [ ! -z $NVM_DIR ] && [ -f $NVM_DIR/nvm.sh ]; then
+    . $NVM_DIR/nvm.sh && nvm install && nvm use
+  fi
+
   current_node_version=$(node -v || node --version)
   target_node_version=$(cat .nvmrc)
 
@@ -26,10 +31,6 @@ if [ "$DRUPAL_ENVIRONMENT" != 'docker' ] && [ "$SKIP_COMPOSER_SCRIPT_THEME_BUILD
     echo "The current version of Node does not match the version in .nvmrc"
     exit 1
   fi
-
-  # Normally we'd run `nvm use` here to read from the theme's nvm file but the
-  # web servers where the theme is built should already have a suitable version
-  # of Node, managed by the GLA.
 
   # Run Composer inside the theme, mainly to pull in frontend dependencies via
   # https://asset-packagist.org to the `libraries` directory within the theme.
