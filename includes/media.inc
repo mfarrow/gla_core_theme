@@ -18,12 +18,15 @@ function gla_core_theme_preprocess_media(array &$variables) {
 
   if (isset($variables['media']->field_media_document)) {
     $file = $variables['media']->field_media_document->entity;
-    // For document media items provide the file entity via Twig for
-    // templates to use, and provide a formatted file size and extension as
-    // a convenience to template authors.
-    $variables['file'] = $file;
-    $variables['file_size'] = format_size($file->filesize->value);
-    $variables['file_extension'] = strtoupper(explode('.', $file->getFilename())[1]);
+    
+    if ($file) {
+      // For document media items provide the file entity via Twig for
+      // templates to use, and provide a formatted file size and extension as
+      // a convenience to template authors.
+      $variables['file'] = $file;
+      $variables['file_size'] = format_size($file->filesize->value);
+      $variables['file_extension'] = strtoupper(explode('.', $file->getFilename())[1]);
+    }
   }
 
   if ($variables['media']->bundle() === 'image') {
