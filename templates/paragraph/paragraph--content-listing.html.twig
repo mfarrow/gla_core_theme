@@ -42,9 +42,11 @@
 {% set content %}
   {{ content|without('pager') }}
 
-  <div class="u-my-3">
-    {{ content.pager }}
-  </div>
+  {% if content.pager %}
+    <div class="u-my-3">
+      {{ content.pager }}
+    </div>
+  {% endif %}
 {% endset %}
 
 {% include "@organisms/_paragraph.twig" with {
