@@ -15,10 +15,11 @@ if [ "$DRUPAL_ENVIRONMENT" != 'docker' ] && [ "$SKIP_COMPOSER_SCRIPT_THEME_BUILD
   echo "To make the change permanent add the variable to your .bashrc file or equivalent."
   echo ""
 
-  # Set the Node version based on .nvmrc - if NVM is installed
-  if [ ! -z $NVM_DIR ] && [ -f $NVM_DIR/nvm.sh ]; then
-    . $NVM_DIR/nvm.sh && nvm install && nvm use
-  fi
+  # Source the NVM script if the nvm command isn't available
+  [ ! $(command -v nvm) ] && [ ! -z $NVM_DIR ] && [ -f $NVM_DIR/nvm.sh ] && . $NVM_DIR/nvm.sh
+
+  # Attempt to install and use the version of node in the .nvmrc file
+  nvm install && nvm use
 
   current_node_version=$(node -v || node --version)
   target_node_version=$(cat .nvmrc)
